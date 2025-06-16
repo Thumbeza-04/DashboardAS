@@ -298,7 +298,7 @@ namespace DashboardAS
                 if (result == DialogResult.Yes)
                 {
                     this.Hide();
-                    Form2 loginForm = new Form2();  // Replace with your login form class name
+                    Form4 loginForm = new Form4();  // Replace with your login form class name
                     loginForm.Show();
                 }
             }
