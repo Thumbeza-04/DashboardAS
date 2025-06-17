@@ -33,17 +33,17 @@ namespace DashboardAS
             this.accessControlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receptionistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.loginBtn = new System.Windows.Forms.Button();
+            this.staffIdTxt = new System.Windows.Forms.TextBox();
+            this.roleTxt = new System.Windows.Forms.TextBox();
+            this.passwordTxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.usernameTxt = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.usernameTxt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.passwordTxt = new System.Windows.Forms.TextBox();
-            this.roleTxt = new System.Windows.Forms.TextBox();
-            this.staffIdTxt = new System.Windows.Forms.TextBox();
-            this.loginBtn = new System.Windows.Forms.Button();
             this.dsLogin1 = new DashboardAS.DSLogin();
             this.mjInstructorLoginTableAdapter1 = new DashboardAS.DSLoginTableAdapters.MJInstructorLoginTableAdapter();
             this.mjManagerLoginTableAdapter1 = new DashboardAS.DSLoginTableAdapters.MJManagerLoginTableAdapter();
@@ -99,6 +99,109 @@ namespace DashboardAS
             this.panel1.Size = new System.Drawing.Size(519, 398);
             this.panel1.TabIndex = 4;
             // 
+            // loginBtn
+            // 
+            this.loginBtn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.loginBtn.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.loginBtn.Location = new System.Drawing.Point(212, 338);
+            this.loginBtn.Name = "loginBtn";
+            this.loginBtn.Size = new System.Drawing.Size(99, 48);
+            this.loginBtn.TabIndex = 8;
+            this.loginBtn.Text = "LOGIN";
+            this.loginBtn.UseVisualStyleBackColor = false;
+            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
+            // 
+            // staffIdTxt
+            // 
+            this.staffIdTxt.BackColor = System.Drawing.SystemColors.MenuText;
+            this.staffIdTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.staffIdTxt.ForeColor = System.Drawing.SystemColors.Window;
+            this.staffIdTxt.Location = new System.Drawing.Point(438, 269);
+            this.staffIdTxt.Name = "staffIdTxt";
+            this.staffIdTxt.Size = new System.Drawing.Size(51, 20);
+            this.staffIdTxt.TabIndex = 7;
+            // 
+            // roleTxt
+            // 
+            this.roleTxt.BackColor = System.Drawing.SystemColors.MenuText;
+            this.roleTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.roleTxt.ForeColor = System.Drawing.SystemColors.Window;
+            this.roleTxt.Location = new System.Drawing.Point(343, 228);
+            this.roleTxt.Name = "roleTxt";
+            this.roleTxt.Size = new System.Drawing.Size(98, 20);
+            this.roleTxt.TabIndex = 6;
+            // 
+            // passwordTxt
+            // 
+            this.passwordTxt.BackColor = System.Drawing.SystemColors.MenuText;
+            this.passwordTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.passwordTxt.ForeColor = System.Drawing.SystemColors.Window;
+            this.passwordTxt.Location = new System.Drawing.Point(122, 269);
+            this.passwordTxt.Name = "passwordTxt";
+            this.passwordTxt.PasswordChar = '*';
+            this.passwordTxt.Size = new System.Drawing.Size(108, 20);
+            this.passwordTxt.TabIndex = 5;
+            this.passwordTxt.TextChanged += new System.EventHandler(this.passwordTxt_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.Location = new System.Drawing.Point(296, 269);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(136, 16);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Employee Number";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(296, 229);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 16);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Role";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(40, 273);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Password";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(37, 232);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Username";
+            // 
+            // usernameTxt
+            // 
+            this.usernameTxt.BackColor = System.Drawing.SystemColors.MenuText;
+            this.usernameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.usernameTxt.ForeColor = System.Drawing.SystemColors.Window;
+            this.usernameTxt.Location = new System.Drawing.Point(122, 225);
+            this.usernameTxt.Name = "usernameTxt";
+            this.usernameTxt.Size = new System.Drawing.Size(108, 20);
+            this.usernameTxt.TabIndex = 0;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -120,107 +223,6 @@ namespace DashboardAS
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // usernameTxt
-            // 
-            this.usernameTxt.BackColor = System.Drawing.SystemColors.MenuText;
-            this.usernameTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.usernameTxt.ForeColor = System.Drawing.SystemColors.Window;
-            this.usernameTxt.Location = new System.Drawing.Point(122, 225);
-            this.usernameTxt.Name = "usernameTxt";
-            this.usernameTxt.Size = new System.Drawing.Size(108, 20);
-            this.usernameTxt.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(37, 232);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Username";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(40, 273);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Password";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(296, 229);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 16);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Role";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(296, 269);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 16);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Employee Number";
-            // 
-            // passwordTxt
-            // 
-            this.passwordTxt.BackColor = System.Drawing.SystemColors.MenuText;
-            this.passwordTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.passwordTxt.ForeColor = System.Drawing.SystemColors.Window;
-            this.passwordTxt.Location = new System.Drawing.Point(122, 269);
-            this.passwordTxt.Name = "passwordTxt";
-            this.passwordTxt.Size = new System.Drawing.Size(108, 20);
-            this.passwordTxt.TabIndex = 5;
-            // 
-            // roleTxt
-            // 
-            this.roleTxt.BackColor = System.Drawing.SystemColors.MenuText;
-            this.roleTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.roleTxt.ForeColor = System.Drawing.SystemColors.Window;
-            this.roleTxt.Location = new System.Drawing.Point(343, 228);
-            this.roleTxt.Name = "roleTxt";
-            this.roleTxt.Size = new System.Drawing.Size(98, 20);
-            this.roleTxt.TabIndex = 6;
-            // 
-            // staffIdTxt
-            // 
-            this.staffIdTxt.BackColor = System.Drawing.SystemColors.MenuText;
-            this.staffIdTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.staffIdTxt.ForeColor = System.Drawing.SystemColors.Window;
-            this.staffIdTxt.Location = new System.Drawing.Point(438, 269);
-            this.staffIdTxt.Name = "staffIdTxt";
-            this.staffIdTxt.Size = new System.Drawing.Size(51, 20);
-            this.staffIdTxt.TabIndex = 7;
-            // 
-            // loginBtn
-            // 
-            this.loginBtn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.loginBtn.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loginBtn.Location = new System.Drawing.Point(212, 338);
-            this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(99, 48);
-            this.loginBtn.TabIndex = 8;
-            this.loginBtn.Text = "LOGIN";
-            this.loginBtn.UseVisualStyleBackColor = false;
-            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
             // dsLogin1
             // 
