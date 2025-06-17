@@ -59,7 +59,28 @@
     <Compile Include="CalendarUserControl.Designer.cs">
       <DependentUpon>CalendarUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dash.Designer.cs">
+      <DependentUpon>Dash.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\UserLoginDAO.cs" />
+    <Compile Include="DSAttendance.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSAttendance.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSLessAtt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSLessAtt.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSLessons.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSLessons.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSLogin.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -177,6 +198,9 @@
     <EmbeddedResource Include="CalendarUserControl.resx">
       <DependentUpon>CalendarUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dash.resx">
+      <DependentUpon>Dash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +222,9 @@
     <EmbeddedResource Include="InstructorsUserControl.resx">
       <DependentUpon>InstructorsUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LessonAttendance.resx">
+      <DependentUpon>LessonAttendance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PaymentUserControl.resx">
       <DependentUpon>PaymentUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,9 +238,45 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StudentSummary.resx">
+      <DependentUpon>StudentSummary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StudentsUserControl.resx">
       <DependentUpon>StudentsUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DSAttendance.xsc">
+      <DependentUpon>DSAttendance.xsd</DependentUpon>
+    </None>
+    <None Include="DSAttendance.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSAttendance.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DSAttendance.xss">
+      <DependentUpon>DSAttendance.xsd</DependentUpon>
+    </None>
+    <None Include="DSLessAtt.xsc">
+      <DependentUpon>DSLessAtt.xsd</DependentUpon>
+    </None>
+    <None Include="DSLessAtt.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSLessAtt.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DSLessAtt.xss">
+      <DependentUpon>DSLessAtt.xsd</DependentUpon>
+    </None>
+    <None Include="DSLessons.xsc">
+      <DependentUpon>DSLessons.xsd</DependentUpon>
+    </None>
+    <None Include="DSLessons.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSLessons.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DSLessons.xss">
+      <DependentUpon>DSLessons.xsd</DependentUpon>
+    </None>
     <None Include="DSLogin.xsc">
       <DependentUpon>DSLogin.xsd</DependentUpon>
     </None>
