@@ -1,5 +1,6 @@
 -- Database Initialization Script for Driving School Management System
 -- Run this script to create the database and insert sample data
+-- Updated: June 16, 2025 - PaymentMJ table uses StudentID directly (not BookingID)
 
 -- Create Database (if using SQL Server)
 -- CREATE DATABASE DrivingSchoolMJ;
@@ -122,14 +123,16 @@ CREATE TABLE ReviewMJ (
 );
 
 -- Table: PaymentMJ
+-- Payments are linked directly to students (not through bookings)
+-- PackageName is retrieved from StudentMJ table when needed
 CREATE TABLE PaymentMJ (
     PaymentID INT IDENTITY(1,1) PRIMARY KEY,
-    BookingID INT,
+    StudentID INT NOT NULL,
     PaymentDate DATE,
     AmountPaid DECIMAL(10,2),
     AmountDue DECIMAL(10,2),
     PaymentMethod VARCHAR(30),
-    FOREIGN KEY (BookingID) REFERENCES LessonBookingMJ(BookingID)
+    FOREIGN KEY (StudentID) REFERENCES StudentMJ(StudentID)
 );
 
 -- Table: UserLoginMJ
@@ -176,10 +179,11 @@ INSERT INTO StudentMJ (Name, Surname, Email, PhoneNumber, IDNo, Gender, StreetNu
 
 -- Insert Packages
 INSERT INTO PackageMJ (PackageName, Code, NoOfLessons, Price) VALUES
-('Basic Package', '8', 10, 1500.00),
-('Standard Package', '8', 15, 2000.00),
-('Premium Package', '10', 20, 2500.00),
-('Intensive Package', '10', 25, 3000.00);
+('FULL COURSE', '8', 30, 3200.00),
+('PRINCE''S PACKAGE', '8', 20, 2000.00),
+('ROYALTY PACKAGE', '8', 10, 2500.00),
+('STEWARD''S PACKAGE', '8', 10, 1300.00);
+
 
 -- Insert Time Slots
 INSERT INTO TimeSlotMJ ( StartTime, EndTime) VALUES
@@ -202,11 +206,11 @@ INSERT INTO LessonBookingMJ (StudentID, InstructorID, VehicleID, PackageID, Time
 (4, 1, 'ABC123GP', 'Basic Package', 2, '2025-06-18', '10:30:00', 'Pending');
 
 -- Insert Sample Payments
-INSERT INTO PaymentMJ (BookingID, PaymentDate, AmountPaid, AmountDue, PaymentMethod) VALUES
+INSERT INTO PaymentMJ (StudentID, PaymentDate, AmountPaid, AmountDue, PaymentMethod) VALUES
 (1, '2025-06-15', 1500.00, 0.00, 'Credit Card'),
 (2, '2025-06-15', 1000.00, 1000.00, 'Cash'),
 (3, '2025-06-15', 2500.00, 0.00, 'Bank Transfer'),
-(4, '2025-06-15', 500.00, 1000.00, 'Cash');
+(1, '2025-06-15', 500.00, 1000.00, 'Cash');
 
 -- Insert User Logins
 INSERT INTO UserLoginMJ (Username, PasswordHash, Role, StaffID) VALUES
@@ -216,3 +220,28 @@ INSERT INTO UserLoginMJ (Username, PasswordHash, Role, StaffID) VALUES
 ('jessica.instructor', 'instructor123', 'Instructor', 2);
 
 PRINT 'Database initialization completed successfully!';
+
+-- Verification: Check PaymentMJ table structure
+PRINT 'PaymentMJ table structure:';
+SELECT 
+    COLUMN_NAME,
+    DATA_TYPE,
+    IS_NULLABLE,
+    COLUMN_DEFAULT
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'PaymentMJ'
+ORDER BY ORDINAL_POSITION;
+
+-- Verification: Sample query to show payments with student info
+PRINT 'Sample payments with student information:';
+SELECT 
+    p.PaymentID,
+    s.Name + ' ' + s.Surname AS StudentName,
+    s.PackageName,
+    p.PaymentDate,
+    p.AmountPaid,
+    p.AmountDue,
+    p.PaymentMethod
+FROM PaymentMJ p
+LEFT JOIN StudentMJ s ON p.StudentID = s.StudentID
+ORDER BY p.PaymentDate DESC;
