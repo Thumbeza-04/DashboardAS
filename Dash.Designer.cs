@@ -33,6 +33,12 @@ namespace DashboardAS
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TodayTxt = new System.Windows.Forms.TextBox();
             this.monthTxt = new System.Windows.Forms.TextBox();
+            this.Lbl = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.StudentTxt = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.bookingIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.instructorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,8 +51,8 @@ namespace DashboardAS
             this.lessonBookingMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dSAttendance = new DashboardAS.DSAttendance();
             this.lessonBookingMJTableAdapter1 = new DashboardAS.DSAttendanceTableAdapters.LessonBookingMJTableAdapter();
-            this.Lbl = new System.Windows.Forms.Label();
-            this.dtLbl = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lessonBookingMJBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSAttendance)).BeginInit();
@@ -84,11 +90,64 @@ namespace DashboardAS
             // 
             // monthTxt
             // 
-            this.monthTxt.Location = new System.Drawing.Point(357, 74);
+            this.monthTxt.Location = new System.Drawing.Point(396, 74);
             this.monthTxt.Multiline = true;
             this.monthTxt.Name = "monthTxt";
             this.monthTxt.Size = new System.Drawing.Size(68, 56);
             this.monthTxt.TabIndex = 4;
+            // 
+            // Lbl
+            // 
+            this.Lbl.AutoSize = true;
+            this.Lbl.Location = new System.Drawing.Point(134, 38);
+            this.Lbl.Name = "Lbl";
+            this.Lbl.Size = new System.Drawing.Size(22, 17);
+            this.Lbl.TabIndex = 1;
+            this.Lbl.Text = "lbl";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(555, 12);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(233, 22);
+            this.dateTimePicker1.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.dateTimePicker1, "Search bookings by changing the date");
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(199, 144);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 17);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Bookings Today";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(359, 144);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(154, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Bookings for the month";
+            // 
+            // StudentTxt
+            // 
+            this.StudentTxt.Location = new System.Drawing.Point(577, 81);
+            this.StudentTxt.Multiline = true;
+            this.StudentTxt.Name = "StudentTxt";
+            this.StudentTxt.Size = new System.Drawing.Size(63, 49);
+            this.StudentTxt.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(563, 144);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 17);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "No of Students";
             // 
             // bookingIDDataGridViewTextBoxColumn
             // 
@@ -177,30 +236,29 @@ namespace DashboardAS
             // 
             this.lessonBookingMJTableAdapter1.ClearBeforeFill = true;
             // 
-            // Lbl
+            // label4
             // 
-            this.Lbl.AutoSize = true;
-            this.Lbl.Location = new System.Drawing.Point(46, 34);
-            this.Lbl.Name = "Lbl";
-            this.Lbl.Size = new System.Drawing.Size(0, 17);
-            this.Lbl.TabIndex = 1;
-            // 
-            // dtLbl
-            // 
-            this.dtLbl.AutoSize = true;
-            this.dtLbl.Location = new System.Drawing.Point(46, 70);
-            this.dtLbl.Name = "dtLbl";
-            this.dtLbl.Size = new System.Drawing.Size(0, 17);
-            this.dtLbl.TabIndex = 2;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 17);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Employee no.";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Dash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1174, 561);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.StudentTxt);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.monthTxt);
             this.Controls.Add(this.TodayTxt);
-            this.Controls.Add(this.dtLbl);
             this.Controls.Add(this.Lbl);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -233,6 +291,12 @@ namespace DashboardAS
         private System.Windows.Forms.TextBox TodayTxt;
         private System.Windows.Forms.TextBox monthTxt;
         private System.Windows.Forms.Label Lbl;
-        private System.Windows.Forms.Label dtLbl;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox StudentTxt;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
