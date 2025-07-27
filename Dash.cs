@@ -106,5 +106,10 @@ namespace DashboardAS
         {
 
         }
+
+        private void TodayTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -67,14 +67,16 @@ namespace DashboardAS
             ((System.ComponentModel.ISupportInitialize)(this.bookingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fLessonAttendanceBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // IDLbl1
             // 
             this.IDLbl1.AutoSize = true;
-            this.IDLbl1.Location = new System.Drawing.Point(122, 42);
+            this.IDLbl1.Location = new System.Drawing.Point(92, 34);
+            this.IDLbl1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.IDLbl1.Name = "IDLbl1";
-            this.IDLbl1.Size = new System.Drawing.Size(0, 17);
+            this.IDLbl1.Size = new System.Drawing.Size(0, 13);
             this.IDLbl1.TabIndex = 0;
             // 
             // dsAttendance1
@@ -114,11 +116,12 @@ namespace DashboardAS
             this.statusDataGridViewTextBoxColumn,
             this.noOfLessonsDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.bookingBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 122);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 99);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1122, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(842, 122);
             this.dataGridView1.TabIndex = 1;
             // 
             // bookingIDDataGridViewTextBoxColumn
@@ -224,11 +227,12 @@ namespace DashboardAS
             this.missedDataGridViewTextBoxColumn,
             this.remainingDataGridViewTextBoxColumn});
             this.dataGridView2.DataSource = this.fLessonAttendanceBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(12, 334);
+            this.dataGridView2.Location = new System.Drawing.Point(9, 271);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1122, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(842, 122);
             this.dataGridView2.TabIndex = 2;
             // 
             // studentIDDataGridViewTextBoxColumn1
@@ -294,56 +298,69 @@ namespace DashboardAS
             // 
             // RegisterBtn
             // 
-            this.RegisterBtn.Location = new System.Drawing.Point(1015, 278);
+            this.RegisterBtn.BackColor = System.Drawing.Color.YellowGreen;
+            this.RegisterBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterBtn.Location = new System.Drawing.Point(761, 226);
+            this.RegisterBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RegisterBtn.Name = "RegisterBtn";
-            this.RegisterBtn.Size = new System.Drawing.Size(119, 27);
+            this.RegisterBtn.Size = new System.Drawing.Size(90, 41);
             this.RegisterBtn.TabIndex = 3;
             this.RegisterBtn.Text = "Register";
-            this.RegisterBtn.UseVisualStyleBackColor = true;
+            this.RegisterBtn.UseVisualStyleBackColor = false;
             this.RegisterBtn.Click += new System.EventHandler(this.RegisterBtn_Click);
             // 
             // AttendedBtn
             // 
-            this.AttendedBtn.Location = new System.Drawing.Point(949, 501);
+            this.AttendedBtn.BackColor = System.Drawing.Color.Gold;
+            this.AttendedBtn.Location = new System.Drawing.Point(618, 358);
+            this.AttendedBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AttendedBtn.Name = "AttendedBtn";
-            this.AttendedBtn.Size = new System.Drawing.Size(89, 23);
+            this.AttendedBtn.Size = new System.Drawing.Size(113, 35);
             this.AttendedBtn.TabIndex = 4;
             this.AttendedBtn.Text = "Attended";
-            this.AttendedBtn.UseVisualStyleBackColor = true;
+            this.AttendedBtn.UseVisualStyleBackColor = false;
             this.AttendedBtn.Click += new System.EventHandler(this.AttendedBtn_Click);
             // 
             // Missed
             // 
-            this.Missed.Location = new System.Drawing.Point(1059, 501);
+            this.Missed.BackColor = System.Drawing.Color.Red;
+            this.Missed.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Missed.Location = new System.Drawing.Point(761, 407);
+            this.Missed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Missed.Name = "Missed";
-            this.Missed.Size = new System.Drawing.Size(75, 23);
+            this.Missed.Size = new System.Drawing.Size(90, 35);
             this.Missed.TabIndex = 5;
             this.Missed.Text = "Missed";
-            this.Missed.UseVisualStyleBackColor = true;
+            this.Missed.UseVisualStyleBackColor = false;
             this.Missed.Click += new System.EventHandler(this.Missed_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(12, 101);
+            this.groupBox1.Controls.Add(this.AttendedBtn);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(9, 49);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1171, 435);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(900, 430);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attendance";
             // 
             // LessonAttendance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 585);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(951, 475);
             this.Controls.Add(this.Missed);
-            this.Controls.Add(this.AttendedBtn);
             this.Controls.Add(this.RegisterBtn);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.IDLbl1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "LessonAttendance";
             this.Text = "LessonAttendance";
             this.Load += new System.EventHandler(this.LessonAttendance_Load);
@@ -352,6 +369,7 @@ namespace DashboardAS
             ((System.ComponentModel.ISupportInitialize)(this.bookingBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fLessonAttendanceBindingSource)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -121,8 +121,11 @@
   <data name="View lesson" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\View lesson.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="book a lesson" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\book a lesson.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="8F253306-5582-401E-BE8B-B9C55FBCF3FE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\8F253306-5582-401E-BE8B-B9C55FBCF3FE.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TLG Picture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TLG Picture.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="payment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\payment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,16 +139,16 @@
   <data name="instructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\instructor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TLG Picture" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TLG Picture.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="book a lesson" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\book a lesson.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="student" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\student.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="8F253306-5582-401E-BE8B-B9C55FBCF3FE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\8F253306-5582-401E-BE8B-B9C55FBCF3FE.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="2312f697-97e2-4638-98fd-aa9c01c91c5c" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2312f697-97e2-4638-98fd-aa9c01c91c5c.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
