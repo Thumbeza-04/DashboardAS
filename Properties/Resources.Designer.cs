@@ -63,6 +63,16 @@ namespace DashboardAS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _2312f697_97e2_4638_98fd_aa9c01c91c5c {
+            get {
+                object obj = ResourceManager.GetObject("2312f697-97e2-4638-98fd-aa9c01c91c5c", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _8F253306_5582_401E_BE8B_B9C55FBCF3FE {
             get {
                 object obj = ResourceManager.GetObject("8F253306-5582-401E-BE8B-B9C55FBCF3FE", resourceCulture);
