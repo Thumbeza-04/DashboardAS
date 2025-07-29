@@ -59,7 +59,7 @@ namespace DashboardAS
             {
                 int up = 1;
                 int att = (int)dataGridView2.CurrentRow.Cells[4].Value + up;
-                int Total = (int)dataGridView2.CurrentRow.Cells[4].Value + att;
+                int Total = (int)dataGridView2.CurrentRow.Cells[5].Value + att;
                 int rem = (int)dataGridView2.CurrentRow.Cells[3].Value - Total;
 
                 connec.Open();
@@ -93,7 +93,7 @@ namespace DashboardAS
                 command.ExecuteNonQuery();
                 connec.Close();
 
-                MessageBox.Show("Mark as attended");
+                MessageBox.Show("Mark as Missed");
                 BindData();
             }
         }
