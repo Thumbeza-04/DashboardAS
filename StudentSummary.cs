@@ -21,6 +21,8 @@ namespace DashboardAS
 
         private void StudentSummary_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dSAttendance.F_Outcome' table. You can move, or remove it, as needed.
+            this.f_OutcomeTableAdapter.Fill(this.dSAttendance.F_Outcome);
             // TODO: This line of code loads data into the 'dSAttendance.F_LessonAttendance' table. You can move, or remove it, as needed.
             f_LessonAttendanceTableAdapter.FillById(dSAttendance.F_LessonAttendance, int.Parse(label1.Text));
 
