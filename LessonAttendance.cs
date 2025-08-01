@@ -36,11 +36,15 @@ namespace DashboardAS
             command.ExecuteNonQuery();
             connec.Close();
             MessageBox.Show("Registered");
-            BindData();
+            int instructorId = (int)dataGridView1.CurrentRow.Cells[2].Value;
+
+            Bind(instructorId);
         }
-        void BindData()
+        void Bind(int instructorId)
         {
-            SqlCommand command = new SqlCommand("Select * from F_LessonAttendance", connec);
+            SqlCommand command = new SqlCommand("SELECT * FROM F_LessonAttendance WHERE InstructorID = @InstructorID", connec);
+            command.Parameters.AddWithValue("@InstructorID", instructorId);
+
             SqlDataAdapter sd = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             sd.Fill(dt);
@@ -68,7 +72,9 @@ namespace DashboardAS
                 connec.Close();
 
                 MessageBox.Show("Mark as attended");
-                BindData();
+                int instructorId = (int)dataGridView1.CurrentRow.Cells[2].Value;
+
+                Bind(instructorId);
             }
         }
 
@@ -94,7 +100,9 @@ namespace DashboardAS
                 connec.Close();
 
                 MessageBox.Show("Mark as Missed");
-                BindData();
+                int instructorId = (int)dataGridView1.CurrentRow.Cells[2].Value;
+
+                Bind(instructorId);
             }
         }
     }
