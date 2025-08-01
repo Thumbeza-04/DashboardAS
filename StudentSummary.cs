@@ -25,22 +25,57 @@ namespace DashboardAS
             this.f_OutcomeTableAdapter.Fill(this.dSAttendance.F_Outcome);
             // TODO: This line of code loads data into the 'dSAttendance.F_LessonAttendance' table. You can move, or remove it, as needed.
             f_LessonAttendanceTableAdapter.FillById(dSAttendance.F_LessonAttendance, int.Parse(label1.Text));
-
+            f_OutcomeTableAdapter.FillByID(dSAttendance.F_Outcome, int.Parse(label1.Text));
 
         }
         SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
-        private void button1_Click(object sender, EventArgs e)
+
+        void Bind(int instructorId)
         {
-           
+            SqlCommand command = new SqlCommand("SELECT * FROM F_Outcome WHERE InstructorID = @InstructorID", connec);
+            command.Parameters.AddWithValue("@InstructorID", instructorId);
+
+            SqlDataAdapter sd = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
+            sd.Fill(dt);
+            dataGridView1.DataSource = dt;
         }
-        void BindData()
-        {
-           
-        }
+
+
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            f_LessonAttendanceTableAdapter.FillByStuID(dSAttendance.F_LessonAttendance, int.Parse(textBox1.Text));
+          
+            
+                
+            
+            
+        }
+
+        private void recordBtn_Click(object sender, EventArgs e)
+        {
+            if ((int)dataGridView2.CurrentRow.Cells[3].Value != 0)
+            {
+                MessageBox.Show("Student has not completed all their lessons");
+            }
+            else if(dataGridView2.CurrentRow.Cells[4].Value == null)
+            {
+                MessageBox.Show("Select the outcome");
+            }
+            else
+            {
+
+
+                connec.Open();
+                SqlCommand command = new SqlCommand("Insert into F_Outcome values( '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "','" + (int)dataGridView2.CurrentRow.Cells[1].Value + "','" + dataGridView2.CurrentRow.Cells[2].Value + "','" + dataGridView2.CurrentRow.Cells[4].Value + "' )", connec);
+                command.ExecuteNonQuery();
+                connec.Close();
+                MessageBox.Show("Recorded");
+                int instructorId = (int)dataGridView2.CurrentRow.Cells[1].Value;
+
+                Bind(instructorId);
+            }
         }
     }
 }
