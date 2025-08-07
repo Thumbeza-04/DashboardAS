@@ -16,5 +16,30 @@ namespace DashboardAS
         {
             InitializeComponent();
         }
+
+        private void viewbookingsbtn_Click(object sender, EventArgs e)
+        {
+            ViewBookings viewbookings = new ViewBookings();
+            viewbookings.Show();
+        }
+
+        private void viewinstructorsbtn_Click(object sender, EventArgs e)
+        {
+            ViewInstructors viewInstructors = new ViewInstructors();
+            viewInstructors.Show();
+
+        }
+
+        private void viewvehiclesbtn_Click(object sender, EventArgs e)
+        {
+            ViewVehicles viewVehicles = new ViewVehicles();
+            viewVehicles.Show();
+        }
+
+        private void viewstaffbtn_Click(object sender, EventArgs e)
+        {
+            ViewStaff viewStaff = new ViewStaff();
+            viewStaff.Show();
+        }
     }
 }

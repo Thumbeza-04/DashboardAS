@@ -140,6 +140,11 @@
     <Compile Include="LessonAttendance.Designer.cs">
       <DependentUpon>LessonAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="managerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>managerDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ManagerDB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +197,30 @@
     <Compile Include="VehicleManagement.Designer.cs">
       <DependentUpon>VehicleManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewBookings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewBookings.Designer.cs">
+      <DependentUpon>ViewBookings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewInstructors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewInstructors.Designer.cs">
+      <DependentUpon>ViewInstructors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewStaff.Designer.cs">
+      <DependentUpon>ViewStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewVehicles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewVehicles.Designer.cs">
+      <DependentUpon>ViewVehicles.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BookLessonUserControl.resx">
       <DependentUpon>BookLessonUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +254,9 @@
     <EmbeddedResource Include="LessonAttendance.resx">
       <DependentUpon>LessonAttendance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManagerDB.resx">
+      <DependentUpon>ManagerDB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PaymentUserControl.resx">
       <DependentUpon>PaymentUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +275,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentsUserControl.resx">
       <DependentUpon>StudentsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewBookings.resx">
+      <DependentUpon>ViewBookings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewInstructors.resx">
+      <DependentUpon>ViewInstructors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewStaff.resx">
+      <DependentUpon>ViewStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewVehicles.resx">
+      <DependentUpon>ViewVehicles.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DSAttendance.xsc">
       <DependentUpon>DSAttendance.xsd</DependentUpon>
@@ -287,6 +331,17 @@
     </None>
     <None Include="DSLogin.xss">
       <DependentUpon>DSLogin.xsd</DependentUpon>
+    </None>
+    <None Include="managerDataSet.xsc">
+      <DependentUpon>managerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="managerDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>managerDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="managerDataSet.xss">
+      <DependentUpon>managerDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
