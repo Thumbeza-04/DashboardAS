@@ -20,8 +20,17 @@ namespace DashboardAS
         private void Form4_Load(object sender, EventArgs e)
         {
             pictureBox1.Visible = true;
-            pictureBox2.Visible = false;
-            panel1.Visible = false;
+            pictureBox2.Visible = true;
+            usernameTxt.Visible = true;
+            passwordTxt.Visible = true;
+            eNoTxt.Visible = true;
+            LOGIN.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            loginBtn.Visible = true;
+
+
         }
         public void FormSetup(Form myForm)
         {
@@ -47,65 +56,75 @@ namespace DashboardAS
         }
 
 
-        private void receptionistToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loginBtn_Click_1(object sender, EventArgs e)
         {
-            pictureBox1.Visible = false;
-            pictureBox2.Visible = true;
-            panel1.Visible = true;
-        }
+            recptlogiNmjTableAdapter1.FillBy(DSstaffLogin.RECPTLOGINmj, int.Parse(eNoTxt.Text), usernameTxt.Text, passwordTxt.Text);
 
-        private void loginBtn_Click(object sender, EventArgs e)
-        {
-            mjReceptionistLoginTableAdapter1.FillBy(dsLogin1.MJReceptionistLogin, int.Parse(staffIdTxt.Text), usernameTxt.Text, passwordTxt.Text, roleTxt.Text);
-
-
-            if (dsLogin1.MJReceptionistLogin.Rows.Count > 0)
+            if (DSstaffLogin.RECPTLOGINmj.Rows.Count > 0)
             {
                 Form1 form1 = new Form1();
                 PrepareForm(form1);
-                menuStrip1.Visible = false;
+
                 pictureBox1.Visible = false;
                 pictureBox2.Visible = false;
-                panel1.Visible = false;
+                usernameTxt.Visible = false;
+                passwordTxt.Visible = false;
+                eNoTxt.Visible = false;
+                LOGIN.Visible = false;
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                loginBtn.Visible = false;
 
             }
             else
             {
-                mjInstructorLoginTableAdapter1.FillBy(dsLogin1.MJInstructorLogin, int.Parse(staffIdTxt.Text), usernameTxt.Text, passwordTxt.Text, roleTxt.Text);
+                managerlogiNmjTableAdapter1.FillBy(DSstaffLogin.MANAGERLOGINmj, int.Parse(eNoTxt.Text), usernameTxt.Text, passwordTxt.Text);
 
-                if (dsLogin1.MJInstructorLogin.Rows.Count > 0)
+                if (DSstaffLogin.MANAGERLOGINmj.Rows.Count > 0)
                 {
-                    int inId = int.Parse(staffIdTxt.Text);
-                    InstructorDB InDB = new InstructorDB(inId);
-                    PrepareForm(InDB);
-                    menuStrip1.Visible = false;
+                    ManagerDB manager = new ManagerDB();
+                    PrepareForm(manager);
                     pictureBox1.Visible = false;
                     pictureBox2.Visible = false;
-                    panel1.Visible = false;
+                    usernameTxt.Visible = false;
+                    passwordTxt.Visible = false;
+                    eNoTxt.Visible = false;
+                    LOGIN.Visible = false;
+                    label1.Visible = false;
+                    label2.Visible = false;
+                    label3.Visible = false;
+                    loginBtn.Visible = false;
                 }
+
+
                 else
                 {
-                    mjManagerLoginTableAdapter1.FillBy(dsLogin1.MJManagerLogin, int.Parse(staffIdTxt.Text), usernameTxt.Text, passwordTxt.Text, roleTxt.Text);
-                    if (dsLogin1.MJManagerLogin.Rows.Count > 0)
+
+                    instructorlogiNmjTableAdapter1.FillBy(DSstaffLogin.INSTRUCTORLOGINmj, int.Parse(eNoTxt.Text), usernameTxt.Text, passwordTxt.Text);
+                    if (DSstaffLogin.INSTRUCTORLOGINmj.Rows.Count > 0)
                     {
-                        ManagerDB Manager = new ManagerDB();
-                        PrepareForm(Manager);
-                        menuStrip1.Visible = false;
+                        int inID = int.Parse(eNoTxt.Text);
+                        InstructorDB InDb = new InstructorDB(inID);
+                        PrepareForm(InDb);
                         pictureBox1.Visible = false;
                         pictureBox2.Visible = false;
-                        panel1.Visible = false;
+                        usernameTxt.Visible = false;
+                        passwordTxt.Visible = false;
+                        eNoTxt.Visible = false;
+                        LOGIN.Visible = false;
+                        label1.Visible = false;
+                        label2.Visible = false;
+                        label3.Visible = false;
+                        loginBtn.Visible = false;
                     }
                     else
                     {
                         MessageBox.Show("Cannot Login");
                     }
                 }
+
             }
-        }
-
-        private void passwordTxt_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
