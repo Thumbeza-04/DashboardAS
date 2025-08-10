@@ -4615,7 +4615,7 @@ SELECT StudentID, StudentName, StudentSurname, InstructorID, PackageID, NumberOf
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT StudentID, StudentName, StudentSurname, InstructorID, PackageID, NumberOfL" +
@@ -4628,6 +4628,13 @@ SELECT StudentID, StudentName, StudentSurname, InstructorID, PackageID, NumberOf
                 "ctorID = @instructorId)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@instructorId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT StudentID, StudentName, StudentSurname, InstructorID, PackageID, NumberOfL" +
+                "essons, Attended, Missed, Remaining\r\nFROM     LessonAttendanceMJ\r\nWHERE  (Studen" +
+                "tName LIKE @studentname + \'%\')";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@studentname", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "StudentName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4684,6 +4691,42 @@ SELECT StudentID, StudentName, StudentSurname, InstructorID, PackageID, NumberOf
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            DSAttendance2.LessonAttendanceMJDataTable dataTable = new DSAttendance2.LessonAttendanceMJDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByName(DSAttendance2.LessonAttendanceMJDataTable dataTable, string studentname) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((studentname == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(studentname));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DSAttendance2.LessonAttendanceMJDataTable GetDataBy1(string studentname) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((studentname == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(studentname));
             }
             DSAttendance2.LessonAttendanceMJDataTable dataTable = new DSAttendance2.LessonAttendanceMJDataTable();
             this.Adapter.Fill(dataTable);
@@ -5859,12 +5902,19 @@ SELECT StudentID, StudentName, StudentSurname, InstructorID, PackageID, NumberOf
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT StudentID, StudentName, StudentSurname, InstructorID, PackageID, NumberOfL" +
                 "essons, Missed, Outcome FROM dbo.OutcomeMJ";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT StudentID, StudentName, StudentSurname, InstructorID, PackageID, NumberOfL" +
+                "essons, Missed, Outcome\r\nFROM     OutcomeMJ\r\nWHERE  (InstructorID = @instructori" +
+                "d)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@instructorid", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5886,6 +5936,42 @@ SELECT StudentID, StudentName, StudentSurname, InstructorID, PackageID, NumberOf
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DSAttendance2.OutcomeMJDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DSAttendance2.OutcomeMJDataTable dataTable = new DSAttendance2.OutcomeMJDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillById(DSAttendance2.OutcomeMJDataTable dataTable, global::System.Nullable<int> instructorid) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((instructorid.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(instructorid.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DSAttendance2.OutcomeMJDataTable GetDataBy(global::System.Nullable<int> instructorid) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((instructorid.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(instructorid.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             DSAttendance2.OutcomeMJDataTable dataTable = new DSAttendance2.OutcomeMJDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

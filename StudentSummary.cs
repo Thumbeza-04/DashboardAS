@@ -22,17 +22,17 @@ namespace DashboardAS
         private void StudentSummary_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dSAttendance.F_Outcome' table. You can move, or remove it, as needed.
-            this.f_OutcomeTableAdapter.Fill(this.dSAttendance.F_Outcome);
+            //this.f_OutcomeTableAdapter.Fill(this.dSAttendance.F_Outcome);
             // TODO: This line of code loads data into the 'dSAttendance.F_LessonAttendance' table. You can move, or remove it, as needed.
-            f_LessonAttendanceTableAdapter.FillById(dSAttendance.F_LessonAttendance, int.Parse(label1.Text));
-            f_OutcomeTableAdapter.FillByID(dSAttendance.F_Outcome, int.Parse(label1.Text));
+            lessonAttendanceMJTableAdapter1.FillByID(dsAttendance21.LessonAttendanceMJ, int.Parse(label1.Text));
+            outcomeMJTableAdapter1.FillById(dsAttendance21.OutcomeMJ, int.Parse(label1.Text));
 
         }
         SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
 
         void Bind(int instructorId)
         {
-            SqlCommand command = new SqlCommand("SELECT * FROM F_Outcome WHERE InstructorID = @InstructorID", connec);
+            SqlCommand command = new SqlCommand("SELECT * FROM OutcomeMJ WHERE InstructorID = @InstructorID", connec);
             command.Parameters.AddWithValue("@InstructorID", instructorId);
 
             SqlDataAdapter sd = new SqlDataAdapter(command);
@@ -46,7 +46,7 @@ namespace DashboardAS
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-          
+            lessonAttendanceMJTableAdapter1.FillByName(dsAttendance21.LessonAttendanceMJ, textBox1.Text);
             
                 
             
@@ -55,26 +55,35 @@ namespace DashboardAS
 
         private void recordBtn_Click(object sender, EventArgs e)
         {
-            if ((int)dataGridView2.CurrentRow.Cells[3].Value != 0)
-            {
-                MessageBox.Show("Student has not completed all their lessons");
-            }
-            else if(dataGridView2.CurrentRow.Cells[4].Value == null)
-            {
-                MessageBox.Show("Select the outcome");
-            }
-            else
+            try
             {
 
+                if ((int)dataGridView2.CurrentRow.Cells[7].Value != 0)
+                {
+                    MessageBox.Show("Student has not completed all their lessons");
+                }
+                else if (dataGridView2.CurrentRow.Cells[8].Value == null)
+                {
+                    MessageBox.Show("Select the outcome");
+                }
+                else
+                {
 
-                connec.Open();
-                SqlCommand command = new SqlCommand("Insert into F_Outcome values( '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "','" + (int)dataGridView2.CurrentRow.Cells[1].Value + "','" + dataGridView2.CurrentRow.Cells[2].Value + "','" + dataGridView2.CurrentRow.Cells[4].Value + "' )", connec);
-                command.ExecuteNonQuery();
+
+                    connec.Open();
+                    SqlCommand command = new SqlCommand("Insert into OutcomeMJ values( '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "','" + dataGridView2.CurrentRow.Cells[1].Value + "','" + dataGridView2.CurrentRow.Cells[2].Value + "','" + (int)dataGridView2.CurrentRow.Cells[3].Value + "','" + dataGridView2.CurrentRow.Cells[4].Value + "','" + (int)dataGridView2.CurrentRow.Cells[5].Value + "','" + (int)dataGridView2.CurrentRow.Cells[6].Value + "','" + dataGridView2.CurrentRow.Cells[8].Value + "' )", connec);
+                    command.ExecuteNonQuery();
+                    connec.Close();
+                    MessageBox.Show("Recorded");
+                    int instructorId = (int)dataGridView2.CurrentRow.Cells[3].Value;
+
+                    Bind(instructorId);
+                }
+            }
+            catch
+            {
                 connec.Close();
-                MessageBox.Show("Recorded");
-                int instructorId = (int)dataGridView2.CurrentRow.Cells[1].Value;
-
-                Bind(instructorId);
+                MessageBox.Show("Outcome Already Recorded", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
