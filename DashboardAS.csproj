@@ -71,6 +71,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSAttendance.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSAttendance2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSAttendance2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSLessAtt.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -303,6 +308,17 @@
     </None>
     <None Include="DSAttendance.xss">
       <DependentUpon>DSAttendance.xsd</DependentUpon>
+    </None>
+    <None Include="DSAttendance2.xsc">
+      <DependentUpon>DSAttendance2.xsd</DependentUpon>
+    </None>
+    <None Include="DSAttendance2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSAttendance2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DSAttendance2.xss">
+      <DependentUpon>DSAttendance2.xsd</DependentUpon>
     </None>
     <None Include="DSLessAtt.xsc">
       <DependentUpon>DSLessAtt.xsd</DependentUpon>
