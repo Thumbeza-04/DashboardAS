@@ -54,5 +54,10 @@ namespace DashboardAS
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Loadform(new Dash(_ID));
+        }
     }
 }

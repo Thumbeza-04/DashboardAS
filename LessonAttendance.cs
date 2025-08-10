@@ -21,11 +21,13 @@ namespace DashboardAS
 
         private void LessonAttendance_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dsAttendance21.Booking' table. You can move, or remove it, as needed.
+            //this.bookingTableAdapter.Fill(this.dsAttendance21.Booking);
             // TODO: This line of code loads data into the 'dsAttendance21.Bookings' table. You can move, or remove it, as needed.
-            this.bookingsTableAdapter.Fill(this.dsAttendance21.Bookings);
+            //this.bookingsTableAdapter.Fill(this.dsAttendance21.Bookings);
             // TODO: This line of code loads data into the 'dsAttendance1.Booking' table. You can move, or remove it, as needed.
             //this.bookingTableAdapter.Fill(this.dsAttendance1.Booking);
-            bookingsTableAdapter.FillByInId(dsAttendance21.Bookings, int.Parse(IDLbl1.Text));
+            bookingTableAdapter.FillByInID(dsAttendance21.Booking, int.Parse(IDLbl1.Text));
             lessonAttendanceMJTableAdapter1.FillByID(dsAttendance21.LessonAttendanceMJ, int.Parse(IDLbl1.Text));
         }
         SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
@@ -117,6 +119,11 @@ namespace DashboardAS
 
                 Bind(instructorId);
             }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            bookingTableAdapter.FillByIDate(dsAttendance21.Booking, int.Parse(IDLbl1.Text), dateTimePicker1.Text);
         }
     }
 }
