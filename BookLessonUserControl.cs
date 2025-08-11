@@ -19,6 +19,7 @@ namespace DashboardAS
         private InstructorDAO instructorDAO = new InstructorDAO();
         private VehicleDAO vehicleDAO = new VehicleDAO();
         private PackageDAO packageDAO = new PackageDAO();
+        private PaymentDAO paymentDAO = new PaymentDAO();
 
         public BookLessonUserControl()
         {
@@ -241,7 +242,80 @@ namespace DashboardAS
                     MessageBox.Show("Cannot book lessons for past dates. Please select a current or future date.", 
                         "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
-                }                // Validation 2: Check if student already has a lesson on the same day
+                }                // Validation 2: Check if student has paid for their package
+                if (!string.IsNullOrEmpty(student.PackageName))
+                {
+                    try
+                    {
+                        Package studentPackage = packageDAO.GetPackageByName(student.PackageName);
+                        if (studentPackage != null && studentPackage.Price > 0)
+                        {
+                            decimal totalPaid = paymentDAO.GetTotalPaymentsByStudent(student.StudentID);
+                            if (totalPaid < studentPackage.Price)
+                            {
+                                decimal amountDue = studentPackage.Price - totalPaid;
+                                DialogResult paymentResult = MessageBox.Show(
+                                    $"Student {student.FullName} has not fully paid for their package.\n\n" +
+                                    $"Package: {studentPackage.PackageName}\n" +
+                                    $"Package Price: R{studentPackage.Price:F2}\n" +
+                                    $"Amount Paid: R{totalPaid:F2}\n" +
+                                    $"Amount Due: R{amountDue:F2}\n\n" +
+                                    "Payment is required before booking lessons.\n\n" +
+                                    "Would you like to process payment now?",
+                                    "Payment Required",
+                                    MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Information);
+
+                                if (paymentResult == DialogResult.Yes)
+                                {
+                                    // Show payment dialog
+                                    ShowPaymentDialog(student);
+                                    
+                                    // Re-check payment after dialog
+                                    decimal newTotalPaid = paymentDAO.GetTotalPaymentsByStudent(student.StudentID);
+                                    if (newTotalPaid < studentPackage.Price)
+                                    {
+                                        MessageBox.Show("Payment is still incomplete. Lesson booking cancelled.", 
+                                            "Booking Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        return;
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Lesson booking cancelled. Payment is required before booking lessons.", 
+                                        "Booking Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    return;
+                                }
+                            }
+                        }
+                        else if (studentPackage == null)
+                        {
+                            MessageBox.Show($"Package '{student.PackageName}' not found in database. Please contact support to resolve this issue.", 
+                                "Package Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        else if (studentPackage.Price <= 0)
+                        {
+                            MessageBox.Show($"Package '{student.PackageName}' has invalid price data. Please contact support to resolve this issue.", 
+                                "Package Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error checking payment status: {ex.Message}\n\nBooking cancelled for safety. Please try again or contact support.", 
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"Student {student.FullName} does not have a package assigned. Please assign a package before booking lessons.", 
+                        "No Package", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Validation 3: Check if student already has a lesson on the same day
                 System.Diagnostics.Debug.WriteLine($"Checking if student {student.StudentID} is already booked on {selectedDate:yyyy-MM-dd}");
                 bool studentAlreadyBooked = IsStudentBookedOnDate(student.StudentID, selectedDate);
                 if (studentAlreadyBooked)
@@ -254,7 +328,7 @@ namespace DashboardAS
                 {
                     System.Diagnostics.Debug.WriteLine($"Student {student.StudentID} is available on {selectedDate:yyyy-MM-dd}");
                 }
-                  // Validation 3: Check if instructor is available at the selected time
+                // Validation 4: Check if instructor is available at the selected time
                 if (IsInstructorBusyAtTime(instructor.InstructorID, selectedDate, selectedTimeSlot.TimeSlotID))
                 {
                     MessageBox.Show($"Instructor {instructor.FullName} is not available at {selectedTimeSlot.TimeRange} on {selectedDate:MMMM d, yyyy}. Please select a different time or instructor.", 
@@ -291,6 +365,77 @@ namespace DashboardAS
             catch (Exception ex)
             {
                 MessageBox.Show($"Error booking lesson: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ShowPaymentDialog(Student student)
+        {
+            try
+            {
+                PaymentResult result = PaymentDialog.ShowPaymentDialog(this, student);
+                
+                if (result.Success)
+                {
+                    MessageBox.Show(
+                        $"Payment processed successfully!\n\n" +
+                        $"Student: {student.FullName}\n" +
+                        $"Payment ID: {result.PaymentID}\n\n" +
+                        "You can now proceed with booking the lesson.",
+                        "Payment Successful",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else if (!result.Cancelled && !string.IsNullOrEmpty(result.Error))
+                {
+                    MessageBox.Show($"Payment failed: {result.Error}", "Payment Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                // If cancelled, no message needed as user intentionally cancelled
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error opening payment dialog: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DebugPackageData(string packageName)
+        {
+            try
+            {
+                using (var conn = Data.DatabaseConnection.GetConnection())
+                {
+                    string query = "SELECT PackageName, Code, NoOfLessons, Price FROM PackageMJ WHERE PackageName = @PackageName";
+                    var cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@PackageName", packageName);
+                    
+                    conn.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            System.Diagnostics.Debug.WriteLine($"=== Package Debug Info for '{packageName}' ===");
+                            
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                string fieldName = reader.GetName(i);
+                                object value = reader.GetValue(i);
+                                string valueType = value?.GetType().Name ?? "NULL";
+                                System.Diagnostics.Debug.WriteLine($"{fieldName}: {value} (Type: {valueType})");
+                            }
+                            
+                            System.Diagnostics.Debug.WriteLine("=== End Debug Info ===");
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Package '{packageName}' not found in database");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Debug error: {ex.Message}");
             }
         }
     }

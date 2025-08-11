@@ -184,9 +184,9 @@ namespace DashboardAS
         }        private void LoadLessonsForDate(DateTime date)
         {
             DataTable dt = bookingDAO.GetBookingsForDisplay();
-            // Filter by date
+            // Filter by date and exclude cancelled bookings
             DataView dv = dt.DefaultView;
-            dv.RowFilter = $"Convert(Date, 'System.DateTime') = '#{date:yyyy-MM-dd}#'";
+            dv.RowFilter = $"Convert(Date, 'System.DateTime') = '#{date:yyyy-MM-dd}#' AND Status <> 'Cancelled'";
             dataGridView1.DataSource = dv.ToTable();
             label3.Text = $"Lessons for {date:MMMM d, yyyy}";
             

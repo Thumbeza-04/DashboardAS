@@ -121,6 +121,10 @@ namespace DashboardAS
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false; // Allow only single row selection
         }
+        // COMMENTED OUT: Make Payment button functionality removed
+        // The payment functionality is now handled through the registration and lesson booking forms
+        // using the reusable PaymentDialog class
+        /*
         private void button2_Click(object sender, EventArgs e)
         {
             if (!this.DesignMode && paymentDAO != null)
@@ -128,6 +132,9 @@ namespace DashboardAS
                 ShowMakePaymentDialog();
             }
         }
+        */
+        // COMMENTED OUT: ShowMakePaymentDialog method - replaced with reusable PaymentDialog
+        /*
         private void ShowMakePaymentDialog()
         {
             try
@@ -489,6 +496,9 @@ namespace DashboardAS
                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        */
+        // COMMENTED OUT: ValidatePaymentForm method - part of removed make payment functionality
+        /*
         private bool ValidatePaymentForm(ComboBox cmbStudent, NumericUpDown nudAmountPaid, NumericUpDown nudAmountDue)
         {
             if (cmbStudent.SelectedValue == null)
@@ -590,7 +600,10 @@ namespace DashboardAS
 
             return true;
         }
+        */
 
+        // COMMENTED OUT: DebugStudentPackageInfo method - part of removed make payment functionality
+        /*
         // Debug method to help identify package issues
         private void DebugStudentPackageInfo(Student student)
         {
@@ -623,6 +636,7 @@ namespace DashboardAS
                 MessageBox.Show($"Debug Error: {ex.Message}", "Debug Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        */
 
         private void buttonGenerateReceipt_Click(object sender, EventArgs e)
         {

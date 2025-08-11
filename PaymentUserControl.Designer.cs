@@ -41,7 +41,8 @@ namespace DashboardAS
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            // COMMENTED OUT: Make Payment button - functionality moved to registration and booking forms
+            // this.button2 = new System.Windows.Forms.Button();
             this.buttonGenerateReceipt = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.labelSearch = new System.Windows.Forms.Label();
@@ -194,8 +195,9 @@ namespace DashboardAS
             this.label2.TabIndex = 8;
             this.label2.Text = "Track revenue, outstanding amounts and payment history";
             // 
-            // button2
+            // button2 - COMMENTED OUT: Make Payment button removed
             // 
+            /*
             this.button2.BackColor = System.Drawing.Color.DarkOrange;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(212, 360);
@@ -205,6 +207,7 @@ namespace DashboardAS
             this.button2.Text = "Make Payment";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            */
             // 
             // buttonGenerateReceipt
             // 
@@ -246,7 +249,7 @@ namespace DashboardAS
             this.Controls.Add(this.labelSearch);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonGenerateReceipt);
-            this.Controls.Add(this.button2);
+            // this.Controls.Add(this.button2); // COMMENTED OUT: Make Payment button removed
             this.Controls.Add(this.panelPaymentsToday);
             this.Controls.Add(this.panelManage);
             this.Controls.Add(this.label2);
@@ -280,8 +283,9 @@ namespace DashboardAS
         private System.Windows.Forms.Panel panelManage;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6; private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8; private System.Windows.Forms.Label label9; private System.Windows.Forms.Panel panelPaymentsToday; private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label6;        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8; private System.Windows.Forms.Label label9; private System.Windows.Forms.Panel panelPaymentsToday; 
+        // private System.Windows.Forms.Button button2; // COMMENTED OUT: Make Payment button removed
         private System.Windows.Forms.Button buttonGenerateReceipt;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label labelSearch;

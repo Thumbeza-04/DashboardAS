@@ -156,6 +156,12 @@
     <Compile Include="ManagerDB.Designer.cs">
       <DependentUpon>ManagerDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="PaymentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentDialog.Designer.cs">
+      <DependentUpon>PaymentDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="PaymentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

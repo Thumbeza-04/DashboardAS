@@ -488,7 +488,77 @@ namespace DashboardAS
 
                     if (studentId > 0)
                     {
+                        // Update student object with the new ID
+                        student.StudentID = studentId;
+                        
                         MessageBox.Show($"Student registered successfully! Student ID: {studentId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                        // Show payment option if student has selected a package
+                        if (!string.IsNullOrEmpty(student.PackageName))
+                        {
+                            DialogResult paymentChoice = MessageBox.Show(
+                                $"Would you like to process payment for the {student.PackageName} package now?\n\n" +
+                                "Note: Payment is required before the student can book lessons.\n\n" +
+                                "Click 'Yes' to pay now, or 'No' to pay later.",
+                                "Process Payment?",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question);
+
+                            if (paymentChoice == DialogResult.Yes)
+                            {
+                                try
+                                {
+                                    PaymentResult paymentResult = PaymentDialog.ShowPaymentDialog(this, student);
+                                    
+                                    if (paymentResult.Success)
+                                    {
+                                        MessageBox.Show(
+                                            $"Payment processed successfully!\n\n" +
+                                            $"Student: {student.FullName}\n" +
+                                            $"Package: {student.PackageName}\n" +
+                                            $"Payment ID: {paymentResult.PaymentID}\n\n" +
+                                            "The student can now book lessons.",
+                                            "Registration & Payment Complete",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Information);
+                                    }
+                                    else if (!paymentResult.Cancelled)
+                                    {
+                                        string errorMsg = !string.IsNullOrEmpty(paymentResult.Error) 
+                                            ? $"Error: {paymentResult.Error}" 
+                                            : "Payment was not completed.";
+                                        
+                                        MessageBox.Show(
+                                            $"{errorMsg}\n\nStudent has been registered successfully.\n" +
+                                            "Payment can be processed later through the Payments section.",
+                                            "Registration Complete - Payment Pending",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Warning);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(
+                                            "Student registered successfully.\n\n" +
+                                            "Payment was cancelled. Reminder: Payment is required before booking lessons.\n" +
+                                            "Payment can be processed through the Payments section.",
+                                            "Registration Complete - Payment Cancelled",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Information);
+                                    }
+                                }
+                                catch (Exception paymentEx)
+                                {
+                                    MessageBox.Show($"Error opening payment dialog: {paymentEx.Message}\n\nStudent has been registered successfully.\nPayment can be processed later through the Payments section.", 
+                                        "Payment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Student registered successfully.\n\nReminder: Payment is required before booking lessons.\nPayment can be processed through the Payments section.", 
+                                    "Registration Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
