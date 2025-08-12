@@ -214,7 +214,7 @@ namespace DashboardAS
             this.buttonGenerateReceipt.BackColor = System.Drawing.Color.Green;
             this.buttonGenerateReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonGenerateReceipt.ForeColor = System.Drawing.Color.White;
-            this.buttonGenerateReceipt.Location = new System.Drawing.Point(378, 360);
+            this.buttonGenerateReceipt.Location = new System.Drawing.Point(251, 370);
             this.buttonGenerateReceipt.Name = "buttonGenerateReceipt";
             this.buttonGenerateReceipt.Size = new System.Drawing.Size(160, 45);
             this.buttonGenerateReceipt.TabIndex = 11;

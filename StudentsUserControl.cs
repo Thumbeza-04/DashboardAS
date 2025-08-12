@@ -15,6 +15,7 @@ namespace DashboardAS
     public partial class StudentsUserControl : UserControl
     {
         private StudentDAO studentDAO;
+        private bool showArchived = false;
 
         public StudentsUserControl()
         {
@@ -33,13 +34,16 @@ namespace DashboardAS
             try
             {
                 // Load student data from database with lesson count
-                DataTable dt = studentDAO.GetStudentsWithLessonCount();
+                DataTable dt = studentDAO.GetStudentsWithLessonCount(showArchived);
                 
                 // Bind the DataTable to the DataGridView
                 dataGridView1.DataSource = dt;
                 
                 // Format the grid
                 FormatDataGridView();
+                
+                // Update button visibility based on selection and archived status
+                UpdateButtonVisibility();
             }
             catch (Exception ex)
             {
@@ -70,13 +74,16 @@ namespace DashboardAS
                 string searchTerm = textBoxSearch.Text.Trim();
                 
                 // Use the search method if there's a search term, otherwise load all students
-                DataTable dt = studentDAO.SearchStudents(searchTerm);
+                DataTable dt = studentDAO.SearchStudents(searchTerm, showArchived);
                 
                 // Update the DataGridView with search results
                 dataGridView1.DataSource = dt;
                 
                 // Refresh the grid formatting
                 FormatDataGridView();
+                
+                // Update button visibility
+                UpdateButtonVisibility();
             }
             catch (Exception ex)
             {
@@ -103,6 +110,10 @@ namespace DashboardAS
             // Enable full row selection
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false; // Allow only single row selection
+            
+            // Add selection changed event handler
+            dataGridView1.SelectionChanged -= dataGridView1_SelectionChanged; // Remove first to prevent duplicates
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
         }
 
         private void buttonAddStudent_Click(object sender, EventArgs e)
@@ -151,6 +162,131 @@ namespace DashboardAS
             {
                 MessageBox.Show($"Error editing student: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonArchive_Click(object sender, EventArgs e)
+        {
+            // Check if a row is selected
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a student to archive.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Get the selected student's ID and current status
+                int studentId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["StudentID"].Value);
+                string currentStatus = dataGridView1.SelectedRows[0].Cells["Status"].Value?.ToString() ?? "";
+                string studentName = dataGridView1.SelectedRows[0].Cells["FullName"].Value?.ToString() ?? "";
+
+                // Check if already archived
+                if (currentStatus.Equals("Archived", StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show("This student is already archived.", "Already Archived", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Confirm archiving
+                DialogResult result = MessageBox.Show(
+                    $"Are you sure you want to archive student '{studentName}'?\n\nThis will hide them from the default view but they can be reactivated later.",
+                    "Confirm Archive",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (studentDAO.ArchiveStudent(studentId))
+                    {
+                        MessageBox.Show($"Student '{studentName}' has been archived successfully.", "Archive Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        PopulateStudentsTable(); // Refresh the grid
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to archive student. Please try again.", "Archive Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error archiving student: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonReactivate_Click(object sender, EventArgs e)
+        {
+            // Check if a row is selected
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a student to reactivate.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Get the selected student's ID and current status
+                int studentId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["StudentID"].Value);
+                string currentStatus = dataGridView1.SelectedRows[0].Cells["Status"].Value?.ToString() ?? "";
+                string studentName = dataGridView1.SelectedRows[0].Cells["FullName"].Value?.ToString() ?? "";
+
+                // Check if not archived
+                if (!currentStatus.Equals("Archived", StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show("This student is not archived.", "Not Archived", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Confirm reactivation
+                DialogResult result = MessageBox.Show(
+                    $"Are you sure you want to reactivate student '{studentName}'?\n\nThis will restore them to active status.",
+                    "Confirm Reactivation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    if (studentDAO.ReactivateStudent(studentId))
+                    {
+                        MessageBox.Show($"Student '{studentName}' has been reactivated successfully.", "Reactivation Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        PopulateStudentsTable(); // Refresh the grid
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to reactivate student. Please try again.", "Reactivation Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error reactivating student: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void checkBoxShowArchived_CheckedChanged(object sender, EventArgs e)
+        {
+            showArchived = checkBoxShowArchived.Checked;
+            PopulateStudentsTable(); // Refresh the data with new filter
+        }
+
+        private void UpdateButtonVisibility()
+        {
+            bool hasSelection = dataGridView1.SelectedRows.Count > 0;
+            bool isArchived = false;
+
+            if (hasSelection)
+            {
+                string currentStatus = dataGridView1.SelectedRows[0].Cells["Status"].Value?.ToString() ?? "";
+                isArchived = currentStatus.Equals("Archived", StringComparison.OrdinalIgnoreCase);
+            }
+
+            // Show/hide buttons based on selection and status
+            buttonArchive.Visible = hasSelection && !isArchived;
+            buttonReactivate.Visible = hasSelection && isArchived;
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            UpdateButtonVisibility();
         }
     }
 }

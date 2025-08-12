@@ -168,68 +168,14 @@ namespace DashboardAS.Data
         }
         public DataTable GetStudentsWithLessonCount()
         {
-            using (SqlConnection conn = DatabaseConnection.GetConnection())
-            {
-                string query = @"
-                    SELECT 
-                        s.StudentID,
-                        s.Name + ' ' + s.Surname AS FullName,
-                        s.PhoneNumber,
-                        s.Email,
-                        COUNT(lb.BookingID) AS LessonsBooked,
-                        s.Status,
-                        s.PackageName,
-                        p.NoOfLessons AS NoOfPackageLessons
-
-                    FROM StudentMJ s
-                    LEFT JOIN LessonBookingMJ lb ON s.StudentID = lb.StudentID
-                    LEFT JOIN PackageMJ p ON s.PackageName = p.PackageName
-                    GROUP BY s.StudentID, s.Name, s.Surname, s.PhoneNumber, s.Email, s.Status, s.PackageName, p.NoOfLessons
-                    ORDER BY s.Name, s.Surname";
-
-                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                return dt;
-            }
+            // Call the overloaded method with default parameter (exclude archived)
+            return GetStudentsWithLessonCount(false);
         }
 
         public DataTable SearchStudents(string searchTerm)
         {
-            using (SqlConnection conn = DatabaseConnection.GetConnection())
-            {
-                string query = @"
-                    SELECT 
-                        s.StudentID,
-                        s.Name + ' ' + s.Surname AS FullName,
-                        s.PhoneNumber,
-                        s.Email,
-                        s.Gender,
-                        s.StreetNumber + ' ' + s.StreetName + ', ' + s.City + ', ' + s.PostalCode AS FullAddress,
-                        COUNT(lb.BookingID) AS LessonsBooked,
-                        s.Status,
-                        s.PackageName
-                    FROM StudentMJ s
-                    LEFT JOIN LessonBookingMJ lb ON s.StudentID = lb.StudentID
-                    WHERE (@SearchTerm IS NULL OR @SearchTerm = '' OR
-                           s.Email LIKE '%' + @SearchTerm + '%' OR
-                           s.Gender LIKE '%' + @SearchTerm + '%' OR
-                           s.Status LIKE '%' + @SearchTerm + '%' OR
-                           s.PackageName LIKE '%' + @SearchTerm + '%' OR
-                           (s.Name + ' ' + s.Surname) LIKE '%' + @SearchTerm + '%' OR
-                           (s.StreetNumber + ' ' + s.StreetName + ', ' + s.City + ', ' + s.PostalCode) LIKE '%' + @SearchTerm + '%')
-                    GROUP BY s.StudentID, s.Name, s.Surname, s.PhoneNumber, s.Email, s.Gender, 
-                             s.StreetNumber, s.StreetName, s.City, s.PostalCode, s.Status, s.PackageName
-                    ORDER BY s.Name, s.Surname";
-
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@SearchTerm", searchTerm ?? "");
-
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                return dt;
-            }
+            // Call the overloaded method with default parameter (exclude archived)
+            return SearchStudents(searchTerm, false);
         }
 
         public DataTable GetStudentsWithPackageDetails()
@@ -374,6 +320,109 @@ namespace DashboardAS.Data
             }
 
             return result;
+        }
+
+        // Archive a student by setting their status to "Archived"
+        public bool ArchiveStudent(int studentId)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                string query = "UPDATE StudentMJ SET Status = 'Archived' WHERE StudentID = @StudentID";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@StudentID", studentId);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        // Reactivate a student by setting their status back to "Active"
+        public bool ReactivateStudent(int studentId)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                string query = "UPDATE StudentMJ SET Status = 'Active' WHERE StudentID = @StudentID";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@StudentID", studentId);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        // Get students with lesson count, optionally including archived students
+        public DataTable GetStudentsWithLessonCount(bool includeArchived = false)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                string whereClause = includeArchived ? "" : "WHERE s.Status <> 'Archived'";
+                
+                string query = $@"
+                    SELECT 
+                        s.StudentID,
+                        s.Name + ' ' + s.Surname AS FullName,
+                        s.PhoneNumber,
+                        s.Email,
+                        COUNT(lb.BookingID) AS LessonsBooked,
+                        s.Status,
+                        s.PackageName,
+                        p.NoOfLessons AS NoOfPackageLessons
+                    FROM StudentMJ s
+                    LEFT JOIN LessonBookingMJ lb ON s.StudentID = lb.StudentID
+                    LEFT JOIN PackageMJ p ON s.PackageName = p.PackageName
+                    {whereClause}
+                    GROUP BY s.StudentID, s.Name, s.Surname, s.PhoneNumber, s.Email, s.Status, s.PackageName, p.NoOfLessons
+                    ORDER BY s.Name, s.Surname";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+        }
+
+        // Search students with option to include archived
+        public DataTable SearchStudents(string searchTerm, bool includeArchived = false)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                string whereClause = includeArchived ? "" : "AND s.Status <> 'Archived'";
+                
+                string query = $@"
+                    SELECT 
+                        s.StudentID,
+                        s.Name + ' ' + s.Surname AS FullName,
+                        s.PhoneNumber,
+                        s.Email,
+                        s.Gender,
+                        s.StreetNumber + ' ' + s.StreetName + ', ' + s.City + ', ' + s.PostalCode AS FullAddress,
+                        COUNT(lb.BookingID) AS LessonsBooked,
+                        s.Status,
+                        s.PackageName
+                    FROM StudentMJ s
+                    LEFT JOIN LessonBookingMJ lb ON s.StudentID = lb.StudentID
+                    WHERE (@SearchTerm IS NULL OR @SearchTerm = '' OR
+                           s.Email LIKE '%' + @SearchTerm + '%' OR
+                           s.Gender LIKE '%' + @SearchTerm + '%' OR
+                           s.Status LIKE '%' + @SearchTerm + '%' OR
+                           s.PackageName LIKE '%' + @SearchTerm + '%' OR
+                           (s.Name + ' ' + s.Surname) LIKE '%' + @SearchTerm + '%' OR
+                           (s.StreetNumber + ' ' + s.StreetName + ', ' + s.City + ', ' + s.PostalCode) LIKE '%' + @SearchTerm + '%')
+                    {whereClause}
+                    GROUP BY s.StudentID, s.Name, s.Surname, s.PhoneNumber, s.Email, s.Gender, 
+                             s.StreetNumber, s.StreetName, s.City, s.PostalCode, s.Status, s.PackageName
+                    ORDER BY s.Name, s.Surname";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@SearchTerm", searchTerm ?? "");
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
         }
     }
 }
