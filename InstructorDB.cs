@@ -59,5 +59,10 @@ namespace DashboardAS
         {
             Loadform(new Dash(_ID));
         }
+
+        private void MainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

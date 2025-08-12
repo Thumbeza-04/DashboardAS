@@ -32,27 +32,28 @@ namespace DashboardAS
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.searchvehiclesbox = new System.Windows.Forms.TextBox();
-            this.managerDataSet1 = new DashboardAS.managerDataSet();
-            this.vehicleMJTableAdapter1 = new DashboardAS.managerDataSetTableAdapters.VehicleMJTableAdapter();
-            this.vehicleMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.licensePlateIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transmissionTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fuelTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.makeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vehicleTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vehicleMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.managerDataSet1 = new DashboardAS.managerDataSet();
+            this.searchvehiclesbox = new System.Windows.Forms.TextBox();
+            this.vehicleMJTableAdapter1 = new DashboardAS.managerDataSetTableAdapters.VehicleMJTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.managerDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vehicleMJBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.managerDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(55, 144);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(41, 117);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 20);
+            this.label1.Size = new System.Drawing.Size(158, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Search by vehicle type";
             // 
@@ -67,34 +68,13 @@ namespace DashboardAS
             this.makeDataGridViewTextBoxColumn,
             this.vehicleTypeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.vehicleMJBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(59, 181);
+            this.dataGridView1.Location = new System.Drawing.Point(44, 147);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(993, 274);
+            this.dataGridView1.Size = new System.Drawing.Size(745, 223);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // searchvehiclesbox
-            // 
-            this.searchvehiclesbox.Location = new System.Drawing.Point(250, 144);
-            this.searchvehiclesbox.Name = "searchvehiclesbox";
-            this.searchvehiclesbox.Size = new System.Drawing.Size(223, 22);
-            this.searchvehiclesbox.TabIndex = 4;
-            this.searchvehiclesbox.TextChanged += new System.EventHandler(this.searchvehiclesbox_TextChanged);
-            // 
-            // managerDataSet1
-            // 
-            this.managerDataSet1.DataSetName = "managerDataSet";
-            this.managerDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vehicleMJTableAdapter1
-            // 
-            this.vehicleMJTableAdapter1.ClearBeforeFill = true;
-            // 
-            // vehicleMJBindingSource
-            // 
-            this.vehicleMJBindingSource.DataMember = "VehicleMJ";
-            this.vehicleMJBindingSource.DataSource = this.managerDataSet1;
             // 
             // licensePlateIDDataGridViewTextBoxColumn
             // 
@@ -136,22 +116,47 @@ namespace DashboardAS
             this.vehicleTypeDataGridViewTextBoxColumn.Name = "vehicleTypeDataGridViewTextBoxColumn";
             this.vehicleTypeDataGridViewTextBoxColumn.Width = 125;
             // 
+            // vehicleMJBindingSource
+            // 
+            this.vehicleMJBindingSource.DataMember = "VehicleMJ";
+            this.vehicleMJBindingSource.DataSource = this.managerDataSet1;
+            // 
+            // managerDataSet1
+            // 
+            this.managerDataSet1.DataSetName = "managerDataSet";
+            this.managerDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // searchvehiclesbox
+            // 
+            this.searchvehiclesbox.Location = new System.Drawing.Point(203, 117);
+            this.searchvehiclesbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchvehiclesbox.Name = "searchvehiclesbox";
+            this.searchvehiclesbox.Size = new System.Drawing.Size(168, 20);
+            this.searchvehiclesbox.TabIndex = 4;
+            this.searchvehiclesbox.TextChanged += new System.EventHandler(this.searchvehiclesbox_TextChanged);
+            // 
+            // vehicleMJTableAdapter1
+            // 
+            this.vehicleMJTableAdapter1.ClearBeforeFill = true;
+            // 
             // ViewVehicles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 636);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(832, 517);
             this.Controls.Add(this.searchvehiclesbox);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ViewVehicles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewVehicles";
             this.Load += new System.EventHandler(this.ViewVehicles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.managerDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vehicleMJBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.managerDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
