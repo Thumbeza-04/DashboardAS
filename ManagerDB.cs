@@ -41,5 +41,10 @@ namespace DashboardAS
             ViewStaff viewStaff = new ViewStaff();
             viewStaff.Show();
         }
+
+        private void ManagerDB_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
