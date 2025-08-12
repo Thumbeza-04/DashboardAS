@@ -114,6 +114,13 @@ namespace DashboardAS
             // Add selection changed event handler
             dataGridView1.SelectionChanged -= dataGridView1_SelectionChanged; // Remove first to prevent duplicates
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
+            
+            // Add DataBindingComplete event handler for custom row coloring
+            dataGridView1.DataBindingComplete -= dataGridView1_DataBindingComplete; // Remove first to prevent duplicates
+            dataGridView1.DataBindingComplete += dataGridView1_DataBindingComplete;
+            
+            // Apply custom row colors immediately if data is already bound
+            ApplyCustomRowColors();
         }
 
         private void buttonAddStudent_Click(object sender, EventArgs e)
@@ -287,6 +294,66 @@ namespace DashboardAS
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             UpdateButtonVisibility();
+        }
+        
+        private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            ApplyCustomRowColors();
+        }
+        
+        private void ApplyCustomRowColors()
+        {
+            try
+            {
+                // Define colors
+                Color lightPurple = Color.FromArgb(220, 190, 220); // Light purple background for archived
+                Color lightPurpleAlt = Color.FromArgb(210, 180, 210); // Slightly darker purple for alternating archived rows
+                Color normalBackground = Color.White;
+                Color normalAlternating = Color.FromArgb(238, 239, 249);
+                
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.IsNewRow) continue;
+                    
+                    // Check if this row represents an archived student
+                    if (row.Cells["Status"] != null && row.Cells["Status"].Value != null)
+                    {
+                        string status = row.Cells["Status"].Value.ToString();
+                        
+                        if (status.Equals("Archived", StringComparison.OrdinalIgnoreCase))
+                        {
+                            // Apply light purple background to archived rows (with alternating shades)
+                            if (row.Index % 2 == 0)
+                            {
+                                row.DefaultCellStyle.BackColor = lightPurple;
+                            }
+                            else
+                            {
+                                row.DefaultCellStyle.BackColor = lightPurpleAlt;
+                            }
+                            row.DefaultCellStyle.ForeColor = Color.DarkSlateGray; // Darker text for better readability
+                        }
+                        else
+                        {
+                            // Reset to default colors for non-archived rows
+                            if (row.Index % 2 == 0)
+                            {
+                                row.DefaultCellStyle.BackColor = normalBackground;
+                            }
+                            else
+                            {
+                                row.DefaultCellStyle.BackColor = normalAlternating;
+                            }
+                            row.DefaultCellStyle.ForeColor = Color.Black;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error but don't show message to user as this is a visual enhancement
+                System.Diagnostics.Debug.WriteLine($"Error applying custom row colors: {ex.Message}");
+            }
         }
     }
 }
