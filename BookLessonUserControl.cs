@@ -261,7 +261,7 @@ namespace DashboardAS
                                     $"Amount Paid: R{totalPaid:F2}\n" +
                                     $"Amount Due: R{amountDue:F2}\n\n" +
                                     "Payment is required before booking lessons.\n\n" +
-                                    "Would you like to process payment now?",
+                                    $"Confirm payment for {student.FullName}?",
                                     "Payment Required",
                                     MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Information);
