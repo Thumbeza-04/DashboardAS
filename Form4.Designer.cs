@@ -99,8 +99,10 @@ namespace DashboardAS
             this.passwordTxt.Location = new System.Drawing.Point(951, 227);
             this.passwordTxt.Multiline = true;
             this.passwordTxt.Name = "passwordTxt";
+            this.passwordTxt.PasswordChar = '*';
             this.passwordTxt.Size = new System.Drawing.Size(153, 25);
             this.passwordTxt.TabIndex = 10;
+            this.passwordTxt.TextChanged += new System.EventHandler(this.passwordTxt_TextChanged);
             // 
             // eNoTxt
             // 

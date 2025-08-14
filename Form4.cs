@@ -126,5 +126,10 @@ namespace DashboardAS
 
             }
         }
+
+        private void passwordTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
