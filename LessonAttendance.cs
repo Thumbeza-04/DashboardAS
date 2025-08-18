@@ -13,10 +13,12 @@ namespace DashboardAS
 {
     public partial class LessonAttendance : Form
     {
+        private int id;
         public LessonAttendance(int InID)
         {
+  
             InitializeComponent();
-            IDLbl1.Text = InID.ToString();
+            id = InID;
         }
 
         private void LessonAttendance_Load(object sender, EventArgs e)
@@ -27,24 +29,25 @@ namespace DashboardAS
             //this.bookingsTableAdapter.Fill(this.dsAttendance21.Bookings);
             // TODO: This line of code loads data into the 'dsAttendance1.Booking' table. You can move, or remove it, as needed.
             //this.bookingTableAdapter.Fill(this.dsAttendance1.Booking);
-            bookingTableAdapter.FillByInID(dsAttendance21.Booking, int.Parse(IDLbl1.Text));
-            lessonAttendanceMJTableAdapter1.FillByID(dsAttendance21.LessonAttendanceMJ, int.Parse(IDLbl1.Text));
+            bookingTableAdapter.FillByInID(dsAttendance21.Booking, id);
+            lessonAttendanceMJTableAdapter1.FillByID(dsAttendance21.LessonAttendanceMJ, id);
         }
         SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
+            int ID = id;
             try
             {
-
+                
 
                 int att = 0;
                 int missed = 0;
                 connec.Open();
-                SqlCommand command = new SqlCommand("Insert into LessonAttendanceMJ values( '" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + (int)dataGridView1.CurrentRow.Cells[4].Value + "', '" + dataGridView1.CurrentRow.Cells[5].Value + "','" + (int)dataGridView1.CurrentRow.Cells[6].Value + "','" + att + "', '" + missed + "' ,'" + (int)dataGridView1.CurrentRow.Cells[6].Value + "')", connec);
+                SqlCommand command = new SqlCommand("Insert into LessonAttendanceMJ values( '" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + ID + "', '" + dataGridView1.CurrentRow.Cells[4].Value + "','" + (int)dataGridView1.CurrentRow.Cells[5].Value + "','" + att + "', '" + missed + "' ,'" + (int)dataGridView1.CurrentRow.Cells[5].Value + "')", connec);
                 command.ExecuteNonQuery();
                 connec.Close();
                 MessageBox.Show("Registered");
-                int instructorId = (int)dataGridView1.CurrentRow.Cells[4].Value;
+                int instructorId = ID;
 
                 Bind(instructorId);
             }
@@ -68,8 +71,9 @@ namespace DashboardAS
 
         private void AttendedBtn_Click(object sender, EventArgs e)
         {
-            int allLess = (int)dataGridView2.CurrentRow.Cells[6].Value + (int)dataGridView2.CurrentRow.Cells[7].Value;
-            int Less = (int)dataGridView2.CurrentRow.Cells[5].Value;
+            int ID = id;
+            int allLess = (int)dataGridView2.CurrentRow.Cells[5].Value + (int)dataGridView2.CurrentRow.Cells[6].Value;
+            int Less = (int)dataGridView2.CurrentRow.Cells[4].Value;
             if (Less == allLess)
             {
                 MessageBox.Show("Student has attended all their lessons");
@@ -77,17 +81,17 @@ namespace DashboardAS
             else
             {
                 int up = 1;
-                int att = (int)dataGridView2.CurrentRow.Cells[6].Value + up;
-                int Total = (int)dataGridView2.CurrentRow.Cells[7].Value + att;
-                int rem = (int)dataGridView2.CurrentRow.Cells[5].Value - Total;
+                int att = (int)dataGridView2.CurrentRow.Cells[5].Value + up;
+                int Total = (int)dataGridView2.CurrentRow.Cells[6].Value + att;
+                int rem = (int)dataGridView2.CurrentRow.Cells[4].Value - Total;
 
                 connec.Open();
-                SqlCommand command = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='" +dataGridView2.CurrentRow.Cells[1].Value+"' ,StudentSurname = '"+dataGridView2.CurrentRow.Cells[2].Value+"' ,InstructorID ='" + (int)dataGridView2.CurrentRow.Cells[3].Value + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[4].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[5].Value + "',Attended = '" + att + "',Missed ='" + (int)dataGridView2.CurrentRow.Cells[7].Value + "',Remaining = '" + rem + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() + "'", connec);
+                SqlCommand command = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='" +dataGridView2.CurrentRow.Cells[1].Value+"' ,StudentSurname = '"+dataGridView2.CurrentRow.Cells[2].Value+"' ,InstructorID ='" + ID + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[3].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[4].Value + "',Attended = '" + att + "',Missed ='" + (int)dataGridView2.CurrentRow.Cells[6].Value + "',Remaining = '" + rem + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() + "'", connec);
                 command.ExecuteNonQuery();
                 connec.Close();
 
                 MessageBox.Show("Marked as attended");
-                int instructorId = (int)dataGridView1.CurrentRow.Cells[4].Value;
+                int instructorId = ID;
 
                 Bind(instructorId);
             }
@@ -95,8 +99,9 @@ namespace DashboardAS
 
         private void Missed_Click(object sender, EventArgs e)
         {
-            int allLess = (int)dataGridView2.CurrentRow.Cells[6].Value + (int)dataGridView2.CurrentRow.Cells[7].Value;
-            int Less = (int)dataGridView2.CurrentRow.Cells[5].Value;
+            int ID = id;
+            int allLess = (int)dataGridView2.CurrentRow.Cells[5].Value + (int)dataGridView2.CurrentRow.Cells[6].Value;
+            int Less = (int)dataGridView2.CurrentRow.Cells[4].Value;
             if (Less == allLess)
             {
                 MessageBox.Show("Student has attended all their lessons");
@@ -105,17 +110,17 @@ namespace DashboardAS
             {
                 int up = 1;
                 
-                int missed = (int)dataGridView2.CurrentRow.Cells[7].Value + up;
-                int Total = (int)dataGridView2.CurrentRow.Cells[6].Value + missed;
-                int rem = (int)dataGridView2.CurrentRow.Cells[5].Value - Total;
+                int missed = (int)dataGridView2.CurrentRow.Cells[6].Value + up;
+                int Total = (int)dataGridView2.CurrentRow.Cells[5].Value + missed;
+                int rem = (int)dataGridView2.CurrentRow.Cells[4].Value - Total;
 
                 connec.Open();
-                SqlCommand command = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='"+dataGridView2.CurrentRow.Cells[1].Value+"' ,StudentSurname = '"+dataGridView2.CurrentRow.Cells[2].Value+"',InstructorID ='" + (int)dataGridView2.CurrentRow.Cells[3].Value + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[4].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[5].Value + "',Attended = '" + (int)dataGridView2.CurrentRow.Cells[6].Value + "',Missed ='" + missed + "',Remaining = '" + rem + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() + "'", connec);
+                SqlCommand command = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='"+dataGridView2.CurrentRow.Cells[1].Value+"' ,StudentSurname = '"+dataGridView2.CurrentRow.Cells[2].Value+"',InstructorID ='" + ID + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[3].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[4].Value + "',Attended = '" + (int)dataGridView2.CurrentRow.Cells[5].Value + "',Missed ='" + missed + "',Remaining = '" + rem + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() + "'", connec);
                 command.ExecuteNonQuery();
                 connec.Close();
 
                 MessageBox.Show("Marked as Missed");
-                int instructorId = (int)dataGridView1.CurrentRow.Cells[4].Value;
+                int instructorId = ID;
 
                 Bind(instructorId);
             }
@@ -123,7 +128,8 @@ namespace DashboardAS
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            bookingTableAdapter.FillByIDate(dsAttendance21.Booking, int.Parse(IDLbl1.Text), dateTimePicker1.Text);
+            int ID = id;
+            bookingTableAdapter.FillByIDate(dsAttendance21.Booking, ID, dateTimePicker1.Text);
         }
     }
 }

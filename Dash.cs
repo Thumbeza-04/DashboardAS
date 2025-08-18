@@ -7,22 +7,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace DashboardAS
 {
     public partial class Dash : Form
     {
+        private int Id;
         public Dash(int id)
         {
             InitializeComponent();
-            Lbl.Text = id.ToString();
+            Id = id;
         }
+        SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
 
         private void Dash_Load(object sender, EventArgs e)
         {
+            connec.Open();
+            SqlCommand command = new SqlCommand("SELECT FirstName FROM InstructorMJ WHERE InstructorID = @InstructorID", connec);
+            command.Parameters.AddWithValue("@InstructorID", Id);
+
+            object result = command.ExecuteScalar();
+
+            
+
+            if (result != null)
+            {
+                
+                label4.Text = $"Welcome back, {result.ToString()}!";
+            }
+            connec.Close();
             
             //label1.Text = f1.nameTxt.Text;
-            lessonBookingMJTableAdapter1.FillByID(dSAttendance.LessonBookingMJ, int.Parse(Lbl.Text));
+            lessonBookingMJTableAdapter1.FillByID(dSAttendance.LessonBookingMJ, Id);
 
             int count = 0;
             DateTime selectedDate;
@@ -33,11 +50,11 @@ namespace DashboardAS
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (row.Cells[6].Value != null)
+                    if (row.Cells[5].Value != null)
                     {
                         DateTime rowDate;
 
-                        if (DateTime.TryParse(row.Cells[6].Value.ToString(), out rowDate))
+                        if (DateTime.TryParse(row.Cells[5].Value.ToString(), out rowDate))
                         {
                             if (rowDate.Date == selectedDate)
                             {
@@ -59,11 +76,11 @@ namespace DashboardAS
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
 
-                    if (!row.IsNewRow && row.Cells[6].Value != null)
+                    if (!row.IsNewRow && row.Cells[5].Value != null)
                     {
                         DateTime rowDate;
 
-                        if (DateTime.TryParse(row.Cells[6].Value.ToString(), out rowDate))
+                        if (DateTime.TryParse(row.Cells[5].Value.ToString(), out rowDate))
                         {
                             if (rowDate.Month == selectedMonth && rowDate.Year == selectedYear)
                             {
@@ -98,7 +115,7 @@ namespace DashboardAS
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            lessonBookingMJTableAdapter1.FillByIDate(dSAttendance.LessonBookingMJ,int.Parse(Lbl.Text), dateTimePicker1.Text);
+            lessonBookingMJTableAdapter1.FillByIDate(dSAttendance.LessonBookingMJ,Id, dateTimePicker1.Text);
 
         }
 
