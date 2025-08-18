@@ -23,11 +23,11 @@ namespace DashboardAS
             pictureBox2.Visible = true;
             usernameTxt.Visible = true;
             passwordTxt.Visible = true;
-            eNoTxt.Visible = true;
+            
             LOGIN.Visible = true;
             label1.Visible = true;
             label2.Visible = true;
-            label3.Visible = true;
+           
             loginBtn.Visible = true;
 
 
@@ -58,7 +58,7 @@ namespace DashboardAS
 
         private void loginBtn_Click_1(object sender, EventArgs e)
         {
-            recptlogiNmjTableAdapter1.FillBy(DSstaffLogin.RECPTLOGINmj, int.Parse(eNoTxt.Text), usernameTxt.Text, passwordTxt.Text);
+            recptlogiNmjTableAdapter1.FillBy1RLog(DSstaffLogin.RECPTLOGINmj, usernameTxt.Text, passwordTxt.Text);
 
             if (DSstaffLogin.RECPTLOGINmj.Rows.Count > 0)
             {
@@ -69,17 +69,17 @@ namespace DashboardAS
                 pictureBox2.Visible = false;
                 usernameTxt.Visible = false;
                 passwordTxt.Visible = false;
-                eNoTxt.Visible = false;
+               
                 LOGIN.Visible = false;
                 label1.Visible = false;
                 label2.Visible = false;
-                label3.Visible = false;
+               
                 loginBtn.Visible = false;
 
             }
             else
             {
-                managerlogiNmjTableAdapter1.FillBy(DSstaffLogin.MANAGERLOGINmj, int.Parse(eNoTxt.Text), usernameTxt.Text, passwordTxt.Text);
+                managerlogiNmjTableAdapter1.FillBy1MLog(DSstaffLogin.MANAGERLOGINmj, usernameTxt.Text, passwordTxt.Text);
 
                 if (DSstaffLogin.MANAGERLOGINmj.Rows.Count > 0)
                 {
@@ -89,11 +89,11 @@ namespace DashboardAS
                     pictureBox2.Visible = false;
                     usernameTxt.Visible = false;
                     passwordTxt.Visible = false;
-                    eNoTxt.Visible = false;
+                   
                     LOGIN.Visible = false;
                     label1.Visible = false;
                     label2.Visible = false;
-                    label3.Visible = false;
+                  
                     loginBtn.Visible = false;
                 }
 
@@ -101,21 +101,21 @@ namespace DashboardAS
                 else
                 {
 
-                    instructorlogiNmjTableAdapter1.FillBy(DSstaffLogin.INSTRUCTORLOGINmj, int.Parse(eNoTxt.Text), usernameTxt.Text, passwordTxt.Text);
+                    instructorlogiNmjTableAdapter1.FillBy1Log(DSstaffLogin.INSTRUCTORLOGINmj, usernameTxt.Text, passwordTxt.Text);
                     if (DSstaffLogin.INSTRUCTORLOGINmj.Rows.Count > 0)
                     {
-                        int inID = int.Parse(eNoTxt.Text);
+                        int inID = Convert.ToInt32(DSstaffLogin.INSTRUCTORLOGINmj.Rows[0]["StaffID"]);
                         InstructorDB InDb = new InstructorDB(inID);
                         PrepareForm(InDb);
                         pictureBox1.Visible = false;
                         pictureBox2.Visible = false;
                         usernameTxt.Visible = false;
                         passwordTxt.Visible = false;
-                        eNoTxt.Visible = false;
+                       
                         LOGIN.Visible = false;
                         label1.Visible = false;
                         label2.Visible = false;
-                        label3.Visible = false;
+                        
                         loginBtn.Visible = false;
                     }
                     else
