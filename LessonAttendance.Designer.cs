@@ -56,13 +56,15 @@ namespace DashboardAS
             this.AttendedBtn = new System.Windows.Forms.Button();
             this.Missed = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.archBtn = new System.Windows.Forms.CheckBox();
+            this.ArchiveBtn = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lessonAttendanceMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.LessonAttendanceMJTableAdapter();
             this.outcomeMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.OutcomeMJTableAdapter();
             this.lessonBookingMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.LessonBookingMJTableAdapter();
             this.packageMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.PackageMJTableAdapter();
             this.studentMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.StudentMJTableAdapter();
             this.bookingTableAdapter = new DashboardAS.DSAttendance2TableAdapters.BookingTableAdapter();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).BeginInit();
@@ -305,7 +307,7 @@ namespace DashboardAS
             // AttendedBtn
             // 
             this.AttendedBtn.BackColor = System.Drawing.Color.Gold;
-            this.AttendedBtn.Location = new System.Drawing.Point(824, 441);
+            this.AttendedBtn.Location = new System.Drawing.Point(665, 441);
             this.AttendedBtn.Margin = new System.Windows.Forms.Padding(2);
             this.AttendedBtn.Name = "AttendedBtn";
             this.AttendedBtn.Size = new System.Drawing.Size(151, 43);
@@ -318,10 +320,10 @@ namespace DashboardAS
             // 
             this.Missed.BackColor = System.Drawing.Color.Red;
             this.Missed.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Missed.Location = new System.Drawing.Point(1015, 501);
+            this.Missed.Location = new System.Drawing.Point(820, 441);
             this.Missed.Margin = new System.Windows.Forms.Padding(2);
             this.Missed.Name = "Missed";
-            this.Missed.Size = new System.Drawing.Size(120, 43);
+            this.Missed.Size = new System.Drawing.Size(147, 43);
             this.Missed.TabIndex = 5;
             this.Missed.Text = "Missed";
             this.Missed.UseVisualStyleBackColor = false;
@@ -329,6 +331,9 @@ namespace DashboardAS
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.archBtn);
+            this.groupBox1.Controls.Add(this.ArchiveBtn);
+            this.groupBox1.Controls.Add(this.Missed);
             this.groupBox1.Controls.Add(this.AttendedBtn);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(11, 60);
@@ -339,6 +344,37 @@ namespace DashboardAS
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attendance Register";
+            // 
+            // archBtn
+            // 
+            this.archBtn.AutoSize = true;
+            this.archBtn.Location = new System.Drawing.Point(5, 461);
+            this.archBtn.Name = "archBtn";
+            this.archBtn.Size = new System.Drawing.Size(155, 23);
+            this.archBtn.TabIndex = 8;
+            this.archBtn.Text = "Show Archived";
+            this.archBtn.UseVisualStyleBackColor = true;
+            this.archBtn.CheckedChanged += new System.EventHandler(this.archBtn_CheckedChanged);
+            // 
+            // ArchiveBtn
+            // 
+            this.ArchiveBtn.BackColor = System.Drawing.Color.YellowGreen;
+            this.ArchiveBtn.Location = new System.Drawing.Point(971, 441);
+            this.ArchiveBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ArchiveBtn.Name = "ArchiveBtn";
+            this.ArchiveBtn.Size = new System.Drawing.Size(151, 43);
+            this.ArchiveBtn.TabIndex = 5;
+            this.ArchiveBtn.Text = "Archive";
+            this.ArchiveBtn.UseVisualStyleBackColor = false;
+            this.ArchiveBtn.Click += new System.EventHandler(this.ArchiveBtn_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(897, 19);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(275, 22);
+            this.dateTimePicker1.TabIndex = 8;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // lessonAttendanceMJTableAdapter1
             // 
@@ -364,14 +400,6 @@ namespace DashboardAS
             // 
             this.bookingTableAdapter.ClearBeforeFill = true;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(897, 19);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(275, 22);
-            this.dateTimePicker1.TabIndex = 8;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
             // LessonAttendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -379,7 +407,6 @@ namespace DashboardAS
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1267, 585);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.Missed);
             this.Controls.Add(this.RegisterBtn);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
@@ -396,6 +423,7 @@ namespace DashboardAS
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lessonAttendanceMJBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -436,5 +464,7 @@ namespace DashboardAS
         private System.Windows.Forms.DataGridViewTextBoxColumn noOfLessonsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button ArchiveBtn;
+        private System.Windows.Forms.CheckBox archBtn;
     }
 }
