@@ -32,9 +32,25 @@ namespace DashboardAS
             this.components = new System.ComponentModel.Container();
             this.IDLbl1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bookingIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.packageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noOfLessonsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsAttendance21 = new DashboardAS.DSAttendance2();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.studentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.packageIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberOfLessonsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attendedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.missedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remainingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lessonAttendanceMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RegisterBtn = new System.Windows.Forms.Button();
             this.AttendedBtn = new System.Windows.Forms.Button();
@@ -47,22 +63,6 @@ namespace DashboardAS
             this.studentMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.StudentMJTableAdapter();
             this.bookingTableAdapter = new DashboardAS.DSAttendance2TableAdapters.BookingTableAdapter();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.studentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.packageIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberOfLessonsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.attendedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.missedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remainingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookingIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.packageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noOfLessonsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).BeginInit();
@@ -82,6 +82,8 @@ namespace DashboardAS
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -97,10 +99,83 @@ namespace DashboardAS
             this.dataGridView1.Location = new System.Drawing.Point(11, 122);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1122, 150);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // bookingIDDataGridViewTextBoxColumn
+            // 
+            this.bookingIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.bookingIDDataGridViewTextBoxColumn.DataPropertyName = "BookingID";
+            this.bookingIDDataGridViewTextBoxColumn.HeaderText = "BookingID";
+            this.bookingIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.bookingIDDataGridViewTextBoxColumn.Name = "bookingIDDataGridViewTextBoxColumn";
+            this.bookingIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // studentIDDataGridViewTextBoxColumn
+            // 
+            this.studentIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.studentIDDataGridViewTextBoxColumn.DataPropertyName = "StudentID";
+            this.studentIDDataGridViewTextBoxColumn.HeaderText = "StudentID";
+            this.studentIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.studentIDDataGridViewTextBoxColumn.Name = "studentIDDataGridViewTextBoxColumn";
+            this.studentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // surnameDataGridViewTextBoxColumn
+            // 
+            this.surnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
+            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
+            this.surnameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            this.surnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // packageIDDataGridViewTextBoxColumn
+            // 
+            this.packageIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.packageIDDataGridViewTextBoxColumn.DataPropertyName = "PackageID";
+            this.packageIDDataGridViewTextBoxColumn.HeaderText = "PackageID";
+            this.packageIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.packageIDDataGridViewTextBoxColumn.Name = "packageIDDataGridViewTextBoxColumn";
+            this.packageIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noOfLessonsDataGridViewTextBoxColumn
+            // 
+            this.noOfLessonsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.noOfLessonsDataGridViewTextBoxColumn.DataPropertyName = "NoOfLessons";
+            this.noOfLessonsDataGridViewTextBoxColumn.HeaderText = "NoOfLessons";
+            this.noOfLessonsDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.noOfLessonsDataGridViewTextBoxColumn.Name = "noOfLessonsDataGridViewTextBoxColumn";
+            this.noOfLessonsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // timeDataGridViewTextBoxColumn
+            // 
+            this.timeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
+            this.timeDataGridViewTextBoxColumn.HeaderText = "Time";
+            this.timeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
+            this.timeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bookingBindingSource
             // 
@@ -114,6 +189,8 @@ namespace DashboardAS
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -129,10 +206,83 @@ namespace DashboardAS
             this.dataGridView2.Location = new System.Drawing.Point(11, 334);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(1122, 150);
             this.dataGridView2.TabIndex = 2;
+            // 
+            // studentIDDataGridViewTextBoxColumn1
+            // 
+            this.studentIDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.studentIDDataGridViewTextBoxColumn1.DataPropertyName = "StudentID";
+            this.studentIDDataGridViewTextBoxColumn1.HeaderText = "StudentID";
+            this.studentIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.studentIDDataGridViewTextBoxColumn1.Name = "studentIDDataGridViewTextBoxColumn1";
+            this.studentIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // studentNameDataGridViewTextBoxColumn
+            // 
+            this.studentNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.studentNameDataGridViewTextBoxColumn.DataPropertyName = "StudentName";
+            this.studentNameDataGridViewTextBoxColumn.HeaderText = "StudentName";
+            this.studentNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.studentNameDataGridViewTextBoxColumn.Name = "studentNameDataGridViewTextBoxColumn";
+            this.studentNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // studentSurnameDataGridViewTextBoxColumn
+            // 
+            this.studentSurnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.studentSurnameDataGridViewTextBoxColumn.DataPropertyName = "StudentSurname";
+            this.studentSurnameDataGridViewTextBoxColumn.HeaderText = "StudentSurname";
+            this.studentSurnameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.studentSurnameDataGridViewTextBoxColumn.Name = "studentSurnameDataGridViewTextBoxColumn";
+            this.studentSurnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // packageIDDataGridViewTextBoxColumn1
+            // 
+            this.packageIDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.packageIDDataGridViewTextBoxColumn1.DataPropertyName = "PackageID";
+            this.packageIDDataGridViewTextBoxColumn1.HeaderText = "PackageID";
+            this.packageIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.packageIDDataGridViewTextBoxColumn1.Name = "packageIDDataGridViewTextBoxColumn1";
+            this.packageIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // numberOfLessonsDataGridViewTextBoxColumn
+            // 
+            this.numberOfLessonsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.numberOfLessonsDataGridViewTextBoxColumn.DataPropertyName = "NumberOfLessons";
+            this.numberOfLessonsDataGridViewTextBoxColumn.HeaderText = "NumberOfLessons";
+            this.numberOfLessonsDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.numberOfLessonsDataGridViewTextBoxColumn.Name = "numberOfLessonsDataGridViewTextBoxColumn";
+            this.numberOfLessonsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // attendedDataGridViewTextBoxColumn
+            // 
+            this.attendedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.attendedDataGridViewTextBoxColumn.DataPropertyName = "Attended";
+            this.attendedDataGridViewTextBoxColumn.HeaderText = "Attended";
+            this.attendedDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.attendedDataGridViewTextBoxColumn.Name = "attendedDataGridViewTextBoxColumn";
+            this.attendedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // missedDataGridViewTextBoxColumn
+            // 
+            this.missedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.missedDataGridViewTextBoxColumn.DataPropertyName = "Missed";
+            this.missedDataGridViewTextBoxColumn.HeaderText = "Missed";
+            this.missedDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.missedDataGridViewTextBoxColumn.Name = "missedDataGridViewTextBoxColumn";
+            this.missedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // remainingDataGridViewTextBoxColumn
+            // 
+            this.remainingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.remainingDataGridViewTextBoxColumn.DataPropertyName = "Remaining";
+            this.remainingDataGridViewTextBoxColumn.HeaderText = "Remaining";
+            this.remainingDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.remainingDataGridViewTextBoxColumn.Name = "remainingDataGridViewTextBoxColumn";
+            this.remainingDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // lessonAttendanceMJBindingSource
             // 
@@ -221,135 +371,6 @@ namespace DashboardAS
             this.dateTimePicker1.Size = new System.Drawing.Size(275, 22);
             this.dateTimePicker1.TabIndex = 8;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // studentIDDataGridViewTextBoxColumn1
-            // 
-            this.studentIDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentIDDataGridViewTextBoxColumn1.DataPropertyName = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn1.HeaderText = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.studentIDDataGridViewTextBoxColumn1.Name = "studentIDDataGridViewTextBoxColumn1";
-            // 
-            // studentNameDataGridViewTextBoxColumn
-            // 
-            this.studentNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentNameDataGridViewTextBoxColumn.DataPropertyName = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn.HeaderText = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentNameDataGridViewTextBoxColumn.Name = "studentNameDataGridViewTextBoxColumn";
-            // 
-            // studentSurnameDataGridViewTextBoxColumn
-            // 
-            this.studentSurnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentSurnameDataGridViewTextBoxColumn.DataPropertyName = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn.HeaderText = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentSurnameDataGridViewTextBoxColumn.Name = "studentSurnameDataGridViewTextBoxColumn";
-            // 
-            // packageIDDataGridViewTextBoxColumn1
-            // 
-            this.packageIDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.packageIDDataGridViewTextBoxColumn1.DataPropertyName = "PackageID";
-            this.packageIDDataGridViewTextBoxColumn1.HeaderText = "PackageID";
-            this.packageIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.packageIDDataGridViewTextBoxColumn1.Name = "packageIDDataGridViewTextBoxColumn1";
-            // 
-            // numberOfLessonsDataGridViewTextBoxColumn
-            // 
-            this.numberOfLessonsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.numberOfLessonsDataGridViewTextBoxColumn.DataPropertyName = "NumberOfLessons";
-            this.numberOfLessonsDataGridViewTextBoxColumn.HeaderText = "NumberOfLessons";
-            this.numberOfLessonsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.numberOfLessonsDataGridViewTextBoxColumn.Name = "numberOfLessonsDataGridViewTextBoxColumn";
-            // 
-            // attendedDataGridViewTextBoxColumn
-            // 
-            this.attendedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.attendedDataGridViewTextBoxColumn.DataPropertyName = "Attended";
-            this.attendedDataGridViewTextBoxColumn.HeaderText = "Attended";
-            this.attendedDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.attendedDataGridViewTextBoxColumn.Name = "attendedDataGridViewTextBoxColumn";
-            // 
-            // missedDataGridViewTextBoxColumn
-            // 
-            this.missedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.missedDataGridViewTextBoxColumn.DataPropertyName = "Missed";
-            this.missedDataGridViewTextBoxColumn.HeaderText = "Missed";
-            this.missedDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.missedDataGridViewTextBoxColumn.Name = "missedDataGridViewTextBoxColumn";
-            // 
-            // remainingDataGridViewTextBoxColumn
-            // 
-            this.remainingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.remainingDataGridViewTextBoxColumn.DataPropertyName = "Remaining";
-            this.remainingDataGridViewTextBoxColumn.HeaderText = "Remaining";
-            this.remainingDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.remainingDataGridViewTextBoxColumn.Name = "remainingDataGridViewTextBoxColumn";
-            // 
-            // bookingIDDataGridViewTextBoxColumn
-            // 
-            this.bookingIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.bookingIDDataGridViewTextBoxColumn.DataPropertyName = "BookingID";
-            this.bookingIDDataGridViewTextBoxColumn.HeaderText = "BookingID";
-            this.bookingIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.bookingIDDataGridViewTextBoxColumn.Name = "bookingIDDataGridViewTextBoxColumn";
-            this.bookingIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // studentIDDataGridViewTextBoxColumn
-            // 
-            this.studentIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentIDDataGridViewTextBoxColumn.DataPropertyName = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn.HeaderText = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentIDDataGridViewTextBoxColumn.Name = "studentIDDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // surnameDataGridViewTextBoxColumn
-            // 
-            this.surnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
-            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
-            this.surnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
-            // 
-            // packageIDDataGridViewTextBoxColumn
-            // 
-            this.packageIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.packageIDDataGridViewTextBoxColumn.DataPropertyName = "PackageID";
-            this.packageIDDataGridViewTextBoxColumn.HeaderText = "PackageID";
-            this.packageIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.packageIDDataGridViewTextBoxColumn.Name = "packageIDDataGridViewTextBoxColumn";
-            // 
-            // noOfLessonsDataGridViewTextBoxColumn
-            // 
-            this.noOfLessonsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.noOfLessonsDataGridViewTextBoxColumn.DataPropertyName = "NoOfLessons";
-            this.noOfLessonsDataGridViewTextBoxColumn.HeaderText = "NoOfLessons";
-            this.noOfLessonsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.noOfLessonsDataGridViewTextBoxColumn.Name = "noOfLessonsDataGridViewTextBoxColumn";
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            // 
-            // timeDataGridViewTextBoxColumn
-            // 
-            this.timeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
-            this.timeDataGridViewTextBoxColumn.HeaderText = "Time";
-            this.timeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
             // 
             // LessonAttendance
             // 
