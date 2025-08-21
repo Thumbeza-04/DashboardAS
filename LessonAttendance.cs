@@ -148,27 +148,52 @@ namespace DashboardAS
         private void ArchiveBtn_Click(object sender, EventArgs e)
         {
             int ID = id;
-            DialogResult Result = MessageBox.Show("THIS ACTION CANNOT BE UNDONE!Are you sure you want to Archive.", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            int Studentid = (int)dataGridView2.CurrentRow.Cells[0].Value;
+            bool isArchived = false;
 
-            if (Result == DialogResult.No)
+            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            using (SqlCommand checkCmd = new SqlCommand("SELECT IsArchived FROM LessonAttendanceMJ WHERE StudentID = @StudentID", con))
             {
-                MessageBox.Show("Archive cancelled");
+                checkCmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = Studentid;
+                con.Open();
+                object result = checkCmd.ExecuteScalar();
+                con.Close();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    isArchived = Convert.ToBoolean(result);
+                }
             }
-            else
+            if (isArchived)
             {
-                
-                int StudentID = (int)dataGridView2.CurrentRow.Cells[0].Value;
-                connec.Open();
-                SqlCommand comm = new SqlCommand("UPDATE LessonAttendanceMJ SET IsArchived =1 WHERE StudentID = @StudentID", connec);
-                comm.Parameters.AddWithValue("@StudentID", StudentID);
-                comm.ExecuteNonQuery();
-                connec.Close();
-                int instructorId = ID;
-
-                Bind(instructorId);
-
-                MessageBox.Show("Archived");
+                MessageBox.Show("This student is already archived.");
+                return;
             }
+           
+            
+
+                DialogResult Result = MessageBox.Show("THIS ACTION CANNOT BE UNDONE!Are you sure you want to Archive.", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (Result == DialogResult.No)
+                {
+                    MessageBox.Show("Archive cancelled");
+                }
+                else
+                {
+
+                    int StudentID = (int)dataGridView2.CurrentRow.Cells[0].Value;
+                    connec.Open();
+                    SqlCommand comm = new SqlCommand("UPDATE LessonAttendanceMJ SET IsArchived =1 WHERE StudentID = @StudentID", connec);
+                    comm.Parameters.AddWithValue("@StudentID", StudentID);
+                    comm.ExecuteNonQuery();
+                    connec.Close();
+                    int instructorId = ID;
+
+                    Bind(instructorId);
+
+                    MessageBox.Show("Archived");
+                }
+            
         }
 
         private void activeBtn_CheckedChanged(object sender, EventArgs e)
