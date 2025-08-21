@@ -65,6 +65,7 @@ namespace DashboardAS
             this.packageMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.PackageMJTableAdapter();
             this.studentMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.StudentMJTableAdapter();
             this.bookingTableAdapter = new DashboardAS.DSAttendance2TableAdapters.BookingTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).BeginInit();
@@ -213,6 +214,7 @@ namespace DashboardAS
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(1122, 150);
             this.dataGridView2.TabIndex = 2;
+            this.dataGridView2.SelectionChanged += new System.EventHandler(this.dataGridView2_SelectionChanged);
             // 
             // studentIDDataGridViewTextBoxColumn1
             // 
@@ -331,6 +333,7 @@ namespace DashboardAS
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.archBtn);
             this.groupBox1.Controls.Add(this.ArchiveBtn);
             this.groupBox1.Controls.Add(this.Missed);
@@ -340,7 +343,7 @@ namespace DashboardAS
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(1200, 529);
+            this.groupBox1.Size = new System.Drawing.Size(1225, 567);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attendance Register";
@@ -400,12 +403,24 @@ namespace DashboardAS
             // 
             this.bookingTableAdapter.ClearBeforeFill = true;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.YellowGreen;
+            this.button1.Location = new System.Drawing.Point(820, 488);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(304, 37);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Reactivate";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // LessonAttendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1267, 585);
+            this.ClientSize = new System.Drawing.Size(1308, 688);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.RegisterBtn);
             this.Controls.Add(this.dataGridView2);
@@ -466,5 +481,6 @@ namespace DashboardAS
         private System.Windows.Forms.DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button ArchiveBtn;
         private System.Windows.Forms.CheckBox archBtn;
+        private System.Windows.Forms.Button button1;
     }
 }
