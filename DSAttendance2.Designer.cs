@@ -3835,7 +3835,7 @@ namespace DashboardAS {
                         int StudentID, 
                         string StudentName, 
                         string StudentSurname, 
-                        string InstructorID, 
+                        int InstructorID, 
                         string PreTripChecks, 
                         string VehicleControl, 
                         string SpeedNGearControl, 
@@ -3922,7 +3922,7 @@ namespace DashboardAS {
                 base.Columns.Add(this.columnStudentName);
                 this.columnStudentSurname = new global::System.Data.DataColumn("StudentSurname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStudentSurname);
-                this.columnInstructorID = new global::System.Data.DataColumn("InstructorID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnInstructorID = new global::System.Data.DataColumn("InstructorID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInstructorID);
                 this.columnPreTripChecks = new global::System.Data.DataColumn("PreTripChecks", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPreTripChecks);
@@ -3957,7 +3957,6 @@ namespace DashboardAS {
                 this.columnStudentSurname.AllowDBNull = false;
                 this.columnStudentSurname.MaxLength = 50;
                 this.columnInstructorID.AllowDBNull = false;
-                this.columnInstructorID.MaxLength = 50;
                 this.columnPreTripChecks.MaxLength = 50;
                 this.columnVehicleControl.MaxLength = 50;
                 this.columnSpeedNGearControl.MaxLength = 50;
@@ -6209,9 +6208,9 @@ namespace DashboardAS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string InstructorID {
+            public int InstructorID {
                 get {
-                    return ((string)(this[this.tableStudentProgress.InstructorIDColumn]));
+                    return ((int)(this[this.tableStudentProgress.InstructorIDColumn]));
                 }
                 set {
                     this[this.tableStudentProgress.InstructorIDColumn] = value;
@@ -11280,7 +11279,7 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentSurname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentSurname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PreTripChecks", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PreTripChecks", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VehicleControl", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleControl", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -11313,7 +11312,7 @@ SELECT StudentID, StudentName, StudentSurname, InstructorID, PreTripChecks, Vehi
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentSurname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentSurname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PreTripChecks", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehicleControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleControl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SpeedNGearControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpeedNGearControl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -11367,7 +11366,7 @@ SELECT StudentID, StudentName, StudentSurname, InstructorID, PreTripChecks, Vehi
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentSurname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentSurname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PreTripChecks", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehicleControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleControl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SpeedNGearControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpeedNGearControl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -11383,7 +11382,7 @@ SELECT StudentID, StudentName, StudentSurname, InstructorID, PreTripChecks, Vehi
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentSurname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentSurname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PreTripChecks", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PreTripChecks", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VehicleControl", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleControl", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -11420,19 +11419,11 @@ SELECT StudentID, StudentName, StudentSurname, InstructorID, PreTripChecks, Vehi
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT StudentProgress.*\r\nFROM     StudentProgress";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT StudentID, StudentName, StudentSurname, InstructorID, PreTripChecks, VehicleControl, SpeedNGearControl, ObservationalNDefensiveDriving, ControlledIntersections, UncontrolledIntersections, HillStartsNGradientControl, 
-                  ParkingNReversing, LaneChangingNOvertaking, FreewayDriving, MockTest, Comments
-FROM     StudentProgress
-WHERE  (InstructorID = @instructorid)";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@instructorid", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11454,42 +11445,6 @@ WHERE  (InstructorID = @instructorid)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DSAttendance2.StudentProgressDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSAttendance2.StudentProgressDataTable dataTable = new DSAttendance2.StudentProgressDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByID(DSAttendance2.StudentProgressDataTable dataTable, string instructorid) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((instructorid == null)) {
-                throw new global::System.ArgumentNullException("instructorid");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(instructorid));
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DSAttendance2.StudentProgressDataTable GetDataBy(string instructorid) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((instructorid == null)) {
-                throw new global::System.ArgumentNullException("instructorid");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(instructorid));
-            }
             DSAttendance2.StudentProgressDataTable dataTable = new DSAttendance2.StudentProgressDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -11532,7 +11487,7 @@ WHERE  (InstructorID = @instructorid)";
                     int Original_StudentID, 
                     string Original_StudentName, 
                     string Original_StudentSurname, 
-                    string Original_InstructorID, 
+                    int Original_InstructorID, 
                     string Original_PreTripChecks, 
                     string Original_VehicleControl, 
                     string Original_SpeedNGearControl, 
@@ -11558,12 +11513,7 @@ WHERE  (InstructorID = @instructorid)";
             else {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_StudentSurname));
             }
-            if ((Original_InstructorID == null)) {
-                throw new global::System.ArgumentNullException("Original_InstructorID");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_InstructorID));
-            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_InstructorID));
             if ((Original_PreTripChecks == null)) {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
@@ -11684,7 +11634,7 @@ WHERE  (InstructorID = @instructorid)";
                     int StudentID, 
                     string StudentName, 
                     string StudentSurname, 
-                    string InstructorID, 
+                    int InstructorID, 
                     string PreTripChecks, 
                     string VehicleControl, 
                     string SpeedNGearControl, 
@@ -11710,12 +11660,7 @@ WHERE  (InstructorID = @instructorid)";
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(StudentSurname));
             }
-            if ((InstructorID == null)) {
-                throw new global::System.ArgumentNullException("InstructorID");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(InstructorID));
-            }
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(InstructorID));
             if ((PreTripChecks == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
@@ -11812,7 +11757,7 @@ WHERE  (InstructorID = @instructorid)";
                     int StudentID, 
                     string StudentName, 
                     string StudentSurname, 
-                    string InstructorID, 
+                    int InstructorID, 
                     string PreTripChecks, 
                     string VehicleControl, 
                     string SpeedNGearControl, 
@@ -11828,7 +11773,7 @@ WHERE  (InstructorID = @instructorid)";
                     int Original_StudentID, 
                     string Original_StudentName, 
                     string Original_StudentSurname, 
-                    string Original_InstructorID, 
+                    int Original_InstructorID, 
                     string Original_PreTripChecks, 
                     string Original_VehicleControl, 
                     string Original_SpeedNGearControl, 
@@ -11854,12 +11799,7 @@ WHERE  (InstructorID = @instructorid)";
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(StudentSurname));
             }
-            if ((InstructorID == null)) {
-                throw new global::System.ArgumentNullException("InstructorID");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(InstructorID));
-            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(InstructorID));
             if ((PreTripChecks == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
@@ -11945,12 +11885,7 @@ WHERE  (InstructorID = @instructorid)";
             else {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_StudentSurname));
             }
-            if ((Original_InstructorID == null)) {
-                throw new global::System.ArgumentNullException("Original_InstructorID");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_InstructorID));
-            }
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_InstructorID));
             if ((Original_PreTripChecks == null)) {
                 this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
@@ -12070,7 +12005,7 @@ WHERE  (InstructorID = @instructorid)";
         public virtual int Update(
                     string StudentName, 
                     string StudentSurname, 
-                    string InstructorID, 
+                    int InstructorID, 
                     string PreTripChecks, 
                     string VehicleControl, 
                     string SpeedNGearControl, 
@@ -12086,7 +12021,7 @@ WHERE  (InstructorID = @instructorid)";
                     int Original_StudentID, 
                     string Original_StudentName, 
                     string Original_StudentSurname, 
-                    string Original_InstructorID, 
+                    int Original_InstructorID, 
                     string Original_PreTripChecks, 
                     string Original_VehicleControl, 
                     string Original_SpeedNGearControl, 

@@ -47,25 +47,40 @@ namespace DashboardAS
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
             int ID = id;
-            try
+            using (SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
             {
-
-                bool BT = false;
-                int att = 0;
-                int missed = 0;
                 connec.Open();
-                SqlCommand command = new SqlCommand("Insert into LessonAttendanceMJ values( '" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + ID + "', '" + dataGridView1.CurrentRow.Cells[4].Value + "','" + (int)dataGridView1.CurrentRow.Cells[5].Value + "','" + att + "', '" + missed + "' ,'" + (int)dataGridView1.CurrentRow.Cells[5].Value +"', '"+ BT + "')", connec);
-                command.ExecuteNonQuery();
-                connec.Close();
-                MessageBox.Show("Registered");
-                int instructorId = ID;
+                SqlTransaction transaction = connec.BeginTransaction();
 
-                Bind(instructorId);
-            }
-            catch
-            {
-                connec.Close();
-                MessageBox.Show("Student Already exists in the register","ERROR", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                try
+                {
+
+                    bool BT = false;
+                    int att = 0;
+                    int missed = 0;
+
+                    SqlCommand command1 = new SqlCommand("Insert into LessonAttendanceMJ values( '" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + ID + "', '" + dataGridView1.CurrentRow.Cells[4].Value + "','" + (int)dataGridView1.CurrentRow.Cells[5].Value + "','" + att + "', '" + missed + "' ,'" + (int)dataGridView1.CurrentRow.Cells[5].Value + "', '" + BT + "')", connec, transaction);
+                    command1.ExecuteNonQuery();
+
+                    SqlCommand command2 = new SqlCommand("Insert into StudentProgress values('" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + ID + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')", connec, transaction);
+                    command2.ExecuteNonQuery();
+
+                    transaction.Commit();
+                    int instructorId = ID;
+
+
+                    MessageBox.Show("Added to Attendance Registered");
+
+                    Bind(instructorId);
+
+
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    connec.Close();
+                    MessageBox.Show("Student Already exists in the register", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
