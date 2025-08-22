@@ -71,6 +71,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSAttendance.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSAttendance2.cs">
+      <DependentUpon>DSAttendance2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DSAttendance2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

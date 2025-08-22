@@ -21,10 +21,12 @@ namespace DashboardAS
 
         private void StudentSummary_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dsAttendance21.LessonAttendanceMJ' table. You can move, or remove it, as needed.
+            this.lessonAttendanceMJTableAdapter.Fill(this.dsAttendance21.LessonAttendanceMJ);
             // TODO: This line of code loads data into the 'dSAttendance.F_Outcome' table. You can move, or remove it, as needed.
             //this.f_OutcomeTableAdapter.Fill(this.dSAttendance.F_Outcome);
             // TODO: This line of code loads data into the 'dSAttendance.F_LessonAttendance' table. You can move, or remove it, as needed.
-          
+
         }
         SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
 
@@ -36,7 +38,7 @@ namespace DashboardAS
             SqlDataAdapter sd = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             sd.Fill(dt);
-            dataGridView1.DataSource = dt;
+            //dataGridView1.DataSource = dt;
         }
 
 
