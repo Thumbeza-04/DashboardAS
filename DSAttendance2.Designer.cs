@@ -40,6 +40,8 @@ namespace DashboardAS {
         
         private InstructorMJDataTable tableInstructorMJ;
         
+        private StudentProgressDataTable tableStudentProgress;
+        
         private global::System.Data.DataRelation relationFK__LessonBoo__Packa__18B6AB08;
         
         private global::System.Data.DataRelation relationFK__LessonBoo__Stude__15DA3E5D;
@@ -107,6 +109,9 @@ namespace DashboardAS {
                 }
                 if ((ds.Tables["InstructorMJ"] != null)) {
                     base.Tables.Add(new InstructorMJDataTable(ds.Tables["InstructorMJ"]));
+                }
+                if ((ds.Tables["StudentProgress"] != null)) {
+                    base.Tables.Add(new StudentProgressDataTable(ds.Tables["StudentProgress"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -208,6 +213,16 @@ namespace DashboardAS {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public StudentProgressDataTable StudentProgress {
+            get {
+                return this.tableStudentProgress;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -297,6 +312,9 @@ namespace DashboardAS {
                 if ((ds.Tables["InstructorMJ"] != null)) {
                     base.Tables.Add(new InstructorMJDataTable(ds.Tables["InstructorMJ"]));
                 }
+                if ((ds.Tables["StudentProgress"] != null)) {
+                    base.Tables.Add(new StudentProgressDataTable(ds.Tables["StudentProgress"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -378,6 +396,12 @@ namespace DashboardAS {
                     this.tableInstructorMJ.InitVars();
                 }
             }
+            this.tableStudentProgress = ((StudentProgressDataTable)(base.Tables["StudentProgress"]));
+            if ((initTable == true)) {
+                if ((this.tableStudentProgress != null)) {
+                    this.tableStudentProgress.InitVars();
+                }
+            }
             this.relationFK__LessonBoo__Packa__18B6AB08 = this.Relations["FK__LessonBoo__Packa__18B6AB08"];
             this.relationFK__LessonBoo__Stude__15DA3E5D = this.Relations["FK__LessonBoo__Stude__15DA3E5D"];
             this.relationFK__StudentMJ__Packa__11158940 = this.Relations["FK__StudentMJ__Packa__11158940"];
@@ -412,6 +436,8 @@ namespace DashboardAS {
             base.Tables.Add(this.tableBooking);
             this.tableInstructorMJ = new InstructorMJDataTable();
             base.Tables.Add(this.tableInstructorMJ);
+            this.tableStudentProgress = new StudentProgressDataTable();
+            base.Tables.Add(this.tableStudentProgress);
             this.relationFK__LessonBoo__Packa__18B6AB08 = new global::System.Data.DataRelation("FK__LessonBoo__Packa__18B6AB08", new global::System.Data.DataColumn[] {
                         this.tablePackageMJ.PackageNameColumn}, new global::System.Data.DataColumn[] {
                         this.tableLessonBookingMJ.PackageIDColumn}, false);
@@ -496,6 +522,12 @@ namespace DashboardAS {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeStudentProgress() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -572,6 +604,9 @@ namespace DashboardAS {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void InstructorMJRowChangeEventHandler(object sender, InstructorMJRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void StudentProgressRowChangeEventHandler(object sender, StudentProgressRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3560,6 +3595,508 @@ namespace DashboardAS {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class StudentProgressDataTable : global::System.Data.TypedTableBase<StudentProgressRow> {
+            
+            private global::System.Data.DataColumn columnStudentID;
+            
+            private global::System.Data.DataColumn columnStudentName;
+            
+            private global::System.Data.DataColumn columnStudentSurname;
+            
+            private global::System.Data.DataColumn columnInstructorID;
+            
+            private global::System.Data.DataColumn columnPreTripChecks;
+            
+            private global::System.Data.DataColumn columnVehicleControl;
+            
+            private global::System.Data.DataColumn columnSpeedNGearControl;
+            
+            private global::System.Data.DataColumn columnObservationalNDefensiveDriving;
+            
+            private global::System.Data.DataColumn columnControlledIntersections;
+            
+            private global::System.Data.DataColumn columnUncontrolledIntersections;
+            
+            private global::System.Data.DataColumn columnHillStartsNGradientControl;
+            
+            private global::System.Data.DataColumn columnParkingNReversing;
+            
+            private global::System.Data.DataColumn columnLaneChangingNOvertaking;
+            
+            private global::System.Data.DataColumn columnFreewayDriving;
+            
+            private global::System.Data.DataColumn columnMockTest;
+            
+            private global::System.Data.DataColumn columnComments;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public StudentProgressDataTable() {
+                this.TableName = "StudentProgress";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal StudentProgressDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected StudentProgressDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StudentIDColumn {
+                get {
+                    return this.columnStudentID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StudentNameColumn {
+                get {
+                    return this.columnStudentName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StudentSurnameColumn {
+                get {
+                    return this.columnStudentSurname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn InstructorIDColumn {
+                get {
+                    return this.columnInstructorID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PreTripChecksColumn {
+                get {
+                    return this.columnPreTripChecks;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn VehicleControlColumn {
+                get {
+                    return this.columnVehicleControl;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SpeedNGearControlColumn {
+                get {
+                    return this.columnSpeedNGearControl;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ObservationalNDefensiveDrivingColumn {
+                get {
+                    return this.columnObservationalNDefensiveDriving;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ControlledIntersectionsColumn {
+                get {
+                    return this.columnControlledIntersections;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn UncontrolledIntersectionsColumn {
+                get {
+                    return this.columnUncontrolledIntersections;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn HillStartsNGradientControlColumn {
+                get {
+                    return this.columnHillStartsNGradientControl;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ParkingNReversingColumn {
+                get {
+                    return this.columnParkingNReversing;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn LaneChangingNOvertakingColumn {
+                get {
+                    return this.columnLaneChangingNOvertaking;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FreewayDrivingColumn {
+                get {
+                    return this.columnFreewayDriving;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MockTestColumn {
+                get {
+                    return this.columnMockTest;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CommentsColumn {
+                get {
+                    return this.columnComments;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public StudentProgressRow this[int index] {
+                get {
+                    return ((StudentProgressRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event StudentProgressRowChangeEventHandler StudentProgressRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event StudentProgressRowChangeEventHandler StudentProgressRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event StudentProgressRowChangeEventHandler StudentProgressRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event StudentProgressRowChangeEventHandler StudentProgressRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddStudentProgressRow(StudentProgressRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public StudentProgressRow AddStudentProgressRow(
+                        int StudentID, 
+                        string StudentName, 
+                        string StudentSurname, 
+                        string InstructorID, 
+                        string PreTripChecks, 
+                        string VehicleControl, 
+                        string SpeedNGearControl, 
+                        string ObservationalNDefensiveDriving, 
+                        string ControlledIntersections, 
+                        string UncontrolledIntersections, 
+                        string HillStartsNGradientControl, 
+                        string ParkingNReversing, 
+                        string LaneChangingNOvertaking, 
+                        string FreewayDriving, 
+                        string MockTest, 
+                        string Comments) {
+                StudentProgressRow rowStudentProgressRow = ((StudentProgressRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        StudentID,
+                        StudentName,
+                        StudentSurname,
+                        InstructorID,
+                        PreTripChecks,
+                        VehicleControl,
+                        SpeedNGearControl,
+                        ObservationalNDefensiveDriving,
+                        ControlledIntersections,
+                        UncontrolledIntersections,
+                        HillStartsNGradientControl,
+                        ParkingNReversing,
+                        LaneChangingNOvertaking,
+                        FreewayDriving,
+                        MockTest,
+                        Comments};
+                rowStudentProgressRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowStudentProgressRow);
+                return rowStudentProgressRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public StudentProgressRow FindByStudentID(int StudentID) {
+                return ((StudentProgressRow)(this.Rows.Find(new object[] {
+                            StudentID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                StudentProgressDataTable cln = ((StudentProgressDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new StudentProgressDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnStudentID = base.Columns["StudentID"];
+                this.columnStudentName = base.Columns["StudentName"];
+                this.columnStudentSurname = base.Columns["StudentSurname"];
+                this.columnInstructorID = base.Columns["InstructorID"];
+                this.columnPreTripChecks = base.Columns["PreTripChecks"];
+                this.columnVehicleControl = base.Columns["VehicleControl"];
+                this.columnSpeedNGearControl = base.Columns["SpeedNGearControl"];
+                this.columnObservationalNDefensiveDriving = base.Columns["ObservationalNDefensiveDriving"];
+                this.columnControlledIntersections = base.Columns["ControlledIntersections"];
+                this.columnUncontrolledIntersections = base.Columns["UncontrolledIntersections"];
+                this.columnHillStartsNGradientControl = base.Columns["HillStartsNGradientControl"];
+                this.columnParkingNReversing = base.Columns["ParkingNReversing"];
+                this.columnLaneChangingNOvertaking = base.Columns["LaneChangingNOvertaking"];
+                this.columnFreewayDriving = base.Columns["FreewayDriving"];
+                this.columnMockTest = base.Columns["MockTest"];
+                this.columnComments = base.Columns["Comments"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnStudentID = new global::System.Data.DataColumn("StudentID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStudentID);
+                this.columnStudentName = new global::System.Data.DataColumn("StudentName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStudentName);
+                this.columnStudentSurname = new global::System.Data.DataColumn("StudentSurname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStudentSurname);
+                this.columnInstructorID = new global::System.Data.DataColumn("InstructorID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInstructorID);
+                this.columnPreTripChecks = new global::System.Data.DataColumn("PreTripChecks", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPreTripChecks);
+                this.columnVehicleControl = new global::System.Data.DataColumn("VehicleControl", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVehicleControl);
+                this.columnSpeedNGearControl = new global::System.Data.DataColumn("SpeedNGearControl", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSpeedNGearControl);
+                this.columnObservationalNDefensiveDriving = new global::System.Data.DataColumn("ObservationalNDefensiveDriving", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnObservationalNDefensiveDriving);
+                this.columnControlledIntersections = new global::System.Data.DataColumn("ControlledIntersections", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnControlledIntersections);
+                this.columnUncontrolledIntersections = new global::System.Data.DataColumn("UncontrolledIntersections", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUncontrolledIntersections);
+                this.columnHillStartsNGradientControl = new global::System.Data.DataColumn("HillStartsNGradientControl", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHillStartsNGradientControl);
+                this.columnParkingNReversing = new global::System.Data.DataColumn("ParkingNReversing", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnParkingNReversing);
+                this.columnLaneChangingNOvertaking = new global::System.Data.DataColumn("LaneChangingNOvertaking", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLaneChangingNOvertaking);
+                this.columnFreewayDriving = new global::System.Data.DataColumn("FreewayDriving", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFreewayDriving);
+                this.columnMockTest = new global::System.Data.DataColumn("MockTest", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMockTest);
+                this.columnComments = new global::System.Data.DataColumn("Comments", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComments);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnStudentID}, true));
+                this.columnStudentID.AllowDBNull = false;
+                this.columnStudentID.Unique = true;
+                this.columnStudentName.AllowDBNull = false;
+                this.columnStudentName.MaxLength = 50;
+                this.columnStudentSurname.AllowDBNull = false;
+                this.columnStudentSurname.MaxLength = 50;
+                this.columnInstructorID.AllowDBNull = false;
+                this.columnInstructorID.MaxLength = 50;
+                this.columnPreTripChecks.MaxLength = 50;
+                this.columnVehicleControl.MaxLength = 50;
+                this.columnSpeedNGearControl.MaxLength = 50;
+                this.columnObservationalNDefensiveDriving.MaxLength = 50;
+                this.columnControlledIntersections.MaxLength = 50;
+                this.columnUncontrolledIntersections.MaxLength = 50;
+                this.columnHillStartsNGradientControl.MaxLength = 50;
+                this.columnParkingNReversing.MaxLength = 50;
+                this.columnLaneChangingNOvertaking.MaxLength = 50;
+                this.columnFreewayDriving.MaxLength = 50;
+                this.columnMockTest.MaxLength = 50;
+                this.columnComments.MaxLength = 500;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public StudentProgressRow NewStudentProgressRow() {
+                return ((StudentProgressRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new StudentProgressRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(StudentProgressRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.StudentProgressRowChanged != null)) {
+                    this.StudentProgressRowChanged(this, new StudentProgressRowChangeEvent(((StudentProgressRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.StudentProgressRowChanging != null)) {
+                    this.StudentProgressRowChanging(this, new StudentProgressRowChangeEvent(((StudentProgressRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.StudentProgressRowDeleted != null)) {
+                    this.StudentProgressRowDeleted(this, new StudentProgressRowChangeEvent(((StudentProgressRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.StudentProgressRowDeleting != null)) {
+                    this.StudentProgressRowDeleting(this, new StudentProgressRowChangeEvent(((StudentProgressRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveStudentProgressRow(StudentProgressRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DSAttendance2 ds = new DSAttendance2();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "StudentProgressDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class LessonAttendanceMJRow : global::System.Data.DataRow {
@@ -5624,6 +6161,406 @@ namespace DashboardAS {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class StudentProgressRow : global::System.Data.DataRow {
+            
+            private StudentProgressDataTable tableStudentProgress;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal StudentProgressRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableStudentProgress = ((StudentProgressDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int StudentID {
+                get {
+                    return ((int)(this[this.tableStudentProgress.StudentIDColumn]));
+                }
+                set {
+                    this[this.tableStudentProgress.StudentIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string StudentName {
+                get {
+                    return ((string)(this[this.tableStudentProgress.StudentNameColumn]));
+                }
+                set {
+                    this[this.tableStudentProgress.StudentNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string StudentSurname {
+                get {
+                    return ((string)(this[this.tableStudentProgress.StudentSurnameColumn]));
+                }
+                set {
+                    this[this.tableStudentProgress.StudentSurnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string InstructorID {
+                get {
+                    return ((string)(this[this.tableStudentProgress.InstructorIDColumn]));
+                }
+                set {
+                    this[this.tableStudentProgress.InstructorIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PreTripChecks {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.PreTripChecksColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PreTripChecks\' in table \'StudentProgress\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.PreTripChecksColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string VehicleControl {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.VehicleControlColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VehicleControl\' in table \'StudentProgress\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.VehicleControlColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SpeedNGearControl {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.SpeedNGearControlColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SpeedNGearControl\' in table \'StudentProgress\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.SpeedNGearControlColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ObservationalNDefensiveDriving {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.ObservationalNDefensiveDrivingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ObservationalNDefensiveDriving\' in table \'StudentProgress\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.ObservationalNDefensiveDrivingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ControlledIntersections {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.ControlledIntersectionsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ControlledIntersections\' in table \'StudentProgress\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.ControlledIntersectionsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string UncontrolledIntersections {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.UncontrolledIntersectionsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UncontrolledIntersections\' in table \'StudentProgress\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.UncontrolledIntersectionsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string HillStartsNGradientControl {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.HillStartsNGradientControlColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HillStartsNGradientControl\' in table \'StudentProgress\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.HillStartsNGradientControlColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ParkingNReversing {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.ParkingNReversingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ParkingNReversing\' in table \'StudentProgress\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.ParkingNReversingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string LaneChangingNOvertaking {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.LaneChangingNOvertakingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LaneChangingNOvertaking\' in table \'StudentProgress\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.LaneChangingNOvertakingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FreewayDriving {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.FreewayDrivingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FreewayDriving\' in table \'StudentProgress\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.FreewayDrivingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string MockTest {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.MockTestColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MockTest\' in table \'StudentProgress\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.MockTestColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Comments {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentProgress.CommentsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Comments\' in table \'StudentProgress\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentProgress.CommentsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPreTripChecksNull() {
+                return this.IsNull(this.tableStudentProgress.PreTripChecksColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPreTripChecksNull() {
+                this[this.tableStudentProgress.PreTripChecksColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsVehicleControlNull() {
+                return this.IsNull(this.tableStudentProgress.VehicleControlColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetVehicleControlNull() {
+                this[this.tableStudentProgress.VehicleControlColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSpeedNGearControlNull() {
+                return this.IsNull(this.tableStudentProgress.SpeedNGearControlColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSpeedNGearControlNull() {
+                this[this.tableStudentProgress.SpeedNGearControlColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsObservationalNDefensiveDrivingNull() {
+                return this.IsNull(this.tableStudentProgress.ObservationalNDefensiveDrivingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetObservationalNDefensiveDrivingNull() {
+                this[this.tableStudentProgress.ObservationalNDefensiveDrivingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsControlledIntersectionsNull() {
+                return this.IsNull(this.tableStudentProgress.ControlledIntersectionsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetControlledIntersectionsNull() {
+                this[this.tableStudentProgress.ControlledIntersectionsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsUncontrolledIntersectionsNull() {
+                return this.IsNull(this.tableStudentProgress.UncontrolledIntersectionsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetUncontrolledIntersectionsNull() {
+                this[this.tableStudentProgress.UncontrolledIntersectionsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsHillStartsNGradientControlNull() {
+                return this.IsNull(this.tableStudentProgress.HillStartsNGradientControlColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetHillStartsNGradientControlNull() {
+                this[this.tableStudentProgress.HillStartsNGradientControlColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsParkingNReversingNull() {
+                return this.IsNull(this.tableStudentProgress.ParkingNReversingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetParkingNReversingNull() {
+                this[this.tableStudentProgress.ParkingNReversingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsLaneChangingNOvertakingNull() {
+                return this.IsNull(this.tableStudentProgress.LaneChangingNOvertakingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetLaneChangingNOvertakingNull() {
+                this[this.tableStudentProgress.LaneChangingNOvertakingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFreewayDrivingNull() {
+                return this.IsNull(this.tableStudentProgress.FreewayDrivingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFreewayDrivingNull() {
+                this[this.tableStudentProgress.FreewayDrivingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMockTestNull() {
+                return this.IsNull(this.tableStudentProgress.MockTestColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMockTestNull() {
+                this[this.tableStudentProgress.MockTestColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCommentsNull() {
+                return this.IsNull(this.tableStudentProgress.CommentsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCommentsNull() {
+                this[this.tableStudentProgress.CommentsColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -5881,6 +6818,40 @@ namespace DashboardAS {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public InstructorMJRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class StudentProgressRowChangeEvent : global::System.EventArgs {
+            
+            private StudentProgressRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public StudentProgressRowChangeEvent(StudentProgressRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public StudentProgressRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -10143,6 +11114,996 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class StudentProgressTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public StudentProgressTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "StudentProgress";
+            tableMapping.ColumnMappings.Add("StudentID", "StudentID");
+            tableMapping.ColumnMappings.Add("StudentName", "StudentName");
+            tableMapping.ColumnMappings.Add("StudentSurname", "StudentSurname");
+            tableMapping.ColumnMappings.Add("InstructorID", "InstructorID");
+            tableMapping.ColumnMappings.Add("PreTripChecks", "PreTripChecks");
+            tableMapping.ColumnMappings.Add("VehicleControl", "VehicleControl");
+            tableMapping.ColumnMappings.Add("SpeedNGearControl", "SpeedNGearControl");
+            tableMapping.ColumnMappings.Add("ObservationalNDefensiveDriving", "ObservationalNDefensiveDriving");
+            tableMapping.ColumnMappings.Add("ControlledIntersections", "ControlledIntersections");
+            tableMapping.ColumnMappings.Add("UncontrolledIntersections", "UncontrolledIntersections");
+            tableMapping.ColumnMappings.Add("HillStartsNGradientControl", "HillStartsNGradientControl");
+            tableMapping.ColumnMappings.Add("ParkingNReversing", "ParkingNReversing");
+            tableMapping.ColumnMappings.Add("LaneChangingNOvertaking", "LaneChangingNOvertaking");
+            tableMapping.ColumnMappings.Add("FreewayDriving", "FreewayDriving");
+            tableMapping.ColumnMappings.Add("MockTest", "MockTest");
+            tableMapping.ColumnMappings.Add("Comments", "Comments");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [StudentProgress] WHERE (([StudentID] = @Original_StudentID) AND ([St" +
+                "udentName] = @Original_StudentName) AND ([StudentSurname] = @Original_StudentSur" +
+                "name) AND ([InstructorID] = @Original_InstructorID) AND ((@IsNull_PreTripChecks " +
+                "= 1 AND [PreTripChecks] IS NULL) OR ([PreTripChecks] = @Original_PreTripChecks))" +
+                " AND ((@IsNull_VehicleControl = 1 AND [VehicleControl] IS NULL) OR ([VehicleCont" +
+                "rol] = @Original_VehicleControl)) AND ((@IsNull_SpeedNGearControl = 1 AND [Speed" +
+                "NGearControl] IS NULL) OR ([SpeedNGearControl] = @Original_SpeedNGearControl)) A" +
+                "ND ((@IsNull_ObservationalNDefensiveDriving = 1 AND [ObservationalNDefensiveDriv" +
+                "ing] IS NULL) OR ([ObservationalNDefensiveDriving] = @Original_ObservationalNDef" +
+                "ensiveDriving)) AND ((@IsNull_ControlledIntersections = 1 AND [ControlledInterse" +
+                "ctions] IS NULL) OR ([ControlledIntersections] = @Original_ControlledIntersectio" +
+                "ns)) AND ((@IsNull_UncontrolledIntersections = 1 AND [UncontrolledIntersections]" +
+                " IS NULL) OR ([UncontrolledIntersections] = @Original_UncontrolledIntersections)" +
+                ") AND ((@IsNull_HillStartsNGradientControl = 1 AND [HillStartsNGradientControl] " +
+                "IS NULL) OR ([HillStartsNGradientControl] = @Original_HillStartsNGradientControl" +
+                ")) AND ((@IsNull_ParkingNReversing = 1 AND [ParkingNReversing] IS NULL) OR ([Par" +
+                "kingNReversing] = @Original_ParkingNReversing)) AND ((@IsNull_LaneChangingNOvert" +
+                "aking = 1 AND [LaneChangingNOvertaking] IS NULL) OR ([LaneChangingNOvertaking] =" +
+                " @Original_LaneChangingNOvertaking)) AND ((@IsNull_FreewayDriving = 1 AND [Freew" +
+                "ayDriving] IS NULL) OR ([FreewayDriving] = @Original_FreewayDriving)) AND ((@IsN" +
+                "ull_MockTest = 1 AND [MockTest] IS NULL) OR ([MockTest] = @Original_MockTest)) A" +
+                "ND ((@IsNull_Comments = 1 AND [Comments] IS NULL) OR ([Comments] = @Original_Com" +
+                "ments)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentSurname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentSurname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PreTripChecks", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PreTripChecks", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VehicleControl", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleControl", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VehicleControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleControl", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SpeedNGearControl", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpeedNGearControl", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SpeedNGearControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpeedNGearControl", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ObservationalNDefensiveDriving", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ObservationalNDefensiveDriving", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ObservationalNDefensiveDriving", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ObservationalNDefensiveDriving", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ControlledIntersections", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ControlledIntersections", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ControlledIntersections", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ControlledIntersections", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UncontrolledIntersections", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UncontrolledIntersections", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UncontrolledIntersections", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UncontrolledIntersections", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_HillStartsNGradientControl", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HillStartsNGradientControl", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HillStartsNGradientControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HillStartsNGradientControl", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ParkingNReversing", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParkingNReversing", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ParkingNReversing", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParkingNReversing", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LaneChangingNOvertaking", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LaneChangingNOvertaking", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LaneChangingNOvertaking", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LaneChangingNOvertaking", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FreewayDriving", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FreewayDriving", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FreewayDriving", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FreewayDriving", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MockTest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MockTest", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MockTest", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MockTest", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Comments", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Comments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [StudentProgress] ([StudentID], [StudentName], [StudentSurname], [InstructorID], [PreTripChecks], [VehicleControl], [SpeedNGearControl], [ObservationalNDefensiveDriving], [ControlledIntersections], [UncontrolledIntersections], [HillStartsNGradientControl], [ParkingNReversing], [LaneChangingNOvertaking], [FreewayDriving], [MockTest], [Comments]) VALUES (@StudentID, @StudentName, @StudentSurname, @InstructorID, @PreTripChecks, @VehicleControl, @SpeedNGearControl, @ObservationalNDefensiveDriving, @ControlledIntersections, @UncontrolledIntersections, @HillStartsNGradientControl, @ParkingNReversing, @LaneChangingNOvertaking, @FreewayDriving, @MockTest, @Comments);
+SELECT StudentID, StudentName, StudentSurname, InstructorID, PreTripChecks, VehicleControl, SpeedNGearControl, ObservationalNDefensiveDriving, ControlledIntersections, UncontrolledIntersections, HillStartsNGradientControl, ParkingNReversing, LaneChangingNOvertaking, FreewayDriving, MockTest, Comments FROM StudentProgress WHERE (StudentID = @StudentID)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentSurname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentSurname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PreTripChecks", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehicleControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleControl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SpeedNGearControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpeedNGearControl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ObservationalNDefensiveDriving", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ObservationalNDefensiveDriving", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ControlledIntersections", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ControlledIntersections", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UncontrolledIntersections", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UncontrolledIntersections", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HillStartsNGradientControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HillStartsNGradientControl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ParkingNReversing", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParkingNReversing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LaneChangingNOvertaking", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LaneChangingNOvertaking", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FreewayDriving", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FreewayDriving", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MockTest", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MockTest", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Comments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [StudentProgress] SET [StudentID] = @StudentID, [StudentName] = @StudentNa" +
+                "me, [StudentSurname] = @StudentSurname, [InstructorID] = @InstructorID, [PreTrip" +
+                "Checks] = @PreTripChecks, [VehicleControl] = @VehicleControl, [SpeedNGearControl" +
+                "] = @SpeedNGearControl, [ObservationalNDefensiveDriving] = @ObservationalNDefens" +
+                "iveDriving, [ControlledIntersections] = @ControlledIntersections, [UncontrolledI" +
+                "ntersections] = @UncontrolledIntersections, [HillStartsNGradientControl] = @Hill" +
+                "StartsNGradientControl, [ParkingNReversing] = @ParkingNReversing, [LaneChangingN" +
+                "Overtaking] = @LaneChangingNOvertaking, [FreewayDriving] = @FreewayDriving, [Moc" +
+                "kTest] = @MockTest, [Comments] = @Comments WHERE (([StudentID] = @Original_Stude" +
+                "ntID) AND ([StudentName] = @Original_StudentName) AND ([StudentSurname] = @Origi" +
+                "nal_StudentSurname) AND ([InstructorID] = @Original_InstructorID) AND ((@IsNull_" +
+                "PreTripChecks = 1 AND [PreTripChecks] IS NULL) OR ([PreTripChecks] = @Original_P" +
+                "reTripChecks)) AND ((@IsNull_VehicleControl = 1 AND [VehicleControl] IS NULL) OR" +
+                " ([VehicleControl] = @Original_VehicleControl)) AND ((@IsNull_SpeedNGearControl " +
+                "= 1 AND [SpeedNGearControl] IS NULL) OR ([SpeedNGearControl] = @Original_SpeedNG" +
+                "earControl)) AND ((@IsNull_ObservationalNDefensiveDriving = 1 AND [Observational" +
+                "NDefensiveDriving] IS NULL) OR ([ObservationalNDefensiveDriving] = @Original_Obs" +
+                "ervationalNDefensiveDriving)) AND ((@IsNull_ControlledIntersections = 1 AND [Con" +
+                "trolledIntersections] IS NULL) OR ([ControlledIntersections] = @Original_Control" +
+                "ledIntersections)) AND ((@IsNull_UncontrolledIntersections = 1 AND [Uncontrolled" +
+                "Intersections] IS NULL) OR ([UncontrolledIntersections] = @Original_Uncontrolled" +
+                "Intersections)) AND ((@IsNull_HillStartsNGradientControl = 1 AND [HillStartsNGra" +
+                "dientControl] IS NULL) OR ([HillStartsNGradientControl] = @Original_HillStartsNG" +
+                "radientControl)) AND ((@IsNull_ParkingNReversing = 1 AND [ParkingNReversing] IS " +
+                "NULL) OR ([ParkingNReversing] = @Original_ParkingNReversing)) AND ((@IsNull_Lane" +
+                "ChangingNOvertaking = 1 AND [LaneChangingNOvertaking] IS NULL) OR ([LaneChanging" +
+                "NOvertaking] = @Original_LaneChangingNOvertaking)) AND ((@IsNull_FreewayDriving " +
+                "= 1 AND [FreewayDriving] IS NULL) OR ([FreewayDriving] = @Original_FreewayDrivin" +
+                "g)) AND ((@IsNull_MockTest = 1 AND [MockTest] IS NULL) OR ([MockTest] = @Origina" +
+                "l_MockTest)) AND ((@IsNull_Comments = 1 AND [Comments] IS NULL) OR ([Comments] =" +
+                " @Original_Comments)));\r\nSELECT StudentID, StudentName, StudentSurname, Instruct" +
+                "orID, PreTripChecks, VehicleControl, SpeedNGearControl, ObservationalNDefensiveD" +
+                "riving, ControlledIntersections, UncontrolledIntersections, HillStartsNGradientC" +
+                "ontrol, ParkingNReversing, LaneChangingNOvertaking, FreewayDriving, MockTest, Co" +
+                "mments FROM StudentProgress WHERE (StudentID = @StudentID)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentSurname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentSurname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PreTripChecks", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehicleControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleControl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SpeedNGearControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpeedNGearControl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ObservationalNDefensiveDriving", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ObservationalNDefensiveDriving", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ControlledIntersections", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ControlledIntersections", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UncontrolledIntersections", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UncontrolledIntersections", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HillStartsNGradientControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HillStartsNGradientControl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ParkingNReversing", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParkingNReversing", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LaneChangingNOvertaking", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LaneChangingNOvertaking", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FreewayDriving", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FreewayDriving", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MockTest", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MockTest", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Comments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentSurname", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentSurname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorID", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PreTripChecks", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PreTripChecks", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PreTripChecks", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VehicleControl", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleControl", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VehicleControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehicleControl", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SpeedNGearControl", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpeedNGearControl", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SpeedNGearControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SpeedNGearControl", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ObservationalNDefensiveDriving", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ObservationalNDefensiveDriving", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ObservationalNDefensiveDriving", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ObservationalNDefensiveDriving", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ControlledIntersections", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ControlledIntersections", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ControlledIntersections", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ControlledIntersections", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UncontrolledIntersections", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UncontrolledIntersections", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UncontrolledIntersections", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UncontrolledIntersections", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_HillStartsNGradientControl", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HillStartsNGradientControl", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HillStartsNGradientControl", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HillStartsNGradientControl", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ParkingNReversing", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParkingNReversing", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ParkingNReversing", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ParkingNReversing", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LaneChangingNOvertaking", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LaneChangingNOvertaking", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LaneChangingNOvertaking", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LaneChangingNOvertaking", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FreewayDriving", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FreewayDriving", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FreewayDriving", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FreewayDriving", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MockTest", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MockTest", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MockTest", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MockTest", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Comments", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Comments", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Comments", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::DashboardAS.Properties.Settings.Default.WstGrp24ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT StudentProgress.*\r\nFROM     StudentProgress";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT StudentID, StudentName, StudentSurname, InstructorID, PreTripChecks, VehicleControl, SpeedNGearControl, ObservationalNDefensiveDriving, ControlledIntersections, UncontrolledIntersections, HillStartsNGradientControl, 
+                  ParkingNReversing, LaneChangingNOvertaking, FreewayDriving, MockTest, Comments
+FROM     StudentProgress
+WHERE  (InstructorID = @instructorid)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@instructorid", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DSAttendance2.StudentProgressDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DSAttendance2.StudentProgressDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DSAttendance2.StudentProgressDataTable dataTable = new DSAttendance2.StudentProgressDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByID(DSAttendance2.StudentProgressDataTable dataTable, string instructorid) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((instructorid == null)) {
+                throw new global::System.ArgumentNullException("instructorid");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(instructorid));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DSAttendance2.StudentProgressDataTable GetDataBy(string instructorid) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((instructorid == null)) {
+                throw new global::System.ArgumentNullException("instructorid");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(instructorid));
+            }
+            DSAttendance2.StudentProgressDataTable dataTable = new DSAttendance2.StudentProgressDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DSAttendance2.StudentProgressDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DSAttendance2 dataSet) {
+            return this.Adapter.Update(dataSet, "StudentProgress");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(
+                    int Original_StudentID, 
+                    string Original_StudentName, 
+                    string Original_StudentSurname, 
+                    string Original_InstructorID, 
+                    string Original_PreTripChecks, 
+                    string Original_VehicleControl, 
+                    string Original_SpeedNGearControl, 
+                    string Original_ObservationalNDefensiveDriving, 
+                    string Original_ControlledIntersections, 
+                    string Original_UncontrolledIntersections, 
+                    string Original_HillStartsNGradientControl, 
+                    string Original_ParkingNReversing, 
+                    string Original_LaneChangingNOvertaking, 
+                    string Original_FreewayDriving, 
+                    string Original_MockTest, 
+                    string Original_Comments) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_StudentID));
+            if ((Original_StudentName == null)) {
+                throw new global::System.ArgumentNullException("Original_StudentName");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_StudentName));
+            }
+            if ((Original_StudentSurname == null)) {
+                throw new global::System.ArgumentNullException("Original_StudentSurname");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_StudentSurname));
+            }
+            if ((Original_InstructorID == null)) {
+                throw new global::System.ArgumentNullException("Original_InstructorID");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_InstructorID));
+            }
+            if ((Original_PreTripChecks == null)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_PreTripChecks));
+            }
+            if ((Original_VehicleControl == null)) {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_VehicleControl));
+            }
+            if ((Original_SpeedNGearControl == null)) {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_SpeedNGearControl));
+            }
+            if ((Original_ObservationalNDefensiveDriving == null)) {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_ObservationalNDefensiveDriving));
+            }
+            if ((Original_ControlledIntersections == null)) {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(Original_ControlledIntersections));
+            }
+            if ((Original_UncontrolledIntersections == null)) {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((string)(Original_UncontrolledIntersections));
+            }
+            if ((Original_HillStartsNGradientControl == null)) {
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((string)(Original_HillStartsNGradientControl));
+            }
+            if ((Original_ParkingNReversing == null)) {
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((string)(Original_ParkingNReversing));
+            }
+            if ((Original_LaneChangingNOvertaking == null)) {
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((string)(Original_LaneChangingNOvertaking));
+            }
+            if ((Original_FreewayDriving == null)) {
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((string)(Original_FreewayDriving));
+            }
+            if ((Original_MockTest == null)) {
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((string)(Original_MockTest));
+            }
+            if ((Original_Comments == null)) {
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((string)(Original_Comments));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(
+                    int StudentID, 
+                    string StudentName, 
+                    string StudentSurname, 
+                    string InstructorID, 
+                    string PreTripChecks, 
+                    string VehicleControl, 
+                    string SpeedNGearControl, 
+                    string ObservationalNDefensiveDriving, 
+                    string ControlledIntersections, 
+                    string UncontrolledIntersections, 
+                    string HillStartsNGradientControl, 
+                    string ParkingNReversing, 
+                    string LaneChangingNOvertaking, 
+                    string FreewayDriving, 
+                    string MockTest, 
+                    string Comments) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(StudentID));
+            if ((StudentName == null)) {
+                throw new global::System.ArgumentNullException("StudentName");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(StudentName));
+            }
+            if ((StudentSurname == null)) {
+                throw new global::System.ArgumentNullException("StudentSurname");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(StudentSurname));
+            }
+            if ((InstructorID == null)) {
+                throw new global::System.ArgumentNullException("InstructorID");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(InstructorID));
+            }
+            if ((PreTripChecks == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(PreTripChecks));
+            }
+            if ((VehicleControl == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(VehicleControl));
+            }
+            if ((SpeedNGearControl == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(SpeedNGearControl));
+            }
+            if ((ObservationalNDefensiveDriving == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(ObservationalNDefensiveDriving));
+            }
+            if ((ControlledIntersections == null)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(ControlledIntersections));
+            }
+            if ((UncontrolledIntersections == null)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(UncontrolledIntersections));
+            }
+            if ((HillStartsNGradientControl == null)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(HillStartsNGradientControl));
+            }
+            if ((ParkingNReversing == null)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(ParkingNReversing));
+            }
+            if ((LaneChangingNOvertaking == null)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(LaneChangingNOvertaking));
+            }
+            if ((FreewayDriving == null)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(FreewayDriving));
+            }
+            if ((MockTest == null)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(MockTest));
+            }
+            if ((Comments == null)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(Comments));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    int StudentID, 
+                    string StudentName, 
+                    string StudentSurname, 
+                    string InstructorID, 
+                    string PreTripChecks, 
+                    string VehicleControl, 
+                    string SpeedNGearControl, 
+                    string ObservationalNDefensiveDriving, 
+                    string ControlledIntersections, 
+                    string UncontrolledIntersections, 
+                    string HillStartsNGradientControl, 
+                    string ParkingNReversing, 
+                    string LaneChangingNOvertaking, 
+                    string FreewayDriving, 
+                    string MockTest, 
+                    string Comments, 
+                    int Original_StudentID, 
+                    string Original_StudentName, 
+                    string Original_StudentSurname, 
+                    string Original_InstructorID, 
+                    string Original_PreTripChecks, 
+                    string Original_VehicleControl, 
+                    string Original_SpeedNGearControl, 
+                    string Original_ObservationalNDefensiveDriving, 
+                    string Original_ControlledIntersections, 
+                    string Original_UncontrolledIntersections, 
+                    string Original_HillStartsNGradientControl, 
+                    string Original_ParkingNReversing, 
+                    string Original_LaneChangingNOvertaking, 
+                    string Original_FreewayDriving, 
+                    string Original_MockTest, 
+                    string Original_Comments) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(StudentID));
+            if ((StudentName == null)) {
+                throw new global::System.ArgumentNullException("StudentName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(StudentName));
+            }
+            if ((StudentSurname == null)) {
+                throw new global::System.ArgumentNullException("StudentSurname");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(StudentSurname));
+            }
+            if ((InstructorID == null)) {
+                throw new global::System.ArgumentNullException("InstructorID");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(InstructorID));
+            }
+            if ((PreTripChecks == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(PreTripChecks));
+            }
+            if ((VehicleControl == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(VehicleControl));
+            }
+            if ((SpeedNGearControl == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(SpeedNGearControl));
+            }
+            if ((ObservationalNDefensiveDriving == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(ObservationalNDefensiveDriving));
+            }
+            if ((ControlledIntersections == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(ControlledIntersections));
+            }
+            if ((UncontrolledIntersections == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(UncontrolledIntersections));
+            }
+            if ((HillStartsNGradientControl == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(HillStartsNGradientControl));
+            }
+            if ((ParkingNReversing == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(ParkingNReversing));
+            }
+            if ((LaneChangingNOvertaking == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(LaneChangingNOvertaking));
+            }
+            if ((FreewayDriving == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(FreewayDriving));
+            }
+            if ((MockTest == null)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(MockTest));
+            }
+            if ((Comments == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Comments));
+            }
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_StudentID));
+            if ((Original_StudentName == null)) {
+                throw new global::System.ArgumentNullException("Original_StudentName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_StudentName));
+            }
+            if ((Original_StudentSurname == null)) {
+                throw new global::System.ArgumentNullException("Original_StudentSurname");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_StudentSurname));
+            }
+            if ((Original_InstructorID == null)) {
+                throw new global::System.ArgumentNullException("Original_InstructorID");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_InstructorID));
+            }
+            if ((Original_PreTripChecks == null)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_PreTripChecks));
+            }
+            if ((Original_VehicleControl == null)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_VehicleControl));
+            }
+            if ((Original_SpeedNGearControl == null)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_SpeedNGearControl));
+            }
+            if ((Original_ObservationalNDefensiveDriving == null)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_ObservationalNDefensiveDriving));
+            }
+            if ((Original_ControlledIntersections == null)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_ControlledIntersections));
+            }
+            if ((Original_UncontrolledIntersections == null)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_UncontrolledIntersections));
+            }
+            if ((Original_HillStartsNGradientControl == null)) {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_HillStartsNGradientControl));
+            }
+            if ((Original_ParkingNReversing == null)) {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(Original_ParkingNReversing));
+            }
+            if ((Original_LaneChangingNOvertaking == null)) {
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((string)(Original_LaneChangingNOvertaking));
+            }
+            if ((Original_FreewayDriving == null)) {
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((string)(Original_FreewayDriving));
+            }
+            if ((Original_MockTest == null)) {
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((string)(Original_MockTest));
+            }
+            if ((Original_Comments == null)) {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((string)(Original_Comments));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string StudentName, 
+                    string StudentSurname, 
+                    string InstructorID, 
+                    string PreTripChecks, 
+                    string VehicleControl, 
+                    string SpeedNGearControl, 
+                    string ObservationalNDefensiveDriving, 
+                    string ControlledIntersections, 
+                    string UncontrolledIntersections, 
+                    string HillStartsNGradientControl, 
+                    string ParkingNReversing, 
+                    string LaneChangingNOvertaking, 
+                    string FreewayDriving, 
+                    string MockTest, 
+                    string Comments, 
+                    int Original_StudentID, 
+                    string Original_StudentName, 
+                    string Original_StudentSurname, 
+                    string Original_InstructorID, 
+                    string Original_PreTripChecks, 
+                    string Original_VehicleControl, 
+                    string Original_SpeedNGearControl, 
+                    string Original_ObservationalNDefensiveDriving, 
+                    string Original_ControlledIntersections, 
+                    string Original_UncontrolledIntersections, 
+                    string Original_HillStartsNGradientControl, 
+                    string Original_ParkingNReversing, 
+                    string Original_LaneChangingNOvertaking, 
+                    string Original_FreewayDriving, 
+                    string Original_MockTest, 
+                    string Original_Comments) {
+            return this.Update(Original_StudentID, StudentName, StudentSurname, InstructorID, PreTripChecks, VehicleControl, SpeedNGearControl, ObservationalNDefensiveDriving, ControlledIntersections, UncontrolledIntersections, HillStartsNGradientControl, ParkingNReversing, LaneChangingNOvertaking, FreewayDriving, MockTest, Comments, Original_StudentID, Original_StudentName, Original_StudentSurname, Original_InstructorID, Original_PreTripChecks, Original_VehicleControl, Original_SpeedNGearControl, Original_ObservationalNDefensiveDriving, Original_ControlledIntersections, Original_UncontrolledIntersections, Original_HillStartsNGradientControl, Original_ParkingNReversing, Original_LaneChangingNOvertaking, Original_FreewayDriving, Original_MockTest, Original_Comments);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -10165,6 +12126,8 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
         private StudentMJTableAdapter _studentMJTableAdapter;
         
         private InstructorMJTableAdapter _instructorMJTableAdapter;
+        
+        private StudentProgressTableAdapter _studentProgressTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -10267,6 +12230,20 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public StudentProgressTableAdapter StudentProgressTableAdapter {
+            get {
+                return this._studentProgressTableAdapter;
+            }
+            set {
+                this._studentProgressTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -10308,6 +12285,10 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
                             && (this._instructorMJTableAdapter.Connection != null))) {
                     return this._instructorMJTableAdapter.Connection;
                 }
+                if (((this._studentProgressTableAdapter != null) 
+                            && (this._studentProgressTableAdapter.Connection != null))) {
+                    return this._studentProgressTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -10337,6 +12318,9 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
                     count = (count + 1);
                 }
                 if ((this._instructorMJTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._studentProgressTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -10404,6 +12388,15 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._studentProgressTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.StudentProgress.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._studentProgressTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -10462,6 +12455,14 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._studentProgressTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.StudentProgress.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._studentProgressTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -10472,6 +12473,14 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(DSAttendance2 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._studentProgressTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.StudentProgress.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._studentProgressTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._outcomeMJTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.OutcomeMJ.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -10589,6 +12598,11 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._studentProgressTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._studentProgressTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -10675,6 +12689,15 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
                         adaptersWithAcceptChangesDuringUpdate.Add(this._instructorMJTableAdapter.Adapter);
                     }
                 }
+                if ((this._studentProgressTableAdapter != null)) {
+                    revertConnections.Add(this._studentProgressTableAdapter, this._studentProgressTableAdapter.Connection);
+                    this._studentProgressTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._studentProgressTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._studentProgressTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._studentProgressTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._studentProgressTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -10756,6 +12779,10 @@ SELECT InstructorID, LicensePlateID, LicenseNumber, ExpertiseLevel, FirstName, L
                 if ((this._instructorMJTableAdapter != null)) {
                     this._instructorMJTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._instructorMJTableAdapter]));
                     this._instructorMJTableAdapter.Transaction = null;
+                }
+                if ((this._studentProgressTableAdapter != null)) {
+                    this._studentProgressTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._studentProgressTableAdapter]));
+                    this._studentProgressTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
