@@ -24,9 +24,7 @@ namespace DashboardAS
             // TODO: This line of code loads data into the 'dSAttendance.F_Outcome' table. You can move, or remove it, as needed.
             //this.f_OutcomeTableAdapter.Fill(this.dSAttendance.F_Outcome);
             // TODO: This line of code loads data into the 'dSAttendance.F_LessonAttendance' table. You can move, or remove it, as needed.
-            lessonAttendanceMJTableAdapter1.FillByID(dsAttendance21.LessonAttendanceMJ, int.Parse(label1.Text));
-            outcomeMJTableAdapter1.FillById(dsAttendance21.OutcomeMJ, int.Parse(label1.Text));
-
+          
         }
         SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
 
@@ -46,7 +44,7 @@ namespace DashboardAS
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            lessonAttendanceMJTableAdapter1.FillByName(dsAttendance21.LessonAttendanceMJ, textBox1.Text);
+            
             
                 
             

@@ -29,8 +29,8 @@ namespace DashboardAS
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dsAttendance21 = new DashboardAS.DSAttendance2();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.recordBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -38,51 +38,15 @@ namespace DashboardAS
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.PackageID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Outcome = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dsAttendance21 = new DashboardAS.DSAttendance2();
-            this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.instructorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberOfLessonsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.missedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remainingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lessonAttendanceMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lessonAttendanceMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.LessonAttendanceMJTableAdapter();
-            this.outcomeMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.OutcomeMJTableAdapter();
-            this.outcomeMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.studentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentSurnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.instructorIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.packageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberOfLessonsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.missedDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.outcomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lessonAttendanceMJBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.outcomeMJBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView2
             // 
-            this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.studentIDDataGridViewTextBoxColumn,
-            this.studentNameDataGridViewTextBoxColumn,
-            this.studentSurnameDataGridViewTextBoxColumn,
-            this.instructorIDDataGridViewTextBoxColumn,
-            this.PackageID,
-            this.numberOfLessonsDataGridViewTextBoxColumn,
-            this.missedDataGridViewTextBoxColumn,
-            this.remainingDataGridViewTextBoxColumn,
-            this.Outcome});
-            this.dataGridView2.DataSource = this.lessonAttendanceMJBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(6, 84);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView2.Name = "dataGridView2";
@@ -90,6 +54,11 @@ namespace DashboardAS
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(1165, 148);
             this.dataGridView2.TabIndex = 1;
+            // 
+            // dsAttendance21
+            // 
+            this.dsAttendance21.DataSetName = "DSAttendance2";
+            this.dsAttendance21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox1
             // 
@@ -119,18 +88,7 @@ namespace DashboardAS
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.studentIDDataGridViewTextBoxColumn1,
-            this.studentNameDataGridViewTextBoxColumn1,
-            this.studentSurnameDataGridViewTextBoxColumn1,
-            this.instructorIDDataGridViewTextBoxColumn1,
-            this.packageIDDataGridViewTextBoxColumn,
-            this.numberOfLessonsDataGridViewTextBoxColumn1,
-            this.missedDataGridViewTextBoxColumn1,
-            this.outcomeDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.outcomeMJBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(21, 322);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -177,168 +135,6 @@ namespace DashboardAS
             this.label3.TabIndex = 7;
             this.label3.Text = "Employee no.";
             // 
-            // PackageID
-            // 
-            this.PackageID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.PackageID.DataPropertyName = "PackageID";
-            this.PackageID.HeaderText = "PackageID";
-            this.PackageID.MinimumWidth = 6;
-            this.PackageID.Name = "PackageID";
-            // 
-            // Outcome
-            // 
-            this.Outcome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Outcome.HeaderText = "Outcome";
-            this.Outcome.Items.AddRange(new object[] {
-            "None",
-            "Pass",
-            "Fail"});
-            this.Outcome.MinimumWidth = 6;
-            this.Outcome.Name = "Outcome";
-            // 
-            // dsAttendance21
-            // 
-            this.dsAttendance21.DataSetName = "DSAttendance2";
-            this.dsAttendance21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // studentIDDataGridViewTextBoxColumn
-            // 
-            this.studentIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentIDDataGridViewTextBoxColumn.DataPropertyName = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn.HeaderText = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentIDDataGridViewTextBoxColumn.Name = "studentIDDataGridViewTextBoxColumn";
-            // 
-            // studentNameDataGridViewTextBoxColumn
-            // 
-            this.studentNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentNameDataGridViewTextBoxColumn.DataPropertyName = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn.HeaderText = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentNameDataGridViewTextBoxColumn.Name = "studentNameDataGridViewTextBoxColumn";
-            // 
-            // studentSurnameDataGridViewTextBoxColumn
-            // 
-            this.studentSurnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentSurnameDataGridViewTextBoxColumn.DataPropertyName = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn.HeaderText = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentSurnameDataGridViewTextBoxColumn.Name = "studentSurnameDataGridViewTextBoxColumn";
-            // 
-            // instructorIDDataGridViewTextBoxColumn
-            // 
-            this.instructorIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.instructorIDDataGridViewTextBoxColumn.DataPropertyName = "InstructorID";
-            this.instructorIDDataGridViewTextBoxColumn.HeaderText = "InstructorID";
-            this.instructorIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.instructorIDDataGridViewTextBoxColumn.Name = "instructorIDDataGridViewTextBoxColumn";
-            // 
-            // numberOfLessonsDataGridViewTextBoxColumn
-            // 
-            this.numberOfLessonsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.numberOfLessonsDataGridViewTextBoxColumn.DataPropertyName = "NumberOfLessons";
-            this.numberOfLessonsDataGridViewTextBoxColumn.HeaderText = "NumberOfLessons";
-            this.numberOfLessonsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.numberOfLessonsDataGridViewTextBoxColumn.Name = "numberOfLessonsDataGridViewTextBoxColumn";
-            // 
-            // missedDataGridViewTextBoxColumn
-            // 
-            this.missedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.missedDataGridViewTextBoxColumn.DataPropertyName = "Missed";
-            this.missedDataGridViewTextBoxColumn.HeaderText = "Missed";
-            this.missedDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.missedDataGridViewTextBoxColumn.Name = "missedDataGridViewTextBoxColumn";
-            // 
-            // remainingDataGridViewTextBoxColumn
-            // 
-            this.remainingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.remainingDataGridViewTextBoxColumn.DataPropertyName = "Remaining";
-            this.remainingDataGridViewTextBoxColumn.HeaderText = "Remaining";
-            this.remainingDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.remainingDataGridViewTextBoxColumn.Name = "remainingDataGridViewTextBoxColumn";
-            // 
-            // lessonAttendanceMJBindingSource
-            // 
-            this.lessonAttendanceMJBindingSource.DataMember = "LessonAttendanceMJ";
-            this.lessonAttendanceMJBindingSource.DataSource = this.dsAttendance21;
-            // 
-            // lessonAttendanceMJTableAdapter1
-            // 
-            this.lessonAttendanceMJTableAdapter1.ClearBeforeFill = true;
-            // 
-            // outcomeMJTableAdapter1
-            // 
-            this.outcomeMJTableAdapter1.ClearBeforeFill = true;
-            // 
-            // outcomeMJBindingSource
-            // 
-            this.outcomeMJBindingSource.DataMember = "OutcomeMJ";
-            this.outcomeMJBindingSource.DataSource = this.dsAttendance21;
-            // 
-            // studentIDDataGridViewTextBoxColumn1
-            // 
-            this.studentIDDataGridViewTextBoxColumn1.DataPropertyName = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn1.HeaderText = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.studentIDDataGridViewTextBoxColumn1.Name = "studentIDDataGridViewTextBoxColumn1";
-            this.studentIDDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // studentNameDataGridViewTextBoxColumn1
-            // 
-            this.studentNameDataGridViewTextBoxColumn1.DataPropertyName = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn1.HeaderText = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.studentNameDataGridViewTextBoxColumn1.Name = "studentNameDataGridViewTextBoxColumn1";
-            this.studentNameDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // studentSurnameDataGridViewTextBoxColumn1
-            // 
-            this.studentSurnameDataGridViewTextBoxColumn1.DataPropertyName = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn1.HeaderText = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.studentSurnameDataGridViewTextBoxColumn1.Name = "studentSurnameDataGridViewTextBoxColumn1";
-            this.studentSurnameDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // instructorIDDataGridViewTextBoxColumn1
-            // 
-            this.instructorIDDataGridViewTextBoxColumn1.DataPropertyName = "InstructorID";
-            this.instructorIDDataGridViewTextBoxColumn1.HeaderText = "InstructorID";
-            this.instructorIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.instructorIDDataGridViewTextBoxColumn1.Name = "instructorIDDataGridViewTextBoxColumn1";
-            this.instructorIDDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // packageIDDataGridViewTextBoxColumn
-            // 
-            this.packageIDDataGridViewTextBoxColumn.DataPropertyName = "PackageID";
-            this.packageIDDataGridViewTextBoxColumn.HeaderText = "PackageID";
-            this.packageIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.packageIDDataGridViewTextBoxColumn.Name = "packageIDDataGridViewTextBoxColumn";
-            this.packageIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // numberOfLessonsDataGridViewTextBoxColumn1
-            // 
-            this.numberOfLessonsDataGridViewTextBoxColumn1.DataPropertyName = "NumberOfLessons";
-            this.numberOfLessonsDataGridViewTextBoxColumn1.HeaderText = "NumberOfLessons";
-            this.numberOfLessonsDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.numberOfLessonsDataGridViewTextBoxColumn1.Name = "numberOfLessonsDataGridViewTextBoxColumn1";
-            this.numberOfLessonsDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // missedDataGridViewTextBoxColumn1
-            // 
-            this.missedDataGridViewTextBoxColumn1.DataPropertyName = "Missed";
-            this.missedDataGridViewTextBoxColumn1.HeaderText = "Missed";
-            this.missedDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.missedDataGridViewTextBoxColumn1.Name = "missedDataGridViewTextBoxColumn1";
-            this.missedDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // outcomeDataGridViewTextBoxColumn
-            // 
-            this.outcomeDataGridViewTextBoxColumn.DataPropertyName = "Outcome";
-            this.outcomeDataGridViewTextBoxColumn.HeaderText = "Outcome";
-            this.outcomeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.outcomeDataGridViewTextBoxColumn.Name = "outcomeDataGridViewTextBoxColumn";
-            this.outcomeDataGridViewTextBoxColumn.Width = 125;
-            // 
             // StudentSummary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -356,11 +152,9 @@ namespace DashboardAS
             this.Text = "StudentSummary";
             this.Load += new System.EventHandler(this.StudentSummary_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lessonAttendanceMJBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.outcomeMJBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,27 +169,6 @@ namespace DashboardAS
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button recordBtn;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentSurnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn instructorIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PackageID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numberOfLessonsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn missedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn remainingDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Outcome;
-        private System.Windows.Forms.BindingSource lessonAttendanceMJBindingSource;
         private DSAttendance2 dsAttendance21;
-        private DSAttendance2TableAdapters.LessonAttendanceMJTableAdapter lessonAttendanceMJTableAdapter1;
-        private DSAttendance2TableAdapters.OutcomeMJTableAdapter outcomeMJTableAdapter1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentNameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentSurnameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn instructorIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn packageIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numberOfLessonsDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn missedDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn outcomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource outcomeMJBindingSource;
     }
 }
