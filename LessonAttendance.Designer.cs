@@ -56,6 +56,7 @@ namespace DashboardAS
             this.AttendedBtn = new System.Windows.Forms.Button();
             this.Missed = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.archBtn = new System.Windows.Forms.CheckBox();
             this.ArchiveBtn = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -65,7 +66,7 @@ namespace DashboardAS
             this.packageMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.PackageMJTableAdapter();
             this.studentMJTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.StudentMJTableAdapter();
             this.bookingTableAdapter = new DashboardAS.DSAttendance2TableAdapters.BookingTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ReloadBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).BeginInit();
@@ -77,8 +78,8 @@ namespace DashboardAS
             // IDLbl1
             // 
             this.IDLbl1.AutoSize = true;
-            this.IDLbl1.Location = new System.Drawing.Point(122, 42);
-            this.IDLbl1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.IDLbl1.Location = new System.Drawing.Point(106, 42);
+            this.IDLbl1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.IDLbl1.Name = "IDLbl1";
             this.IDLbl1.Size = new System.Drawing.Size(0, 17);
             this.IDLbl1.TabIndex = 0;
@@ -99,14 +100,15 @@ namespace DashboardAS
             this.dateDataGridViewTextBoxColumn,
             this.timeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.bookingBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 122);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 122);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1122, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(981, 150);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             // 
             // bookingIDDataGridViewTextBoxColumn
             // 
@@ -206,13 +208,13 @@ namespace DashboardAS
             this.missedDataGridViewTextBoxColumn,
             this.remainingDataGridViewTextBoxColumn});
             this.dataGridView2.DataSource = this.lessonAttendanceMJBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(11, 334);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView2.Location = new System.Drawing.Point(9, 334);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1122, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(981, 150);
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.SelectionChanged += new System.EventHandler(this.dataGridView2_SelectionChanged);
             // 
@@ -297,10 +299,10 @@ namespace DashboardAS
             // 
             this.RegisterBtn.BackColor = System.Drawing.Color.YellowGreen;
             this.RegisterBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegisterBtn.Location = new System.Drawing.Point(853, 278);
-            this.RegisterBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.RegisterBtn.Location = new System.Drawing.Point(746, 278);
+            this.RegisterBtn.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.RegisterBtn.Name = "RegisterBtn";
-            this.RegisterBtn.Size = new System.Drawing.Size(282, 34);
+            this.RegisterBtn.Size = new System.Drawing.Size(246, 34);
             this.RegisterBtn.TabIndex = 3;
             this.RegisterBtn.Text = "Add to Attendance Register";
             this.RegisterBtn.UseVisualStyleBackColor = false;
@@ -309,10 +311,10 @@ namespace DashboardAS
             // AttendedBtn
             // 
             this.AttendedBtn.BackColor = System.Drawing.Color.Gold;
-            this.AttendedBtn.Location = new System.Drawing.Point(665, 441);
-            this.AttendedBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.AttendedBtn.Location = new System.Drawing.Point(581, 441);
+            this.AttendedBtn.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.AttendedBtn.Name = "AttendedBtn";
-            this.AttendedBtn.Size = new System.Drawing.Size(151, 43);
+            this.AttendedBtn.Size = new System.Drawing.Size(132, 43);
             this.AttendedBtn.TabIndex = 4;
             this.AttendedBtn.Text = "Attended";
             this.AttendedBtn.UseVisualStyleBackColor = false;
@@ -322,10 +324,10 @@ namespace DashboardAS
             // 
             this.Missed.BackColor = System.Drawing.Color.Red;
             this.Missed.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Missed.Location = new System.Drawing.Point(820, 441);
-            this.Missed.Margin = new System.Windows.Forms.Padding(2);
+            this.Missed.Location = new System.Drawing.Point(717, 441);
+            this.Missed.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Missed.Name = "Missed";
-            this.Missed.Size = new System.Drawing.Size(147, 43);
+            this.Missed.Size = new System.Drawing.Size(128, 43);
             this.Missed.TabIndex = 5;
             this.Missed.Text = "Missed";
             this.Missed.UseVisualStyleBackColor = false;
@@ -333,25 +335,39 @@ namespace DashboardAS
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ReloadBtn);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.archBtn);
             this.groupBox1.Controls.Add(this.ArchiveBtn);
             this.groupBox1.Controls.Add(this.Missed);
             this.groupBox1.Controls.Add(this.AttendedBtn);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(11, 60);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(9, 60);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(1225, 567);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.groupBox1.Size = new System.Drawing.Size(1071, 567);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attendance Register";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.YellowGreen;
+            this.button1.Location = new System.Drawing.Point(717, 488);
+            this.button1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(266, 43);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Reactivate";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // archBtn
             // 
             this.archBtn.AutoSize = true;
-            this.archBtn.Location = new System.Drawing.Point(5, 461);
+            this.archBtn.Location = new System.Drawing.Point(4, 461);
+            this.archBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.archBtn.Name = "archBtn";
             this.archBtn.Size = new System.Drawing.Size(155, 23);
             this.archBtn.TabIndex = 8;
@@ -362,10 +378,10 @@ namespace DashboardAS
             // ArchiveBtn
             // 
             this.ArchiveBtn.BackColor = System.Drawing.Color.YellowGreen;
-            this.ArchiveBtn.Location = new System.Drawing.Point(971, 441);
-            this.ArchiveBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.ArchiveBtn.Location = new System.Drawing.Point(849, 441);
+            this.ArchiveBtn.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.ArchiveBtn.Name = "ArchiveBtn";
-            this.ArchiveBtn.Size = new System.Drawing.Size(151, 43);
+            this.ArchiveBtn.Size = new System.Drawing.Size(132, 43);
             this.ArchiveBtn.TabIndex = 5;
             this.ArchiveBtn.Text = "Archive";
             this.ArchiveBtn.UseVisualStyleBackColor = false;
@@ -373,9 +389,10 @@ namespace DashboardAS
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(897, 19);
+            this.dateTimePicker1.Location = new System.Drawing.Point(784, 19);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(275, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(241, 22);
             this.dateTimePicker1.TabIndex = 8;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -403,24 +420,25 @@ namespace DashboardAS
             // 
             this.bookingTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
+            // ReloadBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.YellowGreen;
-            this.button1.Location = new System.Drawing.Point(820, 488);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(304, 37);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Reactivate";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ReloadBtn.BackColor = System.Drawing.Color.Indigo;
+            this.ReloadBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReloadBtn.Location = new System.Drawing.Point(581, 488);
+            this.ReloadBtn.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.ReloadBtn.Name = "ReloadBtn";
+            this.ReloadBtn.Size = new System.Drawing.Size(128, 43);
+            this.ReloadBtn.TabIndex = 10;
+            this.ReloadBtn.Text = "Reload";
+            this.ReloadBtn.UseVisualStyleBackColor = false;
+            this.ReloadBtn.Click += new System.EventHandler(this.ReloadBtn_Click);
             // 
             // LessonAttendance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1308, 688);
+            this.ClientSize = new System.Drawing.Size(1144, 688);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.RegisterBtn);
             this.Controls.Add(this.dataGridView2);
@@ -428,7 +446,7 @@ namespace DashboardAS
             this.Controls.Add(this.IDLbl1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "LessonAttendance";
             this.Text = "LessonAttendance";
             this.Load += new System.EventHandler(this.LessonAttendance_Load);
@@ -482,5 +500,6 @@ namespace DashboardAS
         private System.Windows.Forms.Button ArchiveBtn;
         private System.Windows.Forms.CheckBox archBtn;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ReloadBtn;
     }
 }

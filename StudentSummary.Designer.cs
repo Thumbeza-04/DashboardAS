@@ -128,7 +128,7 @@ namespace DashboardAS
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(1246, 13);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(137, 22);
             this.textBox1.TabIndex = 5;
@@ -136,6 +136,8 @@ namespace DashboardAS
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -146,8 +148,9 @@ namespace DashboardAS
             this.remainingDataGridViewTextBoxColumn});
             this.dataGridView2.DataSource = this.lessonAttendanceMJBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(0, 50);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(1337, 148);
@@ -161,6 +164,7 @@ namespace DashboardAS
             this.studentIDDataGridViewTextBoxColumn.HeaderText = "StudentID";
             this.studentIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.studentIDDataGridViewTextBoxColumn.Name = "studentIDDataGridViewTextBoxColumn";
+            this.studentIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // studentNameDataGridViewTextBoxColumn
             // 
@@ -169,6 +173,7 @@ namespace DashboardAS
             this.studentNameDataGridViewTextBoxColumn.HeaderText = "StudentName";
             this.studentNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.studentNameDataGridViewTextBoxColumn.Name = "studentNameDataGridViewTextBoxColumn";
+            this.studentNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // studentSurnameDataGridViewTextBoxColumn
             // 
@@ -177,6 +182,7 @@ namespace DashboardAS
             this.studentSurnameDataGridViewTextBoxColumn.HeaderText = "StudentSurname";
             this.studentSurnameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.studentSurnameDataGridViewTextBoxColumn.Name = "studentSurnameDataGridViewTextBoxColumn";
+            this.studentSurnameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // numberOfLessonsDataGridViewTextBoxColumn
             // 
@@ -185,6 +191,7 @@ namespace DashboardAS
             this.numberOfLessonsDataGridViewTextBoxColumn.HeaderText = "NumberOfLessons";
             this.numberOfLessonsDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.numberOfLessonsDataGridViewTextBoxColumn.Name = "numberOfLessonsDataGridViewTextBoxColumn";
+            this.numberOfLessonsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // remainingDataGridViewTextBoxColumn
             // 
@@ -193,6 +200,7 @@ namespace DashboardAS
             this.remainingDataGridViewTextBoxColumn.HeaderText = "Remaining";
             this.remainingDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.remainingDataGridViewTextBoxColumn.Name = "remainingDataGridViewTextBoxColumn";
+            this.remainingDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // lessonAttendanceMJBindingSource
             // 
@@ -236,9 +244,9 @@ namespace DashboardAS
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(10, 39);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(1372, 1006);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
@@ -884,7 +892,7 @@ namespace DashboardAS
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StudentSummary";
             this.Text = "StudentSummary";
             this.Load += new System.EventHandler(this.StudentSummary_Load);
