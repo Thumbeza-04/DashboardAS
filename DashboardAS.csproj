@@ -236,6 +236,12 @@
     <Compile Include="ViewStaff.Designer.cs">
       <DependentUpon>ViewStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewStudentProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewStudentProgress.Designer.cs">
+      <DependentUpon>ViewStudentProgress.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewVehicles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewStaff.resx">
       <DependentUpon>ViewStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewStudentProgress.resx">
+      <DependentUpon>ViewStudentProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewVehicles.resx">
       <DependentUpon>ViewVehicles.cs</DependentUpon>

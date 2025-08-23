@@ -323,5 +323,35 @@ namespace DashboardAS
                 }
             
         }
+
+        private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+            lessonAttendanceMJTableAdapter1.FillBySearch(dsAttendance21.LessonAttendanceMJ, (int)dataGridView1.CurrentRow.Cells[1].Value, id);
+            dataGridView2.DataSource = dsAttendance21.LessonAttendanceMJ;
+
+        }
+
+        private void ReloadBookings(int instructorId)
+        {
+            
+            SqlCommand command = new SqlCommand("SELECT * FROM Booking WHERE InstructorID = @InstructorID", connec);
+            command.Parameters.AddWithValue("@InstructorID", instructorId);
+
+            SqlDataAdapter sd = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
+            sd.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+        }
+
+        private void ReloadBtn_Click(object sender, EventArgs e)
+        {
+            int instructorId = id;
+            Bind(instructorId);
+            bookingTableAdapter.FillByInID(dsAttendance21.Booking, id);
+        }
+
+       
     }
 }
