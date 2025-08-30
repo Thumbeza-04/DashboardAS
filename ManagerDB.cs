@@ -17,6 +17,16 @@ namespace DashboardAS
             InitializeComponent();
         }
 
+        private void MainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ManagerDB_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void viewbookingsbtn_Click(object sender, EventArgs e)
         {
             ViewBookings viewbookings = new ViewBookings();
@@ -25,9 +35,8 @@ namespace DashboardAS
 
         private void viewinstructorsbtn_Click(object sender, EventArgs e)
         {
-            ViewInstructors viewInstructors = new ViewInstructors();
-            viewInstructors.Show();
-
+            ViewInstructors viewinstructors = new ViewInstructors();
+            viewinstructors.Show();
         }
 
         private void viewvehiclesbtn_Click(object sender, EventArgs e)
@@ -41,10 +50,6 @@ namespace DashboardAS
             ViewStaff viewStaff = new ViewStaff();
             viewStaff.Show();
         }
-
-        private void ManagerDB_Load(object sender, EventArgs e)
-        {
-
-        }
+  
     }
 }

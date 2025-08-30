@@ -115,6 +115,11 @@
     <Compile Include="Form4.Designer.cs">
       <DependentUpon>Form4.cs</DependentUpon>
     </Compile>
+    <Compile Include="generalStaff.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>generalStaff.xsd</DependentUpon>
+    </Compile>
     <Compile Include="HomeUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,6 +143,11 @@
     </Compile>
     <Compile Include="InstructorsUserControl.Designer.cs">
       <DependentUpon>InstructorsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="instructorsVehicles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>instructorsVehicles.xsd</DependentUpon>
     </Compile>
     <Compile Include="LessonAttendance.cs">
       <SubType>Form</SubType>
@@ -358,6 +368,28 @@
     </None>
     <None Include="DSLogin.xss">
       <DependentUpon>DSLogin.xsd</DependentUpon>
+    </None>
+    <None Include="generalStaff.xsc">
+      <DependentUpon>generalStaff.xsd</DependentUpon>
+    </None>
+    <None Include="generalStaff.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>generalStaff.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="generalStaff.xss">
+      <DependentUpon>generalStaff.xsd</DependentUpon>
+    </None>
+    <None Include="instructorsVehicles.xsc">
+      <DependentUpon>instructorsVehicles.xsd</DependentUpon>
+    </None>
+    <None Include="instructorsVehicles.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>instructorsVehicles.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="instructorsVehicles.xss">
+      <DependentUpon>instructorsVehicles.xsd</DependentUpon>
     </None>
     <None Include="managerDataSet.xsc">
       <DependentUpon>managerDataSet.xsd</DependentUpon>
