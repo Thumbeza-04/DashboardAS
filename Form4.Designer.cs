@@ -51,9 +51,8 @@ namespace DashboardAS
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::DashboardAS.Properties.Resources.WhatsApp_Image_2025_06_08_at_01_06_36_785a6e9a;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1575, 569);
+            this.pictureBox1.Size = new System.Drawing.Size(1242, 462);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -63,9 +62,8 @@ namespace DashboardAS
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox2.Image = global::DashboardAS.Properties.Resources.TLG_Picture;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(928, 569);
+            this.pictureBox2.Size = new System.Drawing.Size(696, 462);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
@@ -76,10 +74,9 @@ namespace DashboardAS
             this.LOGIN.BackColor = System.Drawing.Color.Maroon;
             this.LOGIN.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LOGIN.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LOGIN.Location = new System.Drawing.Point(1308, 114);
-            this.LOGIN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LOGIN.Location = new System.Drawing.Point(981, 93);
             this.LOGIN.Name = "LOGIN";
-            this.LOGIN.Size = new System.Drawing.Size(110, 37);
+            this.LOGIN.Size = new System.Drawing.Size(88, 28);
             this.LOGIN.TabIndex = 7;
             this.LOGIN.Text = "LOGIN";
             // 
@@ -87,23 +84,24 @@ namespace DashboardAS
             // 
             this.usernameTxt.BackColor = System.Drawing.Color.Maroon;
             this.usernameTxt.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTxt.Location = new System.Drawing.Point(1268, 207);
-            this.usernameTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.usernameTxt.ForeColor = System.Drawing.SystemColors.Info;
+            this.usernameTxt.Location = new System.Drawing.Point(951, 174);
             this.usernameTxt.Multiline = true;
             this.usernameTxt.Name = "usernameTxt";
-            this.usernameTxt.Size = new System.Drawing.Size(203, 30);
+            this.usernameTxt.Size = new System.Drawing.Size(304, 25);
             this.usernameTxt.TabIndex = 9;
+            this.usernameTxt.TextChanged += new System.EventHandler(this.usernameTxt_TextChanged);
             // 
             // passwordTxt
             // 
             this.passwordTxt.BackColor = System.Drawing.Color.Maroon;
             this.passwordTxt.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTxt.Location = new System.Drawing.Point(1268, 279);
-            this.passwordTxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.passwordTxt.ForeColor = System.Drawing.SystemColors.Info;
+            this.passwordTxt.Location = new System.Drawing.Point(951, 227);
             this.passwordTxt.Multiline = true;
             this.passwordTxt.Name = "passwordTxt";
             this.passwordTxt.PasswordChar = '*';
-            this.passwordTxt.Size = new System.Drawing.Size(203, 30);
+            this.passwordTxt.Size = new System.Drawing.Size(153, 25);
             this.passwordTxt.TabIndex = 10;
             this.passwordTxt.TextChanged += new System.EventHandler(this.passwordTxt_TextChanged);
             // 
@@ -112,10 +110,9 @@ namespace DashboardAS
             this.loginBtn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.loginBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginBtn.ForeColor = System.Drawing.Color.White;
-            this.loginBtn.Location = new System.Drawing.Point(1253, 369);
-            this.loginBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.loginBtn.Location = new System.Drawing.Point(940, 300);
             this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(165, 52);
+            this.loginBtn.Size = new System.Drawing.Size(124, 42);
             this.loginBtn.TabIndex = 12;
             this.loginBtn.Text = "LOGIN";
             this.loginBtn.UseVisualStyleBackColor = false;
@@ -127,10 +124,9 @@ namespace DashboardAS
             this.label1.BackColor = System.Drawing.Color.Maroon;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(1127, 218);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(845, 177);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 19);
+            this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 13;
             this.label1.Text = "Username";
             // 
@@ -140,10 +136,9 @@ namespace DashboardAS
             this.label2.BackColor = System.Drawing.Color.Maroon;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(1127, 290);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(845, 236);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 19);
+            this.label2.Size = new System.Drawing.Size(68, 16);
             this.label2.TabIndex = 14;
             this.label2.Text = "Password";
             // 
@@ -166,9 +161,9 @@ namespace DashboardAS
             // 
             // Form4
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1575, 569);
+            this.ClientSize = new System.Drawing.Size(1242, 462);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.loginBtn);
@@ -178,7 +173,6 @@ namespace DashboardAS
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form4";
             this.Text = "Form4";
             this.Load += new System.EventHandler(this.Form4_Load);

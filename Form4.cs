@@ -131,5 +131,10 @@ namespace DashboardAS
         {
 
         }
+
+        private void usernameTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
