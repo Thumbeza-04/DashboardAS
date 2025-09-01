@@ -26,29 +26,41 @@ namespace DashboardAS
         {
 
         }
+        private void Loadform(object Form)
+        {
+            if (this.MainPanel.Controls.Count > 0)
+            {
+                this.MainPanel.Controls.RemoveAt(0);
+            }
+
+            var form = Form as Form;
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+
+            this.MainPanel.Controls.Add(form);
+            this.MainPanel.Tag = form;
+
+            form.Show();
+        }
 
         private void viewbookingsbtn_Click(object sender, EventArgs e)
         {
-            ViewBookings viewbookings = new ViewBookings();
-            viewbookings.Show();
+            Loadform(new ViewBookings());
         }
 
         private void viewinstructorsbtn_Click(object sender, EventArgs e)
         {
-            ViewInstructors viewinstructors = new ViewInstructors();
-            viewinstructors.Show();
+            Loadform(new ViewInstructors());
         }
 
         private void viewvehiclesbtn_Click(object sender, EventArgs e)
         {
-            ViewVehicles viewVehicles = new ViewVehicles();
-            viewVehicles.Show();
+            Loadform(new ViewVehicles());
         }
 
         private void viewstaffbtn_Click(object sender, EventArgs e)
         {
-            ViewStaff viewStaff = new ViewStaff();
-            viewStaff.Show();
+            Loadform(new ViewStaff());
         }
   
     }
