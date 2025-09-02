@@ -78,5 +78,38 @@ namespace DashboardAS
             sd.Fill(dt);
             dataGridView2.DataSource = dt;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AttendedBtn_Click(object sender, EventArgs e)
+        {
+            int allLess = (int)dataGridView2.CurrentRow.Cells[6].Value + (int)dataGridView2.CurrentRow.Cells[7].Value;
+            int Less = (int)dataGridView2.CurrentRow.Cells[5].Value;
+            if (Less == allLess)
+            {
+                MessageBox.Show("Student has attended all their lessons");
+            }
+            else
+            {
+                bool arch = false;
+                int up = 1;
+                int att = (int)dataGridView2.CurrentRow.Cells[6].Value + up;
+                int Total = (int)dataGridView2.CurrentRow.Cells[7].Value + att;
+                int rem = (int)dataGridView2.CurrentRow.Cells[5].Value - Total;
+
+                connec.Open();
+                SqlCommand command = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='" + dataGridView2.CurrentRow.Cells[1].Value + "' ,StudentSurname = '" + dataGridView2.CurrentRow.Cells[2].Value + "' ,InstructorID ='" + (int)dataGridView2.CurrentRow.Cells[3].Value + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[4].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[5].Value + "',Attended = '" + att + "',Missed ='" + (int)dataGridView2.CurrentRow.Cells[7].Value + "',Remaining = '" + rem + "',IsArchived = '" + arch + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() + "'", connec);
+                command.ExecuteNonQuery();
+                connec.Close();
+
+                MessageBox.Show("Marked as attended");
+                
+
+                Bind();
+            }
+        }
     }
 }
