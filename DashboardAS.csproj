@@ -96,6 +96,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSLogin.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSManager.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSManager.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +164,12 @@
     </Compile>
     <Compile Include="LessonAttendance.Designer.cs">
       <DependentUpon>LessonAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageInstru.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageInstru.Designer.cs">
+      <DependentUpon>ManageInstru.cs</DependentUpon>
     </Compile>
     <Compile Include="managerDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -291,6 +302,9 @@
     <EmbeddedResource Include="LessonAttendance.resx">
       <DependentUpon>LessonAttendance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManageInstru.resx">
+      <DependentUpon>ManageInstru.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagerDB.resx">
       <DependentUpon>ManagerDB.cs</DependentUpon>
     </EmbeddedResource>
@@ -382,6 +396,17 @@
     </None>
     <None Include="DSLogin.xss">
       <DependentUpon>DSLogin.xsd</DependentUpon>
+    </None>
+    <None Include="DSManager.xsc">
+      <DependentUpon>DSManager.xsd</DependentUpon>
+    </None>
+    <None Include="DSManager.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSManager.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DSManager.xss">
+      <DependentUpon>DSManager.xsd</DependentUpon>
     </None>
     <None Include="generalStaff.xsc">
       <DependentUpon>generalStaff.xsd</DependentUpon>
