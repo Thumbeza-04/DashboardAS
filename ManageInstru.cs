@@ -20,6 +20,10 @@ namespace DashboardAS
 
         private void ManageInstru_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dsManager1.TempStudents' table. You can move, or remove it, as needed.
+            this.tempStudentsTableAdapter.Fill(this.dsManager1.TempStudents);
+            // TODO: This line of code loads data into the 'dsManager1.LessonBookingMJ' table. You can move, or remove it, as needed.
+            this.lessonBookingMJTableAdapter.Fill(this.dsManager1.LessonBookingMJ);
             bool arch = false;
             // TODO: This line of code loads data into the 'dsManager1.LessonAttendanceMJ' table. You can move, or remove it, as needed.
             //this.lessonAttendanceMJTableAdapter.Fill(this.dsManager1.LessonAttendanceMJ);
@@ -27,6 +31,16 @@ namespace DashboardAS
             //this.bookingTableAdapter.Fill(this.dsManager1.Booking);
             bookingTableAdapter.Fill(dsManager1.Booking);
             lessonAttendanceMJTableAdapter.FillByArch(dsManager1.LessonAttendanceMJ, arch);
+
+            if (dataGridView2.CurrentRow != null)
+            {
+                int studentID = Convert.ToInt32(dataGridView2.CurrentRow.Cells[0].Value);
+                button1.Enabled = IsStudentArchived(studentID);
+            }
+            else
+            {
+                button1.Enabled = false;
+            }
 
         }
         SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
@@ -81,7 +95,27 @@ namespace DashboardAS
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (dataGridView2.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a student to unarchive.");
+                return;
+            }
 
+            int studentID = Convert.ToInt32(dataGridView2.CurrentRow.Cells[0].Value);
+
+            string query = "UPDATE LessonAttendanceMJ SET IsArchived = 0 WHERE StudentID = @StudentID";
+
+            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+
+            MessageBox.Show("Student has been unarchived.");
+            LoadAttendanceData();
         }
 
         private void AttendedBtn_Click(object sender, EventArgs e)
@@ -111,5 +145,151 @@ namespace DashboardAS
                 Bind();
             }
         }
+
+        private void Missed_Click(object sender, EventArgs e)
+        {
+            int allLess = (int)dataGridView2.CurrentRow.Cells[6].Value + (int)dataGridView2.CurrentRow.Cells[7].Value;
+            int Less = (int)dataGridView2.CurrentRow.Cells[5].Value;
+            if (Less == allLess)
+            {
+                MessageBox.Show("Student has attended all their lessons");
+            }
+            else
+            {
+                bool arch = false;
+                int up = 1;
+
+                int missed = (int)dataGridView2.CurrentRow.Cells[7].Value + up;
+                int Total = (int)dataGridView2.CurrentRow.Cells[6].Value + missed;
+                int rem = (int)dataGridView2.CurrentRow.Cells[5].Value - Total;
+
+                connec.Open();
+                SqlCommand command = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='" + dataGridView2.CurrentRow.Cells[1].Value + "' ,StudentSurname = '" + dataGridView2.CurrentRow.Cells[2].Value + "',InstructorID ='" + (int)dataGridView2.CurrentRow.Cells[3].Value + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[4].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[5].Value + "',Attended = '" + (int)dataGridView2.CurrentRow.Cells[6].Value + "',Missed ='" + missed + "',Remaining = '" + rem + "' ,IsArchived = '" + arch + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() + "'", connec);
+                command.ExecuteNonQuery();
+                connec.Close();
+
+                MessageBox.Show("Marked as Missed");
+                
+
+                Bind();
+            }
+        }
+
+        private void ArchiveBtn_Click(object sender, EventArgs e)
+        {
+            int Studentid = (int)dataGridView2.CurrentRow.Cells[0].Value;
+            bool isArchived = false;
+
+            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            using (SqlCommand checkCmd = new SqlCommand("SELECT IsArchived FROM LessonAttendanceMJ WHERE StudentID = @StudentID", con))
+            {
+                checkCmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = Studentid;
+                con.Open();
+                object result = checkCmd.ExecuteScalar();
+                con.Close();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    isArchived = Convert.ToBoolean(result);
+                }
+            }
+            if (isArchived)
+            {
+                MessageBox.Show("This student is already archived.");
+                return;
+            }
+
+
+
+            DialogResult Result = MessageBox.Show("THIS ACTION CANNOT BE UNDONE!Are you sure you want to Archive.", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (Result == DialogResult.No)
+            {
+                MessageBox.Show("Archive cancelled");
+            }
+            else
+            {
+
+                int StudentID = (int)dataGridView2.CurrentRow.Cells[0].Value;
+                connec.Open();
+                SqlCommand comm = new SqlCommand("UPDATE LessonAttendanceMJ SET IsArchived =1 WHERE StudentID = @StudentID", connec);
+                comm.Parameters.AddWithValue("@StudentID", StudentID);
+                comm.ExecuteNonQuery();
+                connec.Close();
+                
+
+                Bind();
+
+                MessageBox.Show("Archived");
+            }
+        }
+
+        private void LoadAttendanceData()
+        {
+           
+            bool showArchived = archBtn.Checked;
+
+            string query = showArchived
+                ? "SELECT * FROM LessonAttendanceMJ "
+                : "SELECT * FROM LessonAttendanceMJ WHERE IsArchived = 0";
+
+            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dataGridView2.DataSource = dt;
+
+
+            }
+        }
+
+        private void archBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadAttendanceData();
+        }
+
+        private bool IsStudentArchived(int studentID)
+        {
+            bool isArchived = false;
+
+            string query = "SELECT IsArchived FROM LessonAttendanceMJ WHERE StudentID = @StudentID";
+
+            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
+
+                con.Open();
+                object result = cmd.ExecuteScalar();
+                con.Close();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    isArchived = Convert.ToBoolean(result);
+                }
+            }
+
+            return isArchived;
+        }
+
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView2.CurrentRow != null)
+            {
+                int studentID = Convert.ToInt32(dataGridView2.CurrentRow.Cells[0].Value);
+                button1.Enabled = IsStudentArchived(studentID);
+            }
+            else
+            {
+                button1.Enabled = false;
+            }
+        }
+
+       
     }
 }
