@@ -289,7 +289,83 @@ namespace DashboardAS
                 button1.Enabled = false;
             }
         }
+      
 
-       
+        bool IsInstructorAvailable(int instructorId, DateTime date, TimeSpan time)
+        {
+            using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            {
+                string query = @"SELECT COUNT(*) FROM LessonBookingMJ 
+                         WHERE InstructorID = @InstructorId AND Date = @Date AND Time = @Time";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@InstructorId", instructorId);
+                cmd.Parameters.AddWithValue("@Date", date.Date);
+                cmd.Parameters.AddWithValue("@Time", time);
+
+                conn.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count == 0; // True if available
+            }
+        }
+
+        void UpdateInstructorInBooking(int bookingId, int newInstructorId)
+        {
+            using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            {
+                string query = @"UPDATE LessonBookingMJ SET InstructorID = @NewInstructorId WHERE BookingID = @BookingId";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@NewInstructorId", newInstructorId);
+                cmd.Parameters.AddWithValue("@BookingId", bookingId);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+               
+            }
+        }
+        void UpdateInstructorInAttendance(int studentId, int newInstructorId)
+        {
+            using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            {
+                string query = @"UPDATE LessonAttendanceMJ SET InstructorID = @NewInstructorId 
+                         WHERE StudentID = @StudentId";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@NewInstructorId", newInstructorId);
+                cmd.Parameters.AddWithValue("@StudentId", studentId);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                Bind();
+            }
+        }
+        
+         
+        private void reassignBtn_Click(object sender, EventArgs e)
+        {
+            int newInstructorId = int.Parse(instruTxt.Text);
+            DateTime date = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[7].Value);
+            TimeSpan time = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
+
+            if (IsInstructorAvailable(newInstructorId, date, time))
+            {
+                int bookingId = (int)dataGridView1.CurrentRow.Cells[0].Value;
+                int studentId = (int)dataGridView1.CurrentRow.Cells[1].Value;
+                UpdateInstructorInBooking(bookingId, newInstructorId);
+                this.bookingTableAdapter.Fill(dsManager1.Booking);
+                UpdateInstructorInAttendance(studentId, newInstructorId);
+                MessageBox.Show("Instructor Reassigned successfully");
+
+               
+
+            }
+            else
+            {
+                MessageBox.Show("Instructor unavailable");
+            }
+        }
     }
 }

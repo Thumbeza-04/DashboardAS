@@ -32,6 +32,7 @@ namespace DashboardAS
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.archBtn = new System.Windows.Forms.CheckBox();
             this.AttendedBtn = new System.Windows.Forms.Button();
             this.ArchiveBtn = new System.Windows.Forms.Button();
             this.ReloadBtn = new System.Windows.Forms.Button();
@@ -39,9 +40,6 @@ namespace DashboardAS
             this.Missed = new System.Windows.Forms.Button();
             this.RegisterBtn = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.archBtn = new System.Windows.Forms.CheckBox();
             this.studentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +51,7 @@ namespace DashboardAS
             this.remainingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lessonAttendanceMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsManager1 = new DashboardAS.DSManager();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bookingIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +62,7 @@ namespace DashboardAS
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookingBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.bookingTableAdapter = new DashboardAS.DSManagerTableAdapters.BookingTableAdapter();
             this.lessonAttendanceMJTableAdapter = new DashboardAS.DSManagerTableAdapters.LessonAttendanceMJTableAdapter();
             this.lessonBookingMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -71,12 +71,14 @@ namespace DashboardAS
             this.tempStudentsTableAdapter = new DashboardAS.DSManagerTableAdapters.TempStudentsTableAdapter();
             this.bookingBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.bookingBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.reassignBtn = new System.Windows.Forms.Button();
+            this.instruTxt = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lessonAttendanceMJBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lessonBookingMJBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempStudentsBindingSource)).BeginInit();
@@ -90,13 +92,16 @@ namespace DashboardAS
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1329, 599);
+            this.tabControl1.Size = new System.Drawing.Size(1162, 599);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.instruTxt);
+            this.tabPage1.Controls.Add(this.reassignBtn);
             this.tabPage1.Controls.Add(this.archBtn);
             this.tabPage1.Controls.Add(this.AttendedBtn);
             this.tabPage1.Controls.Add(this.ArchiveBtn);
@@ -107,20 +112,33 @@ namespace DashboardAS
             this.tabPage1.Controls.Add(this.dataGridView2);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1321, 570);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage1.Size = new System.Drawing.Size(1154, 570);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Attendance Register";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // archBtn
+            // 
+            this.archBtn.AutoSize = true;
+            this.archBtn.Location = new System.Drawing.Point(57, 516);
+            this.archBtn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.archBtn.Name = "archBtn";
+            this.archBtn.Size = new System.Drawing.Size(140, 21);
+            this.archBtn.TabIndex = 13;
+            this.archBtn.Text = "Show all students";
+            this.archBtn.UseVisualStyleBackColor = true;
+            this.archBtn.CheckedChanged += new System.EventHandler(this.archBtn_CheckedChanged);
+            // 
             // AttendedBtn
             // 
             this.AttendedBtn.BackColor = System.Drawing.Color.Gold;
-            this.AttendedBtn.Location = new System.Drawing.Point(942, 452);
-            this.AttendedBtn.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.AttendedBtn.Location = new System.Drawing.Point(824, 452);
+            this.AttendedBtn.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.AttendedBtn.Name = "AttendedBtn";
-            this.AttendedBtn.Size = new System.Drawing.Size(151, 43);
+            this.AttendedBtn.Size = new System.Drawing.Size(132, 43);
             this.AttendedBtn.TabIndex = 5;
             this.AttendedBtn.Text = "Attended";
             this.AttendedBtn.UseVisualStyleBackColor = false;
@@ -129,10 +147,10 @@ namespace DashboardAS
             // ArchiveBtn
             // 
             this.ArchiveBtn.BackColor = System.Drawing.Color.YellowGreen;
-            this.ArchiveBtn.Location = new System.Drawing.Point(1101, 452);
-            this.ArchiveBtn.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.ArchiveBtn.Location = new System.Drawing.Point(963, 452);
+            this.ArchiveBtn.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.ArchiveBtn.Name = "ArchiveBtn";
-            this.ArchiveBtn.Size = new System.Drawing.Size(151, 43);
+            this.ArchiveBtn.Size = new System.Drawing.Size(132, 43);
             this.ArchiveBtn.TabIndex = 6;
             this.ArchiveBtn.Text = "Archive";
             this.ArchiveBtn.UseVisualStyleBackColor = false;
@@ -142,10 +160,10 @@ namespace DashboardAS
             // 
             this.ReloadBtn.BackColor = System.Drawing.Color.Indigo;
             this.ReloadBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReloadBtn.Location = new System.Drawing.Point(947, 499);
-            this.ReloadBtn.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.ReloadBtn.Location = new System.Drawing.Point(828, 499);
+            this.ReloadBtn.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.ReloadBtn.Name = "ReloadBtn";
-            this.ReloadBtn.Size = new System.Drawing.Size(146, 43);
+            this.ReloadBtn.Size = new System.Drawing.Size(127, 43);
             this.ReloadBtn.TabIndex = 11;
             this.ReloadBtn.Text = "Reload";
             this.ReloadBtn.UseVisualStyleBackColor = false;
@@ -153,10 +171,10 @@ namespace DashboardAS
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.YellowGreen;
-            this.button1.Location = new System.Drawing.Point(1101, 499);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.button1.Location = new System.Drawing.Point(963, 499);
+            this.button1.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 43);
+            this.button1.Size = new System.Drawing.Size(132, 43);
             this.button1.TabIndex = 12;
             this.button1.Text = "Reactivate";
             this.button1.UseVisualStyleBackColor = false;
@@ -166,10 +184,10 @@ namespace DashboardAS
             // 
             this.Missed.BackColor = System.Drawing.Color.Red;
             this.Missed.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Missed.Location = new System.Drawing.Point(782, 452);
-            this.Missed.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.Missed.Location = new System.Drawing.Point(684, 452);
+            this.Missed.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.Missed.Name = "Missed";
-            this.Missed.Size = new System.Drawing.Size(146, 43);
+            this.Missed.Size = new System.Drawing.Size(127, 43);
             this.Missed.TabIndex = 6;
             this.Missed.Text = "Missed";
             this.Missed.UseVisualStyleBackColor = false;
@@ -179,10 +197,10 @@ namespace DashboardAS
             // 
             this.RegisterBtn.BackColor = System.Drawing.Color.YellowGreen;
             this.RegisterBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegisterBtn.Location = new System.Drawing.Point(947, 220);
-            this.RegisterBtn.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.RegisterBtn.Location = new System.Drawing.Point(828, 220);
+            this.RegisterBtn.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.RegisterBtn.Name = "RegisterBtn";
-            this.RegisterBtn.Size = new System.Drawing.Size(281, 34);
+            this.RegisterBtn.Size = new System.Drawing.Size(245, 34);
             this.RegisterBtn.TabIndex = 4;
             this.RegisterBtn.Text = "Add to Attendance Register";
             this.RegisterBtn.UseVisualStyleBackColor = false;
@@ -203,56 +221,14 @@ namespace DashboardAS
             this.missedDataGridViewTextBoxColumn,
             this.remainingDataGridViewTextBoxColumn});
             this.dataGridView2.DataSource = this.lessonAttendanceMJBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(46, 297);
+            this.dataGridView2.Location = new System.Drawing.Point(40, 297);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1206, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(1055, 150);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.SelectionChanged += new System.EventHandler(this.dataGridView2_SelectionChanged);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.bookingIDDataGridViewTextBoxColumn,
-            this.studentIDDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.surnameDataGridViewTextBoxColumn,
-            this.instructorIDDataGridViewTextBoxColumn,
-            this.packageIDDataGridViewTextBoxColumn,
-            this.noOfLessonsDataGridViewTextBoxColumn,
-            this.dateDataGridViewTextBoxColumn,
-            this.timeDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.bookingBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(46, 52);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1206, 150);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1321, 570);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Student Progress";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // archBtn
-            // 
-            this.archBtn.AutoSize = true;
-            this.archBtn.Location = new System.Drawing.Point(66, 516);
-            this.archBtn.Name = "archBtn";
-            this.archBtn.Size = new System.Drawing.Size(140, 21);
-            this.archBtn.TabIndex = 13;
-            this.archBtn.Text = "Show all students";
-            this.archBtn.UseVisualStyleBackColor = true;
-            this.archBtn.CheckedChanged += new System.EventHandler(this.archBtn_CheckedChanged);
             // 
             // studentIDDataGridViewTextBoxColumn1
             // 
@@ -336,6 +312,29 @@ namespace DashboardAS
             this.dsManager1.DataSetName = "DSManager";
             this.dsManager1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.bookingIDDataGridViewTextBoxColumn,
+            this.studentIDDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.surnameDataGridViewTextBoxColumn,
+            this.instructorIDDataGridViewTextBoxColumn,
+            this.packageIDDataGridViewTextBoxColumn,
+            this.noOfLessonsDataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn,
+            this.timeDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.bookingBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(40, 52);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1055, 150);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // bookingIDDataGridViewTextBoxColumn
             // 
             this.bookingIDDataGridViewTextBoxColumn.DataPropertyName = "BookingID";
@@ -414,6 +413,17 @@ namespace DashboardAS
             this.bookingBindingSource.DataMember = "Booking";
             this.bookingBindingSource.DataSource = this.dsManager1;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tabPage2.Size = new System.Drawing.Size(1154, 570);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Student Progress";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // bookingTableAdapter
             // 
             this.bookingTableAdapter.ClearBeforeFill = true;
@@ -450,12 +460,30 @@ namespace DashboardAS
             this.bookingBindingSource2.DataMember = "Booking";
             this.bookingBindingSource2.DataSource = this.dsManager1;
             // 
+            // reassignBtn
+            // 
+            this.reassignBtn.Location = new System.Drawing.Point(963, 259);
+            this.reassignBtn.Name = "reassignBtn";
+            this.reassignBtn.Size = new System.Drawing.Size(110, 32);
+            this.reassignBtn.TabIndex = 14;
+            this.reassignBtn.Text = "Reassign";
+            this.reassignBtn.UseVisualStyleBackColor = true;
+            this.reassignBtn.Click += new System.EventHandler(this.reassignBtn_Click);
+            // 
+            // instruTxt
+            // 
+            this.instruTxt.Location = new System.Drawing.Point(805, 269);
+            this.instruTxt.Name = "instruTxt";
+            this.instruTxt.Size = new System.Drawing.Size(140, 22);
+            this.instruTxt.TabIndex = 15;
+            // 
             // ManageInstru
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1329, 599);
+            this.ClientSize = new System.Drawing.Size(1162, 599);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "ManageInstru";
             this.Text = "ManageInstru";
             this.Load += new System.EventHandler(this.ManageInstru_Load);
@@ -463,9 +491,9 @@ namespace DashboardAS
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lessonAttendanceMJBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lessonBookingMJBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempStudentsBindingSource)).EndInit();
@@ -518,5 +546,7 @@ namespace DashboardAS
         private DSManagerTableAdapters.TempStudentsTableAdapter tempStudentsTableAdapter;
         private System.Windows.Forms.BindingSource bookingBindingSource2;
         private System.Windows.Forms.BindingSource bookingBindingSource1;
+        private System.Windows.Forms.TextBox instruTxt;
+        private System.Windows.Forms.Button reassignBtn;
     }
 }
