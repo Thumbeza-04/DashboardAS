@@ -20,8 +20,10 @@ namespace DashboardAS
 
         private void ManageInstru_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dsManager1.TempStudent' table. You can move, or remove it, as needed.
+            //this.tempStudentTableAdapter.Fill(this.dsManager1.TempStudent);
             // TODO: This line of code loads data into the 'dsManager1.TempStudents' table. You can move, or remove it, as needed.
-            this.tempStudentsTableAdapter.Fill(this.dsManager1.TempStudents);
+            //this.tempStudentsTableAdapter.Fill(this.dsManager1.TempStudents);
             // TODO: This line of code loads data into the 'dsManager1.LessonBookingMJ' table. You can move, or remove it, as needed.
             this.lessonBookingMJTableAdapter.Fill(this.dsManager1.LessonBookingMJ);
             bool arch = false;
@@ -31,6 +33,7 @@ namespace DashboardAS
             //this.bookingTableAdapter.Fill(this.dsManager1.Booking);
             bookingTableAdapter.Fill(dsManager1.Booking);
             lessonAttendanceMJTableAdapter.FillByArch(dsManager1.LessonAttendanceMJ, arch);
+            tempStudentTableAdapter.FillByArch(dsManager1.TempStudent, arch);
 
             if (dataGridView2.CurrentRow != null)
             {
@@ -41,6 +44,8 @@ namespace DashboardAS
             {
                 button1.Enabled = false;
             }
+
+            
 
         }
         SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
@@ -248,6 +253,30 @@ namespace DashboardAS
             }
         }
 
+        private void LoadTemp()
+        {
+
+            bool showArchived = checkBox1.Checked;
+
+            string query = showArchived
+                ? "SELECT * FROM TempStudent "
+                : "SELECT * FROM TempStudent WHERE IsArchived = 0";
+
+            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dataGridView4.DataSource = dt;
+
+
+            }
+        }
+
         private void archBtn_CheckedChanged(object sender, EventArgs e)
         {
             LoadAttendanceData();
@@ -263,6 +292,30 @@ namespace DashboardAS
             using (SqlCommand cmd = new SqlCommand(query, con))
             {
                 cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
+
+                con.Open();
+                object result = cmd.ExecuteScalar();
+                con.Close();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    isArchived = Convert.ToBoolean(result);
+                }
+            }
+
+            return isArchived;
+        }
+
+        private bool IsStudentArchived2(int TempID)
+        {
+            bool isArchived = false;
+
+            string query = "SELECT IsArchived FROM TempStudent WHERE TempID = @TempID";
+
+            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.Add("@TempID", SqlDbType.Int).Value = TempID;
 
                 con.Open();
                 object result = cmd.ExecuteScalar();
@@ -360,6 +413,165 @@ namespace DashboardAS
                 MessageBox.Show("Instructor Reassigned successfully");
 
                
+
+            }
+            else
+            {
+                MessageBox.Show("Instructor unavailable");
+            }
+        }
+
+        void BindData()
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM TempStudent WHERE IsArchived = 0", connec);
+
+
+            SqlDataAdapter sd = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
+            sd.Fill(dt);
+            dataGridView3.DataSource = dt;
+        }
+
+        private void TReassign_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            {
+                connec.Open();
+
+
+                try
+                {
+                    int id = Convert.ToInt32(IdTxt.Text);
+                    bool BT = false;
+
+
+                    SqlCommand command1 = new SqlCommand("Insert into TempStudent values( '" + (int)dataGridView3.CurrentRow.Cells[0].Value + "','" + dataGridView3.CurrentRow.Cells[1].Value + "','" + dataGridView3.CurrentRow.Cells[2].Value + "','" + (int)dataGridView3.CurrentRow.Cells[3].Value + "', '" + id + "','" + dataGridView3.CurrentRow.Cells[4].Value + "','" + (int)dataGridView3.CurrentRow.Cells[5].Value + "','" + (int)dataGridView3.CurrentRow.Cells[6].Value + "', '" + (int)dataGridView3.CurrentRow.Cells[7].Value + "' ,'" + (int)dataGridView3.CurrentRow.Cells[8].Value + "', '" + BT + "')", connec);
+                    command1.ExecuteNonQuery();
+
+
+                    MessageBox.Show("Added to Attendance Registered");
+
+
+                    LoadTemp();
+
+                }
+                catch
+                {
+
+                    connec.Close();
+                    MessageBox.Show("Student Already exists in the register", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void archiiveBtn_Click(object sender, EventArgs e)
+        {
+            int TempID = (int)dataGridView4.CurrentRow.Cells[0].Value;
+            bool isArchived = false;
+
+            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            using (SqlCommand checkCmd = new SqlCommand("SELECT IsArchived FROM TempStudent WHERE TempID = @TempID", con))
+            {
+                checkCmd.Parameters.Add("@TempID", SqlDbType.Int).Value = TempID;
+                con.Open();
+                object result = checkCmd.ExecuteScalar();
+                con.Close();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    isArchived = Convert.ToBoolean(result);
+                }
+            }
+            if (isArchived)
+            {
+                MessageBox.Show("This student is already archived.");
+                return;
+            }
+
+
+
+            DialogResult Result = MessageBox.Show("THIS ACTION CANNOT BE UNDONE!Are you sure you want to Archive.", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (Result == DialogResult.No)
+            {
+                MessageBox.Show("Archive cancelled");
+            }
+            else
+            {
+
+                int TempId = (int)dataGridView4.CurrentRow.Cells[0].Value;
+                connec.Open();
+                SqlCommand comm = new SqlCommand("UPDATE TempStudent SET IsArchived =1 WHERE TempID = @TempId", connec);
+                comm.Parameters.AddWithValue("@TempId", TempId);
+                comm.ExecuteNonQuery();
+                connec.Close();
+
+
+                LoadTemp();
+
+                MessageBox.Show("Archived");
+            }
+        }
+
+        private void ReactBtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView4.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a student to unarchive.");
+                return;
+            }
+
+            int TempID = Convert.ToInt32(dataGridView4.CurrentRow.Cells[0].Value);
+
+            string query = "UPDATE TempStudent SET IsArchived = 0 WHERE TempID = TempID";
+
+            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.Add("@TempID", SqlDbType.Int).Value = TempID;
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+
+            MessageBox.Show("Student has been unarchived.");
+            LoadTemp();
+        }
+
+        private void dataGridView4_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView4.CurrentRow != null)
+            {
+                int TempID = Convert.ToInt32(dataGridView4.CurrentRow.Cells[0].Value);
+                ReactBtn.Enabled = IsStudentArchived2(TempID);
+            }
+            else
+            {
+                ReactBtn.Enabled = false;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadTemp();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int newInstructorId = int.Parse(instruTxt.Text);
+            DateTime date = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[7].Value);
+            TimeSpan time = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
+
+            if (IsInstructorAvailable(newInstructorId, date, time))
+            {
+                int bookingId = (int)dataGridView1.CurrentRow.Cells[0].Value;
+                
+                UpdateInstructorInBooking(bookingId, newInstructorId);
+                this.bookingTableAdapter.Fill(dsManager1.Booking);
+               
+                MessageBox.Show("Booking Reassigned successfully, add student to the Temporary register!");
+
+
 
             }
             else
