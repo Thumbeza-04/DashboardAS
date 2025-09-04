@@ -14644,11 +14644,19 @@ SELECT BookingID, StudentID, StudentName, StudentSurname, InstructorID, Attendan
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT TemporaryStudents.*\r\nFROM     TemporaryStudents";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT BookingID, StudentID, StudentName, StudentSurname, InstructorID, Attendanc" +
+                "e, IsArchived\r\nFROM     TemporaryStudents\r\nWHERE  (InstructorID = @InstructorId)" +
+                " AND (IsArchived = @Arch)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Arch", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "IsArchived", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14670,6 +14678,54 @@ SELECT BookingID, StudentID, StudentName, StudentSurname, InstructorID, Attendan
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DSAttendance2.TemporaryStudentsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DSAttendance2.TemporaryStudentsDataTable dataTable = new DSAttendance2.TemporaryStudentsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByIdArch(DSAttendance2.TemporaryStudentsDataTable dataTable, global::System.Nullable<int> InstructorId, global::System.Nullable<bool> Arch) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((InstructorId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(InstructorId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((Arch.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((bool)(Arch.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DSAttendance2.TemporaryStudentsDataTable GetDataBy(global::System.Nullable<int> InstructorId, global::System.Nullable<bool> Arch) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((InstructorId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(InstructorId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((Arch.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((bool)(Arch.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             DSAttendance2.TemporaryStudentsDataTable dataTable = new DSAttendance2.TemporaryStudentsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

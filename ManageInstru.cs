@@ -20,6 +20,8 @@ namespace DashboardAS
 
         private void ManageInstru_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dSAttendance2.InstructorMJ' table. You can move, or remove it, as needed.
+            this.instructorMJTableAdapter.Fill(this.dSAttendance2.InstructorMJ);
             // TODO: This line of code loads data into the 'dsManager1.TemporaryStudents' table. You can move, or remove it, as needed.
             this.temporaryStudentsTableAdapter.Fill(this.dsManager1.TemporaryStudents);
             // TODO: This line of code loads data into the 'dsManager1.TempStudent' table. You can move, or remove it, as needed.
@@ -125,62 +127,9 @@ namespace DashboardAS
             LoadAttendanceData();
         }
 
-        private void AttendedBtn_Click(object sender, EventArgs e)
-        {
-            int allLess = (int)dataGridView2.CurrentRow.Cells[6].Value + (int)dataGridView2.CurrentRow.Cells[7].Value;
-            int Less = (int)dataGridView2.CurrentRow.Cells[5].Value;
-            if (Less == allLess)
-            {
-                MessageBox.Show("Student has attended all their lessons");
-            }
-            else
-            {
-                bool arch = false;
-                int up = 1;
-                int att = (int)dataGridView2.CurrentRow.Cells[6].Value + up;
-                int Total = (int)dataGridView2.CurrentRow.Cells[7].Value + att;
-                int rem = (int)dataGridView2.CurrentRow.Cells[5].Value - Total;
+        
 
-                connec.Open();
-                SqlCommand command = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='" + dataGridView2.CurrentRow.Cells[1].Value + "' ,StudentSurname = '" + dataGridView2.CurrentRow.Cells[2].Value + "' ,InstructorID ='" + (int)dataGridView2.CurrentRow.Cells[3].Value + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[4].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[5].Value + "',Attended = '" + att + "',Missed ='" + (int)dataGridView2.CurrentRow.Cells[7].Value + "',Remaining = '" + rem + "',IsArchived = '" + arch + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() + "'", connec);
-                command.ExecuteNonQuery();
-                connec.Close();
-
-                MessageBox.Show("Marked as attended");
-                
-
-                Bind();
-            }
-        }
-
-        private void Missed_Click(object sender, EventArgs e)
-        {
-            int allLess = (int)dataGridView2.CurrentRow.Cells[6].Value + (int)dataGridView2.CurrentRow.Cells[7].Value;
-            int Less = (int)dataGridView2.CurrentRow.Cells[5].Value;
-            if (Less == allLess)
-            {
-                MessageBox.Show("Student has attended all their lessons");
-            }
-            else
-            {
-                bool arch = false;
-                int up = 1;
-
-                int missed = (int)dataGridView2.CurrentRow.Cells[7].Value + up;
-                int Total = (int)dataGridView2.CurrentRow.Cells[6].Value + missed;
-                int rem = (int)dataGridView2.CurrentRow.Cells[5].Value - Total;
-
-                connec.Open();
-                SqlCommand command = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='" + dataGridView2.CurrentRow.Cells[1].Value + "' ,StudentSurname = '" + dataGridView2.CurrentRow.Cells[2].Value + "',InstructorID ='" + (int)dataGridView2.CurrentRow.Cells[3].Value + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[4].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[5].Value + "',Attended = '" + (int)dataGridView2.CurrentRow.Cells[6].Value + "',Missed ='" + missed + "',Remaining = '" + rem + "' ,IsArchived = '" + arch + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() + "'", connec);
-                command.ExecuteNonQuery();
-                connec.Close();
-
-                MessageBox.Show("Marked as Missed");
-                
-
-                Bind();
-            }
-        }
+        
 
         private void ArchiveBtn_Click(object sender, EventArgs e)
         {
@@ -261,8 +210,8 @@ namespace DashboardAS
             bool showArchived = checkBox1.Checked;
 
             string query = showArchived
-                ? "SELECT * FROM TempStudent "
-                : "SELECT * FROM TempStudent WHERE IsArchived = 0";
+                ? "SELECT * FROM TemporaryStudents "
+                : "SELECT * FROM TemporaryStudents WHERE IsArchived = 0";
 
             using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
             using (SqlCommand cmd = new SqlCommand(query, con))
@@ -308,16 +257,16 @@ namespace DashboardAS
             return isArchived;
         }
 
-        private bool IsStudentArchived2(int TempID)
+        private bool IsStudentArchived2(int BookingID)
         {
             bool isArchived = false;
 
-            string query = "SELECT IsArchived FROM TempStudent WHERE TempID = @TempID";
+            string query = "SELECT IsArchived FROM TemporaryStudents WHERE BookingID = @BookingID";
 
             using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
             using (SqlCommand cmd = new SqlCommand(query, con))
             {
-                cmd.Parameters.Add("@TempID", SqlDbType.Int).Value = TempID;
+                cmd.Parameters.Add("@BookingID", SqlDbType.Int).Value = BookingID;
 
                 con.Open();
                 object result = cmd.ExecuteScalar();
@@ -397,11 +346,41 @@ namespace DashboardAS
                 Bind();
             }
         }
-        
-         
+
+        private bool StudentExistsInAttendance(int studentId)
+        {
+            using (SqlConnection conn = new SqlConnection("Data Source = 146.230.177.46; User ID = WstGrp24; Password = 6wefi"))
+            {
+                string query = "SELECT COUNT(*) FROM LessonAttendanceMJ WHERE StudentID = @StudentID";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@StudentID", studentId);
+                    conn.Open();
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
+
+
+
         private void reassignBtn_Click(object sender, EventArgs e)
         {
-            int newInstructorId = int.Parse(instruTxt.Text);
+            DialogResult result = MessageBox.Show(
+            "Do you want to Reassign Booking?",
+            "Confirm Reassignment",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                MessageBox.Show("Permanent reassignment cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            else if (result == DialogResult.Yes)
+            {
+            int newInstructorId = int.Parse(comboBox1.Text);
             DateTime date = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[7].Value);
             TimeSpan time = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
 
@@ -421,60 +400,35 @@ namespace DashboardAS
             {
                 MessageBox.Show("Instructor unavailable");
             }
+            }
+
+
+
+              
         }
 
         void BindData()
         {
-            SqlCommand command = new SqlCommand("SELECT * FROM TempStudent WHERE IsArchived = 0", connec);
+            SqlCommand command = new SqlCommand("SELECT * FROM TemporaryStudents WHERE IsArchived = 0", connec);
 
 
             SqlDataAdapter sd = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             sd.Fill(dt);
-            dataGridView3.DataSource = dt;
+            dataGridView4.DataSource = dt;
         }
 
-        private void TReassign_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
-            {
-                connec.Open();
-
-
-                try
-                {
-                    int id = Convert.ToInt32(IdTxt.Text);
-                    bool BT = false;
-
-
-                    SqlCommand command1 = new SqlCommand("Insert into TempStudent values( '" + (int)dataGridView3.CurrentRow.Cells[0].Value + "','" + dataGridView3.CurrentRow.Cells[1].Value + "','" + dataGridView3.CurrentRow.Cells[2].Value + "','" + (int)dataGridView3.CurrentRow.Cells[3].Value + "', '" + id + "','" + dataGridView3.CurrentRow.Cells[4].Value + "','" + (int)dataGridView3.CurrentRow.Cells[5].Value + "','" + (int)dataGridView3.CurrentRow.Cells[6].Value + "', '" + (int)dataGridView3.CurrentRow.Cells[7].Value + "' ,'" + (int)dataGridView3.CurrentRow.Cells[8].Value + "', '" + BT + "')", connec);
-                    command1.ExecuteNonQuery();
-
-
-                    MessageBox.Show("Added to Attendance Registered");
-
-
-                    LoadTemp();
-
-                }
-                catch
-                {
-
-                    connec.Close();
-                    MessageBox.Show("Student Already exists in the register", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
+        
 
         private void archiiveBtn_Click(object sender, EventArgs e)
         {
-            int TempID = (int)dataGridView4.CurrentRow.Cells[0].Value;
+            int BookingID = (int)dataGridView4.CurrentRow.Cells[0].Value;
             bool isArchived = false;
 
             using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
-            using (SqlCommand checkCmd = new SqlCommand("SELECT IsArchived FROM TempStudent WHERE TempID = @TempID", con))
+            using (SqlCommand checkCmd = new SqlCommand("SELECT IsArchived FROM TemporaryStudents WHERE BookingID = @BookingID", con))
             {
-                checkCmd.Parameters.Add("@TempID", SqlDbType.Int).Value = TempID;
+                checkCmd.Parameters.Add("@BookingID", SqlDbType.Int).Value = BookingID;
                 con.Open();
                 object result = checkCmd.ExecuteScalar();
                 con.Close();
@@ -501,10 +455,10 @@ namespace DashboardAS
             else
             {
 
-                int TempId = (int)dataGridView4.CurrentRow.Cells[0].Value;
+                int BookingId = (int)dataGridView4.CurrentRow.Cells[0].Value;
                 connec.Open();
-                SqlCommand comm = new SqlCommand("UPDATE TempStudent SET IsArchived =1 WHERE TempID = @TempId", connec);
-                comm.Parameters.AddWithValue("@TempId", TempId);
+                SqlCommand comm = new SqlCommand("UPDATE TemporaryStudents SET IsArchived =1 WHERE BookingID = @BookingID", connec);
+                comm.Parameters.AddWithValue("@BookingID", BookingId);
                 comm.ExecuteNonQuery();
                 connec.Close();
 
@@ -525,12 +479,12 @@ namespace DashboardAS
 
             int TempID = Convert.ToInt32(dataGridView4.CurrentRow.Cells[0].Value);
 
-            string query = "UPDATE TempStudent SET IsArchived = 0 WHERE TempID = TempID";
+            string query = "UPDATE TemporaryStudents SET IsArchived = 0 WHERE BookingID = BookingID";
 
             using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
             using (SqlCommand cmd = new SqlCommand(query, con))
             {
-                cmd.Parameters.Add("@TempID", SqlDbType.Int).Value = TempID;
+                cmd.Parameters.Add("@BookingID", SqlDbType.Int).Value = BookingID;
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -544,8 +498,8 @@ namespace DashboardAS
         {
             if (dataGridView4.CurrentRow != null)
             {
-                int TempID = Convert.ToInt32(dataGridView4.CurrentRow.Cells[0].Value);
-                ReactBtn.Enabled = IsStudentArchived2(TempID);
+                int BookingID = Convert.ToInt32(dataGridView4.CurrentRow.Cells[0].Value);
+                ReactBtn.Enabled = IsStudentArchived2(BookingID);
             }
             else
             {
@@ -560,11 +514,12 @@ namespace DashboardAS
 
         void InsertTemp(int bookingId,int InstructorID, int StudentID,string StudentName,String StudentSurname)
         {
+            bool arch = false;
 
             using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
             {
                 conn.Open();
-                SqlCommand Command = new SqlCommand("INSERT into TemporaryStudents values ('" + bookingId + "','" + StudentID + "','" + StudentName + "','" + StudentSurname + "','" + InstructorID + "','" + null + "')", conn);
+                SqlCommand Command = new SqlCommand("INSERT into TemporaryStudents values ('" + bookingId + "','" + StudentID + "','" + StudentName + "','" + StudentSurname + "','" + InstructorID + "','" + null + "','"+arch+"')", conn);
                 Command.Parameters.AddWithValue("@InstructorID", InstructorID);
              
                 Command.ExecuteNonQuery();
@@ -576,32 +531,54 @@ namespace DashboardAS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int newInstructorId = int.Parse(instruTxt.Text);
-            DateTime date = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[7].Value);
-            TimeSpan time = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
-            
-
-            if (IsInstructorAvailable(newInstructorId, date, time))
+            DialogResult result = MessageBox.Show(
+            "Do you want to Reassign Booking?",
+            "Confirm Reassignment",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+            if (result == DialogResult.No)
             {
-                int bookingId = (int)dataGridView1.CurrentRow.Cells[0].Value;
-                int StudentID = (int)dataGridView1.CurrentRow.Cells[1].Value;
-                string StudentName = (string)dataGridView1.CurrentRow.Cells[2].Value;
-                string StudentSurname = (string)dataGridView1.CurrentRow.Cells[3].Value;
-                
-                UpdateInstructorInBooking(bookingId, newInstructorId);
-                this.bookingTableAdapter.Fill(dsManager1.Booking);
-                InsertTemp(bookingId, newInstructorId,StudentID,StudentName,StudentSurname);
-                this.temporaryStudentsTableAdapter.Fill(dsManager1.TemporaryStudents);
-               
-
-                    MessageBox.Show("Booking Reassigned successfully, add student to the Temporary register!");
-
-
-
+                MessageBox.Show("Booking reassignment cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
+            else if (result == DialogResult.Yes)
             {
-                MessageBox.Show("Instructor unavailable");
+
+                int newInstructorId = int.Parse(comboBox1.Text);
+                DateTime date = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[7].Value);
+                TimeSpan time = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
+                int StudentID = (int)dataGridView1.CurrentRow.Cells[1].Value;
+
+                if (IsInstructorAvailable(newInstructorId, date, time))
+                {
+                    if (!StudentExistsInAttendance(StudentID))
+                    {
+                        MessageBox.Show("Student not found in Attendance Register.Add Student to Attendance Register", "Missing Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    }
+                    else
+                    {
+                        int bookingId = (int)dataGridView1.CurrentRow.Cells[0].Value;
+
+                        string StudentName = (string)dataGridView1.CurrentRow.Cells[2].Value;
+                        string StudentSurname = (string)dataGridView1.CurrentRow.Cells[3].Value;
+
+                        UpdateInstructorInBooking(bookingId, newInstructorId);
+                        this.bookingTableAdapter.Fill(dsManager1.Booking);
+                        InsertTemp(bookingId, newInstructorId, StudentID, StudentName, StudentSurname);
+                        this.temporaryStudentsTableAdapter.Fill(dsManager1.TemporaryStudents);
+
+
+                        MessageBox.Show("Booking Reassigned successfully, student added to the Temporary register!");
+                    }
+
+
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Instructor unavailable");
+                }
             }
         }
     }
