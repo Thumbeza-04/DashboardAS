@@ -53,9 +53,12 @@ namespace DashboardAS
 
         private void attBtn_Click(object sender, EventArgs e)
         {
+            string status = dataGridView1.CurrentRow.Cells[4].Value?.ToString()?.Trim();
             try
             {
-                if (dataGridView1.CurrentRow.Cells[4].Value != null)
+                
+
+                if (status == "Present" || status == "Absent")
                 {
                     MessageBox.Show("Already marked, select new student");
                 }
@@ -68,6 +71,7 @@ namespace DashboardAS
                     int StudentID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value);
                     int BookingID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
                     String Attended = "Present";
+                    DateTime Date = DateTime.Now;
                     int InId = id;
 
                     using (SqlConnection conn = new SqlConnection("Data Source = 146.230.177.46; User ID = WstGrp24; Password = 6wefi"))
@@ -90,6 +94,7 @@ namespace DashboardAS
 
                                 try
                                 {
+                                   
                                     SqlCommand command1 = new SqlCommand(
                                         @"UPDATE LessonAttendanceMJ 
                           SET Attended = Attended + 1, Remaining = Remaining - 1 
@@ -105,13 +110,17 @@ namespace DashboardAS
                                     command2.Parameters.AddWithValue("@Attended", Attended);
                                     command2.ExecuteNonQuery();
 
+                                    SqlCommand command3 = new SqlCommand("Insert into AttendanceSheet values ('" + InId + "','" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + Attended + "','" + Date + "')", conn, transaction);
+                                    command3.ExecuteNonQuery();
                                     transaction.Commit();
+                                    conn.Close();
                                     MessageBox.Show("Marked as attended", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Bind(InId);
                                 }
                                 catch (Exception ex)
                                 {
                                     transaction.Rollback();
+                                    conn.Close();
                                     MessageBox.Show("Unable to mark student: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
@@ -128,9 +137,12 @@ namespace DashboardAS
 
         private void MissedBtn_Click(object sender, EventArgs e)
         {
+            string status = dataGridView1.CurrentRow.Cells[4].Value?.ToString()?.Trim();
             try 
             {
-                if (dataGridView1.CurrentRow.Cells[4].Value != null)
+                
+
+                if (status == "Present" || status == "Absent")
                 {
                     MessageBox.Show("Already marked, select new student");
                 }
@@ -142,6 +154,7 @@ namespace DashboardAS
                     int StudentID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value);
                     int BookingID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
                     String Attended = "Absent";
+                    DateTime Date = DateTime.Now;
                     int InId = id;
 
                     using (SqlConnection conn = new SqlConnection("Data Source = 146.230.177.46; User ID = WstGrp24; Password = 6wefi"))
@@ -179,13 +192,18 @@ namespace DashboardAS
                                     command2.Parameters.AddWithValue("@Attended", Attended);
                                     command2.ExecuteNonQuery();
 
+                                    SqlCommand command3 = new SqlCommand("Insert into AttendanceSheet values ('" + InId + "','" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + Attended + "','" + Date + "')", conn, transaction);
+                                    command3.ExecuteNonQuery();
+
                                     transaction.Commit();
+                                    conn.Close();
                                     MessageBox.Show("Marked as Missed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Bind(InId);
                                 }
                                 catch (Exception ex)
                                 {
                                     transaction.Rollback();
+                                    conn.Close();
                                     MessageBox.Show("Unable to mark student: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }

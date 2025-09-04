@@ -98,6 +98,8 @@ namespace DashboardAS
         private void AttendedBtn_Click(object sender, EventArgs e)
         {
             int ID = id;
+            String Attendance = "Present";
+            DateTime Date = DateTime.Now;
             int allLess = (int)dataGridView2.CurrentRow.Cells[5].Value + (int)dataGridView2.CurrentRow.Cells[6].Value;
             int Less = (int)dataGridView2.CurrentRow.Cells[4].Value;
             if (Less == allLess)
@@ -108,26 +110,42 @@ namespace DashboardAS
             {
                 bool arch = false;
                 int up = 1;
+                connec.Open();
+                SqlTransaction transaction = connec.BeginTransaction();
+                try
+                {
                 int att = (int)dataGridView2.CurrentRow.Cells[5].Value + up;
                 int Total = (int)dataGridView2.CurrentRow.Cells[6].Value + att;
                 int rem = (int)dataGridView2.CurrentRow.Cells[4].Value - Total;
 
-                connec.Open();
-                SqlCommand command = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='" +dataGridView2.CurrentRow.Cells[1].Value+"' ,StudentSurname = '"+dataGridView2.CurrentRow.Cells[2].Value+"' ,InstructorID ='" + ID + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[3].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[4].Value + "',Attended = '" + att + "',Missed ='" + (int)dataGridView2.CurrentRow.Cells[6].Value + "',Remaining = '" + rem + "',IsArchived = '" + arch + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() +"'", connec);
-                command.ExecuteNonQuery();
-                connec.Close();
+                
+                SqlCommand command1 = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='" +dataGridView2.CurrentRow.Cells[1].Value+"' ,StudentSurname = '"+dataGridView2.CurrentRow.Cells[2].Value+"' ,InstructorID ='" + ID + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[3].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[4].Value + "',Attended = '" + att + "',Missed ='" + (int)dataGridView2.CurrentRow.Cells[6].Value + "',Remaining = '" + rem + "',IsArchived = '" + arch + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() +"'", connec,transaction);
+                command1.ExecuteNonQuery();
+
+                SqlCommand command2 = new SqlCommand("Insert into AttendanceSheet values ('" + ID + "','" + (int)dataGridView2.CurrentRow.Cells[0].Value + "','" + dataGridView2.CurrentRow.Cells[1].Value + "','" + dataGridView2.CurrentRow.Cells[2].Value + "','" + Attendance + "','" + Date + "')", connec, transaction);
+                command2.ExecuteNonQuery();
+                transaction.Commit();
+                    connec.Close();
 
                 MessageBox.Show("Marked as attended");
                 int instructorId = ID;
 
                 Bind(instructorId);
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    connec.Close();
+                    MessageBox.Show("Unable to mark student");
+                }
+               
             }
         }
 
         private void Missed_Click(object sender, EventArgs e)
         {
             int ID = id;
-            string Attendance = "Present";
+            string Attendance = "Absent";
             DateTime Date = DateTime.Now;
             int allLess = (int)dataGridView2.CurrentRow.Cells[5].Value + (int)dataGridView2.CurrentRow.Cells[6].Value;
             int Less = (int)dataGridView2.CurrentRow.Cells[4].Value;
@@ -154,6 +172,7 @@ namespace DashboardAS
                 SqlCommand command2 = new SqlCommand("Insert into AttendanceSheet values ('" + ID + "','" + (int)dataGridView2.CurrentRow.Cells[0].Value + "','" + dataGridView2.CurrentRow.Cells[1].Value + "','" + dataGridView2.CurrentRow.Cells[2].Value + "','" + Attendance + "','" + Date + "')", connec, transaction);
                     command2.ExecuteNonQuery();
                 transaction.Commit();
+                    connec.Close();
 
                 MessageBox.Show("Marked as Missed");
                 int instructorId = ID;
