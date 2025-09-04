@@ -371,43 +371,60 @@ namespace DashboardAS
 
         private void reassignBtn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-            "Do you want to Reassign Booking?",
-            "Confirm Reassignment",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question);
-            if (result == DialogResult.No)
-            {
-                MessageBox.Show("Permanent reassignment cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            DateTime bookingDate = (DateTime)dataGridView1.CurrentRow.Cells[7].Value;
+            TimeSpan startTime = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
 
-            else if (result == DialogResult.Yes)
-            {
-            int newInstructorId = int.Parse(comboBox1.Text);
-            DateTime date = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[7].Value);
-            TimeSpan time = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
+            DateTime startbookingDateTime = bookingDate + startTime;
+            DateTime endbookingDateTime = startbookingDateTime.AddHours(1);
+            
 
-            if (IsInstructorAvailable(newInstructorId, date, time))
+            if (endbookingDateTime <= DateTime.Now)
             {
-                int bookingId = (int)dataGridView1.CurrentRow.Cells[0].Value;
-                int studentId = (int)dataGridView1.CurrentRow.Cells[1].Value;
-                UpdateInstructorInBooking(bookingId, newInstructorId);
-                this.bookingTableAdapter.Fill(dsManager1.Booking);
-                UpdateInstructorInAttendance(studentId, newInstructorId);
-                MessageBox.Show("Instructor Reassigned successfully");
-
-               
+                MessageBox.Show("Reassignment cancelled: Booking passed.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             else
             {
-                MessageBox.Show("Instructor unavailable");
-            }
-            }
 
 
 
-              
+                DialogResult result = MessageBox.Show(
+                "Do you want to Reassign Booking?",
+                "Confirm Reassignment",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                {
+                    MessageBox.Show("Permanent reassignment cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                else if (result == DialogResult.Yes)
+                {
+                    int newInstructorId = int.Parse(comboBox1.Text);
+                    DateTime date = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[7].Value);
+                    TimeSpan time = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
+
+                    if (IsInstructorAvailable(newInstructorId, date, time))
+                    {
+                        int bookingId = (int)dataGridView1.CurrentRow.Cells[0].Value;
+                        int studentId = (int)dataGridView1.CurrentRow.Cells[1].Value;
+                        UpdateInstructorInBooking(bookingId, newInstructorId);
+                        this.bookingTableAdapter.Fill(dsManager1.Booking);
+                        UpdateInstructorInAttendance(studentId, newInstructorId);
+                        MessageBox.Show("Instructor Reassigned successfully");
+
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Instructor unavailable");
+                    }
+                }
+
+
+
+            }      
         }
 
         void BindData()
@@ -530,57 +547,74 @@ namespace DashboardAS
             }
         }
 
-        
+
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-            "Do you want to Reassign Booking?",
-            "Confirm Reassignment",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question);
-            if (result == DialogResult.No)
+            DateTime bookingDate = (DateTime)dataGridView1.CurrentRow.Cells[7].Value;
+            TimeSpan startTime = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
+
+            DateTime startbookingDateTime = bookingDate + startTime;
+            DateTime endbookingDateTime = startbookingDateTime.AddHours(1);
+
+
+            if (endbookingDateTime <= DateTime.Now)
             {
-                MessageBox.Show("Booking reassignment cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Reassignment cancelled: Booking passed.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
-            else if (result == DialogResult.Yes)
+            else
             {
 
-                int newInstructorId = int.Parse(comboBox1.Text);
-                DateTime date = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[7].Value);
-                TimeSpan time = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
-                int StudentID = (int)dataGridView1.CurrentRow.Cells[1].Value;
 
-                if (IsInstructorAvailable(newInstructorId, date, time))
+                DialogResult result = MessageBox.Show(
+                "Do you want to Reassign Booking?",
+                "Confirm Reassignment",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+                if (result == DialogResult.No)
                 {
-                    if (!StudentExistsInAttendance(StudentID))
+                    MessageBox.Show("Booking reassignment cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (result == DialogResult.Yes)
+                {
+
+                    int newInstructorId = int.Parse(comboBox1.Text);
+                    DateTime date = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[7].Value);
+                    TimeSpan time = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
+                    int StudentID = (int)dataGridView1.CurrentRow.Cells[1].Value;
+
+                    if (IsInstructorAvailable(newInstructorId, date, time))
                     {
-                        MessageBox.Show("Student not found in Attendance Register.Add Student to Attendance Register", "Missing Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        if (!StudentExistsInAttendance(StudentID))
+                        {
+                            MessageBox.Show("Student not found in Attendance Register.Add Student to Attendance Register", "Missing Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        }
+                        else
+                        {
+                            int bookingId = (int)dataGridView1.CurrentRow.Cells[0].Value;
+
+                            string StudentName = (string)dataGridView1.CurrentRow.Cells[2].Value;
+                            string StudentSurname = (string)dataGridView1.CurrentRow.Cells[3].Value;
+
+                            UpdateInstructorInBooking(bookingId, newInstructorId);
+                            this.bookingTableAdapter.Fill(dsManager1.Booking);
+                            InsertTemp(bookingId, newInstructorId, StudentID, StudentName, StudentSurname);
+                            this.temporaryStudentsTableAdapter.Fill(dsManager1.TemporaryStudents);
+
+
+                            MessageBox.Show("Booking Reassigned successfully, student added to the Temporary register!");
+                        }
+
+
+
 
                     }
                     else
                     {
-                        int bookingId = (int)dataGridView1.CurrentRow.Cells[0].Value;
-
-                        string StudentName = (string)dataGridView1.CurrentRow.Cells[2].Value;
-                        string StudentSurname = (string)dataGridView1.CurrentRow.Cells[3].Value;
-
-                        UpdateInstructorInBooking(bookingId, newInstructorId);
-                        this.bookingTableAdapter.Fill(dsManager1.Booking);
-                        InsertTemp(bookingId, newInstructorId, StudentID, StudentName, StudentSurname);
-                        this.temporaryStudentsTableAdapter.Fill(dsManager1.TemporaryStudents);
-
-
-                        MessageBox.Show("Booking Reassigned successfully, student added to the Temporary register!");
+                        MessageBox.Show("Instructor unavailable");
                     }
-
-
-
-
-                }
-                else
-                {
-                    MessageBox.Show("Instructor unavailable");
                 }
             }
         }
