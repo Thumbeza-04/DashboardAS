@@ -47,6 +47,7 @@ namespace DashboardAS
             this.tempStudentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tempStudentTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.TempStudentTableAdapter1();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.MissedBtn = new System.Windows.Forms.Button();
             this.attBtn = new System.Windows.Forms.Button();
             this.temporaryStudentsTableAdapter = new DashboardAS.DSAttendance2TableAdapters.TemporaryStudentsTableAdapter();
@@ -58,13 +59,17 @@ namespace DashboardAS
             this.ConRB2 = new System.Windows.Forms.RadioButton();
             this.CommentsGB = new System.Windows.Forms.GroupBox();
             this.CommentTxt = new System.Windows.Forms.TextBox();
-            this.SNameLbl = new System.Windows.Forms.Label();
-            this.NameLbl = new System.Windows.Forms.Label();
-            this.StuIdLbl = new System.Windows.Forms.Label();
             this.TestGB = new System.Windows.Forms.GroupBox();
             this.TRB3 = new System.Windows.Forms.RadioButton();
             this.TRB2 = new System.Windows.Forms.RadioButton();
             this.TRB1 = new System.Windows.Forms.RadioButton();
+            this.UnInterGB = new System.Windows.Forms.GroupBox();
+            this.UnconRB3 = new System.Windows.Forms.RadioButton();
+            this.UnconRB1 = new System.Windows.Forms.RadioButton();
+            this.UnconRB2 = new System.Windows.Forms.RadioButton();
+            this.SNameLbl = new System.Windows.Forms.Label();
+            this.NameLbl = new System.Windows.Forms.Label();
+            this.StuIdLbl = new System.Windows.Forms.Label();
             this.FreewayGB = new System.Windows.Forms.GroupBox();
             this.FWRB3 = new System.Windows.Forms.RadioButton();
             this.FWRB1 = new System.Windows.Forms.RadioButton();
@@ -81,10 +86,6 @@ namespace DashboardAS
             this.HillRB3 = new System.Windows.Forms.RadioButton();
             this.HillRB1 = new System.Windows.Forms.RadioButton();
             this.HillRB2 = new System.Windows.Forms.RadioButton();
-            this.UnInterGB = new System.Windows.Forms.GroupBox();
-            this.UnconRB3 = new System.Windows.Forms.RadioButton();
-            this.UnconRB1 = new System.Windows.Forms.RadioButton();
-            this.UnconRB2 = new System.Windows.Forms.RadioButton();
             this.DDrivingGB = new System.Windows.Forms.GroupBox();
             this.DefRB3 = new System.Windows.Forms.RadioButton();
             this.DefRB2 = new System.Windows.Forms.RadioButton();
@@ -101,7 +102,6 @@ namespace DashboardAS
             this.PRB3 = new System.Windows.Forms.RadioButton();
             this.PRB2 = new System.Windows.Forms.RadioButton();
             this.PRB1 = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).BeginInit();
@@ -118,11 +118,11 @@ namespace DashboardAS
             this.CInterGB.SuspendLayout();
             this.CommentsGB.SuspendLayout();
             this.TestGB.SuspendLayout();
+            this.UnInterGB.SuspendLayout();
             this.FreewayGB.SuspendLayout();
             this.LaneGB.SuspendLayout();
             this.ParkingGB.SuspendLayout();
             this.HillGB.SuspendLayout();
-            this.UnInterGB.SuspendLayout();
             this.DDrivingGB.SuspendLayout();
             this.SpeedGB.SuspendLayout();
             this.VehControlGB.SuspendLayout();
@@ -242,6 +242,7 @@ namespace DashboardAS
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.MissedBtn);
             this.groupBox1.Controls.Add(this.attBtn);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1038, 259);
@@ -249,24 +250,38 @@ namespace DashboardAS
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Temporary Attendance Register";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(23, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(293, 17);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "*Double click the row to evaluate student";
+            // 
             // MissedBtn
             // 
-            this.MissedBtn.Location = new System.Drawing.Point(887, 215);
+            this.MissedBtn.BackColor = System.Drawing.Color.Olive;
+            this.MissedBtn.Location = new System.Drawing.Point(856, 215);
             this.MissedBtn.Name = "MissedBtn";
-            this.MissedBtn.Size = new System.Drawing.Size(102, 32);
+            this.MissedBtn.Size = new System.Drawing.Size(120, 32);
             this.MissedBtn.TabIndex = 1;
             this.MissedBtn.Text = "Missed";
-            this.MissedBtn.UseVisualStyleBackColor = true;
+            this.MissedBtn.UseVisualStyleBackColor = false;
             this.MissedBtn.Click += new System.EventHandler(this.MissedBtn_Click);
             // 
             // attBtn
             // 
-            this.attBtn.Location = new System.Drawing.Point(780, 215);
+            this.attBtn.BackColor = System.Drawing.Color.Gold;
+            this.attBtn.Location = new System.Drawing.Point(706, 215);
             this.attBtn.Name = "attBtn";
-            this.attBtn.Size = new System.Drawing.Size(88, 32);
+            this.attBtn.Size = new System.Drawing.Size(126, 32);
             this.attBtn.TabIndex = 0;
             this.attBtn.Text = "Attended";
-            this.attBtn.UseVisualStyleBackColor = true;
+            this.attBtn.UseVisualStyleBackColor = false;
             this.attBtn.Click += new System.EventHandler(this.attBtn_Click);
             // 
             // temporaryStudentsTableAdapter
@@ -291,6 +306,7 @@ namespace DashboardAS
             this.groupBox2.Controls.Add(this.SpeedGB);
             this.groupBox2.Controls.Add(this.VehControlGB);
             this.groupBox2.Controls.Add(this.PreGB);
+            this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 315);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox2.Name = "groupBox2";
@@ -330,7 +346,7 @@ namespace DashboardAS
             this.ConRB3.Location = new System.Drawing.Point(15, 97);
             this.ConRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ConRB3.Name = "ConRB3";
-            this.ConRB3.Size = new System.Drawing.Size(119, 21);
+            this.ConRB3.Size = new System.Drawing.Size(142, 23);
             this.ConRB3.TabIndex = 6;
             this.ConRB3.TabStop = true;
             this.ConRB3.Text = "Unsatisfactory";
@@ -342,7 +358,7 @@ namespace DashboardAS
             this.ConRB1.Location = new System.Drawing.Point(15, 39);
             this.ConRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ConRB1.Name = "ConRB1";
-            this.ConRB1.Size = new System.Drawing.Size(85, 21);
+            this.ConRB1.Size = new System.Drawing.Size(104, 23);
             this.ConRB1.TabIndex = 4;
             this.ConRB1.TabStop = true;
             this.ConRB1.Text = "Excellent";
@@ -354,7 +370,7 @@ namespace DashboardAS
             this.ConRB2.Location = new System.Drawing.Point(15, 68);
             this.ConRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ConRB2.Name = "ConRB2";
-            this.ConRB2.Size = new System.Drawing.Size(103, 21);
+            this.ConRB2.Size = new System.Drawing.Size(123, 23);
             this.ConRB2.TabIndex = 5;
             this.ConRB2.TabStop = true;
             this.ConRB2.Text = "Satisfactory";
@@ -381,6 +397,106 @@ namespace DashboardAS
             this.CommentTxt.Size = new System.Drawing.Size(1097, 66);
             this.CommentTxt.TabIndex = 0;
             // 
+            // TestGB
+            // 
+            this.TestGB.Controls.Add(this.TRB3);
+            this.TestGB.Controls.Add(this.TRB2);
+            this.TestGB.Controls.Add(this.TRB1);
+            this.TestGB.Location = new System.Drawing.Point(1199, 256);
+            this.TestGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TestGB.Name = "TestGB";
+            this.TestGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TestGB.Size = new System.Drawing.Size(261, 157);
+            this.TestGB.TabIndex = 18;
+            this.TestGB.TabStop = false;
+            this.TestGB.Text = "Mock Test";
+            // 
+            // TRB3
+            // 
+            this.TRB3.AutoSize = true;
+            this.TRB3.Location = new System.Drawing.Point(19, 95);
+            this.TRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TRB3.Name = "TRB3";
+            this.TRB3.Size = new System.Drawing.Size(142, 23);
+            this.TRB3.TabIndex = 3;
+            this.TRB3.TabStop = true;
+            this.TRB3.Text = "Unsatisfactory";
+            this.TRB3.UseVisualStyleBackColor = true;
+            // 
+            // TRB2
+            // 
+            this.TRB2.AutoSize = true;
+            this.TRB2.Location = new System.Drawing.Point(19, 66);
+            this.TRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TRB2.Name = "TRB2";
+            this.TRB2.Size = new System.Drawing.Size(123, 23);
+            this.TRB2.TabIndex = 2;
+            this.TRB2.TabStop = true;
+            this.TRB2.Text = "Satisfactory";
+            this.TRB2.UseVisualStyleBackColor = true;
+            // 
+            // TRB1
+            // 
+            this.TRB1.AutoSize = true;
+            this.TRB1.Location = new System.Drawing.Point(19, 37);
+            this.TRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.TRB1.Name = "TRB1";
+            this.TRB1.Size = new System.Drawing.Size(104, 23);
+            this.TRB1.TabIndex = 1;
+            this.TRB1.TabStop = true;
+            this.TRB1.Text = "Excellent";
+            this.TRB1.UseVisualStyleBackColor = true;
+            // 
+            // UnInterGB
+            // 
+            this.UnInterGB.Controls.Add(this.UnconRB3);
+            this.UnInterGB.Controls.Add(this.UnconRB1);
+            this.UnInterGB.Controls.Add(this.UnconRB2);
+            this.UnInterGB.Location = new System.Drawing.Point(1503, 94);
+            this.UnInterGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UnInterGB.Name = "UnInterGB";
+            this.UnInterGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UnInterGB.Size = new System.Drawing.Size(251, 151);
+            this.UnInterGB.TabIndex = 7;
+            this.UnInterGB.TabStop = false;
+            this.UnInterGB.Text = "Uncontrolled Intersections";
+            // 
+            // UnconRB3
+            // 
+            this.UnconRB3.AutoSize = true;
+            this.UnconRB3.Location = new System.Drawing.Point(15, 104);
+            this.UnconRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UnconRB3.Name = "UnconRB3";
+            this.UnconRB3.Size = new System.Drawing.Size(142, 23);
+            this.UnconRB3.TabIndex = 9;
+            this.UnconRB3.TabStop = true;
+            this.UnconRB3.Text = "Unsatisfactory";
+            this.UnconRB3.UseVisualStyleBackColor = true;
+            // 
+            // UnconRB1
+            // 
+            this.UnconRB1.AutoSize = true;
+            this.UnconRB1.Location = new System.Drawing.Point(15, 46);
+            this.UnconRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UnconRB1.Name = "UnconRB1";
+            this.UnconRB1.Size = new System.Drawing.Size(104, 23);
+            this.UnconRB1.TabIndex = 7;
+            this.UnconRB1.TabStop = true;
+            this.UnconRB1.Text = "Excellent";
+            this.UnconRB1.UseVisualStyleBackColor = true;
+            // 
+            // UnconRB2
+            // 
+            this.UnconRB2.AutoSize = true;
+            this.UnconRB2.Location = new System.Drawing.Point(15, 75);
+            this.UnconRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.UnconRB2.Name = "UnconRB2";
+            this.UnconRB2.Size = new System.Drawing.Size(123, 23);
+            this.UnconRB2.TabIndex = 8;
+            this.UnconRB2.TabStop = true;
+            this.UnconRB2.Text = "Satisfactory";
+            this.UnconRB2.UseVisualStyleBackColor = true;
+            // 
             // SNameLbl
             // 
             this.SNameLbl.Location = new System.Drawing.Point(257, 23);
@@ -405,56 +521,6 @@ namespace DashboardAS
             this.StuIdLbl.Size = new System.Drawing.Size(59, 19);
             this.StuIdLbl.TabIndex = 7;
             // 
-            // TestGB
-            // 
-            this.TestGB.Controls.Add(this.TRB3);
-            this.TestGB.Controls.Add(this.TRB2);
-            this.TestGB.Controls.Add(this.TRB1);
-            this.TestGB.Location = new System.Drawing.Point(1199, 256);
-            this.TestGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TestGB.Name = "TestGB";
-            this.TestGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TestGB.Size = new System.Drawing.Size(261, 157);
-            this.TestGB.TabIndex = 18;
-            this.TestGB.TabStop = false;
-            this.TestGB.Text = "Mock Test";
-            // 
-            // TRB3
-            // 
-            this.TRB3.AutoSize = true;
-            this.TRB3.Location = new System.Drawing.Point(19, 95);
-            this.TRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TRB3.Name = "TRB3";
-            this.TRB3.Size = new System.Drawing.Size(119, 21);
-            this.TRB3.TabIndex = 3;
-            this.TRB3.TabStop = true;
-            this.TRB3.Text = "Unsatisfactory";
-            this.TRB3.UseVisualStyleBackColor = true;
-            // 
-            // TRB2
-            // 
-            this.TRB2.AutoSize = true;
-            this.TRB2.Location = new System.Drawing.Point(19, 66);
-            this.TRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TRB2.Name = "TRB2";
-            this.TRB2.Size = new System.Drawing.Size(103, 21);
-            this.TRB2.TabIndex = 2;
-            this.TRB2.TabStop = true;
-            this.TRB2.Text = "Satisfactory";
-            this.TRB2.UseVisualStyleBackColor = true;
-            // 
-            // TRB1
-            // 
-            this.TRB1.AutoSize = true;
-            this.TRB1.Location = new System.Drawing.Point(19, 37);
-            this.TRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TRB1.Name = "TRB1";
-            this.TRB1.Size = new System.Drawing.Size(85, 21);
-            this.TRB1.TabIndex = 1;
-            this.TRB1.TabStop = true;
-            this.TRB1.Text = "Excellent";
-            this.TRB1.UseVisualStyleBackColor = true;
-            // 
             // FreewayGB
             // 
             this.FreewayGB.Controls.Add(this.FWRB3);
@@ -475,7 +541,7 @@ namespace DashboardAS
             this.FWRB3.Location = new System.Drawing.Point(18, 96);
             this.FWRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FWRB3.Name = "FWRB3";
-            this.FWRB3.Size = new System.Drawing.Size(119, 21);
+            this.FWRB3.Size = new System.Drawing.Size(142, 23);
             this.FWRB3.TabIndex = 21;
             this.FWRB3.TabStop = true;
             this.FWRB3.Text = "Unsatisfactory";
@@ -487,7 +553,7 @@ namespace DashboardAS
             this.FWRB1.Location = new System.Drawing.Point(18, 38);
             this.FWRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FWRB1.Name = "FWRB1";
-            this.FWRB1.Size = new System.Drawing.Size(85, 21);
+            this.FWRB1.Size = new System.Drawing.Size(104, 23);
             this.FWRB1.TabIndex = 19;
             this.FWRB1.TabStop = true;
             this.FWRB1.Text = "Excellent";
@@ -499,7 +565,7 @@ namespace DashboardAS
             this.FWRB2.Location = new System.Drawing.Point(18, 67);
             this.FWRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FWRB2.Name = "FWRB2";
-            this.FWRB2.Size = new System.Drawing.Size(103, 21);
+            this.FWRB2.Size = new System.Drawing.Size(123, 23);
             this.FWRB2.TabIndex = 20;
             this.FWRB2.TabStop = true;
             this.FWRB2.Text = "Satisfactory";
@@ -525,7 +591,7 @@ namespace DashboardAS
             this.LnRB3.Location = new System.Drawing.Point(17, 96);
             this.LnRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LnRB3.Name = "LnRB3";
-            this.LnRB3.Size = new System.Drawing.Size(119, 21);
+            this.LnRB3.Size = new System.Drawing.Size(142, 23);
             this.LnRB3.TabIndex = 18;
             this.LnRB3.TabStop = true;
             this.LnRB3.Text = "Unsatisfactory";
@@ -537,7 +603,7 @@ namespace DashboardAS
             this.LnRB1.Location = new System.Drawing.Point(17, 38);
             this.LnRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LnRB1.Name = "LnRB1";
-            this.LnRB1.Size = new System.Drawing.Size(85, 21);
+            this.LnRB1.Size = new System.Drawing.Size(104, 23);
             this.LnRB1.TabIndex = 16;
             this.LnRB1.TabStop = true;
             this.LnRB1.Text = "Excellent";
@@ -549,7 +615,7 @@ namespace DashboardAS
             this.LnRB2.Location = new System.Drawing.Point(17, 67);
             this.LnRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LnRB2.Name = "LnRB2";
-            this.LnRB2.Size = new System.Drawing.Size(103, 21);
+            this.LnRB2.Size = new System.Drawing.Size(123, 23);
             this.LnRB2.TabIndex = 17;
             this.LnRB2.TabStop = true;
             this.LnRB2.Text = "Satisfactory";
@@ -575,7 +641,7 @@ namespace DashboardAS
             this.ParkRB3.Location = new System.Drawing.Point(15, 104);
             this.ParkRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ParkRB3.Name = "ParkRB3";
-            this.ParkRB3.Size = new System.Drawing.Size(119, 21);
+            this.ParkRB3.Size = new System.Drawing.Size(142, 23);
             this.ParkRB3.TabIndex = 15;
             this.ParkRB3.TabStop = true;
             this.ParkRB3.Text = "Unsatisfactory";
@@ -587,7 +653,7 @@ namespace DashboardAS
             this.ParkRB1.Location = new System.Drawing.Point(15, 46);
             this.ParkRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ParkRB1.Name = "ParkRB1";
-            this.ParkRB1.Size = new System.Drawing.Size(85, 21);
+            this.ParkRB1.Size = new System.Drawing.Size(104, 23);
             this.ParkRB1.TabIndex = 13;
             this.ParkRB1.TabStop = true;
             this.ParkRB1.Text = "Excellent";
@@ -599,7 +665,7 @@ namespace DashboardAS
             this.ParkRB2.Location = new System.Drawing.Point(15, 75);
             this.ParkRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ParkRB2.Name = "ParkRB2";
-            this.ParkRB2.Size = new System.Drawing.Size(103, 21);
+            this.ParkRB2.Size = new System.Drawing.Size(123, 23);
             this.ParkRB2.TabIndex = 14;
             this.ParkRB2.TabStop = true;
             this.ParkRB2.Text = "Satisfactory";
@@ -625,7 +691,7 @@ namespace DashboardAS
             this.HillRB3.Location = new System.Drawing.Point(9, 104);
             this.HillRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.HillRB3.Name = "HillRB3";
-            this.HillRB3.Size = new System.Drawing.Size(119, 21);
+            this.HillRB3.Size = new System.Drawing.Size(142, 23);
             this.HillRB3.TabIndex = 12;
             this.HillRB3.TabStop = true;
             this.HillRB3.Text = "Unsatisfactory";
@@ -637,7 +703,7 @@ namespace DashboardAS
             this.HillRB1.Location = new System.Drawing.Point(9, 46);
             this.HillRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.HillRB1.Name = "HillRB1";
-            this.HillRB1.Size = new System.Drawing.Size(85, 21);
+            this.HillRB1.Size = new System.Drawing.Size(104, 23);
             this.HillRB1.TabIndex = 10;
             this.HillRB1.TabStop = true;
             this.HillRB1.Text = "Excellent";
@@ -649,61 +715,11 @@ namespace DashboardAS
             this.HillRB2.Location = new System.Drawing.Point(9, 75);
             this.HillRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.HillRB2.Name = "HillRB2";
-            this.HillRB2.Size = new System.Drawing.Size(103, 21);
+            this.HillRB2.Size = new System.Drawing.Size(123, 23);
             this.HillRB2.TabIndex = 11;
             this.HillRB2.TabStop = true;
             this.HillRB2.Text = "Satisfactory";
             this.HillRB2.UseVisualStyleBackColor = true;
-            // 
-            // UnInterGB
-            // 
-            this.UnInterGB.Controls.Add(this.UnconRB3);
-            this.UnInterGB.Controls.Add(this.UnconRB1);
-            this.UnInterGB.Controls.Add(this.UnconRB2);
-            this.UnInterGB.Location = new System.Drawing.Point(1503, 94);
-            this.UnInterGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.UnInterGB.Name = "UnInterGB";
-            this.UnInterGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.UnInterGB.Size = new System.Drawing.Size(251, 151);
-            this.UnInterGB.TabIndex = 7;
-            this.UnInterGB.TabStop = false;
-            this.UnInterGB.Text = "Uncontrolled Intersections";
-            // 
-            // UnconRB3
-            // 
-            this.UnconRB3.AutoSize = true;
-            this.UnconRB3.Location = new System.Drawing.Point(15, 104);
-            this.UnconRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.UnconRB3.Name = "UnconRB3";
-            this.UnconRB3.Size = new System.Drawing.Size(119, 21);
-            this.UnconRB3.TabIndex = 9;
-            this.UnconRB3.TabStop = true;
-            this.UnconRB3.Text = "Unsatisfactory";
-            this.UnconRB3.UseVisualStyleBackColor = true;
-            // 
-            // UnconRB1
-            // 
-            this.UnconRB1.AutoSize = true;
-            this.UnconRB1.Location = new System.Drawing.Point(15, 46);
-            this.UnconRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.UnconRB1.Name = "UnconRB1";
-            this.UnconRB1.Size = new System.Drawing.Size(85, 21);
-            this.UnconRB1.TabIndex = 7;
-            this.UnconRB1.TabStop = true;
-            this.UnconRB1.Text = "Excellent";
-            this.UnconRB1.UseVisualStyleBackColor = true;
-            // 
-            // UnconRB2
-            // 
-            this.UnconRB2.AutoSize = true;
-            this.UnconRB2.Location = new System.Drawing.Point(15, 75);
-            this.UnconRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.UnconRB2.Name = "UnconRB2";
-            this.UnconRB2.Size = new System.Drawing.Size(103, 21);
-            this.UnconRB2.TabIndex = 8;
-            this.UnconRB2.TabStop = true;
-            this.UnconRB2.Text = "Satisfactory";
-            this.UnconRB2.UseVisualStyleBackColor = true;
             // 
             // DDrivingGB
             // 
@@ -725,7 +741,7 @@ namespace DashboardAS
             this.DefRB3.Location = new System.Drawing.Point(15, 108);
             this.DefRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DefRB3.Name = "DefRB3";
-            this.DefRB3.Size = new System.Drawing.Size(119, 21);
+            this.DefRB3.Size = new System.Drawing.Size(142, 23);
             this.DefRB3.TabIndex = 6;
             this.DefRB3.TabStop = true;
             this.DefRB3.Text = "Unsatisfactory";
@@ -737,7 +753,7 @@ namespace DashboardAS
             this.DefRB2.Location = new System.Drawing.Point(15, 79);
             this.DefRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DefRB2.Name = "DefRB2";
-            this.DefRB2.Size = new System.Drawing.Size(103, 21);
+            this.DefRB2.Size = new System.Drawing.Size(123, 23);
             this.DefRB2.TabIndex = 5;
             this.DefRB2.TabStop = true;
             this.DefRB2.Text = "Satisfactory";
@@ -749,7 +765,7 @@ namespace DashboardAS
             this.DefRB1.Location = new System.Drawing.Point(15, 50);
             this.DefRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DefRB1.Name = "DefRB1";
-            this.DefRB1.Size = new System.Drawing.Size(85, 21);
+            this.DefRB1.Size = new System.Drawing.Size(104, 23);
             this.DefRB1.TabIndex = 4;
             this.DefRB1.TabStop = true;
             this.DefRB1.Text = "Excellent";
@@ -775,7 +791,7 @@ namespace DashboardAS
             this.GearRB3.Location = new System.Drawing.Point(21, 93);
             this.GearRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.GearRB3.Name = "GearRB3";
-            this.GearRB3.Size = new System.Drawing.Size(119, 21);
+            this.GearRB3.Size = new System.Drawing.Size(142, 23);
             this.GearRB3.TabIndex = 6;
             this.GearRB3.TabStop = true;
             this.GearRB3.Text = "Unsatisfactory";
@@ -787,7 +803,7 @@ namespace DashboardAS
             this.GearRB2.Location = new System.Drawing.Point(21, 64);
             this.GearRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.GearRB2.Name = "GearRB2";
-            this.GearRB2.Size = new System.Drawing.Size(103, 21);
+            this.GearRB2.Size = new System.Drawing.Size(123, 23);
             this.GearRB2.TabIndex = 5;
             this.GearRB2.TabStop = true;
             this.GearRB2.Text = "Satisfactory";
@@ -799,7 +815,7 @@ namespace DashboardAS
             this.GearRB1.Location = new System.Drawing.Point(21, 35);
             this.GearRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.GearRB1.Name = "GearRB1";
-            this.GearRB1.Size = new System.Drawing.Size(85, 21);
+            this.GearRB1.Size = new System.Drawing.Size(104, 23);
             this.GearRB1.TabIndex = 4;
             this.GearRB1.TabStop = true;
             this.GearRB1.Text = "Excellent";
@@ -825,7 +841,7 @@ namespace DashboardAS
             this.VRB3.Location = new System.Drawing.Point(25, 93);
             this.VRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.VRB3.Name = "VRB3";
-            this.VRB3.Size = new System.Drawing.Size(119, 21);
+            this.VRB3.Size = new System.Drawing.Size(142, 23);
             this.VRB3.TabIndex = 6;
             this.VRB3.TabStop = true;
             this.VRB3.Text = "Unsatisfactory";
@@ -837,7 +853,7 @@ namespace DashboardAS
             this.VRB2.Location = new System.Drawing.Point(25, 64);
             this.VRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.VRB2.Name = "VRB2";
-            this.VRB2.Size = new System.Drawing.Size(103, 21);
+            this.VRB2.Size = new System.Drawing.Size(123, 23);
             this.VRB2.TabIndex = 5;
             this.VRB2.TabStop = true;
             this.VRB2.Text = "Satisfactory";
@@ -849,7 +865,7 @@ namespace DashboardAS
             this.VRB1.Location = new System.Drawing.Point(25, 35);
             this.VRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.VRB1.Name = "VRB1";
-            this.VRB1.Size = new System.Drawing.Size(85, 21);
+            this.VRB1.Size = new System.Drawing.Size(104, 23);
             this.VRB1.TabIndex = 4;
             this.VRB1.TabStop = true;
             this.VRB1.Text = "Excellent";
@@ -875,7 +891,7 @@ namespace DashboardAS
             this.PRB3.Location = new System.Drawing.Point(15, 103);
             this.PRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PRB3.Name = "PRB3";
-            this.PRB3.Size = new System.Drawing.Size(119, 21);
+            this.PRB3.Size = new System.Drawing.Size(142, 23);
             this.PRB3.TabIndex = 6;
             this.PRB3.TabStop = true;
             this.PRB3.Text = "Unsatisfactory";
@@ -887,7 +903,7 @@ namespace DashboardAS
             this.PRB2.Location = new System.Drawing.Point(15, 74);
             this.PRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PRB2.Name = "PRB2";
-            this.PRB2.Size = new System.Drawing.Size(103, 21);
+            this.PRB2.Size = new System.Drawing.Size(123, 23);
             this.PRB2.TabIndex = 5;
             this.PRB2.TabStop = true;
             this.PRB2.Text = "Satisfactory";
@@ -899,23 +915,11 @@ namespace DashboardAS
             this.PRB1.Location = new System.Drawing.Point(15, 45);
             this.PRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PRB1.Name = "PRB1";
-            this.PRB1.Size = new System.Drawing.Size(85, 21);
+            this.PRB1.Size = new System.Drawing.Size(104, 23);
             this.PRB1.TabIndex = 4;
             this.PRB1.TabStop = true;
             this.PRB1.Text = "Excellent";
             this.PRB1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(23, 40);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(293, 17);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "*Double click the row to evaluate student";
             // 
             // textBox1
             // 
@@ -968,6 +972,8 @@ namespace DashboardAS
             this.CommentsGB.PerformLayout();
             this.TestGB.ResumeLayout(false);
             this.TestGB.PerformLayout();
+            this.UnInterGB.ResumeLayout(false);
+            this.UnInterGB.PerformLayout();
             this.FreewayGB.ResumeLayout(false);
             this.FreewayGB.PerformLayout();
             this.LaneGB.ResumeLayout(false);
@@ -976,8 +982,6 @@ namespace DashboardAS
             this.ParkingGB.PerformLayout();
             this.HillGB.ResumeLayout(false);
             this.HillGB.PerformLayout();
-            this.UnInterGB.ResumeLayout(false);
-            this.UnInterGB.PerformLayout();
             this.DDrivingGB.ResumeLayout(false);
             this.DDrivingGB.PerformLayout();
             this.SpeedGB.ResumeLayout(false);
