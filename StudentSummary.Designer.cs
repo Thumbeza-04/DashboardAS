@@ -118,7 +118,7 @@ namespace DashboardAS
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1019, 16);
+            this.label2.Location = new System.Drawing.Point(1165, 16);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(212, 19);
@@ -127,10 +127,10 @@ namespace DashboardAS
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(1246, 13);
+            this.textBox1.Location = new System.Drawing.Point(1424, 13);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(137, 22);
+            this.textBox1.Size = new System.Drawing.Size(156, 22);
             this.textBox1.TabIndex = 5;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -153,7 +153,7 @@ namespace DashboardAS
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1337, 148);
+            this.dataGridView2.Size = new System.Drawing.Size(1528, 148);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseDoubleClick);
             // 
@@ -214,27 +214,28 @@ namespace DashboardAS
             // 
             // SNameLbl
             // 
-            this.SNameLbl.Location = new System.Drawing.Point(225, 23);
+            this.SNameLbl.Location = new System.Drawing.Point(257, 23);
             this.SNameLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SNameLbl.Name = "SNameLbl";
-            this.SNameLbl.Size = new System.Drawing.Size(139, 19);
+            this.SNameLbl.Size = new System.Drawing.Size(159, 19);
             this.SNameLbl.TabIndex = 3;
             // 
             // NameLbl
             // 
-            this.NameLbl.Location = new System.Drawing.Point(92, 23);
+            this.NameLbl.Location = new System.Drawing.Point(105, 23);
             this.NameLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NameLbl.Name = "NameLbl";
-            this.NameLbl.Size = new System.Drawing.Size(108, 19);
+            this.NameLbl.Size = new System.Drawing.Size(123, 19);
             this.NameLbl.TabIndex = 6;
             // 
             // StuIdLbl
             // 
-            this.StuIdLbl.Location = new System.Drawing.Point(20, 23);
+            this.StuIdLbl.Location = new System.Drawing.Point(23, 23);
             this.StuIdLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.StuIdLbl.Name = "StuIdLbl";
-            this.StuIdLbl.Size = new System.Drawing.Size(52, 19);
+            this.StuIdLbl.Size = new System.Drawing.Size(59, 19);
             this.StuIdLbl.TabIndex = 7;
+ 
             // 
             // groupBox1
             // 
@@ -243,11 +244,11 @@ namespace DashboardAS
             this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(10, 39);
+            this.groupBox1.Location = new System.Drawing.Point(11, 39);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(1372, 1006);
+            this.groupBox1.Size = new System.Drawing.Size(1568, 1006);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Evatuation";
@@ -257,10 +258,10 @@ namespace DashboardAS
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(5, 31);
+            this.label1.Location = new System.Drawing.Point(6, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 16);
+            this.label1.Size = new System.Drawing.Size(293, 17);
             this.label1.TabIndex = 27;
             this.label1.Text = "*Double click the row to evaluate student";
             // 
@@ -282,21 +283,21 @@ namespace DashboardAS
             this.groupBox2.Controls.Add(this.SpeedGB);
             this.groupBox2.Controls.Add(this.VehControlGB);
             this.groupBox2.Controls.Add(this.PreGB);
-            this.groupBox2.Location = new System.Drawing.Point(5, 203);
+            this.groupBox2.Location = new System.Drawing.Point(6, 203);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.groupBox2.Size = new System.Drawing.Size(1337, 711);
+            this.groupBox2.Size = new System.Drawing.Size(1528, 711);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             // 
             // Savebtn
             // 
             this.Savebtn.BackColor = System.Drawing.Color.YellowGreen;
-            this.Savebtn.Location = new System.Drawing.Point(1017, 541);
+            this.Savebtn.Location = new System.Drawing.Point(1162, 541);
             this.Savebtn.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Savebtn.Name = "Savebtn";
-            this.Savebtn.Size = new System.Drawing.Size(135, 43);
+            this.Savebtn.Size = new System.Drawing.Size(154, 43);
             this.Savebtn.TabIndex = 21;
             this.Savebtn.Text = "Save Comment";
             this.Savebtn.UseVisualStyleBackColor = false;
@@ -307,11 +308,11 @@ namespace DashboardAS
             this.CInterGB.Controls.Add(this.ConRB3);
             this.CInterGB.Controls.Add(this.ConRB1);
             this.CInterGB.Controls.Add(this.ConRB2);
-            this.CInterGB.Location = new System.Drawing.Point(1049, 94);
+            this.CInterGB.Location = new System.Drawing.Point(1199, 94);
             this.CInterGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CInterGB.Name = "CInterGB";
             this.CInterGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.CInterGB.Size = new System.Drawing.Size(228, 138);
+            this.CInterGB.Size = new System.Drawing.Size(261, 138);
             this.CInterGB.TabIndex = 6;
             this.CInterGB.TabStop = false;
             this.CInterGB.Text = "Controlled Intersections";
@@ -319,7 +320,7 @@ namespace DashboardAS
             // ConRB3
             // 
             this.ConRB3.AutoSize = true;
-            this.ConRB3.Location = new System.Drawing.Point(13, 97);
+            this.ConRB3.Location = new System.Drawing.Point(15, 97);
             this.ConRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ConRB3.Name = "ConRB3";
             this.ConRB3.Size = new System.Drawing.Size(142, 23);
@@ -331,7 +332,7 @@ namespace DashboardAS
             // ConRB1
             // 
             this.ConRB1.AutoSize = true;
-            this.ConRB1.Location = new System.Drawing.Point(13, 39);
+            this.ConRB1.Location = new System.Drawing.Point(15, 39);
             this.ConRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ConRB1.Name = "ConRB1";
             this.ConRB1.Size = new System.Drawing.Size(104, 23);
@@ -343,7 +344,7 @@ namespace DashboardAS
             // ConRB2
             // 
             this.ConRB2.AutoSize = true;
-            this.ConRB2.Location = new System.Drawing.Point(13, 68);
+            this.ConRB2.Location = new System.Drawing.Point(15, 68);
             this.ConRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ConRB2.Name = "ConRB2";
             this.ConRB2.Size = new System.Drawing.Size(123, 23);
@@ -355,22 +356,22 @@ namespace DashboardAS
             // CommentsGB
             // 
             this.CommentsGB.Controls.Add(this.CommentTxt);
-            this.CommentsGB.Location = new System.Drawing.Point(251, 427);
+            this.CommentsGB.Location = new System.Drawing.Point(287, 427);
             this.CommentsGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CommentsGB.Name = "CommentsGB";
             this.CommentsGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.CommentsGB.Size = new System.Drawing.Size(754, 157);
+            this.CommentsGB.Size = new System.Drawing.Size(862, 157);
             this.CommentsGB.TabIndex = 19;
             this.CommentsGB.TabStop = false;
             this.CommentsGB.Text = "Comments";
             // 
             // CommentTxt
             // 
-            this.CommentTxt.Location = new System.Drawing.Point(5, 28);
+            this.CommentTxt.Location = new System.Drawing.Point(6, 28);
             this.CommentTxt.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CommentTxt.Multiline = true;
             this.CommentTxt.Name = "CommentTxt";
-            this.CommentTxt.Size = new System.Drawing.Size(744, 123);
+            this.CommentTxt.Size = new System.Drawing.Size(850, 123);
             this.CommentTxt.TabIndex = 0;
             // 
             // TestGB
@@ -382,7 +383,7 @@ namespace DashboardAS
             this.TestGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TestGB.Name = "TestGB";
             this.TestGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.TestGB.Size = new System.Drawing.Size(228, 157);
+            this.TestGB.Size = new System.Drawing.Size(261, 157);
             this.TestGB.TabIndex = 18;
             this.TestGB.TabStop = false;
             this.TestGB.Text = "Mock Test";
@@ -390,7 +391,7 @@ namespace DashboardAS
             // TRB3
             // 
             this.TRB3.AutoSize = true;
-            this.TRB3.Location = new System.Drawing.Point(17, 95);
+            this.TRB3.Location = new System.Drawing.Point(19, 95);
             this.TRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TRB3.Name = "TRB3";
             this.TRB3.Size = new System.Drawing.Size(142, 23);
@@ -402,7 +403,7 @@ namespace DashboardAS
             // TRB2
             // 
             this.TRB2.AutoSize = true;
-            this.TRB2.Location = new System.Drawing.Point(17, 66);
+            this.TRB2.Location = new System.Drawing.Point(19, 66);
             this.TRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TRB2.Name = "TRB2";
             this.TRB2.Size = new System.Drawing.Size(123, 23);
@@ -414,7 +415,7 @@ namespace DashboardAS
             // TRB1
             // 
             this.TRB1.AutoSize = true;
-            this.TRB1.Location = new System.Drawing.Point(17, 37);
+            this.TRB1.Location = new System.Drawing.Point(19, 37);
             this.TRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TRB1.Name = "TRB1";
             this.TRB1.Size = new System.Drawing.Size(104, 23);
@@ -428,11 +429,11 @@ namespace DashboardAS
             this.FreewayGB.Controls.Add(this.FWRB3);
             this.FreewayGB.Controls.Add(this.FWRB1);
             this.FreewayGB.Controls.Add(this.FWRB2);
-            this.FreewayGB.Location = new System.Drawing.Point(1049, 265);
+            this.FreewayGB.Location = new System.Drawing.Point(1199, 265);
             this.FreewayGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FreewayGB.Name = "FreewayGB";
             this.FreewayGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.FreewayGB.Size = new System.Drawing.Size(218, 142);
+            this.FreewayGB.Size = new System.Drawing.Size(249, 142);
             this.FreewayGB.TabIndex = 17;
             this.FreewayGB.TabStop = false;
             this.FreewayGB.Text = "Freeway Driving";
@@ -440,7 +441,7 @@ namespace DashboardAS
             // FWRB3
             // 
             this.FWRB3.AutoSize = true;
-            this.FWRB3.Location = new System.Drawing.Point(16, 96);
+            this.FWRB3.Location = new System.Drawing.Point(18, 96);
             this.FWRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FWRB3.Name = "FWRB3";
             this.FWRB3.Size = new System.Drawing.Size(142, 23);
@@ -452,7 +453,7 @@ namespace DashboardAS
             // FWRB1
             // 
             this.FWRB1.AutoSize = true;
-            this.FWRB1.Location = new System.Drawing.Point(16, 38);
+            this.FWRB1.Location = new System.Drawing.Point(18, 38);
             this.FWRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FWRB1.Name = "FWRB1";
             this.FWRB1.Size = new System.Drawing.Size(104, 23);
@@ -464,7 +465,7 @@ namespace DashboardAS
             // FWRB2
             // 
             this.FWRB2.AutoSize = true;
-            this.FWRB2.Location = new System.Drawing.Point(16, 67);
+            this.FWRB2.Location = new System.Drawing.Point(18, 67);
             this.FWRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.FWRB2.Name = "FWRB2";
             this.FWRB2.Size = new System.Drawing.Size(123, 23);
@@ -478,11 +479,11 @@ namespace DashboardAS
             this.LaneGB.Controls.Add(this.LnRB3);
             this.LaneGB.Controls.Add(this.LnRB1);
             this.LaneGB.Controls.Add(this.LnRB2);
-            this.LaneGB.Location = new System.Drawing.Point(760, 256);
+            this.LaneGB.Location = new System.Drawing.Point(869, 256);
             this.LaneGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LaneGB.Name = "LaneGB";
             this.LaneGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.LaneGB.Size = new System.Drawing.Size(245, 151);
+            this.LaneGB.Size = new System.Drawing.Size(280, 151);
             this.LaneGB.TabIndex = 10;
             this.LaneGB.TabStop = false;
             this.LaneGB.Text = "Lane Changing N Overtaking";
@@ -490,7 +491,7 @@ namespace DashboardAS
             // LnRB3
             // 
             this.LnRB3.AutoSize = true;
-            this.LnRB3.Location = new System.Drawing.Point(15, 96);
+            this.LnRB3.Location = new System.Drawing.Point(17, 96);
             this.LnRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LnRB3.Name = "LnRB3";
             this.LnRB3.Size = new System.Drawing.Size(142, 23);
@@ -502,7 +503,7 @@ namespace DashboardAS
             // LnRB1
             // 
             this.LnRB1.AutoSize = true;
-            this.LnRB1.Location = new System.Drawing.Point(15, 38);
+            this.LnRB1.Location = new System.Drawing.Point(17, 38);
             this.LnRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LnRB1.Name = "LnRB1";
             this.LnRB1.Size = new System.Drawing.Size(104, 23);
@@ -514,7 +515,7 @@ namespace DashboardAS
             // LnRB2
             // 
             this.LnRB2.AutoSize = true;
-            this.LnRB2.Location = new System.Drawing.Point(15, 67);
+            this.LnRB2.Location = new System.Drawing.Point(17, 67);
             this.LnRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.LnRB2.Name = "LnRB2";
             this.LnRB2.Size = new System.Drawing.Size(123, 23);
@@ -528,11 +529,11 @@ namespace DashboardAS
             this.ParkingGB.Controls.Add(this.ParkRB3);
             this.ParkingGB.Controls.Add(this.ParkRB1);
             this.ParkingGB.Controls.Add(this.ParkRB2);
-            this.ParkingGB.Location = new System.Drawing.Point(508, 256);
+            this.ParkingGB.Location = new System.Drawing.Point(581, 256);
             this.ParkingGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ParkingGB.Name = "ParkingGB";
             this.ParkingGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.ParkingGB.Size = new System.Drawing.Size(220, 151);
+            this.ParkingGB.Size = new System.Drawing.Size(251, 151);
             this.ParkingGB.TabIndex = 9;
             this.ParkingGB.TabStop = false;
             this.ParkingGB.Text = "Parking N Reversing";
@@ -540,7 +541,7 @@ namespace DashboardAS
             // ParkRB3
             // 
             this.ParkRB3.AutoSize = true;
-            this.ParkRB3.Location = new System.Drawing.Point(13, 104);
+            this.ParkRB3.Location = new System.Drawing.Point(15, 104);
             this.ParkRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ParkRB3.Name = "ParkRB3";
             this.ParkRB3.Size = new System.Drawing.Size(142, 23);
@@ -552,7 +553,7 @@ namespace DashboardAS
             // ParkRB1
             // 
             this.ParkRB1.AutoSize = true;
-            this.ParkRB1.Location = new System.Drawing.Point(13, 46);
+            this.ParkRB1.Location = new System.Drawing.Point(15, 46);
             this.ParkRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ParkRB1.Name = "ParkRB1";
             this.ParkRB1.Size = new System.Drawing.Size(104, 23);
@@ -564,7 +565,7 @@ namespace DashboardAS
             // ParkRB2
             // 
             this.ParkRB2.AutoSize = true;
-            this.ParkRB2.Location = new System.Drawing.Point(13, 75);
+            this.ParkRB2.Location = new System.Drawing.Point(15, 75);
             this.ParkRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ParkRB2.Name = "ParkRB2";
             this.ParkRB2.Size = new System.Drawing.Size(123, 23);
@@ -578,11 +579,11 @@ namespace DashboardAS
             this.HillGB.Controls.Add(this.HillRB3);
             this.HillGB.Controls.Add(this.HillRB1);
             this.HillGB.Controls.Add(this.HillRB2);
-            this.HillGB.Location = new System.Drawing.Point(251, 256);
+            this.HillGB.Location = new System.Drawing.Point(287, 256);
             this.HillGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.HillGB.Name = "HillGB";
             this.HillGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.HillGB.Size = new System.Drawing.Size(224, 151);
+            this.HillGB.Size = new System.Drawing.Size(256, 151);
             this.HillGB.TabIndex = 8;
             this.HillGB.TabStop = false;
             this.HillGB.Text = "Hill Starts N Gradient Control";
@@ -590,7 +591,7 @@ namespace DashboardAS
             // HillRB3
             // 
             this.HillRB3.AutoSize = true;
-            this.HillRB3.Location = new System.Drawing.Point(8, 104);
+            this.HillRB3.Location = new System.Drawing.Point(9, 104);
             this.HillRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.HillRB3.Name = "HillRB3";
             this.HillRB3.Size = new System.Drawing.Size(142, 23);
@@ -602,7 +603,7 @@ namespace DashboardAS
             // HillRB1
             // 
             this.HillRB1.AutoSize = true;
-            this.HillRB1.Location = new System.Drawing.Point(8, 46);
+            this.HillRB1.Location = new System.Drawing.Point(9, 46);
             this.HillRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.HillRB1.Name = "HillRB1";
             this.HillRB1.Size = new System.Drawing.Size(104, 23);
@@ -614,7 +615,7 @@ namespace DashboardAS
             // HillRB2
             // 
             this.HillRB2.AutoSize = true;
-            this.HillRB2.Location = new System.Drawing.Point(8, 75);
+            this.HillRB2.Location = new System.Drawing.Point(9, 75);
             this.HillRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.HillRB2.Name = "HillRB2";
             this.HillRB2.Size = new System.Drawing.Size(123, 23);
@@ -628,11 +629,11 @@ namespace DashboardAS
             this.UnInterGB.Controls.Add(this.UnconRB3);
             this.UnInterGB.Controls.Add(this.UnconRB1);
             this.UnInterGB.Controls.Add(this.UnconRB2);
-            this.UnInterGB.Location = new System.Drawing.Point(7, 256);
+            this.UnInterGB.Location = new System.Drawing.Point(8, 256);
             this.UnInterGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UnInterGB.Name = "UnInterGB";
             this.UnInterGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.UnInterGB.Size = new System.Drawing.Size(220, 151);
+            this.UnInterGB.Size = new System.Drawing.Size(251, 151);
             this.UnInterGB.TabIndex = 7;
             this.UnInterGB.TabStop = false;
             this.UnInterGB.Text = "Uncontrolled Intersections";
@@ -640,7 +641,7 @@ namespace DashboardAS
             // UnconRB3
             // 
             this.UnconRB3.AutoSize = true;
-            this.UnconRB3.Location = new System.Drawing.Point(13, 104);
+            this.UnconRB3.Location = new System.Drawing.Point(15, 104);
             this.UnconRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UnconRB3.Name = "UnconRB3";
             this.UnconRB3.Size = new System.Drawing.Size(142, 23);
@@ -652,7 +653,7 @@ namespace DashboardAS
             // UnconRB1
             // 
             this.UnconRB1.AutoSize = true;
-            this.UnconRB1.Location = new System.Drawing.Point(13, 46);
+            this.UnconRB1.Location = new System.Drawing.Point(15, 46);
             this.UnconRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UnconRB1.Name = "UnconRB1";
             this.UnconRB1.Size = new System.Drawing.Size(104, 23);
@@ -664,7 +665,7 @@ namespace DashboardAS
             // UnconRB2
             // 
             this.UnconRB2.AutoSize = true;
-            this.UnconRB2.Location = new System.Drawing.Point(13, 75);
+            this.UnconRB2.Location = new System.Drawing.Point(15, 75);
             this.UnconRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.UnconRB2.Name = "UnconRB2";
             this.UnconRB2.Size = new System.Drawing.Size(123, 23);
@@ -678,11 +679,11 @@ namespace DashboardAS
             this.DDrivingGB.Controls.Add(this.DefRB3);
             this.DDrivingGB.Controls.Add(this.DefRB2);
             this.DDrivingGB.Controls.Add(this.DefRB1);
-            this.DDrivingGB.Location = new System.Drawing.Point(760, 83);
+            this.DDrivingGB.Location = new System.Drawing.Point(869, 83);
             this.DDrivingGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DDrivingGB.Name = "DDrivingGB";
             this.DDrivingGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.DDrivingGB.Size = new System.Drawing.Size(256, 149);
+            this.DDrivingGB.Size = new System.Drawing.Size(293, 149);
             this.DDrivingGB.TabIndex = 5;
             this.DDrivingGB.TabStop = false;
             this.DDrivingGB.Text = "Observational N Defensive Driving";
@@ -690,7 +691,7 @@ namespace DashboardAS
             // DefRB3
             // 
             this.DefRB3.AutoSize = true;
-            this.DefRB3.Location = new System.Drawing.Point(13, 108);
+            this.DefRB3.Location = new System.Drawing.Point(15, 108);
             this.DefRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DefRB3.Name = "DefRB3";
             this.DefRB3.Size = new System.Drawing.Size(142, 23);
@@ -702,7 +703,7 @@ namespace DashboardAS
             // DefRB2
             // 
             this.DefRB2.AutoSize = true;
-            this.DefRB2.Location = new System.Drawing.Point(13, 79);
+            this.DefRB2.Location = new System.Drawing.Point(15, 79);
             this.DefRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DefRB2.Name = "DefRB2";
             this.DefRB2.Size = new System.Drawing.Size(123, 23);
@@ -714,7 +715,7 @@ namespace DashboardAS
             // DefRB1
             // 
             this.DefRB1.AutoSize = true;
-            this.DefRB1.Location = new System.Drawing.Point(13, 50);
+            this.DefRB1.Location = new System.Drawing.Point(15, 50);
             this.DefRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.DefRB1.Name = "DefRB1";
             this.DefRB1.Size = new System.Drawing.Size(104, 23);
@@ -728,11 +729,11 @@ namespace DashboardAS
             this.SpeedGB.Controls.Add(this.GearRB3);
             this.SpeedGB.Controls.Add(this.GearRB2);
             this.SpeedGB.Controls.Add(this.GearRB1);
-            this.SpeedGB.Location = new System.Drawing.Point(507, 83);
+            this.SpeedGB.Location = new System.Drawing.Point(579, 83);
             this.SpeedGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SpeedGB.Name = "SpeedGB";
             this.SpeedGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.SpeedGB.Size = new System.Drawing.Size(221, 149);
+            this.SpeedGB.Size = new System.Drawing.Size(253, 149);
             this.SpeedGB.TabIndex = 4;
             this.SpeedGB.TabStop = false;
             this.SpeedGB.Text = "Speed N Gear Control";
@@ -740,7 +741,7 @@ namespace DashboardAS
             // GearRB3
             // 
             this.GearRB3.AutoSize = true;
-            this.GearRB3.Location = new System.Drawing.Point(18, 93);
+            this.GearRB3.Location = new System.Drawing.Point(21, 93);
             this.GearRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.GearRB3.Name = "GearRB3";
             this.GearRB3.Size = new System.Drawing.Size(142, 23);
@@ -752,7 +753,7 @@ namespace DashboardAS
             // GearRB2
             // 
             this.GearRB2.AutoSize = true;
-            this.GearRB2.Location = new System.Drawing.Point(18, 64);
+            this.GearRB2.Location = new System.Drawing.Point(21, 64);
             this.GearRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.GearRB2.Name = "GearRB2";
             this.GearRB2.Size = new System.Drawing.Size(123, 23);
@@ -764,7 +765,7 @@ namespace DashboardAS
             // GearRB1
             // 
             this.GearRB1.AutoSize = true;
-            this.GearRB1.Location = new System.Drawing.Point(18, 35);
+            this.GearRB1.Location = new System.Drawing.Point(21, 35);
             this.GearRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.GearRB1.Name = "GearRB1";
             this.GearRB1.Size = new System.Drawing.Size(104, 23);
@@ -778,11 +779,11 @@ namespace DashboardAS
             this.VehControlGB.Controls.Add(this.VRB3);
             this.VehControlGB.Controls.Add(this.VRB2);
             this.VehControlGB.Controls.Add(this.VRB1);
-            this.VehControlGB.Location = new System.Drawing.Point(251, 83);
+            this.VehControlGB.Location = new System.Drawing.Point(287, 83);
             this.VehControlGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.VehControlGB.Name = "VehControlGB";
             this.VehControlGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.VehControlGB.Size = new System.Drawing.Size(218, 149);
+            this.VehControlGB.Size = new System.Drawing.Size(249, 149);
             this.VehControlGB.TabIndex = 3;
             this.VehControlGB.TabStop = false;
             this.VehControlGB.Text = "Vehicle Control";
@@ -790,7 +791,7 @@ namespace DashboardAS
             // VRB3
             // 
             this.VRB3.AutoSize = true;
-            this.VRB3.Location = new System.Drawing.Point(22, 93);
+            this.VRB3.Location = new System.Drawing.Point(25, 93);
             this.VRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.VRB3.Name = "VRB3";
             this.VRB3.Size = new System.Drawing.Size(142, 23);
@@ -802,7 +803,7 @@ namespace DashboardAS
             // VRB2
             // 
             this.VRB2.AutoSize = true;
-            this.VRB2.Location = new System.Drawing.Point(22, 64);
+            this.VRB2.Location = new System.Drawing.Point(25, 64);
             this.VRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.VRB2.Name = "VRB2";
             this.VRB2.Size = new System.Drawing.Size(123, 23);
@@ -814,7 +815,7 @@ namespace DashboardAS
             // VRB1
             // 
             this.VRB1.AutoSize = true;
-            this.VRB1.Location = new System.Drawing.Point(22, 35);
+            this.VRB1.Location = new System.Drawing.Point(25, 35);
             this.VRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.VRB1.Name = "VRB1";
             this.VRB1.Size = new System.Drawing.Size(104, 23);
@@ -828,11 +829,11 @@ namespace DashboardAS
             this.PreGB.Controls.Add(this.PRB3);
             this.PreGB.Controls.Add(this.PRB2);
             this.PreGB.Controls.Add(this.PRB1);
-            this.PreGB.Location = new System.Drawing.Point(7, 73);
+            this.PreGB.Location = new System.Drawing.Point(8, 73);
             this.PreGB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PreGB.Name = "PreGB";
             this.PreGB.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.PreGB.Size = new System.Drawing.Size(220, 159);
+            this.PreGB.Size = new System.Drawing.Size(251, 159);
             this.PreGB.TabIndex = 2;
             this.PreGB.TabStop = false;
             this.PreGB.Text = "PreTrip Checks";
@@ -840,7 +841,7 @@ namespace DashboardAS
             // PRB3
             // 
             this.PRB3.AutoSize = true;
-            this.PRB3.Location = new System.Drawing.Point(13, 103);
+            this.PRB3.Location = new System.Drawing.Point(15, 103);
             this.PRB3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PRB3.Name = "PRB3";
             this.PRB3.Size = new System.Drawing.Size(142, 23);
@@ -852,7 +853,7 @@ namespace DashboardAS
             // PRB2
             // 
             this.PRB2.AutoSize = true;
-            this.PRB2.Location = new System.Drawing.Point(13, 74);
+            this.PRB2.Location = new System.Drawing.Point(15, 74);
             this.PRB2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PRB2.Name = "PRB2";
             this.PRB2.Size = new System.Drawing.Size(123, 23);
@@ -864,7 +865,7 @@ namespace DashboardAS
             // PRB1
             // 
             this.PRB1.AutoSize = true;
-            this.PRB1.Location = new System.Drawing.Point(13, 45);
+            this.PRB1.Location = new System.Drawing.Point(15, 45);
             this.PRB1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.PRB1.Name = "PRB1";
             this.PRB1.Size = new System.Drawing.Size(104, 23);
@@ -884,10 +885,10 @@ namespace DashboardAS
             // 
             // StudentSummary
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1528, 1102);
+            this.ClientSize = new System.Drawing.Size(1746, 1102);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
