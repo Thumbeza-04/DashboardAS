@@ -20,6 +20,8 @@ namespace DashboardAS
 
         private void ManageInstru_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dsManager1.TemporaryStudents' table. You can move, or remove it, as needed.
+            this.temporaryStudentsTableAdapter.Fill(this.dsManager1.TemporaryStudents);
             // TODO: This line of code loads data into the 'dsManager1.TempStudent' table. You can move, or remove it, as needed.
             //this.tempStudentTableAdapter.Fill(this.dsManager1.TempStudent);
             // TODO: This line of code loads data into the 'dsManager1.TempStudents' table. You can move, or remove it, as needed.
@@ -556,20 +558,43 @@ namespace DashboardAS
             LoadTemp();
         }
 
+        void InsertTemp(int bookingId,int InstructorID, int StudentID,string StudentName,String StudentSurname)
+        {
+
+            using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            {
+                conn.Open();
+                SqlCommand Command = new SqlCommand("INSERT into TemporaryStudents values ('" + bookingId + "','" + StudentID + "','" + StudentName + "','" + StudentSurname + "','" + InstructorID + "','" + null + "')", conn);
+                Command.Parameters.AddWithValue("@InstructorID", InstructorID);
+             
+                Command.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
+
+        
+
         private void button2_Click(object sender, EventArgs e)
         {
             int newInstructorId = int.Parse(instruTxt.Text);
             DateTime date = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[7].Value);
             TimeSpan time = (TimeSpan)dataGridView1.CurrentRow.Cells[8].Value;
+            
 
             if (IsInstructorAvailable(newInstructorId, date, time))
             {
                 int bookingId = (int)dataGridView1.CurrentRow.Cells[0].Value;
+                int StudentID = (int)dataGridView1.CurrentRow.Cells[1].Value;
+                string StudentName = (string)dataGridView1.CurrentRow.Cells[2].Value;
+                string StudentSurname = (string)dataGridView1.CurrentRow.Cells[3].Value;
                 
                 UpdateInstructorInBooking(bookingId, newInstructorId);
                 this.bookingTableAdapter.Fill(dsManager1.Booking);
+                InsertTemp(bookingId, newInstructorId,StudentID,StudentName,StudentSurname);
+                this.temporaryStudentsTableAdapter.Fill(dsManager1.TemporaryStudents);
                
-                MessageBox.Show("Booking Reassigned successfully, add student to the Temporary register!");
+
+                    MessageBox.Show("Booking Reassigned successfully, add student to the Temporary register!");
 
 
 
