@@ -20,6 +20,8 @@ namespace DashboardAS
 
         private void ManageInstru_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dsManager1.AttendanceSheet' table. You can move, or remove it, as needed.
+            this.attendanceSheetTableAdapter.Fill(this.dsManager1.AttendanceSheet);
             // TODO: This line of code loads data into the 'dsManager1.StudentProgress' table. You can move, or remove it, as needed.
             //this.studentProgressTableAdapter.Fill(this.dsManager1.StudentProgress);
             // TODO: This line of code loads data into the 'dSAttendance2.InstructorMJ' table. You can move, or remove it, as needed.
@@ -207,6 +209,48 @@ namespace DashboardAS
             }
         }
 
+        private List<int> GetArchivedStudentIds()
+        {
+            List<int> archivedIds = new List<int>();
+
+            using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            {
+                string query = "SELECT StudentID FROM LessonAttendanceMJ WHERE IsArchived = 1";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        archivedIds.Add(reader.GetInt32(0)); // Assumes StudentID is int
+                    }
+                }
+            }
+
+            return archivedIds;
+        }
+
+        private void HighlightArchivedRows()
+        {
+            List<int> archivedIds = GetArchivedStudentIds();
+
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    int studentId = Convert.ToInt32(row.Cells[0].Value); 
+
+                    if (archivedIds.Contains(studentId))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGray;
+                        row.DefaultCellStyle.ForeColor = Color.DarkRed;
+                       
+                    }
+                }
+            }
+        }
+
         private void LoadTemp()
         {
 
@@ -231,9 +275,52 @@ namespace DashboardAS
             }
         }
 
+        private List<int> GetArchivedStudentIds1()
+        {
+            List<int> archivedIds = new List<int>();
+
+            using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            {
+                string query = "SELECT BookingID FROM TemporaryStudents WHERE IsArchived = 1";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        archivedIds.Add(reader.GetInt32(0)); // Assumes StudentID is int
+                    }
+                }
+            }
+
+            return archivedIds;
+        }
+
+        private void HighlightArchivedRows1()
+        {
+            List<int> archivedIds = GetArchivedStudentIds1();
+
+            foreach (DataGridViewRow row in dataGridView4.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    int BookingId = Convert.ToInt32(row.Cells[0].Value);
+
+                    if (archivedIds.Contains(BookingId))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGray;
+                        row.DefaultCellStyle.ForeColor = Color.DarkRed;
+
+                    }
+                }
+            }
+        }
+
         private void archBtn_CheckedChanged(object sender, EventArgs e)
         {
             LoadAttendanceData();
+            HighlightArchivedRows();
         }
 
         private bool IsStudentArchived(int studentID)
@@ -530,6 +617,7 @@ namespace DashboardAS
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             LoadTemp();
+            HighlightArchivedRows1();
         }
 
         void InsertTemp(int bookingId,int InstructorID, int StudentID,string StudentName,String StudentSurname)
@@ -644,6 +732,18 @@ namespace DashboardAS
         {
             Bind();
             bookingTableAdapter.Fill(dsManager1.Booking);
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            bookingTableAdapter.FillByDate(dsManager1.Booking, dateTimePicker2.Text);
+            attendanceSheetTableAdapter.FillByDate(dsManager1.AttendanceSheet, dateTimePicker2.Text);
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            attendanceSheetTableAdapter.FillByName(dsManager1.AttendanceSheet, textBox3.Text);
+            bookingTableAdapter.FillByName(dsManager1.Booking, textBox3.Text);
         }
     }
 }
