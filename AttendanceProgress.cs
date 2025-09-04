@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace DashboardAS
+{
+    public partial class AttendanceProgress : Form
+    {
+        private int id;
+        public AttendanceProgress(int InstrucId)
+        {
+            InitializeComponent();
+            id = InstrucId;
+        }
+
+        private void AttendanceProgress_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dsAttendance21.StudentProgress' table. You can move, or remove it, as needed.
+            this.studentProgressTableAdapter.Fill(this.dsAttendance21.StudentProgress);
+            // TODO: This line of code loads data into the 'dsAttendance21.AttendanceSheet' table. You can move, or remove it, as needed.
+            this.attendanceSheetTableAdapter.Fill(this.dsAttendance21.AttendanceSheet);
+
+        }
+    }
+}
