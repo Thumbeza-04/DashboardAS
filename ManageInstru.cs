@@ -20,10 +20,12 @@ namespace DashboardAS
 
         private void ManageInstru_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dsManager1.StudentProgress' table. You can move, or remove it, as needed.
+            //this.studentProgressTableAdapter.Fill(this.dsManager1.StudentProgress);
             // TODO: This line of code loads data into the 'dSAttendance2.InstructorMJ' table. You can move, or remove it, as needed.
             this.instructorMJTableAdapter.Fill(this.dSAttendance2.InstructorMJ);
             // TODO: This line of code loads data into the 'dsManager1.TemporaryStudents' table. You can move, or remove it, as needed.
-            this.temporaryStudentsTableAdapter.Fill(this.dsManager1.TemporaryStudents);
+            //this.temporaryStudentsTableAdapter.Fill(this.dsManager1.TemporaryStudents);
             // TODO: This line of code loads data into the 'dsManager1.TempStudent' table. You can move, or remove it, as needed.
             //this.tempStudentTableAdapter.Fill(this.dsManager1.TempStudent);
             // TODO: This line of code loads data into the 'dsManager1.TempStudents' table. You can move, or remove it, as needed.
@@ -36,8 +38,9 @@ namespace DashboardAS
             // TODO: This line of code loads data into the 'dsManager1.Booking' table. You can move, or remove it, as needed.
             //this.bookingTableAdapter.Fill(this.dsManager1.Booking);
             bookingTableAdapter.Fill(dsManager1.Booking);
+            studentProgressTableAdapter.Fill(dsManager1.StudentProgress);
             lessonAttendanceMJTableAdapter.FillByArch(dsManager1.LessonAttendanceMJ, arch);
-            tempStudentTableAdapter.FillByArch(dsManager1.TempStudent, arch);
+            temporaryStudentsTableAdapter.FillByArch(dsManager1.TemporaryStudents, arch);
 
             if (dataGridView2.CurrentRow != null)
             {
@@ -477,7 +480,7 @@ namespace DashboardAS
                 return;
             }
 
-            int TempID = Convert.ToInt32(dataGridView4.CurrentRow.Cells[0].Value);
+            int BookingID = Convert.ToInt32(dataGridView4.CurrentRow.Cells[0].Value);
 
             string query = "UPDATE TemporaryStudents SET IsArchived = 0 WHERE BookingID = BookingID";
 
@@ -580,6 +583,33 @@ namespace DashboardAS
                     MessageBox.Show("Instructor unavailable");
                 }
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            temporaryStudentsTableAdapter.FillByName(dsManager1.TemporaryStudents, textBox1.Text);
+        }
+
+        private void dataGridView1_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            lessonAttendanceMJTableAdapter.FillByStuID(dsManager1.LessonAttendanceMJ, (int)dataGridView1.CurrentRow.Cells[0].Value);
+            dataGridView2.DataSource = dsManager1.LessonAttendanceMJ;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            bookingTableAdapter.FillByDate(dsManager1.Booking, dateTimePicker1.Text);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            studentProgressTableAdapter.FillByName(dsManager1.StudentProgress, textBox2.Text);
+        }
+
+        private void ReloadBtn_Click(object sender, EventArgs e)
+        {
+            Bind();
+            bookingTableAdapter.Fill(dsManager1.Booking);
         }
     }
 }
