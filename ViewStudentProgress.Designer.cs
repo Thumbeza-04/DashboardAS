@@ -155,6 +155,8 @@ namespace DashboardAS
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -166,6 +168,7 @@ namespace DashboardAS
             this.dataGridView1.DataSource = this.temporaryStudentsBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(23, 60);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(953, 150);
@@ -178,6 +181,7 @@ namespace DashboardAS
             this.BookingID.HeaderText = "BookingID";
             this.BookingID.MinimumWidth = 6;
             this.BookingID.Name = "BookingID";
+            this.BookingID.ReadOnly = true;
             this.BookingID.Width = 125;
             // 
             // studentIDDataGridViewTextBoxColumn
@@ -186,6 +190,7 @@ namespace DashboardAS
             this.studentIDDataGridViewTextBoxColumn.HeaderText = "StudentID";
             this.studentIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.studentIDDataGridViewTextBoxColumn.Name = "studentIDDataGridViewTextBoxColumn";
+            this.studentIDDataGridViewTextBoxColumn.ReadOnly = true;
             this.studentIDDataGridViewTextBoxColumn.Width = 125;
             // 
             // studentNameDataGridViewTextBoxColumn
@@ -194,6 +199,7 @@ namespace DashboardAS
             this.studentNameDataGridViewTextBoxColumn.HeaderText = "StudentName";
             this.studentNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.studentNameDataGridViewTextBoxColumn.Name = "studentNameDataGridViewTextBoxColumn";
+            this.studentNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.studentNameDataGridViewTextBoxColumn.Width = 125;
             // 
             // studentSurnameDataGridViewTextBoxColumn
@@ -202,6 +208,7 @@ namespace DashboardAS
             this.studentSurnameDataGridViewTextBoxColumn.HeaderText = "StudentSurname";
             this.studentSurnameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.studentSurnameDataGridViewTextBoxColumn.Name = "studentSurnameDataGridViewTextBoxColumn";
+            this.studentSurnameDataGridViewTextBoxColumn.ReadOnly = true;
             this.studentSurnameDataGridViewTextBoxColumn.Width = 125;
             // 
             // Attendance
@@ -210,6 +217,7 @@ namespace DashboardAS
             this.Attendance.HeaderText = "Attendance";
             this.Attendance.MinimumWidth = 6;
             this.Attendance.Name = "Attendance";
+            this.Attendance.ReadOnly = true;
             this.Attendance.Width = 125;
             // 
             // temporaryStudentsBindingSource

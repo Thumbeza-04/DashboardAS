@@ -45,13 +45,21 @@ namespace DashboardAS
 
         private void dataGridView2_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            StuIdLbl.Text = (string)dataGridView2.CurrentRow.Cells[0].Value.ToString();
+            try
+            {
+                StuIdLbl.Text = (string)dataGridView2.CurrentRow.Cells[0].Value.ToString();
             NameLbl.Text = (string)dataGridView2.CurrentRow.Cells[1].Value.ToString();
             SNameLbl.Text = (string)dataGridView2.CurrentRow.Cells[2].Value.ToString();
 
             int studentID = Convert.ToInt32(dataGridView2.CurrentRow.Cells[0].Value);
             LoadStudentRatings(studentID);
             LoadStudentComment(studentID);
+            }
+            catch
+            {
+                MessageBox.Show("Error!Please try again.");
+            }
+            
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
@@ -161,7 +169,9 @@ namespace DashboardAS
 
         private void Savebtn_Click(object sender, EventArgs e)
         {
-            int studentID = Convert.ToInt32(StuIdLbl.Text);
+            try
+            {
+             int studentID = Convert.ToInt32(StuIdLbl.Text);
             string comment = CommentTxt.Text.Trim();
 
 
@@ -182,7 +192,13 @@ namespace DashboardAS
 
                 }
 
+              }
             }
+            catch
+            {
+                MessageBox.Show("Error!Please try again.");
+            }
+           
 
 
 
