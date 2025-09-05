@@ -48,5 +48,10 @@ namespace DashboardAS
 
             attendanceSheetTableAdapter.FillByIdDate(dsAttendance21.AttendanceSheet, ID, dateTimePicker1.Text);
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

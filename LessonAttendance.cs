@@ -284,9 +284,52 @@ namespace DashboardAS
                
             }
         }
+
+        private List<int> GetArchivedStudentIds()
+        {
+            List<int> archivedIds = new List<int>();
+
+            using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            {
+                string query = "SELECT StudentID FROM LessonAttendanceMJ WHERE IsArchived = 1";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        archivedIds.Add(reader.GetInt32(0)); 
+                    }
+                }
+            }
+
+            return archivedIds;
+        }
+
+        private void HighlightArchivedRows()
+        {
+            List<int> archivedIds = GetArchivedStudentIds();
+
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    int studentId = Convert.ToInt32(row.Cells[0].Value);
+
+                    if (archivedIds.Contains(studentId))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGray;
+                        row.DefaultCellStyle.ForeColor = Color.DarkRed;
+
+                    }
+                }
+            }
+        }
         private void archBtn_CheckedChanged(object sender, EventArgs e)
         {
             LoadAttendanceData();
+            HighlightArchivedRows();
 
         }
 

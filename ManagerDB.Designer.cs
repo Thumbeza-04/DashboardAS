@@ -44,6 +44,7 @@ namespace DashboardAS
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -52,11 +53,13 @@ namespace DashboardAS
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.pictureBox6);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.pictureBox4);
@@ -83,7 +86,7 @@ namespace DashboardAS
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(233, 69);
             this.button1.TabIndex = 8;
-            this.button1.Text = "       Manage_Instructor";
+            this.button1.Text = "           Manage Students";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -245,6 +248,16 @@ namespace DashboardAS
             this.MainPanel.TabIndex = 5;
             this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::DashboardAS.Properties.Resources.instructor;
+            this.pictureBox6.Location = new System.Drawing.Point(28, 489);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(51, 39);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 9;
+            this.pictureBox6.TabStop = false;
+            // 
             // ManagerDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -268,6 +281,7 @@ namespace DashboardAS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -289,5 +303,6 @@ namespace DashboardAS
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }

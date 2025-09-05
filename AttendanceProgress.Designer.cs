@@ -42,15 +42,6 @@ namespace DashboardAS
             this.attendanceSheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.attendanceSheetTableAdapter = new DashboardAS.DSAttendance2TableAdapters.AttendanceSheetTableAdapter();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.studentProgressBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.studentProgressTableAdapter = new DashboardAS.DSAttendance2TableAdapters.StudentProgressTableAdapter();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.studentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentSurnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +58,15 @@ namespace DashboardAS
             this.freewayDrivingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mockTestDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentProgressBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.studentProgressTableAdapter = new DashboardAS.DSAttendance2TableAdapters.StudentProgressTableAdapter();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.attendanceSheetBindingSource)).BeginInit();
@@ -96,12 +96,12 @@ namespace DashboardAS
             this.attendanceDataGridViewTextBoxColumn,
             this.dateDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.attendanceSheetBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 54);
+            this.dataGridView1.Location = new System.Drawing.Point(24, 80);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(933, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(1207, 198);
             this.dataGridView1.TabIndex = 0;
             // 
             // noDataGridViewTextBoxColumn
@@ -205,8 +205,167 @@ namespace DashboardAS
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1319, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(1396, 206);
             this.dataGridView2.TabIndex = 1;
+            // 
+            // studentIDDataGridViewTextBoxColumn1
+            // 
+            this.studentIDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.studentIDDataGridViewTextBoxColumn1.DataPropertyName = "StudentID";
+            this.studentIDDataGridViewTextBoxColumn1.HeaderText = "StudentID";
+            this.studentIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.studentIDDataGridViewTextBoxColumn1.Name = "studentIDDataGridViewTextBoxColumn1";
+            this.studentIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.studentIDDataGridViewTextBoxColumn1.Width = 114;
+            // 
+            // studentNameDataGridViewTextBoxColumn1
+            // 
+            this.studentNameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.studentNameDataGridViewTextBoxColumn1.DataPropertyName = "StudentName";
+            this.studentNameDataGridViewTextBoxColumn1.HeaderText = "StudentName";
+            this.studentNameDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.studentNameDataGridViewTextBoxColumn1.Name = "studentNameDataGridViewTextBoxColumn1";
+            this.studentNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.studentNameDataGridViewTextBoxColumn1.Width = 148;
+            // 
+            // studentSurnameDataGridViewTextBoxColumn1
+            // 
+            this.studentSurnameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.studentSurnameDataGridViewTextBoxColumn1.DataPropertyName = "StudentSurname";
+            this.studentSurnameDataGridViewTextBoxColumn1.HeaderText = "StudentSurname";
+            this.studentSurnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.studentSurnameDataGridViewTextBoxColumn1.Name = "studentSurnameDataGridViewTextBoxColumn1";
+            this.studentSurnameDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.studentSurnameDataGridViewTextBoxColumn1.Width = 169;
+            // 
+            // instructorIDDataGridViewTextBoxColumn
+            // 
+            this.instructorIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.instructorIDDataGridViewTextBoxColumn.DataPropertyName = "InstructorID";
+            this.instructorIDDataGridViewTextBoxColumn.HeaderText = "InstructorID";
+            this.instructorIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.instructorIDDataGridViewTextBoxColumn.Name = "instructorIDDataGridViewTextBoxColumn";
+            this.instructorIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.instructorIDDataGridViewTextBoxColumn.Width = 128;
+            // 
+            // preTripChecksDataGridViewTextBoxColumn
+            // 
+            this.preTripChecksDataGridViewTextBoxColumn.DataPropertyName = "PreTripChecks";
+            this.preTripChecksDataGridViewTextBoxColumn.HeaderText = "PreTripChecks";
+            this.preTripChecksDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.preTripChecksDataGridViewTextBoxColumn.Name = "preTripChecksDataGridViewTextBoxColumn";
+            this.preTripChecksDataGridViewTextBoxColumn.ReadOnly = true;
+            this.preTripChecksDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // vehicleControlDataGridViewTextBoxColumn
+            // 
+            this.vehicleControlDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.vehicleControlDataGridViewTextBoxColumn.DataPropertyName = "VehicleControl";
+            this.vehicleControlDataGridViewTextBoxColumn.HeaderText = "VehicleControl";
+            this.vehicleControlDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.vehicleControlDataGridViewTextBoxColumn.Name = "vehicleControlDataGridViewTextBoxColumn";
+            this.vehicleControlDataGridViewTextBoxColumn.ReadOnly = true;
+            this.vehicleControlDataGridViewTextBoxColumn.Width = 159;
+            // 
+            // speedNGearControlDataGridViewTextBoxColumn
+            // 
+            this.speedNGearControlDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.speedNGearControlDataGridViewTextBoxColumn.DataPropertyName = "SpeedNGearControl";
+            this.speedNGearControlDataGridViewTextBoxColumn.HeaderText = "SpeedNGearControl";
+            this.speedNGearControlDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.speedNGearControlDataGridViewTextBoxColumn.Name = "speedNGearControlDataGridViewTextBoxColumn";
+            this.speedNGearControlDataGridViewTextBoxColumn.ReadOnly = true;
+            this.speedNGearControlDataGridViewTextBoxColumn.Width = 203;
+            // 
+            // observationalNDefensiveDrivingDataGridViewTextBoxColumn
+            // 
+            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.DataPropertyName = "ObservationalNDefensiveDriving";
+            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.HeaderText = "ObservationalNDefensiveDriving";
+            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.Name = "observationalNDefensiveDrivingDataGridViewTextBoxColumn";
+            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.ReadOnly = true;
+            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.Width = 303;
+            // 
+            // controlledIntersectionsDataGridViewTextBoxColumn
+            // 
+            this.controlledIntersectionsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.controlledIntersectionsDataGridViewTextBoxColumn.DataPropertyName = "ControlledIntersections";
+            this.controlledIntersectionsDataGridViewTextBoxColumn.HeaderText = "ControlledIntersections";
+            this.controlledIntersectionsDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.controlledIntersectionsDataGridViewTextBoxColumn.Name = "controlledIntersectionsDataGridViewTextBoxColumn";
+            this.controlledIntersectionsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.controlledIntersectionsDataGridViewTextBoxColumn.Width = 224;
+            // 
+            // uncontrolledIntersectionsDataGridViewTextBoxColumn
+            // 
+            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.DataPropertyName = "UncontrolledIntersections";
+            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.HeaderText = "UncontrolledIntersections";
+            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.Name = "uncontrolledIntersectionsDataGridViewTextBoxColumn";
+            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.Width = 242;
+            // 
+            // hillStartsNGradientControlDataGridViewTextBoxColumn
+            // 
+            this.hillStartsNGradientControlDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.hillStartsNGradientControlDataGridViewTextBoxColumn.DataPropertyName = "HillStartsNGradientControl";
+            this.hillStartsNGradientControlDataGridViewTextBoxColumn.HeaderText = "HillStartsNGradientControl";
+            this.hillStartsNGradientControlDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.hillStartsNGradientControlDataGridViewTextBoxColumn.Name = "hillStartsNGradientControlDataGridViewTextBoxColumn";
+            this.hillStartsNGradientControlDataGridViewTextBoxColumn.ReadOnly = true;
+            this.hillStartsNGradientControlDataGridViewTextBoxColumn.Width = 244;
+            // 
+            // parkingNReversingDataGridViewTextBoxColumn
+            // 
+            this.parkingNReversingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.parkingNReversingDataGridViewTextBoxColumn.DataPropertyName = "ParkingNReversing";
+            this.parkingNReversingDataGridViewTextBoxColumn.HeaderText = "ParkingNReversing";
+            this.parkingNReversingDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.parkingNReversingDataGridViewTextBoxColumn.Name = "parkingNReversingDataGridViewTextBoxColumn";
+            this.parkingNReversingDataGridViewTextBoxColumn.ReadOnly = true;
+            this.parkingNReversingDataGridViewTextBoxColumn.Width = 192;
+            // 
+            // laneChangingNOvertakingDataGridViewTextBoxColumn
+            // 
+            this.laneChangingNOvertakingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.laneChangingNOvertakingDataGridViewTextBoxColumn.DataPropertyName = "LaneChangingNOvertaking";
+            this.laneChangingNOvertakingDataGridViewTextBoxColumn.HeaderText = "LaneChangingNOvertaking";
+            this.laneChangingNOvertakingDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.laneChangingNOvertakingDataGridViewTextBoxColumn.Name = "laneChangingNOvertakingDataGridViewTextBoxColumn";
+            this.laneChangingNOvertakingDataGridViewTextBoxColumn.ReadOnly = true;
+            this.laneChangingNOvertakingDataGridViewTextBoxColumn.Width = 260;
+            // 
+            // freewayDrivingDataGridViewTextBoxColumn
+            // 
+            this.freewayDrivingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.freewayDrivingDataGridViewTextBoxColumn.DataPropertyName = "FreewayDriving";
+            this.freewayDrivingDataGridViewTextBoxColumn.HeaderText = "FreewayDriving";
+            this.freewayDrivingDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.freewayDrivingDataGridViewTextBoxColumn.Name = "freewayDrivingDataGridViewTextBoxColumn";
+            this.freewayDrivingDataGridViewTextBoxColumn.ReadOnly = true;
+            this.freewayDrivingDataGridViewTextBoxColumn.Width = 164;
+            // 
+            // mockTestDataGridViewTextBoxColumn
+            // 
+            this.mockTestDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.mockTestDataGridViewTextBoxColumn.DataPropertyName = "MockTest";
+            this.mockTestDataGridViewTextBoxColumn.HeaderText = "MockTest";
+            this.mockTestDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.mockTestDataGridViewTextBoxColumn.Name = "mockTestDataGridViewTextBoxColumn";
+            this.mockTestDataGridViewTextBoxColumn.ReadOnly = true;
+            this.mockTestDataGridViewTextBoxColumn.Width = 115;
+            // 
+            // commentsDataGridViewTextBoxColumn
+            // 
+            this.commentsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.commentsDataGridViewTextBoxColumn.DataPropertyName = "Comments";
+            this.commentsDataGridViewTextBoxColumn.HeaderText = "Comments";
+            this.commentsDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.commentsDataGridViewTextBoxColumn.Name = "commentsDataGridViewTextBoxColumn";
+            this.commentsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.commentsDataGridViewTextBoxColumn.Width = 127;
             // 
             // studentProgressBindingSource
             // 
@@ -223,12 +382,30 @@ namespace DashboardAS
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(36, 41);
+            this.groupBox1.Location = new System.Drawing.Point(12, 41);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1098, 220);
+            this.groupBox1.Size = new System.Drawing.Size(1290, 305);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attendance Register";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1052, 27);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(179, 28);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(860, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(155, 19);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Search by student";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox2
             // 
@@ -236,206 +413,47 @@ namespace DashboardAS
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.dataGridView2);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 296);
+            this.groupBox2.Location = new System.Drawing.Point(12, 367);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1361, 253);
+            this.groupBox2.Size = new System.Drawing.Size(1426, 286);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Student Progress";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(576, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 19);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Search by student";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(781, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 28);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(960, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Search by name";
-            // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(1141, 40);
+            this.textBox2.Location = new System.Drawing.Point(1208, 34);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(202, 28);
             this.textBox2.TabIndex = 3;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1040, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(145, 19);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Search by name";
+            // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(873, 13);
+            this.dateTimePicker1.Location = new System.Drawing.Point(1041, 12);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(261, 22);
             this.dateTimePicker1.TabIndex = 4;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // studentIDDataGridViewTextBoxColumn1
-            // 
-            this.studentIDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.studentIDDataGridViewTextBoxColumn1.DataPropertyName = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn1.HeaderText = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.studentIDDataGridViewTextBoxColumn1.Name = "studentIDDataGridViewTextBoxColumn1";
-            this.studentIDDataGridViewTextBoxColumn1.Width = 114;
-            // 
-            // studentNameDataGridViewTextBoxColumn1
-            // 
-            this.studentNameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.studentNameDataGridViewTextBoxColumn1.DataPropertyName = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn1.HeaderText = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.studentNameDataGridViewTextBoxColumn1.Name = "studentNameDataGridViewTextBoxColumn1";
-            this.studentNameDataGridViewTextBoxColumn1.Width = 148;
-            // 
-            // studentSurnameDataGridViewTextBoxColumn1
-            // 
-            this.studentSurnameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.studentSurnameDataGridViewTextBoxColumn1.DataPropertyName = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn1.HeaderText = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.studentSurnameDataGridViewTextBoxColumn1.Name = "studentSurnameDataGridViewTextBoxColumn1";
-            this.studentSurnameDataGridViewTextBoxColumn1.Width = 169;
-            // 
-            // instructorIDDataGridViewTextBoxColumn
-            // 
-            this.instructorIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.instructorIDDataGridViewTextBoxColumn.DataPropertyName = "InstructorID";
-            this.instructorIDDataGridViewTextBoxColumn.HeaderText = "InstructorID";
-            this.instructorIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.instructorIDDataGridViewTextBoxColumn.Name = "instructorIDDataGridViewTextBoxColumn";
-            this.instructorIDDataGridViewTextBoxColumn.Width = 128;
-            // 
-            // preTripChecksDataGridViewTextBoxColumn
-            // 
-            this.preTripChecksDataGridViewTextBoxColumn.DataPropertyName = "PreTripChecks";
-            this.preTripChecksDataGridViewTextBoxColumn.HeaderText = "PreTripChecks";
-            this.preTripChecksDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.preTripChecksDataGridViewTextBoxColumn.Name = "preTripChecksDataGridViewTextBoxColumn";
-            this.preTripChecksDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // vehicleControlDataGridViewTextBoxColumn
-            // 
-            this.vehicleControlDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.vehicleControlDataGridViewTextBoxColumn.DataPropertyName = "VehicleControl";
-            this.vehicleControlDataGridViewTextBoxColumn.HeaderText = "VehicleControl";
-            this.vehicleControlDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.vehicleControlDataGridViewTextBoxColumn.Name = "vehicleControlDataGridViewTextBoxColumn";
-            this.vehicleControlDataGridViewTextBoxColumn.Width = 159;
-            // 
-            // speedNGearControlDataGridViewTextBoxColumn
-            // 
-            this.speedNGearControlDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.speedNGearControlDataGridViewTextBoxColumn.DataPropertyName = "SpeedNGearControl";
-            this.speedNGearControlDataGridViewTextBoxColumn.HeaderText = "SpeedNGearControl";
-            this.speedNGearControlDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.speedNGearControlDataGridViewTextBoxColumn.Name = "speedNGearControlDataGridViewTextBoxColumn";
-            this.speedNGearControlDataGridViewTextBoxColumn.Width = 203;
-            // 
-            // observationalNDefensiveDrivingDataGridViewTextBoxColumn
-            // 
-            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.DataPropertyName = "ObservationalNDefensiveDriving";
-            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.HeaderText = "ObservationalNDefensiveDriving";
-            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.Name = "observationalNDefensiveDrivingDataGridViewTextBoxColumn";
-            this.observationalNDefensiveDrivingDataGridViewTextBoxColumn.Width = 303;
-            // 
-            // controlledIntersectionsDataGridViewTextBoxColumn
-            // 
-            this.controlledIntersectionsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.controlledIntersectionsDataGridViewTextBoxColumn.DataPropertyName = "ControlledIntersections";
-            this.controlledIntersectionsDataGridViewTextBoxColumn.HeaderText = "ControlledIntersections";
-            this.controlledIntersectionsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.controlledIntersectionsDataGridViewTextBoxColumn.Name = "controlledIntersectionsDataGridViewTextBoxColumn";
-            this.controlledIntersectionsDataGridViewTextBoxColumn.Width = 224;
-            // 
-            // uncontrolledIntersectionsDataGridViewTextBoxColumn
-            // 
-            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.DataPropertyName = "UncontrolledIntersections";
-            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.HeaderText = "UncontrolledIntersections";
-            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.Name = "uncontrolledIntersectionsDataGridViewTextBoxColumn";
-            this.uncontrolledIntersectionsDataGridViewTextBoxColumn.Width = 242;
-            // 
-            // hillStartsNGradientControlDataGridViewTextBoxColumn
-            // 
-            this.hillStartsNGradientControlDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.hillStartsNGradientControlDataGridViewTextBoxColumn.DataPropertyName = "HillStartsNGradientControl";
-            this.hillStartsNGradientControlDataGridViewTextBoxColumn.HeaderText = "HillStartsNGradientControl";
-            this.hillStartsNGradientControlDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.hillStartsNGradientControlDataGridViewTextBoxColumn.Name = "hillStartsNGradientControlDataGridViewTextBoxColumn";
-            this.hillStartsNGradientControlDataGridViewTextBoxColumn.Width = 244;
-            // 
-            // parkingNReversingDataGridViewTextBoxColumn
-            // 
-            this.parkingNReversingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.parkingNReversingDataGridViewTextBoxColumn.DataPropertyName = "ParkingNReversing";
-            this.parkingNReversingDataGridViewTextBoxColumn.HeaderText = "ParkingNReversing";
-            this.parkingNReversingDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.parkingNReversingDataGridViewTextBoxColumn.Name = "parkingNReversingDataGridViewTextBoxColumn";
-            this.parkingNReversingDataGridViewTextBoxColumn.Width = 192;
-            // 
-            // laneChangingNOvertakingDataGridViewTextBoxColumn
-            // 
-            this.laneChangingNOvertakingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.laneChangingNOvertakingDataGridViewTextBoxColumn.DataPropertyName = "LaneChangingNOvertaking";
-            this.laneChangingNOvertakingDataGridViewTextBoxColumn.HeaderText = "LaneChangingNOvertaking";
-            this.laneChangingNOvertakingDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.laneChangingNOvertakingDataGridViewTextBoxColumn.Name = "laneChangingNOvertakingDataGridViewTextBoxColumn";
-            this.laneChangingNOvertakingDataGridViewTextBoxColumn.Width = 260;
-            // 
-            // freewayDrivingDataGridViewTextBoxColumn
-            // 
-            this.freewayDrivingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.freewayDrivingDataGridViewTextBoxColumn.DataPropertyName = "FreewayDriving";
-            this.freewayDrivingDataGridViewTextBoxColumn.HeaderText = "FreewayDriving";
-            this.freewayDrivingDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.freewayDrivingDataGridViewTextBoxColumn.Name = "freewayDrivingDataGridViewTextBoxColumn";
-            this.freewayDrivingDataGridViewTextBoxColumn.Width = 164;
-            // 
-            // mockTestDataGridViewTextBoxColumn
-            // 
-            this.mockTestDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.mockTestDataGridViewTextBoxColumn.DataPropertyName = "MockTest";
-            this.mockTestDataGridViewTextBoxColumn.HeaderText = "MockTest";
-            this.mockTestDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.mockTestDataGridViewTextBoxColumn.Name = "mockTestDataGridViewTextBoxColumn";
-            this.mockTestDataGridViewTextBoxColumn.Width = 115;
-            // 
-            // commentsDataGridViewTextBoxColumn
-            // 
-            this.commentsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.commentsDataGridViewTextBoxColumn.DataPropertyName = "Comments";
-            this.commentsDataGridViewTextBoxColumn.HeaderText = "Comments";
-            this.commentsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.commentsDataGridViewTextBoxColumn.Name = "commentsDataGridViewTextBoxColumn";
-            this.commentsDataGridViewTextBoxColumn.Width = 127;
-            // 
             // AttendanceProgress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1450, 610);
+            this.ClientSize = new System.Drawing.Size(1494, 690);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AttendanceProgress";
             this.Text = "AttendanceProgress";
             this.Load += new System.EventHandler(this.AttendanceProgress_Load);
