@@ -54,170 +54,210 @@ namespace DashboardAS
 
         private void attBtn_Click(object sender, EventArgs e)
         {
-            string status = dataGridView1.CurrentRow.Cells[4].Value?.ToString()?.Trim();
             try
             {
-                
 
-                if (status == "Present" || status == "Absent")
+
+
+                DialogResult Result = MessageBox.Show("Are you sure you want to mark lesson as attended? This action cannot be undone.", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (Result == DialogResult.No)
                 {
-                    MessageBox.Show("Already marked, select new student");
+                    MessageBox.Show("Cancelled");
                 }
-                else
+                else if (Result == DialogResult.Yes)
                 {
-
-
-
-
-                    int StudentID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value);
-                    int BookingID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-                    String Attended = "Present";
-                    DateTime Date = DateTime.Now;
-                    int InId = id;
-
-                    using (SqlConnection conn = new SqlConnection("Data Source = 146.230.177.46; User ID = WstGrp24; Password = 6wefi"))
+                    string status = dataGridView1.CurrentRow.Cells[4].Value?.ToString()?.Trim();
+                    try
                     {
-                        conn.Open();
 
-                        string query = @"SELECT Remaining FROM LessonAttendanceMJ WHERE StudentID = @StudentID";
-                        using (SqlCommand cmd = new SqlCommand(query, conn))
+
+                        if (status == "Present" || status == "Absent")
                         {
-                            cmd.Parameters.AddWithValue("@StudentID", StudentID);
-                            object result = cmd.ExecuteScalar();
+                            MessageBox.Show("Already marked, select new student");
+                        }
+                        else
+                        {
 
-                            if (result != null && Convert.ToInt32(result) == 0)
-                            {
-                                MessageBox.Show("No lessons remaining for this student.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                SqlTransaction transaction = conn.BeginTransaction();
 
-                                try
+
+
+                            int StudentID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value);
+                            int BookingID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                            String Attended = "Present";
+                            DateTime Date = DateTime.Now;
+                            int InId = id;
+
+                            using (SqlConnection conn = new SqlConnection("Data Source = 146.230.177.46; User ID = WstGrp24; Password = 6wefi"))
+                            {
+                                conn.Open();
+
+                                string query = @"SELECT Remaining FROM LessonAttendanceMJ WHERE StudentID = @StudentID";
+                                using (SqlCommand cmd = new SqlCommand(query, conn))
                                 {
-                                   
-                                    SqlCommand command1 = new SqlCommand(
-                                        @"UPDATE LessonAttendanceMJ 
+                                    cmd.Parameters.AddWithValue("@StudentID", StudentID);
+                                    object result = cmd.ExecuteScalar();
+
+                                    if (result != null && Convert.ToInt32(result) == 0)
+                                    {
+                                        MessageBox.Show("No lessons remaining for this student.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        SqlTransaction transaction = conn.BeginTransaction();
+
+                                        try
+                                        {
+
+                                            SqlCommand command1 = new SqlCommand(
+                                                @"UPDATE LessonAttendanceMJ 
                           SET Attended = Attended + 1, Remaining = Remaining - 1 
                           WHERE StudentID = @StudentID", conn, transaction);
-                                    command1.Parameters.AddWithValue("@StudentID", StudentID);
-                                    command1.ExecuteNonQuery();
+                                            command1.Parameters.AddWithValue("@StudentID", StudentID);
+                                            command1.ExecuteNonQuery();
 
-                                    SqlCommand command2 = new SqlCommand(
-                                        @"UPDATE TemporaryStudents 
+                                            SqlCommand command2 = new SqlCommand(
+                                                @"UPDATE TemporaryStudents 
                           SET Attendance = @Attended 
                           WHERE BookingID = @BookingID", conn, transaction);
-                                    command2.Parameters.AddWithValue("@BookingID", BookingID);
-                                    command2.Parameters.AddWithValue("@Attended", Attended);
-                                    command2.ExecuteNonQuery();
+                                            command2.Parameters.AddWithValue("@BookingID", BookingID);
+                                            command2.Parameters.AddWithValue("@Attended", Attended);
+                                            command2.ExecuteNonQuery();
 
-                                    SqlCommand command3 = new SqlCommand("Insert into AttendanceSheet values ('" + InId + "','" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + Attended + "','" + Date + "')", conn, transaction);
-                                    command3.ExecuteNonQuery();
-                                    transaction.Commit();
-                                    conn.Close();
-                                    MessageBox.Show("Marked as attended", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    Bind(InId);
+                                            SqlCommand command3 = new SqlCommand("Insert into AttendanceSheet values ('" + InId + "','" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + Attended + "','" + Date + "')", conn, transaction);
+                                            command3.ExecuteNonQuery();
+                                            transaction.Commit();
+                                            conn.Close();
+                                            MessageBox.Show("Marked as attended", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            Bind(InId);
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            transaction.Rollback();
+                                            conn.Close();
+                                            MessageBox.Show("Unable to mark student: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
                                 }
-                                catch (Exception ex)
-                                {
-                                    transaction.Rollback();
-                                    conn.Close();
-                                    MessageBox.Show("Unable to mark student: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
+
                             }
                         }
 
+
+
                     }
+                    catch
+                    {
+                        MessageBox.Show("Unable to mark");
+                    }
+
                 }
             }
             catch
             {
-                MessageBox.Show("Unable to mark");
+                MessageBox.Show("Error! Please try again.");
             }
         }
 
         private void MissedBtn_Click(object sender, EventArgs e)
         {
-            string status = dataGridView1.CurrentRow.Cells[4].Value?.ToString()?.Trim();
-            try 
+            try
             {
-                
 
-                if (status == "Present" || status == "Absent")
+                DialogResult Result = MessageBox.Show("Are you sure you want to mark student as attended? This action cannot be undone.", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (Result == DialogResult.No)
                 {
-                    MessageBox.Show("Already marked, select new student");
+                    MessageBox.Show("Cancelled");
                 }
-                else
+                else if (Result == DialogResult.Yes)
                 {
-
-
-
-                    int StudentID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value);
-                    int BookingID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-                    String Attended = "Absent";
-                    DateTime Date = DateTime.Now;
-                    int InId = id;
-
-                    using (SqlConnection conn = new SqlConnection("Data Source = 146.230.177.46; User ID = WstGrp24; Password = 6wefi"))
+                    string status = dataGridView1.CurrentRow.Cells[4].Value?.ToString()?.Trim();
+                    try
                     {
-                        conn.Open();
 
-                        string query = @"SELECT Remaining FROM LessonAttendanceMJ WHERE StudentID = @StudentID";
-                        using (SqlCommand cmd = new SqlCommand(query, conn))
+
+                        if (status == "Present" || status == "Absent")
                         {
-                            cmd.Parameters.AddWithValue("@StudentID", StudentID);
-                            object result = cmd.ExecuteScalar();
+                            MessageBox.Show("Already marked, select new student");
+                        }
+                        else
+                        {
 
-                            if (result != null && Convert.ToInt32(result) == 0)
-                            {
-                                MessageBox.Show("No lessons remaining for this student.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                SqlTransaction transaction = conn.BeginTransaction();
 
-                                try
+
+                            int StudentID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value);
+                            int BookingID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                            String Attended = "Absent";
+                            DateTime Date = DateTime.Now;
+                            int InId = id;
+
+                            using (SqlConnection conn = new SqlConnection("Data Source = 146.230.177.46; User ID = WstGrp24; Password = 6wefi"))
+                            {
+                                conn.Open();
+
+                                string query = @"SELECT Remaining FROM LessonAttendanceMJ WHERE StudentID = @StudentID";
+                                using (SqlCommand cmd = new SqlCommand(query, conn))
                                 {
-                                    SqlCommand command1 = new SqlCommand(
-                                        @"UPDATE LessonAttendanceMJ 
+                                    cmd.Parameters.AddWithValue("@StudentID", StudentID);
+                                    object result = cmd.ExecuteScalar();
+
+                                    if (result != null && Convert.ToInt32(result) == 0)
+                                    {
+                                        MessageBox.Show("No lessons remaining for this student.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        SqlTransaction transaction = conn.BeginTransaction();
+
+                                        try
+                                        {
+                                            SqlCommand command1 = new SqlCommand(
+                                                @"UPDATE LessonAttendanceMJ 
                           SET Missed = Missed + 1, Remaining = Remaining - 1 
                           WHERE StudentID = @StudentID", conn, transaction);
-                                    command1.Parameters.AddWithValue("@StudentID", StudentID);
-                                    command1.ExecuteNonQuery();
+                                            command1.Parameters.AddWithValue("@StudentID", StudentID);
+                                            command1.ExecuteNonQuery();
 
-                                    SqlCommand command2 = new SqlCommand(
-                                        @"UPDATE TemporaryStudents 
+                                            SqlCommand command2 = new SqlCommand(
+                                                @"UPDATE TemporaryStudents 
                           SET Attendance = @Attended 
                           WHERE BookingID = @BookingID", conn, transaction);
-                                    command2.Parameters.AddWithValue("@BookingID", BookingID);
-                                    command2.Parameters.AddWithValue("@Attended", Attended);
-                                    command2.ExecuteNonQuery();
+                                            command2.Parameters.AddWithValue("@BookingID", BookingID);
+                                            command2.Parameters.AddWithValue("@Attended", Attended);
+                                            command2.ExecuteNonQuery();
 
-                                    SqlCommand command3 = new SqlCommand("Insert into AttendanceSheet values ('" + InId + "','" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + Attended + "','" + Date + "')", conn, transaction);
-                                    command3.ExecuteNonQuery();
+                                            SqlCommand command3 = new SqlCommand("Insert into AttendanceSheet values ('" + InId + "','" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + Attended + "','" + Date + "')", conn, transaction);
+                                            command3.ExecuteNonQuery();
 
-                                    transaction.Commit();
-                                    conn.Close();
-                                    MessageBox.Show("Marked as Missed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    Bind(InId);
-                                }
-                                catch (Exception ex)
-                                {
-                                    transaction.Rollback();
-                                    conn.Close();
-                                    MessageBox.Show("Unable to mark student: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            transaction.Commit();
+                                            conn.Close();
+                                            MessageBox.Show("Marked as Missed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            Bind(InId);
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            transaction.Rollback();
+                                            conn.Close();
+                                            MessageBox.Show("Unable to mark student: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }
-                }
 
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Unable to mark");
+                    } 
+                }
             }
             catch
             {
-                MessageBox.Show("Unable to mark");
+                MessageBox.Show("Error!Please try again.");
             }
-        }
+         }
 
         //Evaluations
 
@@ -226,39 +266,54 @@ namespace DashboardAS
 
         private void Savebtn_Click(object sender, EventArgs e)
         {
-            int studentID = Convert.ToInt32(StuIdLbl.Text);
-            string comment = CommentTxt.Text.Trim();
-
-
-            string query = "UPDATE StudentProgress SET Comments = @Comments WHERE StudentID = @StudentID";
-            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            try
             {
-                using (SqlCommand cmd = new SqlCommand(query, con))
+                int studentID = Convert.ToInt32(StuIdLbl.Text);
+                string comment = CommentTxt.Text.Trim();
+
+
+                string query = "UPDATE StudentProgress SET Comments = @Comments WHERE StudentID = @StudentID";
+                using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
                 {
-                    cmd.Parameters.Add("@Comments", SqlDbType.VarChar).Value = comment;
-                    cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.Add("@Comments", SqlDbType.VarChar).Value = comment;
+                        cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
 
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
 
 
-                    MessageBox.Show("Comment saved.");
+                        MessageBox.Show("Comment saved.");
+
+                    }
 
                 }
-
+            }
+            catch
+            {
+                MessageBox.Show("Error!Please try again.");
             }
         }
 
         private void dataGridView1_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            StuIdLbl.Text = (string)dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            try
+            {
+               StuIdLbl.Text = (string)dataGridView1.CurrentRow.Cells[1].Value.ToString();
             NameLbl.Text = (string)dataGridView1.CurrentRow.Cells[2].Value.ToString();
             SNameLbl.Text = (string)dataGridView1.CurrentRow.Cells[3].Value.ToString();
 
             int studentID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value);
             LoadStudentRatings(studentID);
             LoadStudentComment(studentID);
+            }
+            catch
+            {
+                MessageBox.Show("Error!Please try again.");
+            }
+            
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)

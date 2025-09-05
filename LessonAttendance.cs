@@ -46,41 +46,50 @@ namespace DashboardAS
         SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
-            int ID = id;
-            using (SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            try
             {
-                connec.Open();
-                SqlTransaction transaction = connec.BeginTransaction();
 
-                try
+            
+            int ID = id;
+                using (SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
                 {
+                    connec.Open();
+                    SqlTransaction transaction = connec.BeginTransaction();
 
-                    bool BT = false;
-                    int att = 0;
-                    int missed = 0;
+                    try
+                    {
 
-                    SqlCommand command1 = new SqlCommand("Insert into LessonAttendanceMJ values( '" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + ID + "', '" + dataGridView1.CurrentRow.Cells[4].Value + "','" + (int)dataGridView1.CurrentRow.Cells[5].Value + "','" + att + "', '" + missed + "' ,'" + (int)dataGridView1.CurrentRow.Cells[5].Value + "', '" + BT + "')", connec, transaction);
-                    command1.ExecuteNonQuery();
+                        bool BT = false;
+                        int att = 0;
+                        int missed = 0;
 
-                    SqlCommand command2 = new SqlCommand("Insert into StudentProgress values('" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + ID + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')", connec, transaction);
-                    command2.ExecuteNonQuery();
+                        SqlCommand command1 = new SqlCommand("Insert into LessonAttendanceMJ values( '" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + ID + "', '" + dataGridView1.CurrentRow.Cells[4].Value + "','" + (int)dataGridView1.CurrentRow.Cells[5].Value + "','" + att + "', '" + missed + "' ,'" + (int)dataGridView1.CurrentRow.Cells[5].Value + "', '" + BT + "')", connec, transaction);
+                        command1.ExecuteNonQuery();
 
-                    transaction.Commit();
-                    int instructorId = ID;
+                        SqlCommand command2 = new SqlCommand("Insert into StudentProgress values('" + (int)dataGridView1.CurrentRow.Cells[1].Value + "','" + dataGridView1.CurrentRow.Cells[2].Value + "','" + dataGridView1.CurrentRow.Cells[3].Value + "','" + ID + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')", connec, transaction);
+                        command2.ExecuteNonQuery();
 
-
-                    MessageBox.Show("Added to Attendance Registered");
-
-                    Bind(instructorId);
+                        transaction.Commit();
+                        int instructorId = ID;
 
 
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    connec.Close();
-                    MessageBox.Show("Student Already exists in the register", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                        MessageBox.Show("Added to Attendance Registered");
+
+                        Bind(instructorId);
+
+
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        connec.Close();
+                        MessageBox.Show("Student Already exists in the register", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }    
+            }
+            catch
+            {
+                MessageBox.Show("Error!Please try again.");
             }
         }
 
@@ -97,130 +106,178 @@ namespace DashboardAS
 
         private void AttendedBtn_Click(object sender, EventArgs e)
         {
-            int ID = id;
-            String Attendance = "Present";
-            DateTime Date = DateTime.Now;
-            int allLess = (int)dataGridView2.CurrentRow.Cells[5].Value + (int)dataGridView2.CurrentRow.Cells[6].Value;
-            int Less = (int)dataGridView2.CurrentRow.Cells[4].Value;
-            if (Less == allLess)
+            try
             {
-                MessageBox.Show("Student has attended all their lessons");
+
+                DialogResult Result = MessageBox.Show("Are you sure you want to mark lesson as attended? This action cannot be undone.", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (Result == DialogResult.No)
+                {
+                    MessageBox.Show("Cancelled");
+                }
+                else if (Result == DialogResult.Yes)
+                {
+
+
+                    int ID = id;
+                    String Attendance = "Present";
+                    DateTime Date = DateTime.Now;
+                    int allLess = (int)dataGridView2.CurrentRow.Cells[5].Value + (int)dataGridView2.CurrentRow.Cells[6].Value;
+                    int Less = (int)dataGridView2.CurrentRow.Cells[4].Value;
+                    if (Less == allLess)
+                    {
+                        MessageBox.Show("Student has attended all their lessons");
+                    }
+                    else
+                    {
+                        bool arch = false;
+                        int up = 1;
+                        connec.Open();
+                        SqlTransaction transaction = connec.BeginTransaction();
+                        try
+                        {
+                            int att = (int)dataGridView2.CurrentRow.Cells[5].Value + up;
+                            int Total = (int)dataGridView2.CurrentRow.Cells[6].Value + att;
+                            int rem = (int)dataGridView2.CurrentRow.Cells[4].Value - Total;
+
+
+                            SqlCommand command1 = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='" + dataGridView2.CurrentRow.Cells[1].Value + "' ,StudentSurname = '" + dataGridView2.CurrentRow.Cells[2].Value + "' ,InstructorID ='" + ID + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[3].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[4].Value + "',Attended = '" + att + "',Missed ='" + (int)dataGridView2.CurrentRow.Cells[6].Value + "',Remaining = '" + rem + "',IsArchived = '" + arch + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() + "'", connec, transaction);
+                            command1.ExecuteNonQuery();
+
+                            SqlCommand command2 = new SqlCommand("Insert into AttendanceSheet values ('" + ID + "','" + (int)dataGridView2.CurrentRow.Cells[0].Value + "','" + dataGridView2.CurrentRow.Cells[1].Value + "','" + dataGridView2.CurrentRow.Cells[2].Value + "','" + Attendance + "','" + Date + "')", connec, transaction);
+                            command2.ExecuteNonQuery();
+                            transaction.Commit();
+                            connec.Close();
+
+                            MessageBox.Show("Marked as attended");
+                            int instructorId = ID;
+
+                            Bind(instructorId);
+                        }
+                        catch
+                        {
+                            transaction.Rollback();
+                            connec.Close();
+                            MessageBox.Show("Unable to mark student");
+                        }
+                    }
+                }
             }
-            else
+            catch
             {
-                bool arch = false;
-                int up = 1;
-                connec.Open();
-                SqlTransaction transaction = connec.BeginTransaction();
-                try
-                {
-                int att = (int)dataGridView2.CurrentRow.Cells[5].Value + up;
-                int Total = (int)dataGridView2.CurrentRow.Cells[6].Value + att;
-                int rem = (int)dataGridView2.CurrentRow.Cells[4].Value - Total;
-
-                
-                SqlCommand command1 = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='" +dataGridView2.CurrentRow.Cells[1].Value+"' ,StudentSurname = '"+dataGridView2.CurrentRow.Cells[2].Value+"' ,InstructorID ='" + ID + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[3].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[4].Value + "',Attended = '" + att + "',Missed ='" + (int)dataGridView2.CurrentRow.Cells[6].Value + "',Remaining = '" + rem + "',IsArchived = '" + arch + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() +"'", connec,transaction);
-                command1.ExecuteNonQuery();
-
-                SqlCommand command2 = new SqlCommand("Insert into AttendanceSheet values ('" + ID + "','" + (int)dataGridView2.CurrentRow.Cells[0].Value + "','" + dataGridView2.CurrentRow.Cells[1].Value + "','" + dataGridView2.CurrentRow.Cells[2].Value + "','" + Attendance + "','" + Date + "')", connec, transaction);
-                command2.ExecuteNonQuery();
-                transaction.Commit();
-                    connec.Close();
-
-                MessageBox.Show("Marked as attended");
-                int instructorId = ID;
-
-                Bind(instructorId);
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    connec.Close();
-                    MessageBox.Show("Unable to mark student");
-                }
-               
+                MessageBox.Show("Error!Please try again.");
             }
         }
 
         private void Missed_Click(object sender, EventArgs e)
         {
-            int ID = id;
-            string Attendance = "Absent";
-            DateTime Date = DateTime.Now;
-            int allLess = (int)dataGridView2.CurrentRow.Cells[5].Value + (int)dataGridView2.CurrentRow.Cells[6].Value;
-            int Less = (int)dataGridView2.CurrentRow.Cells[4].Value;
-            if (Less == allLess)
-            {
-                MessageBox.Show("Student has attended all their lessons");
+            try 
+            { 
+
+            DialogResult Result = MessageBox.Show("Are you sure you want to mark lesson as missed? This action cannot be undone.", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (Result == DialogResult.No)
+                {
+                    MessageBox.Show("Cancelled");
+                }
+                else if (Result == DialogResult.Yes)
+                {
+
+
+                    int ID = id;
+                    string Attendance = "Absent";
+                    DateTime Date = DateTime.Now;
+                    int allLess = (int)dataGridView2.CurrentRow.Cells[5].Value + (int)dataGridView2.CurrentRow.Cells[6].Value;
+                    int Less = (int)dataGridView2.CurrentRow.Cells[4].Value;
+                    if (Less == allLess)
+                    {
+                        MessageBox.Show("Student has attended all their lessons");
+                    }
+                    else
+                    {
+                        bool arch = false;
+                        int up = 1;
+                        connec.Open();
+                        SqlTransaction transaction = connec.BeginTransaction();
+                        try
+                        {
+                            int missed = (int)dataGridView2.CurrentRow.Cells[6].Value + up;
+                            int Total = (int)dataGridView2.CurrentRow.Cells[5].Value + missed;
+                            int rem = (int)dataGridView2.CurrentRow.Cells[4].Value - Total;
+
+
+                            SqlCommand command1 = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='" + dataGridView2.CurrentRow.Cells[1].Value + "' ,StudentSurname = '" + dataGridView2.CurrentRow.Cells[2].Value + "',InstructorID ='" + ID + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[3].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[4].Value + "',Attended = '" + (int)dataGridView2.CurrentRow.Cells[5].Value + "',Missed ='" + missed + "',Remaining = '" + rem + "' ,IsArchived = '" + arch + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() + "'", connec, transaction);
+                            command1.ExecuteNonQuery();
+
+                            SqlCommand command2 = new SqlCommand("Insert into AttendanceSheet values ('" + ID + "','" + (int)dataGridView2.CurrentRow.Cells[0].Value + "','" + dataGridView2.CurrentRow.Cells[1].Value + "','" + dataGridView2.CurrentRow.Cells[2].Value + "','" + Attendance + "','" + Date + "')", connec, transaction);
+                            command2.ExecuteNonQuery();
+                            transaction.Commit();
+                            connec.Close();
+
+                            MessageBox.Show("Marked as Missed");
+                            int instructorId = ID;
+
+                            Bind(instructorId);
+                        }
+                        catch
+                        {
+                            transaction.Rollback();
+                            connec.Close();
+                            MessageBox.Show("Unable to mark student");
+                        }
+                    }
+                }    
             }
-            else
+            catch
             {
-                bool arch = false;
-                int up = 1;
-                connec.Open();
-                SqlTransaction transaction = connec.BeginTransaction();
-                try
-                {
-                int missed = (int)dataGridView2.CurrentRow.Cells[6].Value + up;
-                int Total = (int)dataGridView2.CurrentRow.Cells[5].Value + missed;
-                int rem = (int)dataGridView2.CurrentRow.Cells[4].Value - Total;
-
-               
-                SqlCommand command1 = new SqlCommand("update LessonAttendanceMJ set StudentID = '" + (int)dataGridView2.CurrentRow.Cells[0].Value + "' ,StudentName ='"+dataGridView2.CurrentRow.Cells[1].Value+"' ,StudentSurname = '"+dataGridView2.CurrentRow.Cells[2].Value+"',InstructorID ='" + ID + "' ,PackageID = '" + dataGridView2.CurrentRow.Cells[3].Value + "',NumberofLessons ='" + (int)dataGridView2.CurrentRow.Cells[4].Value + "',Attended = '" + (int)dataGridView2.CurrentRow.Cells[5].Value + "',Missed ='" + missed + "',Remaining = '" + rem + "' ,IsArchived = '" + arch + "' where StudentID = '" + dataGridView2.CurrentRow.Cells[0].Value.ToString() + "'", connec,transaction);
-                command1.ExecuteNonQuery();
-
-                SqlCommand command2 = new SqlCommand("Insert into AttendanceSheet values ('" + ID + "','" + (int)dataGridView2.CurrentRow.Cells[0].Value + "','" + dataGridView2.CurrentRow.Cells[1].Value + "','" + dataGridView2.CurrentRow.Cells[2].Value + "','" + Attendance + "','" + Date + "')", connec, transaction);
-                    command2.ExecuteNonQuery();
-                transaction.Commit();
-                    connec.Close();
-
-                MessageBox.Show("Marked as Missed");
-                int instructorId = ID;
-
-                Bind(instructorId);
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    connec.Close();
-                    MessageBox.Show("Unable to mark student");
-                }
-               
+                MessageBox.Show("Error!Please try again.");
             }
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            int ID = id;
+            try 
+            {
+                int ID = id;
             bookingTableAdapter.FillByIDate(dsAttendance21.Booking, ID, dateTimePicker1.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Error!Please try again.");
+            }
+            
         }
 
         private void ArchiveBtn_Click(object sender, EventArgs e)
         {
-            int ID = id;
-            int Studentid = (int)dataGridView2.CurrentRow.Cells[0].Value;
-            bool isArchived = false;
-
-            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
-            using (SqlCommand checkCmd = new SqlCommand("SELECT IsArchived FROM LessonAttendanceMJ WHERE StudentID = @StudentID", con))
+            try
             {
-                checkCmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = Studentid;
-                con.Open();
-                object result = checkCmd.ExecuteScalar();
-                con.Close();
 
-                if (result != null && result != DBNull.Value)
+
+                int ID = id;
+                int Studentid = (int)dataGridView2.CurrentRow.Cells[0].Value;
+                bool isArchived = false;
+
+                using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+                using (SqlCommand checkCmd = new SqlCommand("SELECT IsArchived FROM LessonAttendanceMJ WHERE StudentID = @StudentID", con))
                 {
-                    isArchived = Convert.ToBoolean(result);
+                    checkCmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = Studentid;
+                    con.Open();
+                    object result = checkCmd.ExecuteScalar();
+                    con.Close();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        isArchived = Convert.ToBoolean(result);
+                    }
                 }
-            }
-            if (isArchived)
-            {
-                MessageBox.Show("This student is already archived.");
-                return;
-            }
-           
-            
+                if (isArchived)
+                {
+                    MessageBox.Show("This student is already archived.");
+                    return;
+                }
+
+
 
                 DialogResult Result = MessageBox.Show("THIS ACTION CANNOT BE UNDONE!Are you sure you want to Archive.", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -243,7 +300,12 @@ namespace DashboardAS
 
                     MessageBox.Show("Archived");
                 }
-            
+
+            }
+            catch
+            {
+                MessageBox.Show("Error!Please try again.");
+            }
         }
 
         private void activeBtn_CheckedChanged(object sender, EventArgs e)
@@ -359,10 +421,12 @@ namespace DashboardAS
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-           
 
-            if (dataGridView2.CurrentRow == null)
+
+                if (dataGridView2.CurrentRow == null)
                 {
                     MessageBox.Show("Please select a student to unarchive.");
                     return;
@@ -383,7 +447,12 @@ namespace DashboardAS
 
                 MessageBox.Show("Student has been unarchived.");
                 LoadAttendanceData(); // Refresh the grid
-            
+
+            }
+            catch
+            {
+                MessageBox.Show("Error!Please try again.");
+            }
         }
 
         private void dataGridView2_SelectionChanged(object sender, EventArgs e)
