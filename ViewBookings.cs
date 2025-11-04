@@ -19,12 +19,13 @@ namespace DashboardAS
 
         private void ViewBookings_Load(object sender, EventArgs e)
         {
-            lessonBookingMJTableAdapter1.Fill(managerDataSet1.LessonBookingMJ);
+            lessonBookingMJTableAdapter.FillBy(mangerNEW.LessonBookingMJ);
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void searchbookingsbox_TextChanged(object sender, EventArgs e)
         {
-            lessonBookingMJTableAdapter1.FillByPackageID(managerDataSet1.LessonBookingMJ, searchbookingsbox.Text);
+            
         }
     }
 }

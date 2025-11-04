@@ -20,25 +20,28 @@ namespace DashboardAS
 
         private void ViewInstructors_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'instructorsVehicles1.InstructorMJ' table. You can move, or remove it, as needed.
-            this.instructorMJTableAdapter.Fill(this.instructorsVehicles1.InstructorMJ);
-            // TODO: This line of code loads data into the 'instructorsVehicles1.VehicleMJ' table. You can move, or remove it, as needed.
-            this.vehicleMJTableAdapter.Fill(this.instructorsVehicles1.VehicleMJ);
-            instructorMJTableAdapter1.Fill(managerDataSet1.InstructorMJ);
+            instructorMJTableAdapter2.FillBy(mangerNEW.InstructorMJ);
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            BindActive();
+            BindInactive();
+
+
         }
         void BindData()
         {
 
-            SqlConnection con = new SqlConnection("Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi");
-            SqlCommand command = new SqlCommand(" Select * from InstructorMJ", con);
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable table = new DataTable();
-            da.Fill(table);
-            dataGridView1.DataSource = table;
+            //SqlConnection con = new SqlConnection("Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi");
+            //SqlCommand command = new SqlCommand(" Select * from InstructorMJ", con);
+            //SqlDataAdapter da = new SqlDataAdapter(command);
+            //DataTable table = new DataTable();
+            //da.Fill(table);
+            //dataGridView1.DataSource = table;
         }
         private void searchinstructorsbox_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -53,51 +56,192 @@ namespace DashboardAS
 
         private void INSERTbtn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SqlConnection con = new SqlConnection("Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi");
 
+            string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
                 con.Open();
 
-                // 1. Check if this vehicle is already assigned to an instructor
-                string checkQuery = "SELECT COUNT(*) FROM InstructorMJ WHERE licenseplateid = @licenseplateid";
-                SqlCommand checkCmd = new SqlCommand(checkQuery, con);
-                checkCmd.Parameters.AddWithValue("@licenseplateid", comboBox1.Text);
-                int count = (int)checkCmd.ExecuteScalar();
-
-                if (count > 0)
+                // 1. Check that LicensePlateID exists in VehicleMJ (FK constraint)
+                string licensecheckQuery = "SELECT COUNT(*) FROM VehicleMJ WHERE licenseplateid = @licenseplateid";
+                using (SqlCommand licensecheckCmd = new SqlCommand(licensecheckQuery, con))
                 {
-                    MessageBox.Show("Vehicle not available");
-                    con.Close();
-                    return;
+                    licensecheckCmd.Parameters.AddWithValue("@licenseplateid", textBox1.Text.Trim());
+                    int licenseExists = (int)licensecheckCmd.ExecuteScalar();
+                    if (licenseExists == 0)
+                    {
+                        MessageBox.Show("License PlateID does not exists in the Vehicle records. Please enter a valid License PlateID ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                 }
 
-                SqlCommand command = new SqlCommand("Insert into InstructorMJ values( @licenseplateid, @licensenumber,@expertiselevel ,  @firstname, @lastname, @gender, @contactnumber, @email)", con);
+                //2. Check if LicensePlateID already  assigned to an active instructor 
+                string InstructorCheckQuery = "SELECT COUNT(*) FROM InstructorMJ WHERE licenseplateid = @licenseplateid AND Status = 'Active'";
+                using (SqlCommand checkcmd = new SqlCommand(InstructorCheckQuery, con))
+                {
+                    checkcmd.Parameters.AddWithValue("@licenseplateid", textBox1.Text.Trim());
+                    int count = (int)checkcmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        MessageBox.Show(" License Plate ID has already been allocated to another active instructor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
 
-                command.Parameters.AddWithValue("@licenseplateid", comboBox1.Text);
-                command.Parameters.AddWithValue("@licensenumber", licenseNotxtB.Text);
-                command.Parameters.AddWithValue("@expertiselevel", comboBox2.Text);
-                command.Parameters.AddWithValue("@firstname", firstNameTxtB.Text);
-                command.Parameters.AddWithValue("@lastname", LastnametxtB.Text);
-                command.Parameters.AddWithValue("@gender", comboBox3.Text);
-                command.Parameters.AddWithValue("@contactnumber", contactNumberTxtB.Text);
-                command.Parameters.AddWithValue("@email", emailTxtB.Text);
-                
+                string insertQuery = @"INSERT INTO InstructorMJ
+                                     (LicensePlateID , LicenseNumber, ExpertiseLevel, FirstName, LastName, Gender, ContactNumber, Email,Status)
+                                      VALUES (@licenseplateid, @licensenumber, @expertiselevel, @firstname, @lastname, @gender, @contactnumber, @email, @status)";
+                using (SqlCommand comm = new SqlCommand(insertQuery, con))
+                {
+                    comm.Parameters.AddWithValue("@licenseplateid", textBox1.Text.Trim());
+                    comm.Parameters.AddWithValue("@licensenumber", licenseNotxtB.Text.Trim());
+                    comm.Parameters.AddWithValue("@expertiselevel", comboBox1.Text.Trim());
+                    comm.Parameters.AddWithValue("@firstname", firstNameTxtB.Text.Trim());
+                    comm.Parameters.AddWithValue("@lastname", LastnametxtB.Text.Trim());
+                    comm.Parameters.AddWithValue("@gender", comboBox3.Text);
+                    comm.Parameters.AddWithValue("@contactnumber", contactNumberTxtB.Text.Trim());
+                    comm.Parameters.AddWithValue("@email", emailTxtB.Text.Trim());
+                    comm.Parameters.AddWithValue("@status", comboBox2.Text.Trim());
 
-                command.ExecuteNonQuery();
+
+                    comm.ExecuteNonQuery();
+
+                }
+
                 con.Close();
                 MessageBox.Show("You have Entered a new Instructor ");
-                BindData();
+                BindActive();
+                BindInactive();
+            }
 
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("New Instructor not added");
-            }
+
+
+
+
+
+
+
+
         }
 
         private void UPDATEbtn_Click(object sender, EventArgs e)
         {
+            string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                SqlCommand comm = new SqlCommand("Update InstructorMJ set licenseplateid=@licenseplateid, licensenumber = @licensenumber, expertiseLevel=@expertiselevel, firstname=@firstname, lastname=@lastname, gender =@gender, contactnumber=@contactnumber, email=@email, status=@status WHERE instructorid=@instructorid ", con);
+
+                comm.Parameters.AddWithValue("@licenseplateid", textBox1.Text.Trim());
+                comm.Parameters.AddWithValue("@licensenumber", licenseNotxtB.Text.Trim());
+                comm.Parameters.AddWithValue("@expertiselevel", comboBox1.Text.Trim());
+                comm.Parameters.AddWithValue("@firstname", firstNameTxtB.Text.Trim());
+                comm.Parameters.AddWithValue("@lastname", LastnametxtB.Text.Trim());
+                comm.Parameters.AddWithValue("@gender", comboBox3.Text);
+                comm.Parameters.AddWithValue("@contactnumber", contactNumberTxtB.Text.Trim());
+                comm.Parameters.AddWithValue("@email", emailTxtB.Text.Trim());
+                comm.Parameters.AddWithValue("@status", comboBox2.Text.Trim());
+                comm.Parameters.AddWithValue("@instructorid", instructorIDtxtB.Text.Trim());
+
+                int rowsAffected = comm.ExecuteNonQuery();
+                if (rowsAffected == 0)
+                {
+                    MessageBox.Show("No Record was Updated");
+                }
+                else
+                {
+                    MessageBox.Show("Update successful!");
+                }
+
+                BindActive();
+                BindInactive();
+                con.Close();
+            }
+        }
+
+        private void ARCHIVEbtn_Click(object sender, EventArgs e)
+        {
+            string instructorid = instructorIDtxtB.Text;
+            string status = comboBox2.Text;
+
+            if (status == "Inactive")
+            {
+                MessageBox.Show(" You are about to Archive an Inactive member, you can undo this by Update");
+            }
+            else
+            {
+                MessageBox.Show("To Archive the instructor has to be inactive ");
+            }
+            BindActive();
+            BindInactive();
+
+        }
+        private void BindActive()
+        {
+            string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM InstructorMJ WHERE  Status = 'Active'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+        }
+        private void BindInactive()
+        {
+            string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM InstructorMJ WHERE  Status = 'Inactive'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView2.DataSource = dt;
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                instructorIDtxtB.Text = row.Cells[0].Value.ToString();
+                textBox1.Text = row.Cells[1].Value.ToString();
+                licenseNotxtB.Text = row.Cells[2].Value.ToString();
+                comboBox1.Text = row.Cells[3].Value.ToString();
+                firstNameTxtB.Text = row.Cells[4].Value.ToString();
+                LastnametxtB.Text = row.Cells[5].Value.ToString();
+                comboBox3.Text = row.Cells[6].Value.ToString();
+                contactNumberTxtB.Text = row.Cells[7].Value.ToString();
+                emailTxtB.Text = row.Cells[8].Value.ToString();
+                comboBox2.Text = row.Cells[9].Value.ToString();
+
+            }
+        }
+
+
+
+
+        private void dataGridView2_CellClick_(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
+
+                instructorIDtxtB.Text = row.Cells[0].Value.ToString();
+                textBox1.Text = row.Cells[1].Value.ToString();
+                licenseNotxtB.Text = row.Cells[2].Value.ToString();
+                comboBox1.Text = row.Cells[3].Value.ToString();
+                firstNameTxtB.Text = row.Cells[4].Value.ToString();
+                LastnametxtB.Text = row.Cells[5].Value.ToString();
+                comboBox3.Text = row.Cells[6].Value.ToString();
+                contactNumberTxtB.Text = row.Cells[7].Value.ToString();
+                emailTxtB.Text = row.Cells[8].Value.ToString();
+                comboBox2.Text = row.Cells[9].Value.ToString();
+
+            }
         }
     }
 }

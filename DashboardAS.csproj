@@ -177,16 +177,16 @@
     <Compile Include="ManageInstru.Designer.cs">
       <DependentUpon>ManageInstru.cs</DependentUpon>
     </Compile>
-    <Compile Include="managerDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>managerDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ManagerDB.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ManagerDB.Designer.cs">
       <DependentUpon>ManagerDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mangerNEW.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mangerNEW.xsd</DependentUpon>
     </Compile>
     <Compile Include="PaymentDialog.cs">
       <SubType>Form</SubType>
@@ -439,16 +439,16 @@
     <None Include="instructorsVehicles.xss">
       <DependentUpon>instructorsVehicles.xsd</DependentUpon>
     </None>
-    <None Include="managerDataSet.xsc">
-      <DependentUpon>managerDataSet.xsd</DependentUpon>
+    <None Include="mangerNEW.xsc">
+      <DependentUpon>mangerNEW.xsd</DependentUpon>
     </None>
-    <None Include="managerDataSet.xsd">
+    <None Include="mangerNEW.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>managerDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>mangerNEW.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="managerDataSet.xss">
-      <DependentUpon>managerDataSet.xsd</DependentUpon>
+    <None Include="mangerNEW.xss">
+      <DependentUpon>mangerNEW.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
