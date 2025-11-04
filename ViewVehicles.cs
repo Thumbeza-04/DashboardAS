@@ -20,7 +20,11 @@ namespace DashboardAS
 
         private void ViewVehicles_Load(object sender, EventArgs e)
         {
-            BindData();
+            vehicleMJTableAdapter.FillBy(mangerNEW.VehicleMJ);
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            BindActive();
+            BindInactive();
 
         }
 
@@ -31,28 +35,46 @@ namespace DashboardAS
 
         private void INSERTbtn_Click(object sender, EventArgs e)
         {
-            try
+            string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                SqlConnection con = new SqlConnection("Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi");
-
                 con.Open();
-                SqlCommand command = new SqlCommand("Insert into VehicleMJ values (@licenseplateid , @transmissiontype, @fueltype, @make, @vehicletype ) ", con);
 
-                command.Parameters.AddWithValue("@licenseplateid", licensePlateTxtB.Text);
-                command.Parameters.AddWithValue("@transmissiontype", comboBox1.Text);
-                command.Parameters.AddWithValue("@fueltype", comboBox2.Text);
-                command.Parameters.AddWithValue("@make", makeTxtB.Text);
-                command.Parameters.AddWithValue("@vehicletype", comboBox3.Text);
+                //2. Check if LicensePlateID already  assigned to an active instructor 
+                string licensePlateidCheckQuery = "SELECT COUNT(*) FROM VehicleMJ WHERE licenseplateid = @licenseplateid ";
+                using (SqlCommand checkcmd = new SqlCommand(licensePlateidCheckQuery, con))
+                {
+                    checkcmd.Parameters.AddWithValue("@licenseplateid", licensePlateTxtB.Text.Trim());
+                    int count = (int)checkcmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        MessageBox.Show(" License Plate ID already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
 
-                command.ExecuteNonQuery();
+                string insertQuery = @"INSERT INTO VehicleMJ
+                                     (LicensePlateID , TransmissionType, FuelType, Make, VehicleType, Status)
+                                      VALUES (@licenseplateid, @transmissiontype, @fueltype, @make, @vehicletype, @status)";
+                using (SqlCommand comm = new SqlCommand(insertQuery, con))
+                {
+                    comm.Parameters.AddWithValue("@licenseplateid", licensePlateTxtB.Text.Trim());
+                    comm.Parameters.AddWithValue("@transmissiontype", comboBox1.Text.Trim());
+                    comm.Parameters.AddWithValue("@fueltype", comboBox2.Text.Trim());
+                    comm.Parameters.AddWithValue("@make", makeTxtB.Text.Trim());
+                    comm.Parameters.AddWithValue("@vehicletype", comboBox3.Text.Trim());
+                    comm.Parameters.AddWithValue("@status", comboBox4.Text.Trim());
+
+
+
+                    comm.ExecuteNonQuery();
+
+                }
 
                 con.Close();
-                MessageBox.Show(" New Vehicle has been inserted");
-                BindData();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Vehicle Not added. License Plate ID has to be unique");
+                MessageBox.Show("You have Entered a new vehicle");
+                BindActive();
+                BindInactive();
             }
         }
         void BindData()
@@ -68,92 +90,109 @@ namespace DashboardAS
 
         private void UPDATEbtn_Click(object sender, EventArgs e)
         {
-            try
+            string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                SqlConnection con = new SqlConnection("Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi");
-
                 con.Open();
-                SqlCommand command = new SqlCommand("Update VehicleMJ Set transmissiontype = @transmissiontype , fueltype = @fueltype , make = @make , vehicletype = @vehicletype Where licenseplateid = @licenseplateid ", con);
 
-                command.Parameters.AddWithValue("@licenseplateid", licensePlateTxtB.Text);
-                command.Parameters.AddWithValue("@transmissiontype", comboBox1.Text);
-                command.Parameters.AddWithValue("@fueltype", comboBox2.Text);
-                command.Parameters.AddWithValue("@make", makeTxtB.Text);
-                command.Parameters.AddWithValue("@vehicletype", comboBox3.Text);
+                SqlCommand comm = new SqlCommand("Update VehicleMJ set TransmissionType = @transmissiontype, fueltype=@fueltype, make=@make, vehicletype=@vehicletype, status=@status WHERE licenseplateid=@licenseplateid", con);
 
-                command.ExecuteNonQuery();
+               comm.Parameters.AddWithValue("@licenseplateid", licensePlateTxtB.Text.Trim());
+                comm.Parameters.AddWithValue("@transmissiontype", comboBox1.Text.Trim());
+                comm.Parameters.AddWithValue("@fueltype", comboBox2.Text.Trim());
+                comm.Parameters.AddWithValue("@make", makeTxtB.Text.Trim());
+                comm.Parameters.AddWithValue("@vehicletype", comboBox3.Text.Trim());
+                comm.Parameters.AddWithValue("@status", comboBox4.Text.Trim());
 
+
+                int rowsAffected = comm.ExecuteNonQuery();
+                if (rowsAffected == 0)
+                {
+                    MessageBox.Show("No Record was Updated");
+                }
+                else
+                {
+                    MessageBox.Show("Update successful!");
+                }
+
+                BindInactive();
+                BindActive();
                 con.Close();
-                MessageBox.Show("Vehicle updated");
-                BindData();
-            }
-
-            catch (Exception)
-            {
-                MessageBox.Show("Vehicle not Updated");
             }
         }
 
         private void ARCHIVEbtn_Click(object sender, EventArgs e)
         {
-            string licensePlateID = licensePlateTxtB.Text.Trim();
-            if (string.IsNullOrEmpty(licensePlateID))
+            string licenseplateid= licensePlateTxtB.Text;
+            string status = comboBox4.Text;
+
+            if (status == "Inactive")
             {
-                MessageBox.Show("Please enter a License Plate ID.");
-                return;
+                MessageBox.Show(" You are about to Archive an Inactice vehicle, you can undo this by Update");
             }
-
-            // Find the selected row in the active vehicles grid
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            else
             {
-                if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() == licensePlateID)
-                {
-                    // Get all vehicle data (adjust indexes as needed)
-                    string transmissionType = row.Cells[1].Value?.ToString();
-                    string fuelType = row.Cells[2].Value?.ToString();
-                    string make = row.Cells[3].Value?.ToString();
-                    string vehicleType = row.Cells[4].Value?.ToString();
+                MessageBox.Show("To Archive the vehicle has to be inactive ");
+            }
+            BindActive();
+            BindInactive();
+        }
 
-                    // Remove from active vehicles table in database
-                    using (SqlConnection conn = new SqlConnection("Data Source = 146.230.177.46; Initial Catalog = WstGrp24; Persist Security Info = True; User ID = WstGrp24; Password = 6wefi"))
-                    {
-                        conn.Open();
-                        // Delete from main table
-                        string deleteQuery = "DELETE FROM VehicleMJ WHERE LicensePlateID = @LicensePlateID";
-                        using (SqlCommand cmd = new SqlCommand(deleteQuery, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@LicensePlateID", licensePlateID);
-                            cmd.ExecuteNonQuery();
-                        }
+        private void BindActive()
+        {
+            string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM VehicleMJ WHERE  Status = 'Active'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+        }
+        private void BindInactive()
+        {
+            string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM VehicleMJ WHERE  Status = 'Inactive'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView2.DataSource = dt;
+            }
+        }
 
-                        // Insert into archive table (create the archive table if not exists)
-                        string insertQuery = @"INSERT INTO ArchivedVehicles
-                    (LicensePlateID, TransmissionType, FuelType, Make, VehicleType)
-                    VALUES (@LicensePlateID, @TransmissionType, @FuelType, @Make, @VehicleType)";
-                        using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@LicensePlateID", licensePlateID);
-                            cmd.Parameters.AddWithValue("@TransmissionType", transmissionType);
-                            cmd.Parameters.AddWithValue("@FuelType", fuelType);
-                            cmd.Parameters.AddWithValue("@Make", make);
-                            cmd.Parameters.AddWithValue("@VehicleType", vehicleType);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
-                    // Remove from DataGridView (UI)
-                    dataGridView1.Rows.Remove(row);
-
-                    // Add to archives grid (UI)
-                    dataGridView2.Rows.Add(licensePlateID, transmissionType, fuelType, make, vehicleType);
-
-                    MessageBox.Show("Vehicle archived successfully.");
-                    break;
-                }
+                licensePlateTxtB.Text = row.Cells[0].Value.ToString();
+                comboBox1.Text = row.Cells[1].Value.ToString();
+                comboBox2.Text = row.Cells[2].Value.ToString();
+                makeTxtB.Text = row.Cells[3].Value.ToString();
+                comboBox3.Text = row.Cells[4].Value.ToString();
+                comboBox4.Text = row.Cells[5].Value.ToString();
+                
 
             }
         }
-        
-        
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
+
+                licensePlateTxtB.Text = row.Cells[0].Value.ToString();
+                comboBox1.Text = row.Cells[1].Value.ToString();
+                comboBox2.Text = row.Cells[2].Value.ToString();
+                makeTxtB.Text = row.Cells[3].Value.ToString();
+                comboBox3.Text = row.Cells[4].Value.ToString();
+                comboBox4.Text = row.Cells[5].Value.ToString();
+
+
+            }
+        }
     }
 }

@@ -32,14 +32,15 @@ namespace DashboardAS
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.licensePlateIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transmissionTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fuelTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.makeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vehicleTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vehicleMJBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.mangerNEW = new DashboardAS.mangerNEW();
             this.vehicleMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.managerDataSet1 = new DashboardAS.managerDataSet();
-            this.vehicleMJTableAdapter1 = new DashboardAS.managerDataSetTableAdapters.VehicleMJTableAdapter();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,16 +55,22 @@ namespace DashboardAS
             this.UPDATEbtn = new System.Windows.Forms.Button();
             this.ARCHIVEbtn = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.licensePlateIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transmissionTypeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fuelTypeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.makeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vehicleTypeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vehicleMJBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.vehicleMJTableAdapter = new DashboardAS.mangerNEWTableAdapters.VehicleMJTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehicleMJBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mangerNEW)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vehicleMJBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.managerDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehicleMJBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -83,12 +90,13 @@ namespace DashboardAS
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.licensePlateIDDataGridViewTextBoxColumn,
-            this.transmissionTypeDataGridViewTextBoxColumn,
-            this.fuelTypeDataGridViewTextBoxColumn,
-            this.makeDataGridViewTextBoxColumn,
-            this.vehicleTypeDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.vehicleMJBindingSource;
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.statusDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.vehicleMJBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(44, 37);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
@@ -96,60 +104,57 @@ namespace DashboardAS
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(680, 131);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // licensePlateIDDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.licensePlateIDDataGridViewTextBoxColumn.DataPropertyName = "LicensePlateID";
-            this.licensePlateIDDataGridViewTextBoxColumn.HeaderText = "LicensePlateID";
-            this.licensePlateIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.licensePlateIDDataGridViewTextBoxColumn.Name = "licensePlateIDDataGridViewTextBoxColumn";
-            this.licensePlateIDDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "LicensePlateID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "LicensePlateID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // transmissionTypeDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            this.transmissionTypeDataGridViewTextBoxColumn.DataPropertyName = "TransmissionType";
-            this.transmissionTypeDataGridViewTextBoxColumn.HeaderText = "TransmissionType";
-            this.transmissionTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.transmissionTypeDataGridViewTextBoxColumn.Name = "transmissionTypeDataGridViewTextBoxColumn";
-            this.transmissionTypeDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "TransmissionType";
+            this.dataGridViewTextBoxColumn2.HeaderText = "TransmissionType";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // fuelTypeDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn3
             // 
-            this.fuelTypeDataGridViewTextBoxColumn.DataPropertyName = "FuelType";
-            this.fuelTypeDataGridViewTextBoxColumn.HeaderText = "FuelType";
-            this.fuelTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.fuelTypeDataGridViewTextBoxColumn.Name = "fuelTypeDataGridViewTextBoxColumn";
-            this.fuelTypeDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "FuelType";
+            this.dataGridViewTextBoxColumn3.HeaderText = "FuelType";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
-            // makeDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn4
             // 
-            this.makeDataGridViewTextBoxColumn.DataPropertyName = "Make";
-            this.makeDataGridViewTextBoxColumn.HeaderText = "Make";
-            this.makeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.makeDataGridViewTextBoxColumn.Name = "makeDataGridViewTextBoxColumn";
-            this.makeDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Make";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Make";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // vehicleTypeDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn5
             // 
-            this.vehicleTypeDataGridViewTextBoxColumn.DataPropertyName = "VehicleType";
-            this.vehicleTypeDataGridViewTextBoxColumn.HeaderText = "VehicleType";
-            this.vehicleTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.vehicleTypeDataGridViewTextBoxColumn.Name = "vehicleTypeDataGridViewTextBoxColumn";
-            this.vehicleTypeDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "VehicleType";
+            this.dataGridViewTextBoxColumn5.HeaderText = "VehicleType";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // vehicleMJBindingSource1
+            // 
+            this.vehicleMJBindingSource1.DataMember = "VehicleMJ";
+            this.vehicleMJBindingSource1.DataSource = this.mangerNEW;
+            // 
+            // mangerNEW
+            // 
+            this.mangerNEW.DataSetName = "mangerNEW";
+            this.mangerNEW.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // vehicleMJBindingSource
             // 
             this.vehicleMJBindingSource.DataMember = "VehicleMJ";
-            this.vehicleMJBindingSource.DataSource = this.managerDataSet1;
-            // 
-            // managerDataSet1
-            // 
-            this.managerDataSet1.DataSetName = "managerDataSet";
-            this.managerDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vehicleMJTableAdapter1
-            // 
-            this.vehicleMJTableAdapter1.ClearBeforeFill = true;
             // 
             // label2
             // 
@@ -296,57 +301,85 @@ namespace DashboardAS
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.licensePlateIDDataGridViewTextBoxColumn1,
-            this.transmissionTypeDataGridViewTextBoxColumn1,
-            this.fuelTypeDataGridViewTextBoxColumn1,
-            this.makeDataGridViewTextBoxColumn1,
-            this.vehicleTypeDataGridViewTextBoxColumn1});
-            this.dataGridView2.DataSource = this.vehicleMJBindingSource;
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.statusDataGridViewTextBoxColumn1});
+            this.dataGridView2.DataSource = this.vehicleMJBindingSource2;
             this.dataGridView2.Location = new System.Drawing.Point(34, 355);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(690, 150);
             this.dataGridView2.TabIndex = 17;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
-            // checkBox1
+            // dataGridViewTextBoxColumn6
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(44, 332);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(118, 20);
-            this.checkBox1.TabIndex = 18;
-            this.checkBox1.Text = "View Archives";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "LicensePlateID";
+            this.dataGridViewTextBoxColumn6.HeaderText = "LicensePlateID";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
-            // licensePlateIDDataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn7
             // 
-            this.licensePlateIDDataGridViewTextBoxColumn1.DataPropertyName = "LicensePlateID";
-            this.licensePlateIDDataGridViewTextBoxColumn1.HeaderText = "LicensePlateID";
-            this.licensePlateIDDataGridViewTextBoxColumn1.Name = "licensePlateIDDataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "TransmissionType";
+            this.dataGridViewTextBoxColumn7.HeaderText = "TransmissionType";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
-            // transmissionTypeDataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn8
             // 
-            this.transmissionTypeDataGridViewTextBoxColumn1.DataPropertyName = "TransmissionType";
-            this.transmissionTypeDataGridViewTextBoxColumn1.HeaderText = "TransmissionType";
-            this.transmissionTypeDataGridViewTextBoxColumn1.Name = "transmissionTypeDataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "FuelType";
+            this.dataGridViewTextBoxColumn8.HeaderText = "FuelType";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
-            // fuelTypeDataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn9
             // 
-            this.fuelTypeDataGridViewTextBoxColumn1.DataPropertyName = "FuelType";
-            this.fuelTypeDataGridViewTextBoxColumn1.HeaderText = "FuelType";
-            this.fuelTypeDataGridViewTextBoxColumn1.Name = "fuelTypeDataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Make";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Make";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
-            // makeDataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn10
             // 
-            this.makeDataGridViewTextBoxColumn1.DataPropertyName = "Make";
-            this.makeDataGridViewTextBoxColumn1.HeaderText = "Make";
-            this.makeDataGridViewTextBoxColumn1.Name = "makeDataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "VehicleType";
+            this.dataGridViewTextBoxColumn10.HeaderText = "VehicleType";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
-            // vehicleTypeDataGridViewTextBoxColumn1
+            // statusDataGridViewTextBoxColumn1
             // 
-            this.vehicleTypeDataGridViewTextBoxColumn1.DataPropertyName = "VehicleType";
-            this.vehicleTypeDataGridViewTextBoxColumn1.HeaderText = "VehicleType";
-            this.vehicleTypeDataGridViewTextBoxColumn1.Name = "vehicleTypeDataGridViewTextBoxColumn1";
+            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn1.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
+            // 
+            // vehicleMJBindingSource2
+            // 
+            this.vehicleMJBindingSource2.DataMember = "VehicleMJ";
+            this.vehicleMJBindingSource2.DataSource = this.mangerNEW;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.comboBox4.Location = new System.Drawing.Point(645, 220);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(129, 21);
+            this.comboBox4.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(594, 228);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 16);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Status";
+            // 
+            // vehicleMJTableAdapter
+            // 
+            this.vehicleMJTableAdapter.ClearBeforeFill = true;
             // 
             // ViewVehicles
             // 
@@ -354,7 +387,8 @@ namespace DashboardAS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(832, 517);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.ARCHIVEbtn);
             this.Controls.Add(this.UPDATEbtn);
@@ -378,9 +412,11 @@ namespace DashboardAS
             this.Text = "ViewVehicles";
             this.Load += new System.EventHandler(this.ViewVehicles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehicleMJBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mangerNEW)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vehicleMJBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.managerDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehicleMJBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,8 +426,8 @@ namespace DashboardAS
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private managerDataSet managerDataSet1;
-        private managerDataSetTableAdapters.VehicleMJTableAdapter vehicleMJTableAdapter1;
+     //   private managerDataSet managerDataSet1;
+     //   private managerDataSetTableAdapters.VehicleMJTableAdapter vehicleMJTableAdapter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn licensePlateIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn transmissionTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fuelTypeDataGridViewTextBoxColumn;
@@ -412,11 +448,28 @@ namespace DashboardAS
         private System.Windows.Forms.Button UPDATEbtn;
         private System.Windows.Forms.Button ARCHIVEbtn;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn licensePlateIDDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn transmissionTypeDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn fuelTypeDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn makeDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn vehicleTypeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label label7;
+        private mangerNEW mangerNEW;
+        private System.Windows.Forms.BindingSource vehicleMJBindingSource1;
+        private mangerNEWTableAdapters.VehicleMJTableAdapter vehicleMJTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource vehicleMJBindingSource2;
     }
 }

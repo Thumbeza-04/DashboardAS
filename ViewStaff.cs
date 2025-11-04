@@ -20,8 +20,14 @@ namespace DashboardAS
 
         private void ViewStaff_Load(object sender, EventArgs e)
         {
-           
+
             mJstaffTableAdapter1.Fill(generalStaff1.MJstaff);
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            BindActiveStaff();
+            BindArchivedStaff();
+
+
         }
         void BindData()
         {
@@ -35,7 +41,7 @@ namespace DashboardAS
         }
         private void searchstaffbox_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,11 +51,24 @@ namespace DashboardAS
 
         private void INSERTbtn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SqlConnection con = new SqlConnection("Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi");
 
+            string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
                 con.Open();
+                string staffidCheckQuery = "SELECT COUNT (*)  FROM MJstaff Where staddid=Astaffid";
+                using (SqlCommand staffidCheckCmd = new SqlCommand(staffidCheckQuery, con))
+                {
+                    staffidCheckCmd.Parameters.AddWithValue("@staffid", staffIdTxtB.Text.Trim());
+                    int staffidExists = (int)staffidCheckCmd.ExecuteScalar();
+                    if (staffidExists == 0)
+                    {
+                        MessageBox.Show("StaffID already exists , please enter a unique StaffID");
+                        return;
+                    }
+                }
+
+
                 SqlCommand command = new SqlCommand("Insert into MJstaff values( @staffid, @staffname, @staffsurname, @staffemail, @staffcellnumber, @idno, @gender, @streetnumber, @streetname, @city, @postalcode, @role, @status)", con);
 
                 command.Parameters.AddWithValue("@staffid", int.Parse(staffIdTxtB.Text));
@@ -68,20 +87,14 @@ namespace DashboardAS
 
                 command.ExecuteNonQuery();
                 con.Close();
+                BindActiveStaff();
+                BindArchivedStaff();
                 MessageBox.Show("You have Entered a new staff member");
-                BindData();
 
             }
-            catch (Exception)
-            {
-                MessageBox.Show("New Staff Member Not Added");
-            }
-
-
-
-
 
         }
+
 
         private void UPDATEbtn_Click(object sender, EventArgs e)
         {
@@ -108,15 +121,19 @@ namespace DashboardAS
                 command.ExecuteNonQuery();
                 con.Close();
                 MessageBox.Show("You have Updated Staff Member's Information.");
-                BindData();
+                BindActiveStaff();
+                BindArchivedStaff();
 
             }
-            catch(Exception)
+            catch (Exception)
             {
-                MessageBox.Show("Information Not updated, cannot changed staffId");
+                MessageBox.Show("Information Not updated, cannot change staffId");
             }
         }
+    
+    
 
+        
         private void ARCHIVEbtn_Click(object sender, EventArgs e)
         {
             try
@@ -138,6 +155,8 @@ namespace DashboardAS
                 if (rowsAffected > 0)
                 {
                     MessageBox.Show("Staff member archived.");
+                    BindActiveStaff();
+                    BindArchivedStaff();
                     
                 }
                 else
@@ -149,15 +168,9 @@ namespace DashboardAS
             {
                 MessageBox.Show("Archive failed: " + ex.Message);
             }
-        }
+        
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox1.Checked)
-            {
-                // Show archived records
-                LoadArchivedStaff();
-            }
+        
             
         }
         private void LoadArchivedStaff()
@@ -173,5 +186,92 @@ namespace DashboardAS
             }
         }
 
+        private void ARCHIVEbtn_Click_1(object sender, EventArgs e)
+        {
+            string staffid = staffIdTxtB.Text;
+            string status = comboBox3.Text;
+
+            if(status == "Inactive")
+            {
+                MessageBox.Show("You are about to archive a Staff Member", "Warning");
+
+            }
+            else
+            {
+                MessageBox.Show("Staff Member must be Inactive to Archive");
+            }
+            BindActiveStaff();
+            BindArchivedStaff();
+        }
+
+        private void BindActiveStaff()
+        {
+            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi"))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM MJstaff WHERE Status= 'Active'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+        }
+        private void BindArchivedStaff()
+        {
+            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi"))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM MJstaff WHERE Status= 'Inactive'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView2.DataSource = dt;
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0 )
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                staffIdTxtB.Text = row.Cells[0].Value.ToString();
+                sNameTxtB.Text = row.Cells[1].Value.ToString();
+                sSurnameTxtB.Text = row.Cells[2].Value.ToString();
+                textBox1.Text = row.Cells[3].Value.ToString();
+                cellTxtB.Text = row.Cells[4].Value.ToString();
+                identityTxtB.Text = row.Cells[5].Value.ToString();
+                comboBox1.Text = row.Cells[6].Value.ToString();
+                streetNumberTxt.Text = row.Cells[7].Value.ToString();
+                streetNameTxtB.Text = row.Cells[8].Value.ToString();
+                cityTxtB.Text = row.Cells[9].Value.ToString();
+                codeTxtB.Text = row.Cells[10].Value.ToString();
+                comboBox2.Text = row.Cells[11].Value.ToString();
+                comboBox3.Text = row.Cells[12].Value.ToString();
+            }
+           
+        }
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
+
+                staffIdTxtB.Text = row.Cells[0].Value.ToString();
+                sNameTxtB.Text = row.Cells[1].Value.ToString();
+                sSurnameTxtB.Text = row.Cells[2].Value.ToString();
+                textBox1.Text = row.Cells[3].Value.ToString();
+                cellTxtB.Text = row.Cells[4].Value.ToString();
+                identityTxtB.Text = row.Cells[5].Value.ToString();
+                comboBox1.Text = row.Cells[6].Value.ToString();
+                streetNumberTxt.Text = row.Cells[7].Value.ToString();
+                streetNameTxtB.Text = row.Cells[8].Value.ToString();
+                cityTxtB.Text = row.Cells[9].Value.ToString();
+                codeTxtB.Text = row.Cells[10].Value.ToString();
+                comboBox2.Text = row.Cells[11].Value.ToString();
+                comboBox3.Text = row.Cells[12].Value.ToString();
+            }
+            
+            
+
+
+            
+        }
     }
 }

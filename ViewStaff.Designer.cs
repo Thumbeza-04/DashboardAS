@@ -32,23 +32,8 @@ namespace DashboardAS
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.staffIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staffNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staffSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staffEmailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.staffCellNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.streetNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.streetNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.postalCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mJstaffBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mJstaffBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.generalStaff1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.generalStaff1 = new DashboardAS.generalStaff();
-            this.mJstaffTableAdapter1 = new DashboardAS.generalStaffTableAdapters.MJstaffTableAdapter();
             this.INSERTbtn = new System.Windows.Forms.Button();
             this.UPDATEbtn = new System.Windows.Forms.Button();
             this.ARCHIVEbtn = new System.Windows.Forms.Button();
@@ -77,14 +62,44 @@ namespace DashboardAS
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.staffIdTxtB = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.staffIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staffNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staffSurnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staffEmailDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staffCellNumberDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDNoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.streetNumberDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.streetNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.postalCodeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.generalStaff1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.generalStaff1 = new DashboardAS.generalStaff();
+            this.staffIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staffNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staffSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staffEmailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.staffCellNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.streetNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.streetNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.postalCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mJstaffTableAdapter1 = new DashboardAS.generalStaffTableAdapters.MJstaffTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mJstaffBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mJstaffBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generalStaff1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generalStaff1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -117,7 +132,7 @@ namespace DashboardAS
             this.postalCodeDataGridViewTextBoxColumn,
             this.roleDataGridViewTextBoxColumn,
             this.statusDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.mJstaffBindingSource;
+            this.dataGridView1.DataSource = this.mJstaffBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(31, 46);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
@@ -125,103 +140,17 @@ namespace DashboardAS
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(745, 143);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // staffIDDataGridViewTextBoxColumn
+            // mJstaffBindingSource1
             // 
-            this.staffIDDataGridViewTextBoxColumn.DataPropertyName = "StaffID";
-            this.staffIDDataGridViewTextBoxColumn.HeaderText = "StaffID";
-            this.staffIDDataGridViewTextBoxColumn.Name = "staffIDDataGridViewTextBoxColumn";
-            // 
-            // staffNameDataGridViewTextBoxColumn
-            // 
-            this.staffNameDataGridViewTextBoxColumn.DataPropertyName = "StaffName";
-            this.staffNameDataGridViewTextBoxColumn.HeaderText = "StaffName";
-            this.staffNameDataGridViewTextBoxColumn.Name = "staffNameDataGridViewTextBoxColumn";
-            // 
-            // staffSurnameDataGridViewTextBoxColumn
-            // 
-            this.staffSurnameDataGridViewTextBoxColumn.DataPropertyName = "StaffSurname";
-            this.staffSurnameDataGridViewTextBoxColumn.HeaderText = "StaffSurname";
-            this.staffSurnameDataGridViewTextBoxColumn.Name = "staffSurnameDataGridViewTextBoxColumn";
-            // 
-            // staffEmailDataGridViewTextBoxColumn
-            // 
-            this.staffEmailDataGridViewTextBoxColumn.DataPropertyName = "StaffEmail";
-            this.staffEmailDataGridViewTextBoxColumn.HeaderText = "StaffEmail";
-            this.staffEmailDataGridViewTextBoxColumn.Name = "staffEmailDataGridViewTextBoxColumn";
-            // 
-            // staffCellNumberDataGridViewTextBoxColumn
-            // 
-            this.staffCellNumberDataGridViewTextBoxColumn.DataPropertyName = "StaffCellNumber";
-            this.staffCellNumberDataGridViewTextBoxColumn.HeaderText = "StaffCellNumber";
-            this.staffCellNumberDataGridViewTextBoxColumn.Name = "staffCellNumberDataGridViewTextBoxColumn";
-            // 
-            // iDNoDataGridViewTextBoxColumn
-            // 
-            this.iDNoDataGridViewTextBoxColumn.DataPropertyName = "IDNo";
-            this.iDNoDataGridViewTextBoxColumn.HeaderText = "IDNo";
-            this.iDNoDataGridViewTextBoxColumn.Name = "iDNoDataGridViewTextBoxColumn";
-            // 
-            // genderDataGridViewTextBoxColumn
-            // 
-            this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
-            this.genderDataGridViewTextBoxColumn.HeaderText = "Gender";
-            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
-            // 
-            // streetNumberDataGridViewTextBoxColumn
-            // 
-            this.streetNumberDataGridViewTextBoxColumn.DataPropertyName = "StreetNumber";
-            this.streetNumberDataGridViewTextBoxColumn.HeaderText = "StreetNumber";
-            this.streetNumberDataGridViewTextBoxColumn.Name = "streetNumberDataGridViewTextBoxColumn";
-            // 
-            // streetNameDataGridViewTextBoxColumn
-            // 
-            this.streetNameDataGridViewTextBoxColumn.DataPropertyName = "StreetName";
-            this.streetNameDataGridViewTextBoxColumn.HeaderText = "StreetName";
-            this.streetNameDataGridViewTextBoxColumn.Name = "streetNameDataGridViewTextBoxColumn";
-            // 
-            // cityDataGridViewTextBoxColumn
-            // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
-            // 
-            // postalCodeDataGridViewTextBoxColumn
-            // 
-            this.postalCodeDataGridViewTextBoxColumn.DataPropertyName = "PostalCode";
-            this.postalCodeDataGridViewTextBoxColumn.HeaderText = "PostalCode";
-            this.postalCodeDataGridViewTextBoxColumn.Name = "postalCodeDataGridViewTextBoxColumn";
-            // 
-            // roleDataGridViewTextBoxColumn
-            // 
-            this.roleDataGridViewTextBoxColumn.DataPropertyName = "Role";
-            this.roleDataGridViewTextBoxColumn.HeaderText = "Role";
-            this.roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.mJstaffBindingSource1.DataMember = "MJstaff";
+            this.mJstaffBindingSource1.DataSource = this.generalStaff1BindingSource;
             // 
             // mJstaffBindingSource
             // 
             this.mJstaffBindingSource.DataMember = "MJstaff";
             this.mJstaffBindingSource.DataSource = this.generalStaff1BindingSource;
-            // 
-            // generalStaff1BindingSource
-            // 
-            this.generalStaff1BindingSource.DataSource = this.generalStaff1;
-            this.generalStaff1BindingSource.Position = 0;
-            // 
-            // generalStaff1
-            // 
-            this.generalStaff1.DataSetName = "generalStaff";
-            this.generalStaff1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mJstaffTableAdapter1
-            // 
-            this.mJstaffTableAdapter1.ClearBeforeFill = true;
             // 
             // INSERTbtn
             // 
@@ -257,7 +186,7 @@ namespace DashboardAS
             this.ARCHIVEbtn.TabIndex = 17;
             this.ARCHIVEbtn.Text = "ARCHIVE";
             this.ARCHIVEbtn.UseVisualStyleBackColor = false;
-            this.ARCHIVEbtn.Click += new System.EventHandler(this.ARCHIVEbtn_Click);
+            this.ARCHIVEbtn.Click += new System.EventHandler(this.ARCHIVEbtn_Click_1);
             // 
             // label2
             // 
@@ -482,8 +411,7 @@ namespace DashboardAS
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
             "Active ",
-            "Inactive",
-            "Archived"});
+            "Inactive"});
             this.comboBox3.Location = new System.Drawing.Point(894, 277);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(106, 21);
@@ -491,24 +419,29 @@ namespace DashboardAS
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.staffIDDataGridViewTextBoxColumn1,
+            this.staffNameDataGridViewTextBoxColumn1,
+            this.staffSurnameDataGridViewTextBoxColumn1,
+            this.staffEmailDataGridViewTextBoxColumn1,
+            this.staffCellNumberDataGridViewTextBoxColumn1,
+            this.iDNoDataGridViewTextBoxColumn1,
+            this.genderDataGridViewTextBoxColumn1,
+            this.streetNumberDataGridViewTextBoxColumn1,
+            this.streetNameDataGridViewTextBoxColumn1,
+            this.cityDataGridViewTextBoxColumn1,
+            this.postalCodeDataGridViewTextBoxColumn1,
+            this.roleDataGridViewTextBoxColumn1,
+            this.statusDataGridViewTextBoxColumn1});
+            this.dataGridView2.DataSource = this.mJstaffBindingSource1;
             this.dataGridView2.Location = new System.Drawing.Point(31, 396);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(745, 150);
             this.dataGridView2.TabIndex = 42;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(31, 370);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(118, 20);
-            this.checkBox1.TabIndex = 43;
-            this.checkBox1.Text = "View Archives";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // label14
             // 
@@ -528,15 +461,196 @@ namespace DashboardAS
             this.staffIdTxtB.Size = new System.Drawing.Size(73, 20);
             this.staffIdTxtB.TabIndex = 45;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(34, 377);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(67, 16);
+            this.label15.TabIndex = 46;
+            this.label15.Text = "Archived";
+            // 
+            // staffIDDataGridViewTextBoxColumn1
+            // 
+            this.staffIDDataGridViewTextBoxColumn1.DataPropertyName = "StaffID";
+            this.staffIDDataGridViewTextBoxColumn1.HeaderText = "StaffID";
+            this.staffIDDataGridViewTextBoxColumn1.Name = "staffIDDataGridViewTextBoxColumn1";
+            // 
+            // staffNameDataGridViewTextBoxColumn1
+            // 
+            this.staffNameDataGridViewTextBoxColumn1.DataPropertyName = "StaffName";
+            this.staffNameDataGridViewTextBoxColumn1.HeaderText = "StaffName";
+            this.staffNameDataGridViewTextBoxColumn1.Name = "staffNameDataGridViewTextBoxColumn1";
+            // 
+            // staffSurnameDataGridViewTextBoxColumn1
+            // 
+            this.staffSurnameDataGridViewTextBoxColumn1.DataPropertyName = "StaffSurname";
+            this.staffSurnameDataGridViewTextBoxColumn1.HeaderText = "StaffSurname";
+            this.staffSurnameDataGridViewTextBoxColumn1.Name = "staffSurnameDataGridViewTextBoxColumn1";
+            // 
+            // staffEmailDataGridViewTextBoxColumn1
+            // 
+            this.staffEmailDataGridViewTextBoxColumn1.DataPropertyName = "StaffEmail";
+            this.staffEmailDataGridViewTextBoxColumn1.HeaderText = "StaffEmail";
+            this.staffEmailDataGridViewTextBoxColumn1.Name = "staffEmailDataGridViewTextBoxColumn1";
+            // 
+            // staffCellNumberDataGridViewTextBoxColumn1
+            // 
+            this.staffCellNumberDataGridViewTextBoxColumn1.DataPropertyName = "StaffCellNumber";
+            this.staffCellNumberDataGridViewTextBoxColumn1.HeaderText = "StaffCellNumber";
+            this.staffCellNumberDataGridViewTextBoxColumn1.Name = "staffCellNumberDataGridViewTextBoxColumn1";
+            // 
+            // iDNoDataGridViewTextBoxColumn1
+            // 
+            this.iDNoDataGridViewTextBoxColumn1.DataPropertyName = "IDNo";
+            this.iDNoDataGridViewTextBoxColumn1.HeaderText = "IDNo";
+            this.iDNoDataGridViewTextBoxColumn1.Name = "iDNoDataGridViewTextBoxColumn1";
+            // 
+            // genderDataGridViewTextBoxColumn1
+            // 
+            this.genderDataGridViewTextBoxColumn1.DataPropertyName = "Gender";
+            this.genderDataGridViewTextBoxColumn1.HeaderText = "Gender";
+            this.genderDataGridViewTextBoxColumn1.Name = "genderDataGridViewTextBoxColumn1";
+            // 
+            // streetNumberDataGridViewTextBoxColumn1
+            // 
+            this.streetNumberDataGridViewTextBoxColumn1.DataPropertyName = "StreetNumber";
+            this.streetNumberDataGridViewTextBoxColumn1.HeaderText = "StreetNumber";
+            this.streetNumberDataGridViewTextBoxColumn1.Name = "streetNumberDataGridViewTextBoxColumn1";
+            // 
+            // streetNameDataGridViewTextBoxColumn1
+            // 
+            this.streetNameDataGridViewTextBoxColumn1.DataPropertyName = "StreetName";
+            this.streetNameDataGridViewTextBoxColumn1.HeaderText = "StreetName";
+            this.streetNameDataGridViewTextBoxColumn1.Name = "streetNameDataGridViewTextBoxColumn1";
+            // 
+            // cityDataGridViewTextBoxColumn1
+            // 
+            this.cityDataGridViewTextBoxColumn1.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn1.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn1.Name = "cityDataGridViewTextBoxColumn1";
+            // 
+            // postalCodeDataGridViewTextBoxColumn1
+            // 
+            this.postalCodeDataGridViewTextBoxColumn1.DataPropertyName = "PostalCode";
+            this.postalCodeDataGridViewTextBoxColumn1.HeaderText = "PostalCode";
+            this.postalCodeDataGridViewTextBoxColumn1.Name = "postalCodeDataGridViewTextBoxColumn1";
+            // 
+            // roleDataGridViewTextBoxColumn1
+            // 
+            this.roleDataGridViewTextBoxColumn1.DataPropertyName = "Role";
+            this.roleDataGridViewTextBoxColumn1.HeaderText = "Role";
+            this.roleDataGridViewTextBoxColumn1.Name = "roleDataGridViewTextBoxColumn1";
+            // 
+            // statusDataGridViewTextBoxColumn1
+            // 
+            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn1.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
+            // 
+            // generalStaff1BindingSource
+            // 
+            this.generalStaff1BindingSource.DataSource = this.generalStaff1;
+            this.generalStaff1BindingSource.Position = 0;
+            // 
+            // generalStaff1
+            // 
+            this.generalStaff1.DataSetName = "generalStaff";
+            this.generalStaff1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // staffIDDataGridViewTextBoxColumn
+            // 
+            this.staffIDDataGridViewTextBoxColumn.DataPropertyName = "StaffID";
+            this.staffIDDataGridViewTextBoxColumn.HeaderText = "StaffID";
+            this.staffIDDataGridViewTextBoxColumn.Name = "staffIDDataGridViewTextBoxColumn";
+            // 
+            // staffNameDataGridViewTextBoxColumn
+            // 
+            this.staffNameDataGridViewTextBoxColumn.DataPropertyName = "StaffName";
+            this.staffNameDataGridViewTextBoxColumn.HeaderText = "StaffName";
+            this.staffNameDataGridViewTextBoxColumn.Name = "staffNameDataGridViewTextBoxColumn";
+            // 
+            // staffSurnameDataGridViewTextBoxColumn
+            // 
+            this.staffSurnameDataGridViewTextBoxColumn.DataPropertyName = "StaffSurname";
+            this.staffSurnameDataGridViewTextBoxColumn.HeaderText = "StaffSurname";
+            this.staffSurnameDataGridViewTextBoxColumn.Name = "staffSurnameDataGridViewTextBoxColumn";
+            // 
+            // staffEmailDataGridViewTextBoxColumn
+            // 
+            this.staffEmailDataGridViewTextBoxColumn.DataPropertyName = "StaffEmail";
+            this.staffEmailDataGridViewTextBoxColumn.HeaderText = "StaffEmail";
+            this.staffEmailDataGridViewTextBoxColumn.Name = "staffEmailDataGridViewTextBoxColumn";
+            // 
+            // staffCellNumberDataGridViewTextBoxColumn
+            // 
+            this.staffCellNumberDataGridViewTextBoxColumn.DataPropertyName = "StaffCellNumber";
+            this.staffCellNumberDataGridViewTextBoxColumn.HeaderText = "StaffCellNumber";
+            this.staffCellNumberDataGridViewTextBoxColumn.Name = "staffCellNumberDataGridViewTextBoxColumn";
+            // 
+            // iDNoDataGridViewTextBoxColumn
+            // 
+            this.iDNoDataGridViewTextBoxColumn.DataPropertyName = "IDNo";
+            this.iDNoDataGridViewTextBoxColumn.HeaderText = "IDNo";
+            this.iDNoDataGridViewTextBoxColumn.Name = "iDNoDataGridViewTextBoxColumn";
+            // 
+            // genderDataGridViewTextBoxColumn
+            // 
+            this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
+            this.genderDataGridViewTextBoxColumn.HeaderText = "Gender";
+            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            // 
+            // streetNumberDataGridViewTextBoxColumn
+            // 
+            this.streetNumberDataGridViewTextBoxColumn.DataPropertyName = "StreetNumber";
+            this.streetNumberDataGridViewTextBoxColumn.HeaderText = "StreetNumber";
+            this.streetNumberDataGridViewTextBoxColumn.Name = "streetNumberDataGridViewTextBoxColumn";
+            // 
+            // streetNameDataGridViewTextBoxColumn
+            // 
+            this.streetNameDataGridViewTextBoxColumn.DataPropertyName = "StreetName";
+            this.streetNameDataGridViewTextBoxColumn.HeaderText = "StreetName";
+            this.streetNameDataGridViewTextBoxColumn.Name = "streetNameDataGridViewTextBoxColumn";
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            // 
+            // postalCodeDataGridViewTextBoxColumn
+            // 
+            this.postalCodeDataGridViewTextBoxColumn.DataPropertyName = "PostalCode";
+            this.postalCodeDataGridViewTextBoxColumn.HeaderText = "PostalCode";
+            this.postalCodeDataGridViewTextBoxColumn.Name = "postalCodeDataGridViewTextBoxColumn";
+            // 
+            // roleDataGridViewTextBoxColumn
+            // 
+            this.roleDataGridViewTextBoxColumn.DataPropertyName = "Role";
+            this.roleDataGridViewTextBoxColumn.HeaderText = "Role";
+            this.roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // mJstaffTableAdapter1
+            // 
+            this.mJstaffTableAdapter1.ClearBeforeFill = true;
+            // 
             // ViewStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1041, 607);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.staffIdTxtB);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
@@ -574,10 +688,11 @@ namespace DashboardAS
             this.Text = "ViewStaff";
             this.Load += new System.EventHandler(this.ViewStaff_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mJstaffBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mJstaffBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generalStaff1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generalStaff1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -632,8 +747,22 @@ namespace DashboardAS
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox staffIdTxtB;
+        private System.Windows.Forms.BindingSource mJstaffBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn staffIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn staffNameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn staffSurnameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn staffEmailDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn staffCellNumberDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDNoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn streetNumberDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn streetNameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn postalCodeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Label label15;
     }
 }
