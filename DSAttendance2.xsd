@@ -1648,102 +1648,102 @@ SELECT StudentID, StudentName, StudentSurname, PreTripChecks, VehicleControl, Sp
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="StudentProgress" msprop:Generator_RowEvHandlerName="StudentProgressRowChangeEventHandler" msprop:Generator_RowDeletedName="StudentProgressRowDeleted" msprop:Generator_RowDeletingName="StudentProgressRowDeleting" msprop:Generator_RowEvArgName="StudentProgressRowChangeEvent" msprop:Generator_TablePropName="StudentProgress" msprop:Generator_RowChangedName="StudentProgressRowChanged" msprop:Generator_RowChangingName="StudentProgressRowChanging" msprop:Generator_TableClassName="StudentProgressDataTable" msprop:Generator_RowClassName="StudentProgressRow" msprop:Generator_TableVarName="tableStudentProgress" msprop:Generator_UserTableName="StudentProgress">
+        <xs:element name="StudentProgress" msprop:Generator_RowClassName="StudentProgressRow" msprop:Generator_RowEvHandlerName="StudentProgressRowChangeEventHandler" msprop:Generator_RowDeletedName="StudentProgressRowDeleted" msprop:Generator_RowDeletingName="StudentProgressRowDeleting" msprop:Generator_RowEvArgName="StudentProgressRowChangeEvent" msprop:Generator_TablePropName="StudentProgress" msprop:Generator_RowChangedName="StudentProgressRowChanged" msprop:Generator_UserTableName="StudentProgress" msprop:Generator_RowChangingName="StudentProgressRowChanging" msprop:Generator_TableClassName="StudentProgressDataTable" msprop:Generator_TableVarName="tableStudentProgress">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="StudentID" msprop:Generator_ColumnPropNameInRow="StudentID" msprop:Generator_ColumnPropNameInTable="StudentIDColumn" msprop:Generator_ColumnVarNameInTable="columnStudentID" msprop:Generator_UserColumnName="StudentID" type="xs:int" />
-              <xs:element name="StudentName" msprop:Generator_ColumnPropNameInRow="StudentName" msprop:Generator_ColumnPropNameInTable="StudentNameColumn" msprop:Generator_ColumnVarNameInTable="columnStudentName" msprop:Generator_UserColumnName="StudentName">
+              <xs:element name="StudentID" msprop:Generator_UserColumnName="StudentID" msprop:Generator_ColumnPropNameInTable="StudentIDColumn" msprop:Generator_ColumnPropNameInRow="StudentID" msprop:Generator_ColumnVarNameInTable="columnStudentID" type="xs:int" />
+              <xs:element name="StudentName" msprop:Generator_UserColumnName="StudentName" msprop:Generator_ColumnPropNameInTable="StudentNameColumn" msprop:Generator_ColumnPropNameInRow="StudentName" msprop:Generator_ColumnVarNameInTable="columnStudentName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="StudentSurname" msprop:Generator_ColumnPropNameInRow="StudentSurname" msprop:Generator_ColumnPropNameInTable="StudentSurnameColumn" msprop:Generator_ColumnVarNameInTable="columnStudentSurname" msprop:Generator_UserColumnName="StudentSurname">
+              <xs:element name="StudentSurname" msprop:Generator_UserColumnName="StudentSurname" msprop:Generator_ColumnPropNameInTable="StudentSurnameColumn" msprop:Generator_ColumnPropNameInRow="StudentSurname" msprop:Generator_ColumnVarNameInTable="columnStudentSurname">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="PreTripChecks" msprop:Generator_ColumnPropNameInRow="PreTripChecks" msprop:Generator_ColumnPropNameInTable="PreTripChecksColumn" msprop:Generator_ColumnVarNameInTable="columnPreTripChecks" msprop:Generator_UserColumnName="PreTripChecks" minOccurs="0">
+              <xs:element name="PreTripChecks" msprop:Generator_UserColumnName="PreTripChecks" msprop:Generator_ColumnPropNameInTable="PreTripChecksColumn" msprop:Generator_ColumnPropNameInRow="PreTripChecks" msprop:Generator_ColumnVarNameInTable="columnPreTripChecks" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="VehicleControl" msprop:Generator_ColumnPropNameInRow="VehicleControl" msprop:Generator_ColumnPropNameInTable="VehicleControlColumn" msprop:Generator_ColumnVarNameInTable="columnVehicleControl" msprop:Generator_UserColumnName="VehicleControl" minOccurs="0">
+              <xs:element name="VehicleControl" msprop:Generator_UserColumnName="VehicleControl" msprop:Generator_ColumnPropNameInTable="VehicleControlColumn" msprop:Generator_ColumnPropNameInRow="VehicleControl" msprop:Generator_ColumnVarNameInTable="columnVehicleControl" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="SpeedNGearControl" msprop:Generator_ColumnPropNameInRow="SpeedNGearControl" msprop:Generator_ColumnPropNameInTable="SpeedNGearControlColumn" msprop:Generator_ColumnVarNameInTable="columnSpeedNGearControl" msprop:Generator_UserColumnName="SpeedNGearControl" minOccurs="0">
+              <xs:element name="SpeedNGearControl" msprop:Generator_UserColumnName="SpeedNGearControl" msprop:Generator_ColumnPropNameInTable="SpeedNGearControlColumn" msprop:Generator_ColumnPropNameInRow="SpeedNGearControl" msprop:Generator_ColumnVarNameInTable="columnSpeedNGearControl" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ObservationalNDefensiveDriving" msprop:Generator_ColumnPropNameInRow="ObservationalNDefensiveDriving" msprop:Generator_ColumnPropNameInTable="ObservationalNDefensiveDrivingColumn" msprop:Generator_ColumnVarNameInTable="columnObservationalNDefensiveDriving" msprop:Generator_UserColumnName="ObservationalNDefensiveDriving" minOccurs="0">
+              <xs:element name="ObservationalNDefensiveDriving" msprop:Generator_UserColumnName="ObservationalNDefensiveDriving" msprop:Generator_ColumnPropNameInTable="ObservationalNDefensiveDrivingColumn" msprop:Generator_ColumnPropNameInRow="ObservationalNDefensiveDriving" msprop:Generator_ColumnVarNameInTable="columnObservationalNDefensiveDriving" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ControlledIntersections" msprop:Generator_ColumnPropNameInRow="ControlledIntersections" msprop:Generator_ColumnPropNameInTable="ControlledIntersectionsColumn" msprop:Generator_ColumnVarNameInTable="columnControlledIntersections" msprop:Generator_UserColumnName="ControlledIntersections" minOccurs="0">
+              <xs:element name="ControlledIntersections" msprop:Generator_UserColumnName="ControlledIntersections" msprop:Generator_ColumnPropNameInTable="ControlledIntersectionsColumn" msprop:Generator_ColumnPropNameInRow="ControlledIntersections" msprop:Generator_ColumnVarNameInTable="columnControlledIntersections" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="UncontrolledIntersections" msprop:Generator_ColumnPropNameInRow="UncontrolledIntersections" msprop:Generator_ColumnPropNameInTable="UncontrolledIntersectionsColumn" msprop:Generator_ColumnVarNameInTable="columnUncontrolledIntersections" msprop:Generator_UserColumnName="UncontrolledIntersections" minOccurs="0">
+              <xs:element name="UncontrolledIntersections" msprop:Generator_UserColumnName="UncontrolledIntersections" msprop:Generator_ColumnPropNameInTable="UncontrolledIntersectionsColumn" msprop:Generator_ColumnPropNameInRow="UncontrolledIntersections" msprop:Generator_ColumnVarNameInTable="columnUncontrolledIntersections" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="HillStartsNGradientControl" msprop:Generator_ColumnPropNameInRow="HillStartsNGradientControl" msprop:Generator_ColumnPropNameInTable="HillStartsNGradientControlColumn" msprop:Generator_ColumnVarNameInTable="columnHillStartsNGradientControl" msprop:Generator_UserColumnName="HillStartsNGradientControl" minOccurs="0">
+              <xs:element name="HillStartsNGradientControl" msprop:Generator_UserColumnName="HillStartsNGradientControl" msprop:Generator_ColumnPropNameInTable="HillStartsNGradientControlColumn" msprop:Generator_ColumnPropNameInRow="HillStartsNGradientControl" msprop:Generator_ColumnVarNameInTable="columnHillStartsNGradientControl" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ParkingNReversing" msprop:Generator_ColumnPropNameInRow="ParkingNReversing" msprop:Generator_ColumnPropNameInTable="ParkingNReversingColumn" msprop:Generator_ColumnVarNameInTable="columnParkingNReversing" msprop:Generator_UserColumnName="ParkingNReversing" minOccurs="0">
+              <xs:element name="ParkingNReversing" msprop:Generator_UserColumnName="ParkingNReversing" msprop:Generator_ColumnPropNameInTable="ParkingNReversingColumn" msprop:Generator_ColumnPropNameInRow="ParkingNReversing" msprop:Generator_ColumnVarNameInTable="columnParkingNReversing" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="LaneChangingNOvertaking" msprop:Generator_ColumnPropNameInRow="LaneChangingNOvertaking" msprop:Generator_ColumnPropNameInTable="LaneChangingNOvertakingColumn" msprop:Generator_ColumnVarNameInTable="columnLaneChangingNOvertaking" msprop:Generator_UserColumnName="LaneChangingNOvertaking" minOccurs="0">
+              <xs:element name="LaneChangingNOvertaking" msprop:Generator_UserColumnName="LaneChangingNOvertaking" msprop:Generator_ColumnPropNameInTable="LaneChangingNOvertakingColumn" msprop:Generator_ColumnPropNameInRow="LaneChangingNOvertaking" msprop:Generator_ColumnVarNameInTable="columnLaneChangingNOvertaking" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="FreewayDriving" msprop:Generator_ColumnPropNameInRow="FreewayDriving" msprop:Generator_ColumnPropNameInTable="FreewayDrivingColumn" msprop:Generator_ColumnVarNameInTable="columnFreewayDriving" msprop:Generator_UserColumnName="FreewayDriving" minOccurs="0">
+              <xs:element name="FreewayDriving" msprop:Generator_UserColumnName="FreewayDriving" msprop:Generator_ColumnPropNameInTable="FreewayDrivingColumn" msprop:Generator_ColumnPropNameInRow="FreewayDriving" msprop:Generator_ColumnVarNameInTable="columnFreewayDriving" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="MockTest" msprop:Generator_ColumnPropNameInRow="MockTest" msprop:Generator_ColumnPropNameInTable="MockTestColumn" msprop:Generator_ColumnVarNameInTable="columnMockTest" msprop:Generator_UserColumnName="MockTest" minOccurs="0">
+              <xs:element name="MockTest" msprop:Generator_UserColumnName="MockTest" msprop:Generator_ColumnPropNameInTable="MockTestColumn" msprop:Generator_ColumnPropNameInRow="MockTest" msprop:Generator_ColumnVarNameInTable="columnMockTest" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Comments" msprop:Generator_ColumnPropNameInRow="Comments" msprop:Generator_ColumnPropNameInTable="CommentsColumn" msprop:Generator_ColumnVarNameInTable="columnComments" msprop:Generator_UserColumnName="Comments" minOccurs="0">
+              <xs:element name="Comments" msprop:Generator_UserColumnName="Comments" msprop:Generator_ColumnPropNameInTable="CommentsColumn" msprop:Generator_ColumnPropNameInRow="Comments" msprop:Generator_ColumnVarNameInTable="columnComments" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="500" />
@@ -1802,12 +1802,12 @@ SELECT StudentID, StudentName, StudentSurname, PreTripChecks, VehicleControl, Sp
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK__LessonBoo__Packa__18B6AB08" msdata:parent="PackageMJ" msdata:child="LessonBookingMJ" msdata:parentkey="PackageName" msdata:childkey="PackageID" msprop:Generator_UserParentTable="PackageMJ" msprop:Generator_UserChildTable="LessonBookingMJ" msprop:Generator_RelationVarName="relationFK__LessonBoo__Packa__18B6AB08" msprop:Generator_ChildPropName="GetLessonBookingMJRows" msprop:Generator_ParentPropName="PackageMJRow" msprop:Generator_UserRelationName="FK__LessonBoo__Packa__18B6AB08" />
-      <msdata:Relationship name="FK__LessonBoo__Stude__15DA3E5D" msdata:parent="StudentMJ" msdata:child="LessonBookingMJ" msdata:parentkey="StudentID" msdata:childkey="StudentID" msprop:Generator_UserParentTable="StudentMJ" msprop:Generator_UserChildTable="LessonBookingMJ" msprop:Generator_RelationVarName="relationFK__LessonBoo__Stude__15DA3E5D" msprop:Generator_ChildPropName="GetLessonBookingMJRows" msprop:Generator_ParentPropName="StudentMJRow" msprop:Generator_UserRelationName="FK__LessonBoo__Stude__15DA3E5D" />
-      <msdata:Relationship name="FK__StudentMJ__Packa__11158940" msdata:parent="PackageMJ" msdata:child="StudentMJ" msdata:parentkey="PackageName" msdata:childkey="PackageName" msprop:Generator_UserParentTable="PackageMJ" msprop:Generator_UserChildTable="StudentMJ" msprop:Generator_RelationVarName="relationFK__StudentMJ__Packa__11158940" msprop:Generator_ChildPropName="GetStudentMJRows" msprop:Generator_UserRelationName="FK__StudentMJ__Packa__11158940" msprop:Generator_ParentPropName="PackageMJRow" />
-      <msdata:Relationship name="FK__LessonBoo__Instr__16CE6296" msdata:parent="InstructorMJ" msdata:child="LessonBookingMJ" msdata:parentkey="InstructorID" msdata:childkey="InstructorID" msprop:Generator_UserParentTable="InstructorMJ" msprop:Generator_UserChildTable="LessonBookingMJ" msprop:Generator_RelationVarName="relationFK__LessonBoo__Instr__16CE6296" msprop:Generator_ChildPropName="GetLessonBookingMJRows" msprop:Generator_ParentPropName="InstructorMJRow" msprop:Generator_UserRelationName="FK__LessonBoo__Instr__16CE6296" />
-      <msdata:Relationship name="FK__LessonBoo__Instr__16CE62961" msdata:parent="InstructorMJ" msdata:child="Bookings" msdata:parentkey="InstructorID" msdata:childkey="InstructorID" msprop:Generator_UserParentTable="InstructorMJ" msprop:Generator_UserChildTable="Bookings" msprop:Generator_RelationVarName="relationFK__LessonBoo__Instr__16CE62961" msprop:Generator_ChildPropName="GetBookingsRows" msprop:Generator_ParentPropName="InstructorMJRow" msprop:Generator_UserRelationName="FK__LessonBoo__Instr__16CE62961" />
-      <msdata:Relationship name="FK__LessonBoo__Stude__15DA3E5D1" msdata:parent="StudentMJ" msdata:child="Bookings" msdata:parentkey="StudentID" msdata:childkey="StudentID" msprop:Generator_UserParentTable="StudentMJ" msprop:Generator_UserChildTable="Bookings" msprop:Generator_RelationVarName="relationFK__LessonBoo__Stude__15DA3E5D1" msprop:Generator_ChildPropName="GetBookingsRows" msprop:Generator_ParentPropName="StudentMJRow" msprop:Generator_UserRelationName="FK__LessonBoo__Stude__15DA3E5D1" />
+      <msdata:Relationship name="FK__LessonBoo__Packa__18B6AB08" msdata:parent="PackageMJ" msdata:child="LessonBookingMJ" msdata:parentkey="PackageName" msdata:childkey="PackageID" msprop:Generator_UserParentTable="PackageMJ" msprop:Generator_UserChildTable="LessonBookingMJ" msprop:Generator_RelationVarName="relationFK__LessonBoo__Packa__18B6AB08" msprop:Generator_ChildPropName="GetLessonBookingMJRows" msprop:Generator_UserRelationName="FK__LessonBoo__Packa__18B6AB08" msprop:Generator_ParentPropName="PackageMJRow" />
+      <msdata:Relationship name="FK__LessonBoo__Stude__15DA3E5D" msdata:parent="StudentMJ" msdata:child="LessonBookingMJ" msdata:parentkey="StudentID" msdata:childkey="StudentID" msprop:Generator_UserParentTable="StudentMJ" msprop:Generator_UserChildTable="LessonBookingMJ" msprop:Generator_RelationVarName="relationFK__LessonBoo__Stude__15DA3E5D" msprop:Generator_ChildPropName="GetLessonBookingMJRows" msprop:Generator_UserRelationName="FK__LessonBoo__Stude__15DA3E5D" msprop:Generator_ParentPropName="StudentMJRow" />
+      <msdata:Relationship name="FK__StudentMJ__Packa__11158940" msdata:parent="PackageMJ" msdata:child="StudentMJ" msdata:parentkey="PackageName" msdata:childkey="PackageName" msprop:Generator_UserParentTable="PackageMJ" msprop:Generator_UserChildTable="StudentMJ" msprop:Generator_RelationVarName="relationFK__StudentMJ__Packa__11158940" msprop:Generator_ChildPropName="GetStudentMJRows" msprop:Generator_ParentPropName="PackageMJRow" msprop:Generator_UserRelationName="FK__StudentMJ__Packa__11158940" />
+      <msdata:Relationship name="FK__LessonBoo__Instr__16CE6296" msdata:parent="InstructorMJ" msdata:child="LessonBookingMJ" msdata:parentkey="InstructorID" msdata:childkey="InstructorID" msprop:Generator_UserParentTable="InstructorMJ" msprop:Generator_UserChildTable="LessonBookingMJ" msprop:Generator_RelationVarName="relationFK__LessonBoo__Instr__16CE6296" msprop:Generator_ChildPropName="GetLessonBookingMJRows" msprop:Generator_UserRelationName="FK__LessonBoo__Instr__16CE6296" msprop:Generator_ParentPropName="InstructorMJRow" />
+      <msdata:Relationship name="FK__LessonBoo__Instr__16CE62961" msdata:parent="InstructorMJ" msdata:child="Bookings" msdata:parentkey="InstructorID" msdata:childkey="InstructorID" msprop:Generator_UserParentTable="InstructorMJ" msprop:Generator_UserChildTable="Bookings" msprop:Generator_RelationVarName="relationFK__LessonBoo__Instr__16CE62961" msprop:Generator_ChildPropName="GetBookingsRows" msprop:Generator_UserRelationName="FK__LessonBoo__Instr__16CE62961" msprop:Generator_ParentPropName="InstructorMJRow" />
+      <msdata:Relationship name="FK__LessonBoo__Stude__15DA3E5D1" msdata:parent="StudentMJ" msdata:child="Bookings" msdata:parentkey="StudentID" msdata:childkey="StudentID" msprop:Generator_UserParentTable="StudentMJ" msprop:Generator_UserChildTable="Bookings" msprop:Generator_RelationVarName="relationFK__LessonBoo__Stude__15DA3E5D1" msprop:Generator_ChildPropName="GetBookingsRows" msprop:Generator_UserRelationName="FK__LessonBoo__Stude__15DA3E5D1" msprop:Generator_ParentPropName="StudentMJRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

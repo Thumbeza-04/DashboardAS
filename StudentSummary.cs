@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace DashboardAS
 {
@@ -34,7 +35,7 @@ namespace DashboardAS
            
 
         }
-        SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
+        //SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
         
 
 
@@ -98,6 +99,62 @@ namespace DashboardAS
 
                 dataGridView1.DataSource = dt;
             }
+        }
+
+        private void RatingsBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+            "Do you want to proceed with this action?",
+            "Confirmation Required",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null || dataGridView1.CurrentRow == null)
+                {
+                    MessageBox.Show("Please select a skill, rating, and student.");
+                    return;
+                }
+
+                int studentID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                string skillColumn = comboBox1.SelectedItem.ToString();
+                string rating = comboBox2.SelectedItem.ToString();
+                DialogResult result2 = MessageBox.Show(
+            $"Do you want to Update {skillColumn} to {rating} for student {studentID}" ,
+            "Confirmation Required",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+                if (result2 == DialogResult.Yes)
+                {
+                    //string connStr = ConfigurationManager.ConnectionStrings["Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"].ConnectionString;
+                    using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+                    {
+                        string query = $"UPDATE StudentProgress SET [{skillColumn}] = @Rating WHERE StudentID = @StudentID";
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Rating", rating);
+                            cmd.Parameters.AddWithValue("@StudentID", studentID);
+
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Rating updated.");
+                            conn.Close();
+                        }
+                    }
+
+                    BindGrid(); // Refresh grid
+                }
+                else if (result2 == DialogResult.No)
+                {
+                    MessageBox.Show("Action was cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else if (result == DialogResult.No)
+            {
+                MessageBox.Show("Action was cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
     }
 
