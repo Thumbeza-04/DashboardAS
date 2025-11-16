@@ -37,9 +37,6 @@ namespace DashboardAS
             this.dsManager1 = new DashboardAS.DSManager();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.BookingID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Attendance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.temporaryStudentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dSAttendance22 = new DashboardAS.DSAttendance2();
@@ -157,15 +154,10 @@ namespace DashboardAS
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.BookingID,
-            this.studentIDDataGridViewTextBoxColumn,
-            this.studentNameDataGridViewTextBoxColumn,
-            this.studentSurnameDataGridViewTextBoxColumn,
             this.Attendance});
-            this.dataGridView1.DataSource = this.temporaryStudentsBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(23, 60);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -183,33 +175,6 @@ namespace DashboardAS
             this.BookingID.Name = "BookingID";
             this.BookingID.ReadOnly = true;
             this.BookingID.Width = 125;
-            // 
-            // studentIDDataGridViewTextBoxColumn
-            // 
-            this.studentIDDataGridViewTextBoxColumn.DataPropertyName = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn.HeaderText = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentIDDataGridViewTextBoxColumn.Name = "studentIDDataGridViewTextBoxColumn";
-            this.studentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.studentIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // studentNameDataGridViewTextBoxColumn
-            // 
-            this.studentNameDataGridViewTextBoxColumn.DataPropertyName = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn.HeaderText = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentNameDataGridViewTextBoxColumn.Name = "studentNameDataGridViewTextBoxColumn";
-            this.studentNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.studentNameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // studentSurnameDataGridViewTextBoxColumn
-            // 
-            this.studentSurnameDataGridViewTextBoxColumn.DataPropertyName = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn.HeaderText = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentSurnameDataGridViewTextBoxColumn.Name = "studentSurnameDataGridViewTextBoxColumn";
-            this.studentSurnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.studentSurnameDataGridViewTextBoxColumn.Width = 125;
             // 
             // Attendance
             // 
@@ -266,7 +231,7 @@ namespace DashboardAS
             this.label1.Location = new System.Drawing.Point(23, 40);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(293, 17);
+            this.label1.Size = new System.Drawing.Size(277, 16);
             this.label1.TabIndex = 28;
             this.label1.Text = "*Double click the row to evaluate student";
             // 
@@ -1020,9 +985,6 @@ namespace DashboardAS
         private System.Windows.Forms.BindingSource temporaryStudentsBindingSource;
         private DSAttendance2TableAdapters.TemporaryStudentsTableAdapter temporaryStudentsTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn BookingID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentSurnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Attendance;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button Savebtn;
