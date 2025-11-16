@@ -33,13 +33,6 @@ namespace DashboardAS
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.packageNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dSAttendance2 = new DashboardAS.DSAttendance2();
-            this.dsAttendance21 = new DashboardAS.DSAttendance2();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CommentBtn = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -47,6 +40,8 @@ namespace DashboardAS
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.AddBtn = new System.Windows.Forms.Button();
             this.studentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,17 +58,22 @@ namespace DashboardAS
             this.mockTestDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentProgressBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label1 = new System.Windows.Forms.Label();
+            this.dSAttendance2 = new DashboardAS.DSAttendance2();
+            this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.packageNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsAttendance21 = new DashboardAS.DSAttendance2();
             this.studentProgressTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.StudentProgressTableAdapter();
-            this.AddBtn = new System.Windows.Forms.Button();
             this.studentMJTableAdapter = new DashboardAS.DSAttendance2TableAdapters.StudentMJTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentMJBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSAttendance2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentProgressBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSAttendance2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentMJBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -117,57 +117,6 @@ namespace DashboardAS
             this.dataGridView2.Size = new System.Drawing.Size(1528, 148);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseDoubleClick);
-            // 
-            // studentIDDataGridViewTextBoxColumn
-            // 
-            this.studentIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentIDDataGridViewTextBoxColumn.DataPropertyName = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn.HeaderText = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentIDDataGridViewTextBoxColumn.Name = "studentIDDataGridViewTextBoxColumn";
-            this.studentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // surnameDataGridViewTextBoxColumn
-            // 
-            this.surnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
-            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
-            this.surnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
-            this.surnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // packageNameDataGridViewTextBoxColumn
-            // 
-            this.packageNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.packageNameDataGridViewTextBoxColumn.DataPropertyName = "PackageName";
-            this.packageNameDataGridViewTextBoxColumn.HeaderText = "PackageName";
-            this.packageNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.packageNameDataGridViewTextBoxColumn.Name = "packageNameDataGridViewTextBoxColumn";
-            this.packageNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // studentMJBindingSource
-            // 
-            this.studentMJBindingSource.DataMember = "StudentMJ";
-            this.studentMJBindingSource.DataSource = this.dSAttendance2;
-            // 
-            // dSAttendance2
-            // 
-            this.dSAttendance2.DataSetName = "DSAttendance2";
-            this.dSAttendance2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dsAttendance21
-            // 
-            this.dsAttendance21.DataSetName = "DSAttendance2";
-            this.dsAttendance21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox1
             // 
@@ -213,10 +162,15 @@ namespace DashboardAS
             this.RatingsBtn.TabIndex = 3;
             this.RatingsBtn.Text = "Submit Rating";
             this.RatingsBtn.UseVisualStyleBackColor = true;
+            this.RatingsBtn.Click += new System.EventHandler(this.RatingsBtn_Click);
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Excellent",
+            "Satisfactory",
+            "Unsatisfactory"});
             this.comboBox2.Location = new System.Drawing.Point(221, 230);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 27);
@@ -225,6 +179,18 @@ namespace DashboardAS
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "PreTripChecks",
+            "VehicleControl",
+            "SpeedNGearControl",
+            "ObservationalNDefensiveDriving",
+            "ControlledIntersections",
+            "UncontrolledIntersections",
+            "HillStartsNGradientControl",
+            "ParkingNReversing",
+            "LaneChangingNOvertaking",
+            "FreewayDriving",
+            "MockTest"});
             this.comboBox1.Location = new System.Drawing.Point(20, 230);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 27);
@@ -257,6 +223,28 @@ namespace DashboardAS
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1515, 150);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(-1, 54);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(277, 16);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "*Double click the row to evaluate student";
+            // 
+            // AddBtn
+            // 
+            this.AddBtn.Location = new System.Drawing.Point(2, 225);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(177, 32);
+            this.AddBtn.TabIndex = 28;
+            this.AddBtn.Text = "Add to evaluation";
+            this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // studentIDDataGridViewTextBoxColumn1
             // 
@@ -383,31 +371,60 @@ namespace DashboardAS
             this.studentProgressBindingSource.DataMember = "StudentProgress";
             this.studentProgressBindingSource.DataSource = this.dSAttendance2;
             // 
-            // label1
+            // dSAttendance2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(-1, 54);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 16);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "*Double click the row to evaluate student";
+            this.dSAttendance2.DataSetName = "DSAttendance2";
+            this.dSAttendance2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // studentIDDataGridViewTextBoxColumn
+            // 
+            this.studentIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.studentIDDataGridViewTextBoxColumn.DataPropertyName = "StudentID";
+            this.studentIDDataGridViewTextBoxColumn.HeaderText = "StudentID";
+            this.studentIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.studentIDDataGridViewTextBoxColumn.Name = "studentIDDataGridViewTextBoxColumn";
+            this.studentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // surnameDataGridViewTextBoxColumn
+            // 
+            this.surnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
+            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
+            this.surnameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            this.surnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // packageNameDataGridViewTextBoxColumn
+            // 
+            this.packageNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.packageNameDataGridViewTextBoxColumn.DataPropertyName = "PackageName";
+            this.packageNameDataGridViewTextBoxColumn.HeaderText = "PackageName";
+            this.packageNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.packageNameDataGridViewTextBoxColumn.Name = "packageNameDataGridViewTextBoxColumn";
+            this.packageNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // studentMJBindingSource
+            // 
+            this.studentMJBindingSource.DataMember = "StudentMJ";
+            this.studentMJBindingSource.DataSource = this.dSAttendance2;
+            // 
+            // dsAttendance21
+            // 
+            this.dsAttendance21.DataSetName = "DSAttendance2";
+            this.dsAttendance21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // studentProgressTableAdapter1
             // 
             this.studentProgressTableAdapter1.ClearBeforeFill = true;
-            // 
-            // AddBtn
-            // 
-            this.AddBtn.Location = new System.Drawing.Point(2, 225);
-            this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(177, 32);
-            this.AddBtn.TabIndex = 28;
-            this.AddBtn.Text = "Add to evaluation";
-            this.AddBtn.UseVisualStyleBackColor = true;
-            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // studentMJTableAdapter
             // 
@@ -431,13 +448,13 @@ namespace DashboardAS
             this.Text = "StudentSummary";
             this.Load += new System.EventHandler(this.StudentSummary_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentMJBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSAttendance2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentProgressBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSAttendance2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentMJBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

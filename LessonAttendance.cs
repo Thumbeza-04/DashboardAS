@@ -162,7 +162,7 @@ namespace DashboardAS
                 }
 
             }
-            else if (result == DialogResult.Cancel)
+            else if (result == DialogResult.No)
             {
                 // Cancel the action
                 connec.Close();
