@@ -29,16 +29,9 @@ namespace DashboardAS
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberOfLessonsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remainingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lessonAttendanceMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsAttendance21 = new DashboardAS.DSAttendance2();
             this.SNameLbl = new System.Windows.Forms.Label();
             this.NameLbl = new System.Windows.Forms.Label();
@@ -93,10 +86,8 @@ namespace DashboardAS
             this.PRB3 = new System.Windows.Forms.RadioButton();
             this.PRB2 = new System.Windows.Forms.RadioButton();
             this.PRB1 = new System.Windows.Forms.RadioButton();
-            this.lessonAttendanceMJTableAdapter = new DashboardAS.DSAttendance2TableAdapters.LessonAttendanceMJTableAdapter();
             this.studentProgressTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.StudentProgressTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lessonAttendanceMJBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -138,15 +129,7 @@ namespace DashboardAS
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.studentIDDataGridViewTextBoxColumn,
-            this.studentNameDataGridViewTextBoxColumn,
-            this.studentSurnameDataGridViewTextBoxColumn,
-            this.numberOfLessonsDataGridViewTextBoxColumn,
-            this.remainingDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.lessonAttendanceMJBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(0, 50);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
@@ -156,56 +139,6 @@ namespace DashboardAS
             this.dataGridView2.Size = new System.Drawing.Size(1528, 148);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseDoubleClick);
-            // 
-            // studentIDDataGridViewTextBoxColumn
-            // 
-            this.studentIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentIDDataGridViewTextBoxColumn.DataPropertyName = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn.HeaderText = "StudentID";
-            this.studentIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentIDDataGridViewTextBoxColumn.Name = "studentIDDataGridViewTextBoxColumn";
-            this.studentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // studentNameDataGridViewTextBoxColumn
-            // 
-            this.studentNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentNameDataGridViewTextBoxColumn.DataPropertyName = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn.HeaderText = "StudentName";
-            this.studentNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentNameDataGridViewTextBoxColumn.Name = "studentNameDataGridViewTextBoxColumn";
-            this.studentNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // studentSurnameDataGridViewTextBoxColumn
-            // 
-            this.studentSurnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentSurnameDataGridViewTextBoxColumn.DataPropertyName = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn.HeaderText = "StudentSurname";
-            this.studentSurnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentSurnameDataGridViewTextBoxColumn.Name = "studentSurnameDataGridViewTextBoxColumn";
-            this.studentSurnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // numberOfLessonsDataGridViewTextBoxColumn
-            // 
-            this.numberOfLessonsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.numberOfLessonsDataGridViewTextBoxColumn.DataPropertyName = "NumberOfLessons";
-            this.numberOfLessonsDataGridViewTextBoxColumn.HeaderText = "NumberOfLessons";
-            this.numberOfLessonsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.numberOfLessonsDataGridViewTextBoxColumn.Name = "numberOfLessonsDataGridViewTextBoxColumn";
-            this.numberOfLessonsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // remainingDataGridViewTextBoxColumn
-            // 
-            this.remainingDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.remainingDataGridViewTextBoxColumn.DataPropertyName = "Remaining";
-            this.remainingDataGridViewTextBoxColumn.HeaderText = "Remaining";
-            this.remainingDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.remainingDataGridViewTextBoxColumn.Name = "remainingDataGridViewTextBoxColumn";
-            this.remainingDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lessonAttendanceMJBindingSource
-            // 
-            this.lessonAttendanceMJBindingSource.DataMember = "LessonAttendanceMJ";
-            this.lessonAttendanceMJBindingSource.DataSource = this.dsAttendance21;
             // 
             // dsAttendance21
             // 
@@ -235,7 +168,6 @@ namespace DashboardAS
             this.StuIdLbl.Name = "StuIdLbl";
             this.StuIdLbl.Size = new System.Drawing.Size(59, 19);
             this.StuIdLbl.TabIndex = 7;
- 
             // 
             // groupBox1
             // 
@@ -261,7 +193,7 @@ namespace DashboardAS
             this.label1.Location = new System.Drawing.Point(6, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(293, 17);
+            this.label1.Size = new System.Drawing.Size(277, 16);
             this.label1.TabIndex = 27;
             this.label1.Text = "*Double click the row to evaluate student";
             // 
@@ -875,10 +807,6 @@ namespace DashboardAS
             this.PRB1.UseVisualStyleBackColor = true;
             this.PRB1.CheckedChanged += new System.EventHandler(this.PRB1_CheckedChanged);
             // 
-            // lessonAttendanceMJTableAdapter
-            // 
-            this.lessonAttendanceMJTableAdapter.ClearBeforeFill = true;
-            // 
             // studentProgressTableAdapter1
             // 
             this.studentProgressTableAdapter1.ClearBeforeFill = true;
@@ -898,7 +826,6 @@ namespace DashboardAS
             this.Text = "StudentSummary";
             this.Load += new System.EventHandler(this.StudentSummary_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lessonAttendanceMJBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsAttendance21)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -936,8 +863,7 @@ namespace DashboardAS
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private DSAttendance2 dsAttendance21;
-        private System.Windows.Forms.BindingSource lessonAttendanceMJBindingSource;
-        private DSAttendance2TableAdapters.LessonAttendanceMJTableAdapter lessonAttendanceMJTableAdapter;
+//        private DSAttendance2TableAdapters./LessonAttendanceMJTableAdapter lessonAttendanceMJTableAdapter;
         private DSAttendance2TableAdapters.StudentProgressTableAdapter studentProgressTableAdapter1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label SNameLbl;
@@ -991,11 +917,6 @@ namespace DashboardAS
         private System.Windows.Forms.RadioButton PRB3;
         private System.Windows.Forms.RadioButton PRB2;
         private System.Windows.Forms.RadioButton PRB1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentSurnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numberOfLessonsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn remainingDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Savebtn;
     }
