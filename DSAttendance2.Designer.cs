@@ -14441,7 +14441,7 @@ SELECT No, UserID, StudentID, StudentName, StudentSurname, Attendance, Date FROM
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT LessonBookingMJ.BookingID, LessonBookingMJ.StudentID, StudentMJ.Name, StudentMJ.Surname, LessonBookingMJ.InstructorID, LessonBookingMJ.Date, LessonBookingMJ.Time, StudentMJ.PackageName
@@ -14455,9 +14455,19 @@ FROM     LessonBookingMJ INNER JOIN
 FROM     LessonBookingMJ INNER JOIN
                   StudentMJ ON LessonBookingMJ.StudentID = StudentMJ.StudentID INNER JOIN
                   PackageMJ ON LessonBookingMJ.PackageID = PackageMJ.PackageName AND StudentMJ.PackageName = PackageMJ.PackageName
-WHERE  (LessonBookingMJ.InstructorID = @instructorId)";
+WHERE  (LessonBookingMJ.Date = @date) AND (LessonBookingMJ.InstructorID = @instructorId)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@instructorId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT LessonBookingMJ.BookingID, LessonBookingMJ.StudentID, StudentMJ.Name, StudentMJ.Surname, LessonBookingMJ.InstructorID, LessonBookingMJ.Date, LessonBookingMJ.Time, StudentMJ.PackageName
+FROM     LessonBookingMJ INNER JOIN
+                  StudentMJ ON LessonBookingMJ.StudentID = StudentMJ.StudentID INNER JOIN
+                  PackageMJ ON LessonBookingMJ.PackageID = PackageMJ.PackageName AND StudentMJ.PackageName = PackageMJ.PackageName
+WHERE  (LessonBookingMJ.InstructorID = @instructorId)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@instructorId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14488,8 +14498,56 @@ WHERE  (LessonBookingMJ.InstructorID = @instructorId)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByID(DSAttendance2.BookingsDataTable dataTable, global::System.Nullable<int> instructorId) {
+        public virtual int FillByDate(DSAttendance2.BookingsDataTable dataTable, string date, global::System.Nullable<int> instructorId) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((date == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(date));
+            }
+            if ((instructorId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(instructorId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DSAttendance2.BookingsDataTable GetDataBy1(string date, global::System.Nullable<int> instructorId) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((date == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(date));
+            }
+            if ((instructorId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(instructorId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            DSAttendance2.BookingsDataTable dataTable = new DSAttendance2.BookingsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByID(DSAttendance2.BookingsDataTable dataTable, global::System.Nullable<int> instructorId) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((instructorId.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(instructorId.Value));
             }
@@ -14508,7 +14566,7 @@ WHERE  (LessonBookingMJ.InstructorID = @instructorId)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DSAttendance2.BookingsDataTable GetDataBy(global::System.Nullable<int> instructorId) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((instructorId.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(instructorId.Value));
             }
@@ -14737,7 +14795,7 @@ SELECT BookingID, StudentID, StudentName, StudentSurname, InstructorID, BookingD
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT LA_Sheet.*\r\nFROM     LA_Sheet";
@@ -14749,6 +14807,14 @@ SELECT BookingID, StudentID, StudentName, StudentSurname, InstructorID, BookingD
                 "torID = @instructorId)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@instructorId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT BookingID, StudentID, StudentName, StudentSurname, InstructorID, BookingDa" +
+                "te, BookingTime, Attendance, Date, PackageID\r\nFROM     LA_Sheet\r\nWHERE  (Student" +
+                "ID = @stuId) AND (InstructorID = @instructorId)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@stuId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@instructorId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14805,6 +14871,54 @@ SELECT BookingID, StudentID, StudentName, StudentSurname, InstructorID, BookingD
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            DSAttendance2.LA_SheetDataTable dataTable = new DSAttendance2.LA_SheetDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBySearch(DSAttendance2.LA_SheetDataTable dataTable, global::System.Nullable<int> stuId, global::System.Nullable<int> instructorId) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((stuId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(stuId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((instructorId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(instructorId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DSAttendance2.LA_SheetDataTable GetDataBy1(global::System.Nullable<int> stuId, global::System.Nullable<int> instructorId) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((stuId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(stuId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((instructorId.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(instructorId.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             DSAttendance2.LA_SheetDataTable dataTable = new DSAttendance2.LA_SheetDataTable();
             this.Adapter.Fill(dataTable);

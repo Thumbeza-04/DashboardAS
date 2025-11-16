@@ -172,15 +172,15 @@ namespace DashboardAS
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            /*try 
+            try 
             {
                 int ID = id;
-            bookingTableAdapter.FillByIDate(dsAttendance21.Booking, ID, dateTimePicker1.Text);
+            bookingsTableAdapter.FillByDate(dsAttendance21.Bookings, dateTimePicker1.Text,ID);
             }
             catch
             {
                 MessageBox.Show("Error!Please try again.");
-            }*/
+            }
             
         }
 
@@ -410,8 +410,8 @@ namespace DashboardAS
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             
-            //lessonAttendanceMJTableAdapter1.FillBySearch(dsAttendance21.LessonAttendanceMJ, (int)dataGridView1.CurrentRow.Cells[1].Value, id);
-            //dataGridView2.DataSource = dsAttendance21.LessonAttendanceMJ;
+            lA_SheetTableAdapter.FillBySearch(dSAttendance2.LA_Sheet, (int)dataGridView1.CurrentRow.Cells[1].Value, id);
+            dataGridView2.DataSource = dSAttendance2.LA_Sheet;
 
         }
 
@@ -430,9 +430,9 @@ namespace DashboardAS
 
         private void ReloadBtn_Click(object sender, EventArgs e)
         {
-            /*int instructorId = id;
-            Bind(instructorId);
-            bookingTableAdapter.FillByInID(dsAttendance21.Booking, id);*/
+           int instructorId = id;
+            BindGrid(instructorId);
+            bookingsTableAdapter.FillByID(dsAttendance21.Bookings, id);
         }
 
        
