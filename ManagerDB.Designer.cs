@@ -43,6 +43,8 @@ namespace DashboardAS
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -51,11 +53,14 @@ namespace DashboardAS
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.pictureBox6);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.pictureBox3);
@@ -66,7 +71,7 @@ namespace DashboardAS
             this.panel1.Controls.Add(this.viewbookingsbtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(189, 609);
             this.panel1.TabIndex = 0;
@@ -117,7 +122,7 @@ namespace DashboardAS
             this.viewstaffbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewstaffbtn.ForeColor = System.Drawing.Color.White;
             this.viewstaffbtn.Location = new System.Drawing.Point(11, 328);
-            this.viewstaffbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.viewstaffbtn.Margin = new System.Windows.Forms.Padding(2);
             this.viewstaffbtn.Name = "viewstaffbtn";
             this.viewstaffbtn.Size = new System.Drawing.Size(175, 56);
             this.viewstaffbtn.TabIndex = 3;
@@ -131,7 +136,7 @@ namespace DashboardAS
             this.viewvehiclesbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewvehiclesbtn.ForeColor = System.Drawing.Color.White;
             this.viewvehiclesbtn.Location = new System.Drawing.Point(11, 267);
-            this.viewvehiclesbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.viewvehiclesbtn.Margin = new System.Windows.Forms.Padding(2);
             this.viewvehiclesbtn.Name = "viewvehiclesbtn";
             this.viewvehiclesbtn.Size = new System.Drawing.Size(175, 57);
             this.viewvehiclesbtn.TabIndex = 2;
@@ -145,7 +150,7 @@ namespace DashboardAS
             this.viewinstructorsbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewinstructorsbtn.ForeColor = System.Drawing.Color.White;
             this.viewinstructorsbtn.Location = new System.Drawing.Point(11, 211);
-            this.viewinstructorsbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.viewinstructorsbtn.Margin = new System.Windows.Forms.Padding(2);
             this.viewinstructorsbtn.Name = "viewinstructorsbtn";
             this.viewinstructorsbtn.Size = new System.Drawing.Size(176, 51);
             this.viewinstructorsbtn.TabIndex = 1;
@@ -159,7 +164,7 @@ namespace DashboardAS
             this.viewbookingsbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewbookingsbtn.ForeColor = System.Drawing.Color.White;
             this.viewbookingsbtn.Location = new System.Drawing.Point(11, 156);
-            this.viewbookingsbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.viewbookingsbtn.Margin = new System.Windows.Forms.Padding(2);
             this.viewbookingsbtn.Name = "viewbookingsbtn";
             this.viewbookingsbtn.Size = new System.Drawing.Size(176, 51);
             this.viewbookingsbtn.TabIndex = 0;
@@ -220,6 +225,30 @@ namespace DashboardAS
             this.MainPanel.TabIndex = 5;
             this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(14, 388);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(175, 57);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "         View Reports";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::DashboardAS.Properties.Resources.View_lesson;
+            this.pictureBox6.Location = new System.Drawing.Point(21, 401);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 9;
+            this.pictureBox6.TabStop = false;
+            // 
             // ManagerDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,7 +258,7 @@ namespace DashboardAS
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManagerDB";
             this.Text = "ManagerDB";
             this.Load += new System.EventHandler(this.ManagerDB_Load);
@@ -243,6 +272,7 @@ namespace DashboardAS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,5 +293,7 @@ namespace DashboardAS
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel MainPanel;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Button button1;
     }
 }
