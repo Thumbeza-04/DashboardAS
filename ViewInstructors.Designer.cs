@@ -63,9 +63,7 @@ namespace DashboardAS
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.instructorMJTableAdapter = new DashboardAS.instructorsVehiclesTableAdapters.InstructorMJTableAdapter();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.INSERTbtn = new System.Windows.Forms.Button();
             this.UPDATEbtn = new System.Windows.Forms.Button();
-            this.ARCHIVEbtn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.instructorMJTableAdapter2 = new DashboardAS.mangerNEWTableAdapters.InstructorMJTableAdapter();
             this.label11 = new System.Windows.Forms.Label();
@@ -378,41 +376,17 @@ namespace DashboardAS
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 20;
             // 
-            // INSERTbtn
-            // 
-            this.INSERTbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.INSERTbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.INSERTbtn.Location = new System.Drawing.Point(91, 305);
-            this.INSERTbtn.Name = "INSERTbtn";
-            this.INSERTbtn.Size = new System.Drawing.Size(106, 32);
-            this.INSERTbtn.TabIndex = 21;
-            this.INSERTbtn.Text = "INSERT";
-            this.INSERTbtn.UseVisualStyleBackColor = false;
-            this.INSERTbtn.Click += new System.EventHandler(this.INSERTbtn_Click);
-            // 
             // UPDATEbtn
             // 
             this.UPDATEbtn.BackColor = System.Drawing.Color.Yellow;
             this.UPDATEbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UPDATEbtn.Location = new System.Drawing.Point(479, 305);
+            this.UPDATEbtn.Location = new System.Drawing.Point(368, 309);
             this.UPDATEbtn.Name = "UPDATEbtn";
             this.UPDATEbtn.Size = new System.Drawing.Size(106, 32);
             this.UPDATEbtn.TabIndex = 22;
             this.UPDATEbtn.Text = "UPDATE";
             this.UPDATEbtn.UseVisualStyleBackColor = false;
             this.UPDATEbtn.Click += new System.EventHandler(this.UPDATEbtn_Click);
-            // 
-            // ARCHIVEbtn
-            // 
-            this.ARCHIVEbtn.BackColor = System.Drawing.Color.Red;
-            this.ARCHIVEbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ARCHIVEbtn.Location = new System.Drawing.Point(805, 305);
-            this.ARCHIVEbtn.Name = "ARCHIVEbtn";
-            this.ARCHIVEbtn.Size = new System.Drawing.Size(106, 32);
-            this.ARCHIVEbtn.TabIndex = 23;
-            this.ARCHIVEbtn.Text = "ARCHIVE";
-            this.ARCHIVEbtn.UseVisualStyleBackColor = false;
-            this.ARCHIVEbtn.Click += new System.EventHandler(this.ARCHIVEbtn_Click);
             // 
             // textBox1
             // 
@@ -559,9 +533,7 @@ namespace DashboardAS
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.ARCHIVEbtn);
             this.Controls.Add(this.UPDATEbtn);
-            this.Controls.Add(this.INSERTbtn);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.emailTxtB);
@@ -631,9 +603,7 @@ namespace DashboardAS
         private System.Windows.Forms.ComboBox comboBox1;
         private instructorsVehiclesTableAdapters.InstructorMJTableAdapter instructorMJTableAdapter;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Button INSERTbtn;
         private System.Windows.Forms.Button UPDATEbtn;
-        private System.Windows.Forms.Button ARCHIVEbtn;
         private System.Windows.Forms.BindingSource mangerNEWBindingSource;
         private mangerNEW mangerNEW;
         private System.Windows.Forms.TextBox textBox1;

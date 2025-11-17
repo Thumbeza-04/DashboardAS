@@ -30,7 +30,6 @@ namespace DashboardAS
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -44,7 +43,6 @@ namespace DashboardAS
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -53,14 +51,11 @@ namespace DashboardAS
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Controls.Add(this.pictureBox6);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.pictureBox3);
@@ -71,32 +66,17 @@ namespace DashboardAS
             this.panel1.Controls.Add(this.viewbookingsbtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(252, 750);
+            this.panel1.Size = new System.Drawing.Size(189, 609);
             this.panel1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 477);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(233, 69);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "           Manage Students";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox5
             // 
             this.pictureBox5.Image = global::DashboardAS.Properties.Resources.student;
-            this.pictureBox5.Location = new System.Drawing.Point(28, 420);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox5.Location = new System.Drawing.Point(21, 341);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(51, 39);
+            this.pictureBox5.Size = new System.Drawing.Size(38, 32);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 7;
             this.pictureBox5.TabStop = false;
@@ -104,10 +84,9 @@ namespace DashboardAS
             // pictureBox4
             // 
             this.pictureBox4.Image = global::DashboardAS.Properties.Resources.View_lesson;
-            this.pictureBox4.Location = new System.Drawing.Point(28, 345);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox4.Location = new System.Drawing.Point(21, 280);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(51, 39);
+            this.pictureBox4.Size = new System.Drawing.Size(38, 32);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 6;
             this.pictureBox4.TabStop = false;
@@ -115,10 +94,9 @@ namespace DashboardAS
             // pictureBox3
             // 
             this.pictureBox3.Image = global::DashboardAS.Properties.Resources.instructor;
-            this.pictureBox3.Location = new System.Drawing.Point(28, 272);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Location = new System.Drawing.Point(21, 221);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(51, 39);
+            this.pictureBox3.Size = new System.Drawing.Size(38, 32);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
@@ -126,10 +104,9 @@ namespace DashboardAS
             // pictureBox2
             // 
             this.pictureBox2.Image = global::DashboardAS.Properties.Resources.book_a_lesson;
-            this.pictureBox2.Location = new System.Drawing.Point(28, 203);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(21, 165);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(51, 39);
+            this.pictureBox2.Size = new System.Drawing.Size(38, 32);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
@@ -139,10 +116,10 @@ namespace DashboardAS
             this.viewstaffbtn.BackColor = System.Drawing.Color.Black;
             this.viewstaffbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewstaffbtn.ForeColor = System.Drawing.Color.White;
-            this.viewstaffbtn.Location = new System.Drawing.Point(15, 404);
-            this.viewstaffbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.viewstaffbtn.Location = new System.Drawing.Point(11, 328);
+            this.viewstaffbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.viewstaffbtn.Name = "viewstaffbtn";
-            this.viewstaffbtn.Size = new System.Drawing.Size(233, 69);
+            this.viewstaffbtn.Size = new System.Drawing.Size(175, 56);
             this.viewstaffbtn.TabIndex = 3;
             this.viewstaffbtn.Text = "       View Staff";
             this.viewstaffbtn.UseVisualStyleBackColor = false;
@@ -153,10 +130,10 @@ namespace DashboardAS
             this.viewvehiclesbtn.BackColor = System.Drawing.Color.Black;
             this.viewvehiclesbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewvehiclesbtn.ForeColor = System.Drawing.Color.White;
-            this.viewvehiclesbtn.Location = new System.Drawing.Point(15, 329);
-            this.viewvehiclesbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.viewvehiclesbtn.Location = new System.Drawing.Point(11, 267);
+            this.viewvehiclesbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.viewvehiclesbtn.Name = "viewvehiclesbtn";
-            this.viewvehiclesbtn.Size = new System.Drawing.Size(233, 70);
+            this.viewvehiclesbtn.Size = new System.Drawing.Size(175, 57);
             this.viewvehiclesbtn.TabIndex = 2;
             this.viewvehiclesbtn.Text = "         View Vehicles";
             this.viewvehiclesbtn.UseVisualStyleBackColor = false;
@@ -167,10 +144,10 @@ namespace DashboardAS
             this.viewinstructorsbtn.BackColor = System.Drawing.Color.Black;
             this.viewinstructorsbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewinstructorsbtn.ForeColor = System.Drawing.Color.White;
-            this.viewinstructorsbtn.Location = new System.Drawing.Point(15, 260);
-            this.viewinstructorsbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.viewinstructorsbtn.Location = new System.Drawing.Point(11, 211);
+            this.viewinstructorsbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.viewinstructorsbtn.Name = "viewinstructorsbtn";
-            this.viewinstructorsbtn.Size = new System.Drawing.Size(235, 63);
+            this.viewinstructorsbtn.Size = new System.Drawing.Size(176, 51);
             this.viewinstructorsbtn.TabIndex = 1;
             this.viewinstructorsbtn.Text = "        View Instructors";
             this.viewinstructorsbtn.UseVisualStyleBackColor = false;
@@ -181,10 +158,10 @@ namespace DashboardAS
             this.viewbookingsbtn.BackColor = System.Drawing.Color.Black;
             this.viewbookingsbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewbookingsbtn.ForeColor = System.Drawing.Color.White;
-            this.viewbookingsbtn.Location = new System.Drawing.Point(15, 192);
-            this.viewbookingsbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.viewbookingsbtn.Location = new System.Drawing.Point(11, 156);
+            this.viewbookingsbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.viewbookingsbtn.Name = "viewbookingsbtn";
-            this.viewbookingsbtn.Size = new System.Drawing.Size(235, 63);
+            this.viewbookingsbtn.Size = new System.Drawing.Size(176, 51);
             this.viewbookingsbtn.TabIndex = 0;
             this.viewbookingsbtn.Text = "       View Bookings";
             this.viewbookingsbtn.UseVisualStyleBackColor = false;
@@ -196,10 +173,9 @@ namespace DashboardAS
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(252, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(189, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1091, 119);
+            this.panel2.Size = new System.Drawing.Size(818, 97);
             this.panel2.TabIndex = 1;
             // 
             // label1
@@ -207,20 +183,18 @@ namespace DashboardAS
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(157, 47);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(118, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(337, 37);
+            this.label1.Size = new System.Drawing.Size(271, 28);
             this.label1.TabIndex = 3;
             this.label1.Text = "TLG Driving Academy ";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DashboardAS.Properties.Resources._2312f697_97e2_4638_98fd_aa9c01c91c5c;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 16);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(24, 13);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(96, 79);
+            this.pictureBox1.Size = new System.Drawing.Size(72, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -230,10 +204,9 @@ namespace DashboardAS
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(24, 21);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(18, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(301, 44);
+            this.label2.Size = new System.Drawing.Size(237, 36);
             this.label2.TabIndex = 4;
             this.label2.Text = "Welcome, Sfiso!";
             // 
@@ -241,33 +214,22 @@ namespace DashboardAS
             // 
             this.MainPanel.Controls.Add(this.label2);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(252, 119);
-            this.MainPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.MainPanel.Location = new System.Drawing.Point(189, 97);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1091, 631);
+            this.MainPanel.Size = new System.Drawing.Size(818, 512);
             this.MainPanel.TabIndex = 5;
             this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::DashboardAS.Properties.Resources.instructor;
-            this.pictureBox6.Location = new System.Drawing.Point(28, 489);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(51, 39);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 9;
-            this.pictureBox6.TabStop = false;
-            // 
             // ManagerDB
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1343, 750);
+            this.ClientSize = new System.Drawing.Size(1007, 609);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ManagerDB";
             this.Text = "ManagerDB";
             this.Load += new System.EventHandler(this.ManagerDB_Load);
@@ -281,7 +243,6 @@ namespace DashboardAS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -302,7 +263,5 @@ namespace DashboardAS
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel MainPanel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }
