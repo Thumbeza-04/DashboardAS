@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace DashboardAS
 {
@@ -44,14 +45,15 @@ namespace DashboardAS
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            //lessonAttendanceMJTableAdapter.FillByIDNAME(dsAttendance21.LessonAttendanceMJ,id, textBox1.Text);
+            studentMJTableAdapter.FillBySearch(dSAttendance2.StudentMJ, textBox1.Text);
 
         }
 
         private void dataGridView2_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
-            
+            studentProgressTableAdapter1.FillByStu(dsAttendance21.StudentProgress, (int)dataGridView2.CurrentRow.Cells[0].Value);
+            dataGridView1.DataSource = dsAttendance21.StudentProgress;
+
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -155,6 +157,60 @@ namespace DashboardAS
                 MessageBox.Show("Action was cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+
+        private void CommentBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+           "Do you want to proceed with this action?",
+           "Confirmation Required",
+           MessageBoxButtons.YesNo,
+           MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                if (dataGridView1.CurrentRow == null || textBox2.Text.Trim() == " ")
+                {
+                    MessageBox.Show("Select a student and enter a comment.");
+                    return;
+                }
+
+                int studentID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                string newComment = textBox2.Text.Trim();
+                string timestampedComment = $"[{DateTime.Now:yyyy-MM-dd HH:mm}] {newComment}";
+                
+
+                using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+                {
+                    string query = @"
+                    UPDATE StudentProgress
+                    SET Comments = @NewComment + CHAR(13) + CHAR(10) + ISNULL(Comments, '')
+                    WHERE StudentID = @StudentID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@NewComment", timestampedComment);
+                        cmd.Parameters.AddWithValue("@StudentID", studentID);
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Comment added.");
+                        conn.Close();
+                    }
+                }
+
+                textBox2.Text = " ";
+                BindGrid(); // Optional: refresh grid
+            }
+            else if (result == DialogResult.No)
+            {
+                MessageBox.Show("Action was cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void reloadBtn_Click(object sender, EventArgs e)
+        {
+            BindGrid();
         }
     }
 
