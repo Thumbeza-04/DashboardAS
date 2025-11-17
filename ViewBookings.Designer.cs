@@ -32,10 +32,6 @@ namespace DashboardAS
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.searchbookingsbox = new System.Windows.Forms.TextBox();
-            this.mangerNEW = new DashboardAS.mangerNEW();
-            this.lessonBookingMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lessonBookingMJTableAdapter = new DashboardAS.mangerNEWTableAdapters.LessonBookingMJTableAdapter();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,9 +41,12 @@ namespace DashboardAS
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lessonBookingMJBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mangerNEW = new DashboardAS.mangerNEW();
+            this.lessonBookingMJTableAdapter = new DashboardAS.mangerNEWTableAdapters.LessonBookingMJTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mangerNEW)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lessonBookingMJBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mangerNEW)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -84,29 +83,6 @@ namespace DashboardAS
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(745, 223);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // searchbookingsbox
-            // 
-            this.searchbookingsbox.Location = new System.Drawing.Point(137, 43);
-            this.searchbookingsbox.Margin = new System.Windows.Forms.Padding(2);
-            this.searchbookingsbox.Name = "searchbookingsbox";
-            this.searchbookingsbox.Size = new System.Drawing.Size(168, 20);
-            this.searchbookingsbox.TabIndex = 2;
-            this.searchbookingsbox.TextChanged += new System.EventHandler(this.searchbookingsbox_TextChanged);
-            // 
-            // mangerNEW
-            // 
-            this.mangerNEW.DataSetName = "mangerNEW";
-            this.mangerNEW.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lessonBookingMJBindingSource
-            // 
-            this.lessonBookingMJBindingSource.DataMember = "LessonBookingMJ";
-            this.lessonBookingMJBindingSource.DataSource = this.mangerNEW;
-            // 
-            // lessonBookingMJTableAdapter
-            // 
-            this.lessonBookingMJTableAdapter.ClearBeforeFill = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -163,13 +139,26 @@ namespace DashboardAS
             this.dataGridViewTextBoxColumn9.HeaderText = "Status";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
+            // lessonBookingMJBindingSource
+            // 
+            this.lessonBookingMJBindingSource.DataMember = "LessonBookingMJ";
+            this.lessonBookingMJBindingSource.DataSource = this.mangerNEW;
+            // 
+            // mangerNEW
+            // 
+            this.mangerNEW.DataSetName = "mangerNEW";
+            this.mangerNEW.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lessonBookingMJTableAdapter
+            // 
+            this.lessonBookingMJTableAdapter.ClearBeforeFill = true;
+            // 
             // ViewBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(832, 517);
-            this.Controls.Add(this.searchbookingsbox);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -179,8 +168,8 @@ namespace DashboardAS
             this.Text = "ViewBookings";
             this.Load += new System.EventHandler(this.ViewBookings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mangerNEW)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lessonBookingMJBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mangerNEW)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,7 +179,6 @@ namespace DashboardAS
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox searchbookingsbox;
       //  private managerDataSet managerDataSet1;
       //  private managerDataSetTableAdapters.LessonBookingMJTableAdapter lessonBookingMJTableAdapter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookingIDDataGridViewTextBoxColumn;
