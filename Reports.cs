@@ -16,15 +16,5 @@ namespace DashboardAS
         {
             InitializeComponent();
         }
-
-        private async void Reports_Load(object sender, EventArgs e)
-        {
-            
-            await webView21.EnsureCoreWebView2Async(null);
-            string powerbi ="https://app.powerbi.com/view?r=eyJrIjoiNjMwOWNmMDgtOGUyNi00ZGY1LThhZmEtNzhiZGU0YWNkNzQ4IiwidCI6IjIyNjgyN2Q2LWE5ZDAtNDcwZC04YzE1LWIxNDZiMDE5MmQ1MSIsImMiOjh9";
-            webView21.Source = new Uri(powerbi);
-
-            
-        }
     }
 }
