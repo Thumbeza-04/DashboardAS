@@ -57,23 +57,45 @@ namespace DashboardAS
         private void INSERTbtn_Click(object sender, EventArgs e)
         {
 
+            
+        }
+
+
+
+
+
+
+
+
+
+        
+
+        private void UPDATEbtn_Click(object sender, EventArgs e)
+        {
             string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
-                // 1. Check that LicensePlateID exists in VehicleMJ (FK constraint)
-                string licensecheckQuery = "SELECT COUNT(*) FROM VehicleMJ WHERE licenseplateid = @licenseplateid";
-                using (SqlCommand licensecheckCmd = new SqlCommand(licensecheckQuery, con))
+                // 1. Check that LicensePlateID exists in VehicleMJ and is Active
+                string licenseCheckQuery = "SELECT Status FROM VehicleMJ WHERE licenseplateid = @licenseplateid";
+                using (SqlCommand licenseCheckCmd = new SqlCommand(licenseCheckQuery, con))
                 {
-                    licensecheckCmd.Parameters.AddWithValue("@licenseplateid", textBox1.Text.Trim());
-                    int licenseExists = (int)licensecheckCmd.ExecuteScalar();
-                    if (licenseExists == 0)
+                    licenseCheckCmd.Parameters.AddWithValue("@licenseplateid", textBox1.Text.Trim());
+                    var result = licenseCheckCmd.ExecuteScalar();
+
+                    if (result == null)
                     {
-                        MessageBox.Show("License PlateID does not exists in the Vehicle records. Please enter a valid License PlateID ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("License PlateID does not exist in the Vehicle records. Please enter a valid License PlateID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
+                    string vehicleStatus = result.ToString();
+                    if (vehicleStatus != "Active")
+                    {
+                        MessageBox.Show("Cannot allocate vehicle because the vehicle is inactive.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
 
                 //2. Check if LicensePlateID already  assigned to an active instructor 
@@ -89,9 +111,17 @@ namespace DashboardAS
                     }
                 }
 
-                string insertQuery = @"INSERT INTO InstructorMJ
-                                     (LicensePlateID , LicenseNumber, ExpertiseLevel, FirstName, LastName, Gender, ContactNumber, Email,Status)
-                                      VALUES (@licenseplateid, @licensenumber, @expertiselevel, @firstname, @lastname, @gender, @contactnumber, @email, @status)";
+                string insertQuery = @"UPDATE InstructorMJ 
+                                 SET LicensePlateID = @licenseplateid,
+                                     LicenseNumber = @licensenumber,
+                                     ExpertiseLevel = @expertiselevel,
+                                     FirstName = @firstname,
+                                     LastName = @lastname,
+                                     Gender = @gender,
+                                     ContactNumber = @contactnumber,
+                                     Email = @email,
+                                     Status = @status
+                                 WHERE InstructorID = @instructorid";
                 using (SqlCommand comm = new SqlCommand(insertQuery, con))
                 {
                     comm.Parameters.AddWithValue("@licenseplateid", textBox1.Text.Trim());
@@ -103,7 +133,7 @@ namespace DashboardAS
                     comm.Parameters.AddWithValue("@contactnumber", contactNumberTxtB.Text.Trim());
                     comm.Parameters.AddWithValue("@email", emailTxtB.Text.Trim());
                     comm.Parameters.AddWithValue("@status", comboBox2.Text.Trim());
-
+                    comm.Parameters.AddWithValue("@instructorid",instructorIDtxtB.Text.Trim());
 
                     comm.ExecuteNonQuery();
 
@@ -113,51 +143,6 @@ namespace DashboardAS
                 MessageBox.Show("You have Entered a new Instructor ");
                 BindActive();
                 BindInactive();
-            }
-
-
-
-
-
-
-
-
-
-        }
-
-        private void UPDATEbtn_Click(object sender, EventArgs e)
-        {
-            string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-
-                SqlCommand comm = new SqlCommand("Update InstructorMJ set licenseplateid=@licenseplateid, licensenumber = @licensenumber, expertiseLevel=@expertiselevel, firstname=@firstname, lastname=@lastname, gender =@gender, contactnumber=@contactnumber, email=@email, status=@status WHERE instructorid=@instructorid ", con);
-
-                comm.Parameters.AddWithValue("@licenseplateid", textBox1.Text.Trim());
-                comm.Parameters.AddWithValue("@licensenumber", licenseNotxtB.Text.Trim());
-                comm.Parameters.AddWithValue("@expertiselevel", comboBox1.Text.Trim());
-                comm.Parameters.AddWithValue("@firstname", firstNameTxtB.Text.Trim());
-                comm.Parameters.AddWithValue("@lastname", LastnametxtB.Text.Trim());
-                comm.Parameters.AddWithValue("@gender", comboBox3.Text);
-                comm.Parameters.AddWithValue("@contactnumber", contactNumberTxtB.Text.Trim());
-                comm.Parameters.AddWithValue("@email", emailTxtB.Text.Trim());
-                comm.Parameters.AddWithValue("@status", comboBox2.Text.Trim());
-                comm.Parameters.AddWithValue("@instructorid", instructorIDtxtB.Text.Trim());
-
-                int rowsAffected = comm.ExecuteNonQuery();
-                if (rowsAffected == 0)
-                {
-                    MessageBox.Show("No Record was Updated");
-                }
-                else
-                {
-                    MessageBox.Show("Update successful!");
-                }
-
-                BindActive();
-                BindInactive();
-                con.Close();
             }
         }
 

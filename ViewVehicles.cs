@@ -35,47 +35,7 @@ namespace DashboardAS
 
         private void INSERTbtn_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=146.230.177.46;Initial Catalog=WstGrp24;Persist Security Info=True;User ID=WstGrp24;Password=6wefi";
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-
-                //2. Check if LicensePlateID already  assigned to an active instructor 
-                string licensePlateidCheckQuery = "SELECT COUNT(*) FROM VehicleMJ WHERE licenseplateid = @licenseplateid ";
-                using (SqlCommand checkcmd = new SqlCommand(licensePlateidCheckQuery, con))
-                {
-                    checkcmd.Parameters.AddWithValue("@licenseplateid", licensePlateTxtB.Text.Trim());
-                    int count = (int)checkcmd.ExecuteScalar();
-                    if (count > 0)
-                    {
-                        MessageBox.Show(" License Plate ID already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-
-                string insertQuery = @"INSERT INTO VehicleMJ
-                                     (LicensePlateID , TransmissionType, FuelType, Make, VehicleType, Status)
-                                      VALUES (@licenseplateid, @transmissiontype, @fueltype, @make, @vehicletype, @status)";
-                using (SqlCommand comm = new SqlCommand(insertQuery, con))
-                {
-                    comm.Parameters.AddWithValue("@licenseplateid", licensePlateTxtB.Text.Trim());
-                    comm.Parameters.AddWithValue("@transmissiontype", comboBox1.Text.Trim());
-                    comm.Parameters.AddWithValue("@fueltype", comboBox2.Text.Trim());
-                    comm.Parameters.AddWithValue("@make", makeTxtB.Text.Trim());
-                    comm.Parameters.AddWithValue("@vehicletype", comboBox3.Text.Trim());
-                    comm.Parameters.AddWithValue("@status", comboBox4.Text.Trim());
-
-
-
-                    comm.ExecuteNonQuery();
-
-                }
-
-                con.Close();
-                MessageBox.Show("You have Entered a new vehicle");
-                BindActive();
-                BindInactive();
-            }
+           
         }
         void BindData()
         {
@@ -123,19 +83,7 @@ namespace DashboardAS
 
         private void ARCHIVEbtn_Click(object sender, EventArgs e)
         {
-            string licenseplateid= licensePlateTxtB.Text;
-            string status = comboBox4.Text;
-
-            if (status == "Inactive")
-            {
-                MessageBox.Show(" You are about to Archive an Inactice vehicle, you can undo this by Update");
-            }
-            else
-            {
-                MessageBox.Show("To Archive the vehicle has to be inactive ");
-            }
-            BindActive();
-            BindInactive();
+          
         }
 
         private void BindActive()

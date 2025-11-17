@@ -51,9 +51,7 @@ namespace DashboardAS
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.INSERTbtn = new System.Windows.Forms.Button();
             this.UPDATEbtn = new System.Windows.Forms.Button();
-            this.ARCHIVEbtn = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -258,41 +256,17 @@ namespace DashboardAS
             this.comboBox3.Size = new System.Drawing.Size(129, 21);
             this.comboBox3.TabIndex = 13;
             // 
-            // INSERTbtn
-            // 
-            this.INSERTbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.INSERTbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.INSERTbtn.Location = new System.Drawing.Point(44, 275);
-            this.INSERTbtn.Name = "INSERTbtn";
-            this.INSERTbtn.Size = new System.Drawing.Size(106, 32);
-            this.INSERTbtn.TabIndex = 14;
-            this.INSERTbtn.Text = "INSERT";
-            this.INSERTbtn.UseVisualStyleBackColor = false;
-            this.INSERTbtn.Click += new System.EventHandler(this.INSERTbtn_Click);
-            // 
             // UPDATEbtn
             // 
             this.UPDATEbtn.BackColor = System.Drawing.Color.Yellow;
             this.UPDATEbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UPDATEbtn.Location = new System.Drawing.Point(305, 275);
+            this.UPDATEbtn.Location = new System.Drawing.Point(320, 275);
             this.UPDATEbtn.Name = "UPDATEbtn";
             this.UPDATEbtn.Size = new System.Drawing.Size(106, 32);
             this.UPDATEbtn.TabIndex = 15;
             this.UPDATEbtn.Text = "UPDATE";
             this.UPDATEbtn.UseVisualStyleBackColor = false;
             this.UPDATEbtn.Click += new System.EventHandler(this.UPDATEbtn_Click);
-            // 
-            // ARCHIVEbtn
-            // 
-            this.ARCHIVEbtn.BackColor = System.Drawing.Color.Red;
-            this.ARCHIVEbtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ARCHIVEbtn.Location = new System.Drawing.Point(534, 275);
-            this.ARCHIVEbtn.Name = "ARCHIVEbtn";
-            this.ARCHIVEbtn.Size = new System.Drawing.Size(106, 32);
-            this.ARCHIVEbtn.TabIndex = 16;
-            this.ARCHIVEbtn.Text = "ARCHIVE";
-            this.ARCHIVEbtn.UseVisualStyleBackColor = false;
-            this.ARCHIVEbtn.Click += new System.EventHandler(this.ARCHIVEbtn_Click);
             // 
             // dataGridView2
             // 
@@ -390,9 +364,7 @@ namespace DashboardAS
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.ARCHIVEbtn);
             this.Controls.Add(this.UPDATEbtn);
-            this.Controls.Add(this.INSERTbtn);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
@@ -444,9 +416,7 @@ namespace DashboardAS
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Button INSERTbtn;
         private System.Windows.Forms.Button UPDATEbtn;
-        private System.Windows.Forms.Button ARCHIVEbtn;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn licensePlateIDDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn transmissionTypeDataGridViewTextBoxColumn1;

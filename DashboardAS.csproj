@@ -49,12 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttendanceProgress.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AttendanceProgress.Designer.cs">
-      <DependentUpon>AttendanceProgress.cs</DependentUpon>
-    </Compile>
     <Compile Include="BookLessonUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -202,6 +196,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
     <Compile Include="staffLogin.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -263,21 +263,12 @@
     <Compile Include="ViewStaff.Designer.cs">
       <DependentUpon>ViewStaff.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewStudentProgress.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ViewStudentProgress.Designer.cs">
-      <DependentUpon>ViewStudentProgress.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewVehicles.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ViewVehicles.Designer.cs">
       <DependentUpon>ViewVehicles.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AttendanceProgress.resx">
-      <DependentUpon>AttendanceProgress.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BookLessonUserControl.resx">
       <DependentUpon>BookLessonUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -344,9 +335,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewStaff.resx">
       <DependentUpon>ViewStaff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewStudentProgress.resx">
-      <DependentUpon>ViewStudentProgress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewVehicles.resx">
       <DependentUpon>ViewVehicles.cs</DependentUpon>
