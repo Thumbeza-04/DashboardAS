@@ -25,7 +25,8 @@ namespace DashboardAS
         {
             // TODO: This line of code loads data into the 'dSAttendance2.LA_Sheet' table. You can move, or remove it, as needed.
             //this.lA_SheetTableAdapter.Fill(this.dSAttendance2.LA_Sheet);
-            bookingsTableAdapter.FillByID(dsAttendance21.Bookings, id);
+            string status = "Confirmed";
+            bookingsTableAdapter.FillByIDS(dsAttendance21.Bookings, id,status);
             lA_SheetTableAdapter.FillById(dSAttendance2.LA_Sheet, id);
             // TODO: This line of code loads data into the 'dsAttendance21.Bookings' table. You can move, or remove it, as needed.
             //this.bookingsTableAdapter.Fill(this.dsAttendance21.Bookings);
@@ -175,7 +176,8 @@ namespace DashboardAS
             try 
             {
                 int ID = id;
-            bookingsTableAdapter.FillByDate(dsAttendance21.Bookings, dateTimePicker1.Text,ID);
+                string status = "Confirmed";
+                bookingsTableAdapter.FillByDateS(dsAttendance21.Bookings,ID, dateTimePicker1.Text,status);
             }
             catch
             {
@@ -431,8 +433,9 @@ namespace DashboardAS
         private void ReloadBtn_Click(object sender, EventArgs e)
         {
            int instructorId = id;
+            string status = "Confirmed";
             BindGrid(instructorId);
-            bookingsTableAdapter.FillByID(dsAttendance21.Bookings, id);
+            bookingsTableAdapter.FillByIDS(dsAttendance21.Bookings, id, status);
         }
 
        
