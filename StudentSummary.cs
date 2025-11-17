@@ -28,11 +28,6 @@ namespace DashboardAS
             this.studentProgressTableAdapter1.Fill(this.dSAttendance2.StudentProgress);
             // TODO: This line of code loads data into the 'dSAttendance2.StudentMJ' table. You can move, or remove it, as needed.
             this.studentMJTableAdapter.Fill(this.dSAttendance2.StudentMJ);
-            bool arch = false;
-            // TODO: This line of code loads data into the 'dsAttendance21.LessonAttendanceMJ' table. You can move, or remove it, as needed.
-            //this.lessonAttendanceMJTableAdapter.Fill(this.dsAttendance21.LessonAttendanceMJ);
-            //lessonAttendanceMJTableAdapter.FillByLoad(dsAttendance21.LessonAttendanceMJ, id, arch);
-
            
 
         }
