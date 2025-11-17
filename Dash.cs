@@ -38,8 +38,8 @@ namespace DashboardAS
             }
             connec.Close();
             
-            //label1.Text = f1.nameTxt.Text;
-            lessonBookingMJTableAdapter1.FillByID(dSAttendance.LessonBookingMJ, Id);
+            string status = "Confirmed";
+            lessonBookingMJTableAdapter1.FillByStatus(dSAttendance.LessonBookingMJ, Id,status);
 
             int count = 0;
             DateTime selectedDate;
