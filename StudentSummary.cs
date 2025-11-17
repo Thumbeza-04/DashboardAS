@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace DashboardAS
 {
@@ -22,16 +24,15 @@ namespace DashboardAS
 
         private void StudentSummary_Load(object sender, EventArgs e)
         {
-            bool arch = false;
-            // TODO: This line of code loads data into the 'dsAttendance21.LessonAttendanceMJ' table. You can move, or remove it, as needed.
-            //this.lessonAttendanceMJTableAdapter.Fill(this.dsAttendance21.LessonAttendanceMJ);
-            lessonAttendanceMJTableAdapter.FillByLoad(dsAttendance21.LessonAttendanceMJ, id, arch);
-
-            WireRadioButtons(this);
+            // TODO: This line of code loads data into the 'dSAttendance2.StudentProgress' table. You can move, or remove it, as needed.
+            this.studentProgressTableAdapter1.Fill(this.dSAttendance2.StudentProgress);
+            // TODO: This line of code loads data into the 'dSAttendance2.StudentMJ' table. You can move, or remove it, as needed.
+            this.studentMJTableAdapter.Fill(this.dSAttendance2.StudentMJ);
+           
 
         }
-        SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
-        private bool isLoadingRatings = false;
+        //SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi");
+        
 
 
 
@@ -39,203 +40,173 @@ namespace DashboardAS
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            lessonAttendanceMJTableAdapter.FillByIDNAME(dsAttendance21.LessonAttendanceMJ,id, textBox1.Text);
+            studentMJTableAdapter.FillBySearch(dSAttendance2.StudentMJ, textBox1.Text);
 
         }
 
         private void dataGridView2_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            try
-            {
-                StuIdLbl.Text = (string)dataGridView2.CurrentRow.Cells[0].Value.ToString();
-            NameLbl.Text = (string)dataGridView2.CurrentRow.Cells[1].Value.ToString();
-            SNameLbl.Text = (string)dataGridView2.CurrentRow.Cells[2].Value.ToString();
+            studentProgressTableAdapter1.FillByStu(dsAttendance21.StudentProgress, (int)dataGridView2.CurrentRow.Cells[0].Value);
+            dataGridView1.DataSource = dsAttendance21.StudentProgress;
 
-            int studentID = Convert.ToInt32(dataGridView2.CurrentRow.Cells[0].Value);
-            LoadStudentRatings(studentID);
-            LoadStudentComment(studentID);
-            }
-            catch
-            {
-                MessageBox.Show("Error!Please try again.");
-            }
-            
         }
 
-        private void radioButton_CheckedChanged(object sender, EventArgs e)
+        private void AddBtn_Click(object sender, EventArgs e)
         {
-            RadioButton rb = sender as RadioButton;
-            if (rb == null || !rb.Checked) return;
+            DialogResult result = MessageBox.Show(
+            "Do you want to proceed with this action?",
+            "Confirmation Required",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
 
-            GroupBox group = rb.Parent as GroupBox;
-            if (group == null) return;
-
-            string attribute = group.Text.Replace(" ", ""); 
-            string rating = rb.Text;
-            int studentID = Convert.ToInt32(StuIdLbl.Text);
-
-            string query = $"UPDATE StudentProgress SET {attribute} = @Rating WHERE StudentID = @StudentID";
-
-            using (SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
-            using (SqlCommand cmd = new SqlCommand(query, connec))
+            if (result == DialogResult.Yes)
             {
-                cmd.Parameters.Add("@Rating", SqlDbType.VarChar).Value = rating;
-                cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
-
-                connec.Open();
-                cmd.ExecuteNonQuery();
-                connec.Close();
-            }
-            if(!isLoadingRatings)
-            {
-                MessageBox.Show($"{attribute} updated to {rating}.");
-            }
-            
-        }
-
-        private void PRB1_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void WireRadioButtons(Control parent)
-        {
-            foreach (Control ctrl in parent.Controls)
-            {
-                if (ctrl is RadioButton rb)
-                {
-                    rb.CheckedChanged += radioButton_CheckedChanged;
+                try
+                { 
+                int StuID = Convert.ToInt32(dataGridView2.CurrentRow.Cells[0].Value);
+                string studentName = dataGridView2.CurrentRow.Cells[1].Value.ToString();
+                string studentSurname = dataGridView2.CurrentRow.Cells[2].Value.ToString();
+                studentProgressTableAdapter1.InsertQuery(StuID, studentName, studentSurname);
+                    BindGrid();
                 }
-
-               
-                if (ctrl.HasChildren)
+                catch
                 {
-                    WireRadioButtons(ctrl);
+                    MessageBox.Show("Student already exists", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+            else if (result == DialogResult.Cancel)
+            {
+                MessageBox.Show("Action was cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-
-        private void ApplyRatingsRecursive(Control parent, SqlDataReader reader)
+        private void BindGrid()
         {
-            foreach (Control ctrl in parent.Controls)
-            {
-                if (ctrl is GroupBox gb && gb.Name != "groupBox1" && gb.Name != "groupBox2")
-                {
-                    string columnName = gb.Text.Replace(" ", "");
 
-                    if (reader.HasColumn(columnName) && !reader.IsDBNull(reader.GetOrdinal(columnName)))
+            using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+            {
+                string query = @"
+                    SELECT * 
+                    FROM StudentProgress ";
+
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+              
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dataGridView1.DataSource = dt;
+            }
+        }
+
+        private void RatingsBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+            "Do you want to proceed with this action?",
+            "Confirmation Required",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null || dataGridView1.CurrentRow == null)
+                {
+                    MessageBox.Show("Please select a skill, rating, and student.");
+                    return;
+                }
+
+                int studentID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                string skillColumn = comboBox1.SelectedItem.ToString();
+                string rating = comboBox2.SelectedItem.ToString();
+                DialogResult result2 = MessageBox.Show(
+            $"Do you want to Update {skillColumn} to {rating} for student {studentID}" ,
+            "Confirmation Required",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+                if (result2 == DialogResult.Yes)
+                {
+                    //string connStr = ConfigurationManager.ConnectionStrings["Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"].ConnectionString;
+                    using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
                     {
-                        string rating = reader[columnName].ToString();
-
-                        foreach (Control child in gb.Controls)
+                        string query = $"UPDATE StudentProgress SET [{skillColumn}] = @Rating WHERE StudentID = @StudentID";
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
                         {
-                            if (child is RadioButton rb && rb.Text == rating)
-                            {
-                                rb.Checked = true;
-                            }
+                            cmd.Parameters.AddWithValue("@Rating", rating);
+                            cmd.Parameters.AddWithValue("@StudentID", studentID);
+
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Rating updated.");
+                            conn.Close();
                         }
+                    }
+
+                    BindGrid(); // Refresh grid
+                }
+                else if (result2 == DialogResult.No)
+                {
+                    MessageBox.Show("Action was cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else if (result == DialogResult.No)
+            {
+                MessageBox.Show("Action was cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void CommentBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+           "Do you want to proceed with this action?",
+           "Confirmation Required",
+           MessageBoxButtons.YesNo,
+           MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                if (dataGridView1.CurrentRow == null || textBox2.Text.Trim() == " ")
+                {
+                    MessageBox.Show("Select a student and enter a comment.");
+                    return;
+                }
+
+                int studentID = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                string newComment = textBox2.Text.Trim();
+                string timestampedComment = $"[{DateTime.Now:yyyy-MM-dd HH:mm}] {newComment}";
+                
+
+                using (SqlConnection conn = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+                {
+                    string query = @"
+                    UPDATE StudentProgress
+                    SET Comments = @NewComment + CHAR(13) + CHAR(10) + ISNULL(Comments, '')
+                    WHERE StudentID = @StudentID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@NewComment", timestampedComment);
+                        cmd.Parameters.AddWithValue("@StudentID", studentID);
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Comment added.");
+                        conn.Close();
                     }
                 }
 
-                if (ctrl.HasChildren)
-                {
-                    ApplyRatingsRecursive(ctrl, reader);
-                }
+                textBox2.Text = " ";
+                BindGrid(); // Optional: refresh grid
+            }
+            else if (result == DialogResult.No)
+            {
+                MessageBox.Show("Action was cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void LoadStudentRatings(int studentID)
+        private void reloadBtn_Click(object sender, EventArgs e)
         {
-            isLoadingRatings = true;
-            string query = "SELECT * FROM StudentProgress WHERE StudentID = @StudentID";
-
-            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
-            using (SqlCommand cmd = new SqlCommand(query, con))
-            {
-                cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
-                con.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    ApplyRatingsRecursive(this, reader); // or use a specific container like panel1
-                }
-
-                reader.Close();
-            }
-            isLoadingRatings = false;
-        }
-
-        private void Savebtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-             int studentID = Convert.ToInt32(StuIdLbl.Text);
-            string comment = CommentTxt.Text.Trim();
-
-
-            string query = "UPDATE StudentProgress SET Comments = @Comments WHERE StudentID = @StudentID";
-            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
-            {
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.Add("@Comments", SqlDbType.VarChar).Value = comment;
-                    cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
-
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-
-                    
-                    MessageBox.Show("Comment saved.");
-
-                }
-
-              }
-            }
-            catch
-            {
-                MessageBox.Show("Error!Please try again.");
-            }
-           
-
-
-
-        }
-        private void LoadStudentComment(int studentID)
-        {
-            string query = "SELECT Comments FROM StudentProgress WHERE StudentID = @StudentID";
-
-            using (SqlConnection con = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
-            using (SqlCommand cmd = new SqlCommand(query, con))
-            {
-                cmd.Parameters.Add("@StudentID", SqlDbType.Int).Value = studentID;
-                con.Open();
-                object result = cmd.ExecuteScalar();
-                con.Close();
-
-                CommentTxt.Text = result != null && result != DBNull.Value ? result.ToString() : "";
-            }
+            BindGrid();
         }
     }
 
-
-
-
-
-
-
-    public static class SqlDataReaderExtensions
-    {
-        public static bool HasColumn(this SqlDataReader reader, string columnName)
-        {
-            for (int i = 0; i < reader.FieldCount; i++)
-            {
-                if (reader.GetName(i).Equals(columnName, StringComparison.OrdinalIgnoreCase))
-                    return true;
-            }
-            return false;
-        }
-    }
 }

@@ -65,14 +65,14 @@ namespace DashboardAS
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-           
-        }
+        
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Loadform(new AttendanceProgress(_ID));
+           this.Close();
+            Form4 loginForm = new Form4();
+            loginForm.Show();
+
         }
     }
 }
