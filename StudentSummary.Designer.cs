@@ -34,6 +34,8 @@ namespace DashboardAS
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.reloadBtn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.CommentBtn = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.RatingsBtn = new System.Windows.Forms.Button();
@@ -42,7 +44,6 @@ namespace DashboardAS
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.AddBtn = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.studentIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentSurnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,7 +69,6 @@ namespace DashboardAS
             this.dsAttendance21 = new DashboardAS.DSAttendance2();
             this.studentProgressTableAdapter1 = new DashboardAS.DSAttendance2TableAdapters.StudentProgressTableAdapter();
             this.studentMJTableAdapter = new DashboardAS.DSAttendance2TableAdapters.StudentMJTableAdapter();
-            this.reloadBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -141,12 +141,35 @@ namespace DashboardAS
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Evatuation";
             // 
+            // reloadBtn
+            // 
+            this.reloadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.reloadBtn.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reloadBtn.Location = new System.Drawing.Point(1367, 209);
+            this.reloadBtn.Name = "reloadBtn";
+            this.reloadBtn.Size = new System.Drawing.Size(158, 39);
+            this.reloadBtn.TabIndex = 7;
+            this.reloadBtn.Text = "Reload";
+            this.reloadBtn.UseVisualStyleBackColor = false;
+            this.reloadBtn.Click += new System.EventHandler(this.reloadBtn_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(10, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(329, 18);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "*Select student to submit rating or comment";
+            // 
             // CommentBtn
             // 
             this.CommentBtn.BackColor = System.Drawing.Color.Olive;
             this.CommentBtn.Location = new System.Drawing.Point(1350, 479);
             this.CommentBtn.Name = "CommentBtn";
-            this.CommentBtn.Size = new System.Drawing.Size(175, 32);
+            this.CommentBtn.Size = new System.Drawing.Size(175, 46);
             this.CommentBtn.TabIndex = 5;
             this.CommentBtn.Text = "Submit Comment";
             this.CommentBtn.UseVisualStyleBackColor = false;
@@ -247,24 +270,14 @@ namespace DashboardAS
             // AddBtn
             // 
             this.AddBtn.BackColor = System.Drawing.Color.Olive;
+            this.AddBtn.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddBtn.Location = new System.Drawing.Point(2, 225);
             this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(177, 32);
+            this.AddBtn.Size = new System.Drawing.Size(186, 40);
             this.AddBtn.TabIndex = 28;
             this.AddBtn.Text = "Add to evaluation";
             this.AddBtn.UseVisualStyleBackColor = false;
             this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(10, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(329, 18);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "*Select student to submit rating or comment";
             // 
             // studentIDDataGridViewTextBoxColumn1
             // 
@@ -464,17 +477,6 @@ namespace DashboardAS
             // studentMJTableAdapter
             // 
             this.studentMJTableAdapter.ClearBeforeFill = true;
-            // 
-            // reloadBtn
-            // 
-            this.reloadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.reloadBtn.Location = new System.Drawing.Point(1408, 209);
-            this.reloadBtn.Name = "reloadBtn";
-            this.reloadBtn.Size = new System.Drawing.Size(117, 31);
-            this.reloadBtn.TabIndex = 7;
-            this.reloadBtn.Text = "Reload";
-            this.reloadBtn.UseVisualStyleBackColor = false;
-            this.reloadBtn.Click += new System.EventHandler(this.reloadBtn_Click);
             // 
             // StudentSummary
             // 
