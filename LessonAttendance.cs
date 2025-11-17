@@ -63,36 +63,57 @@ namespace DashboardAS
 
             if (result == DialogResult.Yes)
             {
-                // Proceed with the action
-                using (SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+                DateTime bookingDate = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[4].Value);
+
+
+                if (bookingDate.Date > DateTime.Today)
                 {
-                    DateTime date = DateTime.Now;
-                    string attendance = "Present";
-                    connec.Open();
-                    SqlCommand command1 = new SqlCommand(
-                    @"INSERT INTO LA_Sheet 
+                    MessageBox.Show("You cannot mark attendance for a future booking.",
+                                    "Invalid Operation",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    
+                }
+                else
+                {
+                    try
+                    {
+
+                        // Proceed with the action
+                        using (SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+                        {
+                            DateTime date = DateTime.Now;
+                            string attendance = "Present";
+                            connec.Open();
+                            SqlCommand command1 = new SqlCommand(
+                            @"INSERT INTO LA_Sheet 
                 (BookingID,StudentID, StudentName, StudentSurname, InstructorID, BookingDate, BookingTime, Attendance, Date,PackageID) 
                 VALUES 
                 (@BookingID, @StudentID, @StudentName, @StudentSurname,@InstructorID, @BookingDate, @BookingTime, @Attendance, @Date, @PackageID)", connec);
 
-                    // Add parameters safely
-                    command1.Parameters.AddWithValue("@BookingID", (int)dataGridView1.CurrentRow.Cells[0].Value);
-                    command1.Parameters.AddWithValue("@StudentID", (int)dataGridView1.CurrentRow.Cells[1].Value);
-                    command1.Parameters.AddWithValue("@StudentName", dataGridView1.CurrentRow.Cells[2].Value);
-                    command1.Parameters.AddWithValue("@StudentSurname", dataGridView1.CurrentRow.Cells[3].Value);
-                    command1.Parameters.AddWithValue("@InstructorID", id);
-                    command1.Parameters.AddWithValue("@BookingDate", dataGridView1.CurrentRow.Cells[4].Value);
-                    command1.Parameters.AddWithValue("@BookingTime", dataGridView1.CurrentRow.Cells[5].Value);
-                    command1.Parameters.AddWithValue("@Attendance", attendance);
-                    command1.Parameters.AddWithValue("@Date", date);
-                    command1.Parameters.AddWithValue("@PackageID", dataGridView1.CurrentRow.Cells[6].Value);
+                            // Add parameters safely
+                            command1.Parameters.AddWithValue("@BookingID", (int)dataGridView1.CurrentRow.Cells[0].Value);
+                            command1.Parameters.AddWithValue("@StudentID", (int)dataGridView1.CurrentRow.Cells[1].Value);
+                            command1.Parameters.AddWithValue("@StudentName", dataGridView1.CurrentRow.Cells[2].Value);
+                            command1.Parameters.AddWithValue("@StudentSurname", dataGridView1.CurrentRow.Cells[3].Value);
+                            command1.Parameters.AddWithValue("@InstructorID", id);
+                            command1.Parameters.AddWithValue("@BookingDate", dataGridView1.CurrentRow.Cells[4].Value);
+                            command1.Parameters.AddWithValue("@BookingTime", dataGridView1.CurrentRow.Cells[5].Value);
+                            command1.Parameters.AddWithValue("@Attendance", attendance);
+                            command1.Parameters.AddWithValue("@Date", date);
+                            command1.Parameters.AddWithValue("@PackageID", dataGridView1.CurrentRow.Cells[6].Value);
 
-                    // Execute
-                    command1.ExecuteNonQuery();
-                    connec.Close();
-                    BindGrid(id);
+                            // Execute
+                            command1.ExecuteNonQuery();
+                            connec.Close();
+                            BindGrid(id);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Attendance for this booking has already been recorded.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-
             }
             else if (result == DialogResult.Cancel)
             {
@@ -112,36 +133,56 @@ namespace DashboardAS
 
             if (result == DialogResult.Yes)
             {
-                // Proceed with the action
-                using (SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+                DateTime bookingDate = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[4].Value);
+
+
+                if (bookingDate.Date > DateTime.Today)
                 {
-                    DateTime date = DateTime.Now;
-                    string attendance = "Absent";
-                    connec.Open();
-                    SqlCommand command1 = new SqlCommand(
-                    @"INSERT INTO LA_Sheet 
+                    MessageBox.Show("You cannot mark attendance for a future booking.",
+                                    "Invalid Operation",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+
+                }
+                else
+                {
+                    try
+                    {
+                        // Proceed with the action
+                        using (SqlConnection connec = new SqlConnection("Data Source=146.230.177.46;User ID=WstGrp24;Password=6wefi"))
+                        {
+                            DateTime date = DateTime.Now;
+                            string attendance = "Absent";
+                            connec.Open();
+                            SqlCommand command1 = new SqlCommand(
+                            @"INSERT INTO LA_Sheet 
                 (BookingID,StudentID, StudentName, StudentSurname, InstructorID, BookingDate, BookingTime, Attendance, Date,PackageID) 
                 VALUES 
                 (@BookingID, @StudentID, @StudentName, @StudentSurname,@InstructorID, @BookingDate, @BookingTime, @Attendance, @Date, @PackageID)", connec);
 
-                    // Add parameters safely
-                    command1.Parameters.AddWithValue("@BookingID", (int)dataGridView1.CurrentRow.Cells[0].Value);
-                    command1.Parameters.AddWithValue("@StudentID", (int)dataGridView1.CurrentRow.Cells[1].Value);
-                    command1.Parameters.AddWithValue("@StudentName", dataGridView1.CurrentRow.Cells[2].Value);
-                    command1.Parameters.AddWithValue("@StudentSurname", dataGridView1.CurrentRow.Cells[3].Value);
-                    command1.Parameters.AddWithValue("@InstructorID", id);
-                    command1.Parameters.AddWithValue("@BookingDate", dataGridView1.CurrentRow.Cells[4].Value);
-                    command1.Parameters.AddWithValue("@BookingTime", dataGridView1.CurrentRow.Cells[5].Value);
-                    command1.Parameters.AddWithValue("@Attendance", attendance);
-                    command1.Parameters.AddWithValue("@Date", date);
-                    command1.Parameters.AddWithValue("@PackageID", dataGridView1.CurrentRow.Cells[6].Value);
+                            // Add parameters safely
+                            command1.Parameters.AddWithValue("@BookingID", (int)dataGridView1.CurrentRow.Cells[0].Value);
+                            command1.Parameters.AddWithValue("@StudentID", (int)dataGridView1.CurrentRow.Cells[1].Value);
+                            command1.Parameters.AddWithValue("@StudentName", dataGridView1.CurrentRow.Cells[2].Value);
+                            command1.Parameters.AddWithValue("@StudentSurname", dataGridView1.CurrentRow.Cells[3].Value);
+                            command1.Parameters.AddWithValue("@InstructorID", id);
+                            command1.Parameters.AddWithValue("@BookingDate", dataGridView1.CurrentRow.Cells[4].Value);
+                            command1.Parameters.AddWithValue("@BookingTime", dataGridView1.CurrentRow.Cells[5].Value);
+                            command1.Parameters.AddWithValue("@Attendance", attendance);
+                            command1.Parameters.AddWithValue("@Date", date);
+                            command1.Parameters.AddWithValue("@PackageID", dataGridView1.CurrentRow.Cells[6].Value);
 
-                    // Execute
-                    command1.ExecuteNonQuery();
-                    connec.Close();
-                    BindGrid(id);
+                            // Execute
+                            command1.ExecuteNonQuery();
+                            connec.Close();
+                            BindGrid(id);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Attendance for this booking has already been recorded.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-
             }
             else if (result == DialogResult.No)
             {
