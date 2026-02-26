@@ -112,6 +112,15 @@ All database operations include proper error handling:
 3. **Dashboard**: Live statistics update from the database
 4. **Booking**: Dropdown lists are populated from database tables
 
+## Log In Details
+1. **Receptionist**: Username- sarah.j@tlgdriving.com, Password- SarahR456
+2. **Manager**: Username- sfiso.d@tlgdriving.com, Password- SfisoM123
+3. **Instructors**
+     **David Mabuza**: Username- david.m@tlgdriving.com, Password- David102
+    **Jessica Nkosi**: Username- jessica.n@tlgdriving.com, Password- Jessica201
+    **Sibusiso Mamba**: Username- sbu.t@tlgdriving.com, Password- Sbu301
+    **Amanda Black**: Username- amanda.b@tlgdriving.com, Password- Amanda401
+
 ## Technical Requirements
 
 - .NET Framework 4.7.2
